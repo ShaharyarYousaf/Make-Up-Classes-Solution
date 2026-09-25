@@ -1,0 +1,496 @@
+Monday																																							
+																																							
+																																							
+																																							
+Room/ Time	08:30-09:50					10:00-11:20					11:30-12:50					01:00-02:20					02:30-03:50					03:55-05:15				Room	05:20-06:40 					06:45-08:05			
+C-301	CS-1002 Programming Fundamentals (CS-A) 					MT1003 Calculus and Analytical Geometry BCS-1A										SS1013 Ideology and Constitution of Pakistan BCS-1A 01:00-02:45														D-301						CS6062 Vision-Based AI Agent PCS-1A			
+C-302	MT1003 Calculus and Analytical Geometry BCS-1B					CS-1002 Programming Fundamentals (CS-B) 										SS1007 Islamic Studies/Ethics BCS-1B 01:00-02:45														D-302	CS5037 Data Visualization MCS-2A					CS5009 Advanced Operating Systems MCS-1A			
+C-303	MT1003 Calculus and Analytical Geometry BCS-1C					CS-1002 Programming Fundamentals (CS-C)										SS1013 Ideology and Constitution of Pakistan BCS-1C 01:00-02:45														D-303	CY5004 Secure System Design MCY-1A					CY5005 Applied Information Security MCY-1A			
+C-304	CS-1002 Programming Fundamentals (CS-D)					MT1003 Calculus and Analytical Geometry BCS-1D					SS1019 Understanding Sirat-Un-Nabi (PBUH) BCS-1F  11:30-12:25					SS1007 Islamic Studies/Ethics BCS-1D 01:00-02:45														D-304	Reserved for Adv Comp Vision								
+C-305	SS1012 Functional English BCS-1G 08:30-10:15						SS1019 Understanding Sirat-Un-Nabi (PBUH) BCS-3J 10:30-11:25				EE1005 Digital Logic Design BCS-3J					SS1012 Functional English BCS-1F 01:00-02:45														D-305	CS5031 Applied Computer Vision MAI-3A					CS5020 Agentic AI MAI-3A			
+C-307	CS2001 Data Structures BCS-3A					CS3004 Software Design and Analysis BCS-3A					CS2001 Data Structures BCS-3C					EE1005 Digital Logic Design BCS-3A														D-306	CS5020 Agentic AI MDS-3A					AI5004 Advanced Topics in Generative AI MDS-3A			
+C-308						CS2001 Data Structures BCS-3B					MT1004 Linear Algebra BCS-3D					CS3004 Software Design and Analysis BCS-3B					CS1004 Object Oriented Programming BCS-3A					CS1004 Object Oriented Programming BCS-3B				D-311	CS4002 Applied Programming MAI-1A					DS5002 Data Science Tools and Techniques MDS-1A			
+C-309	CS3004 Software Design and Analysis BCS-3C					CS2001 Data Structures BCS-3E					CS3004 Software Design and Analysis BCS-3E					MT1004 Linear Algebra BCS-3C					MT1003 Calculus and Analytical Geometry BCS-3Z					CS1005 Discrete Structures BCS-3A				D-312	AI2003 Programming for AI MCI-1A					CS2015 Data Structures and Algorithms MCI-1A			
+C-310	CS2001 Data Structures BCS-3D										MT1004 Linear Algebra BCS-3F					CS3004 Software Design and Analysis BCS-3D					"EE1005 Digital Logic Design BCS-3E			"									D-313	AI5012 Foundation of AI in Health Sciences MAAIHS-1A					AI5012 Foundation of AI in Health Sciences MAAIHS-1A			
+C-311				"SS1022 Understanding of Holy Quran I/Ethics I BCS-3F
+SS1022 Understanding of Holy Quran II/Ethics II BCS-3F
+ 09:30-11:20"							MT1004 Linear Algebra BCS-3B					MT1004 Linear Algebra BCS-3G					"SS1022 Understanding of Holy Quran I/Ethics I BCS-3G
+SS1022 Understanding of Holy Quran II/Ethics II BCS-3G 
+02:30-04:20"									D-314	SE5032 Empirical Software Engineering MSE-2A					SE5008 Engineering AI based Software MSE-2A			
+C-401																"EE1005 Digital Logic Design BCS-3H			"					SS1019 Understanding Sirat-Un-Nabi (PBUH) BCS-3H 02:30-03:25									D-315	CS5001 Research Methodology MAI-1B								
+C-402	EE3009 Computer Architecture BCS-5A										CS3014 Applied Human Computer Interaction BCS-5A					CS3001 Computer Networks BCS-5A					EE2003 Computer Organization and Assembly Language BCS-5A					EE2003 Computer Organization and Assembly Language BCS-5B				D-316	AI5002 Mathematical Foundations of AI MAI-1A					AI5002 Mathematical Foundations of AI MAI-1B			
+C-403						EE3009 Computer Architecture BCS-5B										CS3014 Applied Human Computer Interaction BCS-5B					CS3001 Computer Networks BCS-5B					CS6018 Recent Advances in Deep Learning PCS-1A				D-401	SE6002 Advanced Empirical Software Engineering PSE-1A					CS6006 Cyber and Network Security PCS-1A			
+C-404	CS3001 Computer Networks BCS-5D					CS3001 Computer Networks BCS-5C					EE3009 Computer Architecture BCS-5C					CS3014 Applied Human Computer Interaction BCS-5C														D-402									
+C-405	SS2012 Technical and Business Writing BCS-5F					CS2009 Design and Analysis of Algorithms BCS-5F					SS2012 Technical and Business Writing BCS-5G					EE3009 Computer Architecture BCS-5D																							
+C-406											CS2009 Design and Analysis of Algorithms BCS-5E					SS2012 Technical and Business Writing BCS-5E																							
+C-407											CS3014 Applied Human Computer Interaction BCS-5D					CS2009 Design and Analysis of Algorithms BCS-5G																							
+C-408						AI2002 Artificial Intelligence BSE-5A					AI2002 Artificial Intelligence BSE-5B					CS2009 Design and Analysis of Algorithms BSE-5B																							
+C-409	SS2012 Technical and Business Writing BSE-5C					SE3002 Software Quality Engineering BSE-5C					CS2009 Design and Analysis of Algorithms BSE-5A					SS1012 Functional English BSE-1A 01:00-02:45																							
+C-601	NS1001 Applied Physics BSE-1B					NS1001 Applied Physics BSE-1A					SS1015 Pakistan Studies BSE-3C 11:30-01:15																												
+C-602	CS-1002 Programming Fundamentals (SE-A)					CS-1002 Programming Fundamentals (SE-B)					MT1003 Calculus and Analytical Geometry BSE-1C					MT1003 Calculus and Analytical Geometry BSE-1D																							
+C-603	CS2001 Data Structures BSE-3A					CS2001 Data Structures BSE-3B					SE1001 Introduction to Software Engineering BSE-3A					EE2003 Computer Organization and Assembly Language BSE-3A					EE2003 Computer Organization and Assembly Language BSE-3B					CS1004 Object Oriented Programming BSE-3A													
+C-604	SE3005 Software Construction and Development BSE-5B					MT1004 Linear Algebra BSE-3C					SE4001 Software Re-Engineering BSE-9A					Arts & Humanities (SE-B) 01:00-02:45																							
+C-605	CS-1002 Programming Fundamentals (SE-F)																																						
+C-607	MT1004 Linear Algebra BSE-3D					SS1022 Understanding of Holy Quran II/Ethics II BSE-3D 10:00-10:55					CS3002 Information Security BSE-7A					SE3005 Software Construction and Development BSE-5A																							
+C-609						CS3002 Information Security BSE-7B					CS3006 Parallel and Distributed Computing BSE-7B					SE1001 Introduction to Software Engineering BSE-3B																							
+D-301						MT1003 Calculus and Analytical Geometry BAI-1A					CS-1002 Programming Fundamentals (AI-A)					SS1013 Ideology and Constitution of Pakistan BAI-1A 01:00-02:45																							
+D-302	CS4049 Blockchain and Cryptocurrency BCY-7A										CS4049 Blockchain and Cryptocurrency BCY-7B					CS4001 Professional Practices in IT BSE-9A																							
+D-303	EE2003 Computer Organization and Assembly Language BAI-3A					CS2001 Data Structures BAI-3A					MT1004 Linear Algebra BAI-3C																												
+D-304	CS2001 Data Structures BAI-3B					CS1004 Object Oriented Programming BAI-3A					EE2003 Computer Organization and Assembly Language BAI-3B					AI2001 Programming for AI BAI-3B					CS6039 Advanced Computer Vision PCS-1A 03:00-06:00 																		
+D-305	AI3001 Knowledge Representation and Reasoning BAI-5A										CS2009 Design and Analysis of Algorithms BAI-5A					CS3001 Computer Networks BAI-5A																							
+D-306	CS2009 Design and Analysis of Algorithms BAI-5B					SS2012 Technical and Business Writing BAI-5B					CS2009 Design and Analysis of Algorithms BAI-5C					SS2012 Technical and Business Writing BAI-5C																							
+D-311	SS1012 Functional English BDS-1A 08:30-10:15										"AI2001 Programming for AI BAI-3A			"																												
+D-312	MT1004 Linear Algebra BDS-3B					MT1004 Linear Algebra BDS-3A						SS1019 Understanding Sirat-Un-Nabi (PBUH) BAI-1C 11:30-12:25																											
+D-313	Tutorial Batch 26					Tutorial Batch 26					Tutorial Batch 26										FCS					FCS													
+D-314						SS2012 Technical and Business Writing BDS-5A					CS2009 Design and Analysis of Algorithms BDS-5A												"SS1022 Understanding of Holy Quran I/Ethics I BDS-3A
+SS1022 Understanding of Holy Quran II/Ethics II BDS-3A
+ 03:10-05:00"																
+D-315						CS2009 Design and Analysis of Algorithms BDS-5B					"SS2012 Technical and Business Writing BDS-5B			"																												
+D-316	MG3040 Methods in Business Research BAI-7A					AI4015 Agentic Artificial Intelligence BAI-7A								Islamic (DS-B) 12:30-02:15												AI4013 AI Product Development BAI-7A													
+D-401	AI4015 Agentic Artificial Intelligence BAI-7B					MG3040 Methods in Business Research BAI-7B					CY4054 Blockchain Technologies and Applications BAI-7A					AI4019 Edge Computing and Intelligent Systems BAI-7A					AI4012 Multiagent Systems and Game Theory BAI-7A																		
+D-402											"AI4019 Edge Computing and Intelligent Systems BDS-9A
+AI4019 Edge Computing and Intelligent Systems BAI-9A"					CS3001 Computer Networks BDS-7C																							
+D-403	"MG3040 Methods in Business Research BDS-7B			"					CS4059 Fundamentals of Computer Vision BDS-7B					CS4059 Fundamentals of Computer Vision BDS-7A					MG3040 Methods in Business Research BDS-7A																							
+D-404	CS3014 Applied Human Computer Interaction BCS-7A					CS3014 Applied Human Computer Interaction BCS-7B					CS4044 Fundamentals of Software Project Management BCS-7A																												
+D-405	CS3014 Applied Human Computer Interaction BCS-7C					CS3014 Applied Human Computer Interaction BCS-7D																																	
+D-406	CS4001 Professional Practices in IT BCS-7E					CS3002 Information Security BCS-7E					AI4015 Agentic Artificial Intelligence BCS-7C					CS3006 Parallel and Distributed Computing BCS-7B					CS3006 Parallel and Distributed Computing BCS-7C																		
+D-411	CS3002 Information Security BCS-7F					CS4001 Professional Practices in IT BCS-7F					CS4075 Cloud Computing BCS-7A					CS4075 Cloud Computing BCS-7B																							
+D-412	CS4001 Professional Practices in IT BCS-7G					CS3002 Information Security BCS-7G					"CS4045 Deep Learning for Perception BCS-7A			"																												
+D-413											CS4095 Embedded Control of Robotics BCS-7A																												
+D-414	CS2001 Data Structures BCY-3A										EE2003 Computer Organization and Assembly Language BCY-3A					CY2004 Cyber Security BCY-3A																							
+D-415						CS2001 Data Structures BCY-3B										EE2003 Computer Organization and Assembly Language BCY-3B					CY2004 Cyber Security BCY-3B																		
+D-416		SS1022 Understanding of Holy Quran II/Ethics II BCY-3C 09:00-09:55				MT1004 Linear Algebra BCY-3C																																	
+D-501	AI2002 Artificial Intelligence BCY-5C					CS3002 Information Security BCY-5C										CS4032 Web Programming BCY-5C					CS2006 Operating Systems BCY-5C																		
+D-502																																							
+D-503						CY4048 Security Operations and Administration BCY-7A					CY4048 Security Operations and Administration BCY-7B																												
+D-504						CS4075 Cloud Computing BCY-7B					CS4075 Cloud Computing BCY-7A																												
+D-505																																							
+D-506																																							
+C-110											CS4039 Software for Mobile Devices BCS-7A					Reserved For FDC					Reserved For FDC																		
+Lab	08:30-11:15										11:30-02:15										02:30-05:15										05:20 - 08:05 (inc. 10 min. break)  								
+IT Lab 1 (D-210)	CL1000 Introduction to Information and Communication Technology BSE-1C										CS-1002 Programming Fundamentals Lab (CS-G)										CS-1002 Programming Fundamentals Lab (SE-C)																		
+IT Lab 2 (D-211)	CL1000 Introduction to Information and Communication Technology BCS-1H										CL1000 Introduction to Information and Communication Technology BCS-1E										CL1000 Introduction to Information and Communication Technology BSE-1D																		
+IT Lab 3 (D-213)	CS-1002 Programming Fundamentals Lab (AI-C)										EL2003 Computer Organization and Assembly Language - Lab BDS-3B										DL3001 Data Analysis and Visualization - Lab BDS-5A																		
+IT Lab 4-GPU (D-203)	AL3002 Machine Learning - Lab BAI-5C										DL2001 Introduction to Data Science - Lab BDS-3A										AL2001 Programming for AI - Lab BAI-3C																		
+Margala 1 (C-209)	CS-1002 Programming Fundamentals Lab (CS-F)										CL1000 Introduction to Information and Communication Technology BDS-1A										CL2001 Data Structures - Lab BCS-3J																		
+Margala 3 (C-211)	CS-1002 Programming Fundamentals Lab (DS-B)										AL2002 Artificial Intelligence - Lab BSE-5C										CL2001 Data Structures - Lab BDS-3B																		
+Margala 4 (C-212	CL2001 Data Structures - Lab BCS-3H										EL2003 Computer Organization and Assembly Language - Lab BSE-3D										CL2001 Data Structures - Lab BSE-3C																		
+Rawal 1 (C-509)	CL3001 Computer Networks - Lab BCS-5E										CL3001 Computer Networks - Lab BCS-5F										CL1004 Object Oriented Programming - Lab BCS-3C																		
+C-Rawal 4 (C-512)	CL3001 Computer Networks - Lab BDS-7A										CL3001 Computer Networks - Lab BAI-5B										DL3004 Data Warehousing and Business Intellligence - Lab BDS-5B																		
+Cyber (D-514)	CL2001 Data Structures - Lab BAI-3C										EL2003 Computer Organization and Assembly Language - Lab BCY-3C										Project (CY)																		
+CALL-1 (A-213)	FSM										FSM										SL1012 Functional English - Lab BCS-1E1																		
+CALL-2 (A-214)	FSM										FSM										SL1012 Functional English - Lab BCS-1E2																		
+CALL-3 (A-308)	SL1012 Functional English - Lab BSE-1D1										SL1012 Functional English - Lab BCS-1H1										SL1012 Functional English - Lab BAI-1C1																		
+Mehran-2 (A-306)	FSM										SL1012 Functional English - Lab BCS-1H2										SL1012 Functional English - Lab BAI-1C2																		
+B-Computing-3	SL1012 Functional English - Lab BSE-1D2										EE										EE																		
+B-Digital	EL1005 Digital Logic Design - Lab BCS-3G																				EL1005 Digital Logic Design - Lab BCS-3F																		
+.
+Tuesday																																							
+																																							
+																																							
+																																							
+Room/ Time	08:30-09:50					10:00-11:20					11:30-12:50					01:00-02:20					02:30-03:50					03:55-05:15				Room	05:20-06:40 					06:45-08:05			
+C-301	"CS1002 Programming Fundamentals BCS-1F			"					MT1003 Calculus and Analytical Geometry BCS-1F										SS1013 Ideology and Constitution of Pakistan BCS-1F 01:00-02:45														D-301						CY5002 Machine Learning for Cyber Security MCY-2A			
+C-302	MT1003 Calculus and Analytical Geometry BCS-1G					CS1002 Programming Fundamentals BCS-1G										SS1007 Islamic Studies/Ethics BCS-1G 01:00-02:45 														D-302	CY5003 Securing Cloud Computing MCY-2A								
+C-303	SS1013 Ideology and Constitution of Pakistan BCS-1H 08:30-10:15										"CS1002 Programming Fundamentals BCS-1H			"					MT1003 Calculus and Analytical Geometry BCS-1H					FCS									D-303	AI5001 Advanced Artificial Intelligence MAI-1A								
+C-304	SS1007 Islamic Studies/Ethics BCS-1E 08:30-10:15										MT1003 Calculus and Analytical Geometry BCS-1E					CS1002 Programming Fundamentals BCS-1E					SS1019 Understanding Sirat-Un-Nabi (PBUH) BCS-1B 02:30-03:25									D-304						AI5001 Advanced Artificial Intelligence MAI-1B			
+C-305	SS1012 Functional English BCS-1B 08:30-10:15										CS2001 Data Structures BCS-3F					EE1005 Digital Logic Design BCS-3F														D-305	CS5005 Advanced Analysis of Algorithms MCS-1A								
+C-307	CS3004 Software Design and Analysis BCS-3F					CS2006 Operating Systems BCY-5A										CS2006 Operating Systems BDS-5A					CS1004 Object Oriented Programming BCS-3C					CS1004 Object Oriented Programming BCS-3D				D-306	DS5007 Natural Language Processing MDS-1A					DS5003 Statistical and Mathematical Methods for DS MDS-1A			
+C-308	"EE1005 Digital Logic Design BCS-3G			"					CS2001 Data Structures BCS-3G					MT1004 Linear Algebra BCS-3E					CS3004 Software Design and Analysis BCS-3G										CS1005 Discrete Structures BCS-3B				D-311	CS5145 Database and Operating Systems MCI-1A					CS5144 Mathematics for Computational Intelligence MCI-1A			
+C-309	CS3004 Software Design and Analysis BCS-3H										CS2001 Data Structures BCS-3H					MT1004 Linear Algebra BCS-3H														D-312	CS5146 Programming for Digital Health Application MAAIHS-1A					CS5147 Foundation of Health Information Systems MAAIHS-1A			
+C-310	CS2001 Data Structures BCS-3J					EE1005 Digital Logic Design BCS-3C					MT1004 Linear Algebra BCS-3J					CS3004 Software Design and Analysis BCS-3J														D-313	CS5001 Research Methodology MDS-1A					CS5001 Research Methodology MAI-1A			
+C-311							SS1019 Understanding Sirat-Un-Nabi (PBUH) BCS-3B 10:30-11:25				EE1005 Digital Logic Design BCS-3B					MT1004 Linear Algebra BCS-3A					"SS1021 Understanding of Holy Quran I/Ethics I BCS-3A
+SS1022 Understanding of Holy Quran II/Ethics II BCS-3A
+ 02:30-04:20"									D-314	SE5002 Advanced Quality Assurance MSE-1A					SE5003 Advanced Software Architecture MSE-1A			
+C-401				"SS1022 Understanding of Holy Quran I/Ethics I BCS-3E
+SS1022 Understanding of Holy Quran II/Ethics II BCS-3E
+09:30-11:20"							SS1019 Understanding Sirat-Un-Nabi (PBUH) BCS-3D 11:30-12:25					EE1005 Digital Logic Design BCS-3D							"SS1022 Understanding of Holy Quran I/Ethics I BCS-3C
+SS1022 Understanding of Holy Quran II/Ethics II BCS-3C
+ 03:10-05:00"							D-315	UHQ-I & II (PHD-C) 05:20-07:10								
+C-402	CS3001 Computer Networks BCS-5F					EE3009 Computer Architecture BCS-5F										CS3014 Applied Human Computer Interaction BCS-5E										CS6006 Cyber and Network Security PCS-1B 04:30-07:30				D-316	CS6006 Cyber and Network Security PCS-1B 04:30-07:30								
+C-403	CS2009 Design and Analysis of Algorithms BCS-5A					SS2012 Technical and Business Writing BCS-5A					CS3014 Applied Human Computer Interaction BCS-5G					CS3014 Applied Human Computer Interaction BCS-5F														D-401									
+C-404	EE3009 Computer Architecture BCS-5E					CS3001 Computer Networks BCS-5G					CS3001 Computer Networks BCS-5E					EE3009 Computer Architecture BCS-5G														D-402	SE6001 Advanced Topics in Requirements Engineering PSE-1A								
+C-405	SS2012 Technical and Business Writing BCS-5D					CS2009 Design and Analysis of Algorithms BCS-5D					CS2009 Design and Analysis of Algorithms BCS-5C					SS2012 Technical and Business Writing BCS-5C														D-403									
+C-406	SS2012 Technical and Business Writing BCS-5B					CS2009 Design and Analysis of Algorithms BCS-5B										CS6035 Advanced Topics in Parallel and Distributed Systems PCS-1A 01:15-04:15														D-404									
+C-407						CS2007 Human Computer Interaction BSE-9A					CS4039 Software for Mobile Devices BSE-7A					CS4039 Software for Mobile Devices BSE-7B														D-405									
+C-408	"CS1002 Programming Fundamentals BSE-1C	"					NS1001 Applied Physics BSE-1C					MT1003 Calculus and Analytical Geometry BSE-1A					MT1003 Calculus and Analytical Geometry BSE-1B										CS4046 Game Design and Development BSE-7A													
+C-409	NS1001 Applied Physics BSE-1D					SE4033 Formal Methods in Software Engineering BSE-7A					"CS1002 Programming Fundamentals BSE-1D					SS1012 Functional English BSE-1C 01:00-02:45																							
+C-601																																							
+C-602	MT1004 Linear Algebra BSE-3B						SS1022 Understanding of Holy Quran II/Ethics II BSE-3B 10:20-11:15				SS1015 Pakistan Studies BSE-3A 11:30-01:15										CS2001 Data Structures BSE-3D																		
+C-603	EE2003 Computer Organization and Assembly Language BSE-3C					SE1001 Introduction to Software Engineering BSE-3C					SE3002 Software Quality Engineering BSE-5A					SE3005 Software Construction and Development BSE-5C					CS3006 Parallel and Distributed Computing BSE-7A																		
+C-604						EE2003 Computer Organization and Assembly Language BSE-3D					SE1001 Introduction to Software Engineering BSE-3D					SS1013 Ideology and Constitution of Pakistan BSE-1D 01:00-02:45																							
+C-605	SS2012 Technical and Business Writing BSE-5A					MT1004 Linear Algebra BSE-3A										CS2001 Data Structures BSE-3C																							
+C-607	SE3002 Software Quality Engineering BSE-5B					"SS2012 Technical and Business Writing BSE-5B			"					AI4009 Generative AI BSE-7A					AI4009 Generative AI BSE-7B					MG4057 AI-Led Transformation BSE-9A																		
+C-609	CS2009 Design and Analysis of Algorithms BSE-5C					AI2002 Artificial Intelligence BSE-5C					CS4063 Natural Language Processing BSE-7A					CS4063 Natural Language Processing BSE-7B																							
+D-301	MT1003 Calculus and Analytical Geometry BAI-1C					"CS1002 Programming Fundamentals BAI-1C			"					SS1019 Understanding Sirat-Un-Nabi (PBUH) BAI-1A 11:30-12:25			SS1013 Ideology and Constitution of Pakistan BAI-1C 12:30-02:15																									
+D-302	CS2001 Data Structures BAI-3C					EE2003 Computer Organization and Assembly Language BAI-3C					"CS2005 Database Systems BCY-5B			"					MT1004 Linear Algebra BAI-3A																							
+D-303						DS2003 Advanced Statistics BDS-5A					DS2003 Advanced Statistics BDS-5B								CS6001 Advanced Topics in CS PCS-1A 02:00-05:00																				
+D-304	AI3001 Knowledge Representation and Reasoning BAI-5B					"AI3002 Machine Learning BAI-5B			"					CS3001 Computer Networks BAI-5B					AI2001 Programming for AI BAI-3C																							
+D-305						AI3001 Knowledge Representation and Reasoning BAI-5C					AI3002 Machine Learning BAI-5C																												
+D-306	SS2012 Technical and Business Writing BAI-5A					AI3002 Machine Learning BAI-5A															CS3001 Computer Networks BAI-5C					EE2003 Computer Organization and Assembly Language BAI-5A													
+D-311	MT1003 Calculus and Analytical Geometry BDS-1A					CS1002 Programming Fundamentals BDS-1A					DS3001 Data Analysis and Visualization BDS-5A					SS1013 Ideology and Constitution of Pakistan BDS-1A 01:00-02:45																							
+D-312						MT1003 Calculus and Analytical Geometry BDS-1B					"CS1002 Programming Fundamentals BDS-1B																												
+D-313	EE2003 Computer Organization and Assembly Language BDS-3A					DS2001 Introduction to Data Science BDS-3A										EE2003 Computer Organization and Assembly Language BDS-3B						SS1019 Understanding Sirat-Un-Nabi (PBUH) BDS-3B 03:00-03:55 																	
+D-314	DS3004 Data Warehousing and Business Intellligence BDS-5A					DS3004 Data Warehousing and Business Intellligence BDS-5B					MT1004 Linear Algebra BAI-3B					CS2001 Data Structures BDS-3A																							
+D-315	AI4015 Agentic Artificial Intelligence BDS-7A					CS2001 Data Structures BDS-3B					DS2001 Introduction to Data Science BDS-3B										DS3001 Data Analysis and Visualization BDS-5B																		
+D-316	AI4012 Multiagent Systems and Game Theory BDS-7C					AI4012 Multiagent Systems and Game Theory BDS-7A					AI4012 Multiagent Systems and Game Theory BDS-7B					CS3001 Computer Networks BDS-7A					MG3040 Methods in Business Research BDS-7C																		
+D-401						CS3001 Computer Networks BDS-7B																																	
+D-402	SE4009 Process Mining and Simulation BSE-7A																																						
+D-403						Tutorial Batch 26					Tutorial Batch 26																												
+D-404	CS4001 Professional Practices in IT BCS-7A					CS3002 Information Security BCS-7A					CS4085 MLOps BCS-7A					"MG4069 Digital Sustainability BCS-9A			"										MG4069 Digital Sustainability BCS-9B													
+D-405	CS3002 Information Security BCS-7B					CS4001 Professional Practices in IT BCS-7B					AI4009 Generative AI BCS-7A					AI4009 Generative AI BCS-7B																							
+D-406	CS4001 Professional Practices in IT BCS-7C					CS3002 Information Security BCS-7C					AI4015 Agentic Artificial Intelligence BCS-7A					AI4015 Agentic Artificial Intelligence BCS-7B					Reserved by FSA																		
+D-411	CS3002 Information Security BCS-7D					CS4001 Professional Practices in IT BCS-7D					CS4001 Professional Practices in IT BCS-7H					CS3006 Parallel and Distributed Computing BCS-7D					CS3006 Parallel and Distributed Computing BCS-7A																		
+D-412	CS3014 Applied Human Computer Interaction BCS-7E					CS3014 Applied Human Computer Interaction BCS-7G										CS3014 Applied Human Computer Interaction BCS-7F																							
+D-413						CS4085 MLOps BCS-7B					MG3040 Methods in Business Research BAI-7C					MT2002 Statistical Modelling BCS-9A																							
+D-414	CS1002 Programming Fundamentals BCY-1A					MT1003 Calculus and Analytical Geometry BCY-1A										SS1013 Ideology and Constitution of Pakistan BCY-1A 01:00-02:45																							
+D-415						"CS1002 Programming Fundamentals BCY-1B			"					MT1003 Calculus and Analytical Geometry BCY-1B								Arts & Humanities (CY-B) 02:00-03:45																				
+D-416											NS1001 Applied Physics BCY-1C					MT1004 Linear Algebra BCY-3A					MT1004 Linear Algebra BCY-3B																		
+D-501	SS1015 Pakistan Studies BCY-3B 08:30-10:15						SS1015 Pakistan Studies BCY-3A 10:30-12:15												SS1012 Functional English BCY-1C 02:00-03:45																				
+D-502	"CS2001 Data Structures BCY-3C			"					CY2004 Cyber Security BCY-3C										EE2003 Computer Organization and Assembly Language BCY-3C																							
+D-503	CS3002 Information Security BCY-5A					CS2006 Operating Systems BCY-5A					CS2005 Database Systems BCY-5A					CS2005 Database Systems BCY-5C					AI2002 Artificial Intelligence BCY-5A																		
+D-504						CS3002 Information Security BCY-5B					CS2005 Database Systems BCY-5B					CS2006 Operating Systems BCY-5B										AI2002 Artificial Intelligence BCY-5B													
+D-505						CY3003 Information Assurance BCY-7A					CS4001 Professional Practices in IT BCY-7A															CY3002 Vulnerability Assessment and Reverse Engg BCY-9A													
+D-506						CS4001 Professional Practices in IT BCY-7B					CY3003 Information Assurance BCY-7B																												
+C-110											CS3012 Fundamentals of Data Visualization BCS-7A																												
+Lab	08:30-11:15										11:30-02:15										02:30-05:15										05:20 - 08:05 (inc. 10 min. break)  								
+IT Lab 1 (D-210)	PF Lab (CY-C)										CL1002 Programming Fundamentals - Lab BCS-1B										CL1002 Programming Fundamentals - Lab BAI-1C																		
+IT Lab 2 (D-211)	CL1000 Introduction to Information and Communication Technology BSE-1A										AL3002 Machine Learning - Lab BAI-5A										CL1002 Programming Fundamentals - Lab BSE-1A																		
+IT Lab 3 (D-213)	CL1000 Introduction to Information and Communication Technology BAI-1A										EL2003 Computer Organization and Assembly Language - Lab BCY-3B										CL1000 Introduction to Information and Communication Technology BSE-1B																		
+IT Lab 4-GPU (D-203)	AL2001 Programming for AI - Lab BAI-3A										Project (AI/DS)										AL2001 Programming for AI - Lab BAI-3B																		
+Margala 1 (C-209)	CL1002 Programming Fundamentals - Lab BCS-1A										AL2002 Artificial Intelligence - Lab BSE-5B										CL2001 Data Structures - Lab BCS-3B																		
+Margala 3 (C-211)	EL2003 Computer Organization and Assembly Language - Lab BAI-3B										CL3001 Computer Networks - Lab BDS-7C										CL2001 Data Structures - Lab BCY-3A																		
+Margala 4 (C-212	CL1000 Introduction to Information and Communication Technology BCS-1D										EL2003 Computer Organization and Assembly Language - Lab BSE-3B										CL2001 Data Structures - Lab BSE-3A																		
+Rawal 1 (C-509)	CL1000 Introduction to Information and Communication Technology BCS-1C										CL3001 Computer Networks - Lab BCS-5A										CL1002 Programming Fundamentals - Lab BSE-1F																		
+C-Rawal 4 (C-512)	CL2001 Data Structures - Lab BCS-3D										CL3001 Computer Networks - Lab BCS-5D										EL2003 Computer Organization and Assembly Language - Lab BAI-3A																		
+Cyber (D-514)	CL2005 Database Systems - Lab BCY-5C																				CY4048 Security Operations and Administration BCY-9A				Project (CY)														
+Kybher-2	FSM										SL1012 Functional English - Lab BCS-1A1										FSM																		
+Kybher-3	FSM										SL1012 Functional English - Lab BCS-1A2										FSM																		
+CALL-1 (A-213)	FSM										SL1012 Functional English - Lab BCS-1D1										FSM																		
+CALL-2 (A-214)	FSM										SL1012 Functional English - Lab BCS-1D2										FSM																		
+CALL-3 (A-308)	SL1012 Functional English - Lab BSE-1B1										SL1012 Functional English - Lab BCS-1C1										SL1012 Functional English - Lab BDS-1B1																		
+Mehran-2 (A-306)	SL1012 Functional English - Lab BSE-1B2										SL1012 Functional English - Lab BCS-1C2										SL1012 Functional English - Lab BDS-1B2																		
+B-Digital	EL1005 Digital Logic Design - Lab BCS-3A										EL1005 Digital Logic Design - Lab BCS-3C										EL1005 Digital Logic Design - Lab BCS-3E																		
+.
+Wednesday																																							
+																																							
+																																							
+																																							
+Room/ Time	08:30-09:50					10:00-11:20					11:30-12:50					01:00-02:20					02:30-03:50					03:55-05:15				Room	05:20-06:40 					06:45-08:05			
+C-301	CS1002 Programming Fundamentals BCS-1A					MT1003 Calculus and Analytical Geometry BCS-1A										SS1007 Islamic Studies/Ethics BCS-1A 01:00-02:45														D-301						CS6062 Vision-Based AI Agent PCS-1A			
+C-302	MT1003 Calculus and Analytical Geometry BCS-1B					CS1002 Programming Fundamentals BCS-1B										SS1013 Ideology and Constitution of Pakistan BCS-1B 01:00-02:45														D-302	CS5037 Data Visualization MCS-2A					CS5009 Advanced Operating Systems MCS-1A			
+C-303	MT1003 Calculus and Analytical Geometry BCS-1C										CS1002 Programming Fundamentals BCS-1C					SS1007 Islamic Studies/Ethics BCS-1C 01:00-02:45														D-303	CY5004 Secure System Design MCY-1A					Applied Info Sec (CY)			
+C-304	CS1002 Programming Fundamentals BCS-1D					MT1003 Calculus and Analytical Geometry BCS-1D					SS1019 Understanding Sirat-Un-Nabi (PBUH) BCS-1H 11:30-12:25			SS1013 Ideology and Constitution of Pakistan BCS-1D 12:30-02:15								SS1019 Understanding Sirat-Un-Nabi (PBUH) BCS-1E 02:50-03:45								D-304									
+C-305	SS1012 Functional English BCS-1E 08:30-10:15						SS1019 Understanding Sirat-Un-Nabi (PBUH) BCS-3F 10:30-11:25				MT1004 Linear Algebra BCS-3F					SS1012 Functional English BCS-1H 01:00-02:45						SS1019 Understanding Sirat-Un-Nabi (PBUH) BCS-1G 02:50-03:45								D-305	CS5031 Applied Computer Vision MAI-3A					CS5020 Agentic AI MAI-3A			
+C-307	CS2001 Data Structures BCS-3A					CS3004 Software Design and Analysis BCS-3A					MT1004 Linear Algebra BCS-3B					EE1005 Digital Logic Design BCS-3A														D-306	CS5020 Agentic AI MDS-3A					AI5004 Advanced Topics in Generative AI MDS-3A			
+C-308						CS2001 Data Structures BCS-3B					CS3004 Software Design and Analysis BCS-3E					CS3004 Software Design and Analysis BCS-3B					CS1004 Object Oriented Programming BCS-3A					CS1004 Object Oriented Programming BCS-3B				D-311	CS4002 Applied Programming MAI-1A					DS5002 Data Science Tools and Techniques MDS-1A			
+C-309	CS3004 Software Design and Analysis BCS-3C										CS2001 Data Structures BCS-3C					MT1004 Linear Algebra BCS-3C					MT1003 Calculus and Analytical Geometry BCS-3Z					CS1005 Discrete Structures BCS-3A				D-312	AI2003 Programming for AI MCI-1A					CS2015 Data Structures and Algorithms MCI-1A			
+C-310	CS2001 Data Structures BCS-3D					CS2001 Data Structures BCS-3E					MT1004 Linear Algebra BCS-3D					CS3004 Software Design and Analysis BCS-3D					EE1005 Digital Logic Design BCS-3E									D-313	CS5146 Programming for Digital Health Application MAAIHS-1A					CS5147 Foundation of Health Information Systems MAAIHS-1A			
+C-311																MT1004 Linear Algebra BCS-3G						SS1019 Understanding Sirat-Un-Nabi (PBUH) BCS-3G  02:50-03:45								D-314	SE5032 Empirical Software Engineering MSE-2A					SE5008 Engineering AI based Software MSE-2A			
+C-401				"SS1022 Understanding of Holy Quran I/Ethics I BCS-3J
+SS1022 Understanding of Holy Quran II/Ethics II BCS-3J
+ 09:30-11:20"							CS3014 Applied Human Computer Interaction BCS-5D					EE1005 Digital Logic Design BCS-3H														D-315	CS5001 Research Methodology MAI-1B								
+C-402											"EE1005 Digital Logic Design BCS-3J			"					CS3014 Applied Human Computer Interaction BCS-5B					"SS1022 Understanding of Holy Quran I/Ethics I BCS-3H
+SS1022 Understanding of Holy Quran II/Ethics II BCS-3H
+ 02:30-04:20"									D-316	AI5002 Mathematical Foundations of AI MAI-1A					AI5002 Mathematical Foundations of AI MAI-1B			
+C-403	EE3009 Computer Architecture BCS-5A										CS3014 Applied Human Computer Interaction BCS-5A					CS3001 Computer Networks BCS-5A					EE2003 Computer Organization and Assembly Language BCS-5A					EE2003 Computer Organization and Assembly Language BCS-5B				D-401									
+C-404						EE3009 Computer Architecture BCS-5B					EE3009 Computer Architecture BCS-5C					CS3014 Applied Human Computer Interaction BCS-5C										UHQ-I & II (PHD-A) 04:00-05:50				D-402	UHQ-I & II (PHD-A)		UHQ-I & II (PHD-B) 06:00-07:50						
+C-405						CS3001 Computer Networks BCS-5C										EE3009 Computer Architecture BCS-5D					CS3001 Computer Networks BCS-5B					CS6018 Recent Advances in Deep Learning PCS-1A				D-403	UHQ-I & II (MS-CY Fall-2025 batch 05:20-07:10								
+C-406	CS3001 Computer Networks BCS-5D										CS2009 Design and Analysis of Algorithms BCS-5E					SS2012 Technical and Business Writing BCS-5E														D-404	SE6002 Advanced Empirical Software Engineering PSE-1A					CS6006 Cyber and Network Security PCS-1A			
+C-407	SS2012 Technical and Business Writing BCS-5F					CS2009 Design and Analysis of Algorithms BCS-5F					"SS2012 Technical and Business Writing BCS-5G			"					CS2009 Design and Analysis of Algorithms BCS-5G														D-405	CS6003 Advanced Topics in NLP PCS-1A 03:55-06:40								
+C-408	SS2012 Technical and Business Writing BSE-5C					SE3002 Software Quality Engineering BSE-5C					SE4001 Software Re-Engineering BSE-9A					SE3005 Software Construction and Development BSE-5A														D-406									
+C-409	CS1002 Programming Fundamentals BSE-1A					NS1001 Applied Physics BSE-1A					CS2009 Design and Analysis of Algorithms BSE-5A					Arts & Humanities (SE-A) 01:00-02:45														D-407									
+C-601	NS1001 Applied Physics BSE-1B					"CS1002 Programming Fundamentals BSE-1B			"					MT1003 Calculus and Analytical Geometry BSE-1E					SS1012 Functional English BSE-1B 01:00-02:45														D-408									
+C-602				SS1013 Ideology and Constitution of Pakistan BSE-1C 09:30-11:15							MT1003 Calculus and Analytical Geometry BSE-1C					MT1003 Calculus and Analytical Geometry BSE-1D						Arts & Humanities (SE-D) 03:00-04:45								D-409									
+C-603	CS2001 Data Structures BSE-3A					SS1015 Pakistan Studies BSE-3D 10:00-11:45										SS1013 Ideology and Constitution of Pakistan BSE-1E 01:00-02:45																							
+C-604	NS1001 Applied Physics BSE-1E					MT1004 Linear Algebra BSE-3C					SE1001 Introduction to Software Engineering BSE-3A					EE2003 Computer Organization and Assembly Language BSE-3A										CS1004 Object Oriented Programming BSE-3A													
+C-605	MT1004 Linear Algebra BSE-3D					CS2001 Data Structures BSE-3B					AI2002 Artificial Intelligence BSE-5B					CS2009 Design and Analysis of Algorithms BSE-5B					EE2003 Computer Organization and Assembly Language BSE-3B																		
+C-607		SS1022 Understanding of Holy Quran II/Ethics II BSE-3C 09:00-09:55				AI2002 Artificial Intelligence BSE-5A					CS3002 Information Security BSE-7A					SE1001 Introduction to Software Engineering BSE-3B																							
+C-609	SE3005 Software Construction and Development BSE-5B					CS3002 Information Security BSE-7B					CS3006 Parallel and Distributed Computing BSE-7B					CS4001 Professional Practices in IT BSE-9A																							
+D-301	"CS1002 Programming Fundamentals BSE-1F					MT1003 Calculus and Analytical Geometry BAI-1A					SS1019 Understanding Sirat-Un-Nabi (PBUH) BDS-1A 11:30-12:25					SS1007 Islamic Studies/Ethics BAI-1A 01:00-02:45																							
+D-302	CS4049 Blockchain and Cryptocurrency BCY-7A																																						
+D-303	SS1012 Functional English BAI-1C 08:30-10:15						SS1012 Functional English BDS-1B 10:30-12:15						SS1019 Understanding Sirat-Un-Nabi (PBUH) BDS-1B 12:30-01:25																										
+D-304	EE2003 Computer Organization and Assembly Language BAI-3A					CS2001 Data Structures BAI-3A					AI2001 Programming for AI BAI-3A						SS1022 Understanding of Holy Quran II/Ethics II BAI-3A 01:30-02:25																						
+D-305	CS2001 Data Structures BAI-3B					SS1022 Understanding of Holy Quran II/Ethics II BAI-3B 10:00-10:55			SS1015 Pakistan Studies BAI-3C 11:15-01:00																														
+D-306	MT1004 Linear Algebra BAI-3C										EE2003 Computer Organization and Assembly Language BAI-3B					AI2001 Programming for AI BAI-3B																							
+D-311	IdeSS1013 Ideology and Constitution of Pakistan BAI-1B  08:30-10:15										CS1002 Programming Fundamentals BAI-1B					MT1003 Calculus and Analytical Geometry BAI-1B																							
+D-312	CS2009 Design and Analysis of Algorithms BAI-5B					SS2012 Technical and Business Writing BAI-5B					CS2009 Design and Analysis of Algorithms BAI-5C					SS2012 Technical and Business Writing BAI-5C																							
+D-313	MT1003 Calculus and Analytical Geometry BDS-1C										CS1002 Programming Fundamentals BDS-1C                					SS1012 Functional English BDS-1C 01:00-02:45																							
+D-314	MT1004 Linear Algebra BDS-3A					MT1004 Linear Algebra BDS-3B					CS2009 Design and Analysis of Algorithms BAI-5A					CS3001 Computer Networks BAI-5A							"SS1022 Understanding of Holy Quran I/Ethics I BDS-3B
+SS1022 Understanding of Holy Quran II/Ethics II BDB-3B
+ 03:10-05:00"																
+D-315	AI3001 Knowledge Representation and Reasoning BAI-5A					SS2012 Technical and Business Writing BDS-5A					CS2009 Design and Analysis of Algorithms BDS-5A					CS3001 Computer Networks BDS-7C																							
+D-316						CS2009 Design and Analysis of Algorithms BDS-5B					SS2012 Technical and Business Writing BDS-5B					FCS					FCS					FCS													
+D-401	MG3040 Methods in Business Research BDS-7B					CS4059 Fundamentals of Computer Vision BDS-7B					CS4059 Fundamentals of Computer Vision BDS-7A					MG3040 Methods in Business Research BDS-7A																							
+D-402	AI4015 Agentic Artificial Intelligence BAI-7B					MG3040 Methods in Business Research BAI-7B					"AI4019 Edge Computing and Intelligent Systems BDS-9A
+AI4019 Edge Computing and Intelligent Systems BAI-9A"					AI4019 Edge Computing and Intelligent Systems BAI-7A										AI4013 AI Product Development BAI-7A													
+D-403	MG3040 Methods in Business Research BAI-7A					AI4015 Agentic Artificial Intelligence BAI-7A					CY4054 Blockchain Technologies and Applications BAI-7A										AI4012 Multiagent Systems and Game Theory BAI-7A																		
+D-404											CS4049 Blockchain and Cryptocurrency BCY-7B					CS4044 Fundamentals of Software Project Management BCS-7A																							
+D-405	CS3014 Applied Human Computer Interaction BCS-7A					CS3014 Applied Human Computer Interaction BCS-7B					CS4001 Professional Practices in IT Seminar (Audi, Block-A)															CS6003 Advanced Topics in NLP PCS-1A 03:55-06:40													
+D-406	CS3014 Applied Human Computer Interaction BCS-7C					CS3014 Applied Human Computer Interaction BCS-7D										AI4015 Agentic Artificial Intelligence BCS-7C					CS3006 Parallel and Distributed Computing BCS-7B					CS3006 Parallel and Distributed Computing BCS-7C													
+D-411	CS4001 Professional Practices in IT BCS-7E					CS3002 Information Security BCS-7E										CS4075 Cloud Computing BCS-7A					CS4075 Cloud Computing BCS-7B																		
+D-412	CS3002 Information Security BCS-7F					CS4001 Professional Practices in IT BCS-7F										CS4045 Deep Learning for Perception BCS-7A																							
+D-413	CS4001 Professional Practices in IT BCS-7G					CS3002 Information Security BCS-7G										CS4095 Embedded Control of Robotics BCS-7A																							
+D-414						NS1001 Applied Physics BCY-1B										Arts & Humanities (CY-C) 01:00-02:45							SS1013 Ideology and Constitution of Pakistan BCY-1B 03:10-05:00																
+D-415	CS1002 Programming Fundamentals BCY-1C					MT1003 Calculus and Analytical Geometry BCY-1C					NS1001 Applied Physics BCY-1A					EE2003 Computer Organization and Assembly Language BCY-3B					SS1012 Functional English BCY-1A 02:30-04:15																		
+D-416	SS1012 Functional English BCY-1D 08:30-10:15										MT1003 Calculus and Analytical Geometry BCY-1D					NS1001 Applied Physics BCY-1D																							
+D-501	CS2001 Data Structures BCY-3A					CS2001 Data Structures BCY-3B					EE2003 Computer Organization and Assembly Language BCY-3A					CY2004 Cyber Security BCY-3A																							
+D-502						MT1004 Linear Algebra BCY-3C					SS1015 Pakistan Studies BCY-3C 11:30-01:15										CY2004 Cyber Security BCY-3B																		
+D-503	AI2002 Artificial Intelligence BCY-5C					CS3002 Information Security BCY-5C					"CS4032 Web Programming BCY-5B			"					CS4032 Web Programming BCY-5C					CS2006 Operating Systems BCY-5C																		
+D-504	CS4049 Blockchain and Cryptocurrency BCY-7A					CS4032 Web Programming BCY-5A					CS4001 Professional Practices in IT Seminar (Audi, Block-A)																												
+D-505						CY4048 Security Operations and Administration BCY-7A										CY4048 Security Operations and Administration BCY-7B																							
+D-506						CS4075 Cloud Computing BCY-7B										CS4075 Cloud Computing BCY-7A																							
+C-110																CS4039 Software for Mobile Devices BCS-7A																							
+Lab	08:30-11:15										11:30-02:15										02:30-05:15										05:20 - 08:05 (inc. 10 min. break)  								
+IT Lab 1 (D-210)	CL1002 Programming Fundamentals - Lab BCY-1A										CL1000 Introduction to Information and Communication Technology BCY-1B										CL1000 Introduction to Information and Communication Technology BDS-1B																		
+IT Lab 2 (D-211)	CL1000 Introduction to Information and Communication Technology BCS-1F										CL1000 Introduction to Information and Communication Technology BCS-1G										DL3004 Data Warehousing and Business Intellligence - Lab BDS-5A																		
+IT Lab 3 (D-213)	CL1002 Programming Fundamentals - Lab BSE-1D										CL1000 Introduction to Information and Communication Technology BAI-1C										EL2003 Computer Organization and Assembly Language - Lab BAI-3C																		
+IT Lab 4-GPU (D-203)	Project (AI/DS)										DL2001 Introduction to Data Science - Lab BDS-3B										Project (AI/DS)																		
+Margala 1 (C-209)	CL1002 Programming Fundamentals - Lab BCS-1H										CL1002 Programming Fundamentals - Lab BCS-1E										CL2001 Data Structures - Lab BDS-3A																		
+Margala 3 (C-211)	CL1002 Programming Fundamentals - Lab BDS-1A										EL2003 Computer Organization and Assembly Language - Lab BDS-3A										CL2001 Data Structures - Lab BCY-3C																		
+Margala 4 (C-212	CL2001 Data Structures - Lab BCS-3G										EL2003 Computer Organization and Assembly Language - Lab BSE-3C										CL2001 Data Structures - Lab BSE-3D																		
+Rawal 1 (C-509)	CL3001 Computer Networks - Lab BCS-5G										CL3001 Computer Networks - Lab BDS-7B										DL3001 Data Analysis and Visualization - Lab BDS-5B																		
+C-Rawal 4 (C-512)	CL3001 Computer Networks - Lab BAI-5C										AL3002 Machine Learning - Lab BAI-5B										CL2001 Data Structures - Lab BCS-3F																		
+Cyber (D-514)	CL2005 Database Systems - Lab BCY-5B										AL2002 Artificial Intelligence - Lab BCY-5A										CL2006 Operating Systems - Lab BCY-5B																		
+CALL-1 (A-213)	SL1012 Functional English - Lab BCS-1G1										FSM										SL1012 Functional English - Lab BDS-1A1																		
+CALL-2 (A-214)	SL1012 Functional English - Lab BCS-1G2										FSM										SL1012 Functional English - Lab BDS-1A2																		
+CALL-3 (A-308)											SL1012 Functional English - Lab BCS-1F1										SL1012 Functional English - Lab BSE-1C1																		
+Mehran-2 (A-306)	FSM										SL1012 Functional English - Lab BCS-1F2										SL1012 Functional English - Lab BSE-1C2																		
+B-Digital	EL1005 Digital Logic Design - Lab BCS-3H																				EL1005 Digital Logic Design - Lab BCS-3J																		
+.
+Thursday																																							
+																																							
+																																							
+																																							
+Room/ Time	08:30-09:50					10:00-11:20					11:30-12:50					01:00-02:20					02:30-03:50					03:55-05:15				Room	05:20-06:40 					06:45-08:05			
+C-301	CS1002 Programming Fundamentals BCS-1F					MT1003 Calculus and Analytical Geometry BCS-1F					SS1019 Understanding Sirat-Un-Nabi (PBUH) BCS-1A 11:30-12:25 					SS1007 Islamic Studies/Ethics BCS-1F 01:00-02:45						SS1019 Understanding Sirat-Un-Nabi (PBUH) BCS-1D  02:50-03:45								D-301						CY5002 Machine Learning for Cyber Security MCY-2A			
+C-302	MT1003 Calculus and Analytical Geometry BCS-1G					"CS1002 Programming Fundamentals BCS-1G			"										SS1013 Ideology and Constitution of Pakistan BCS-1G 01:00-02:45														D-302	CY5003 Securing Cloud Computing MCY-2A								
+C-303	SS1007 Islamic Studies/Ethics BCS-1H 08:30-10:15										CS1002 Programming Fundamentals BCS-1H					MT1003 Calculus and Analytical Geometry BCS-1H														D-303									
+C-304	SS1013 Ideology and Constitution of Pakistan BCS-1E 08:30-10:15										MT1003 Calculus and Analytical Geometry BCS-1E					"CS1002 Programming Fundamentals BCS-1E			"														D-304	AI5001 Advanced Artificial Intelligence MAI-1A					AI5001 Advanced Artificial Intelligence MAI-1B			
+C-305	SS1012 Functional English BCS-1D 08:30-10:15						SS1019 Understanding Sirat-Un-Nabi (PBUH) BCS-3E 10:30-11:25				MT1004 Linear Algebra BCS-3E					SS1012 Functional English BCS-1A 01:00-02:45														D-305	CS5005 Advanced Analysis of Algorithms MCS-1A								
+C-307	CS3004 Software Design and Analysis BCS-3F					CS2006 Operating Systems BCY-5A					CS2001 Data Structures BCS-3F					CS2006 Operating Systems BDS-5A														D-306	DS5007 Natural Language Processing MDS-1A					DS5003 Statistical and Mathematical Methods for DS MDS-1A			
+C-308	CS2001 Data Structures BCS-3J					SS1012 Functional English BCS-1C 10:00-11:45						SS1019 Understanding Sirat-Un-Nabi (PBUH) BCS-1C 11:55-12:50				"EE1005 Digital Logic Design BCS-3F			"					CS1004 Object Oriented Programming BCS-3C					CS1004 Object Oriented Programming BCS-3D				D-311	CS5145 Database and Operating Systems MCI-1A					CS5144 Mathematics for Computational Intelligence MCI-1A			
+C-309	EE1005 Digital Logic Design BCS-3G					CS2001 Data Structures BCS-3G										CS3004 Software Design and Analysis BCS-3G										"CS1005 Discrete Structures BCS-3B			"				D-312									
+C-310	CS3004 Software Design and Analysis BCS-3H					EE1005 Digital Logic Design BCS-3C					CS2001 Data Structures BCS-3H					MT1004 Linear Algebra BCS-3H					"SS1022 Understanding of Holy Quran I/Ethics I BCS-3B
+SS1022 Understanding of Holy Quran II/Ethics II BCS-3B 
+02:30-04:20"									D-313	CS5001 Research Methodology MDS-1A					CS5001 Research Methodology MAI-1A			
+C-311	SS1019 Understanding Sirat-Un-Nabi (PBUH) BCS-3C  08:30-09:25			"SS1022 Understanding of Holy Quran I/Ethics I BCS-3D
+SS1022 Understanding of Holy Quran II/Ethics II BCS-3D 
+09:30-11:20"							MT1004 Linear Algebra BCS-3J					CS3004 Software Design and Analysis BCS-3J														D-314	SE5002 Advanced Quality Assurance MSE-1A					SE5003 Advanced Software Architecture MSE-1A			
+C-401	SE4009 Process Mining and Simulation BSE-7A					SE4033 Formal Methods in Software Engineering BSE-7A										MT1004 Linear Algebra BCS-3A					SS1019 Understanding Sirat-Un-Nabi (PBUH) BCS-3A 02:30-03:25									D-315									
+C-402	SS2012 Technical and Business Writing BCS-5B					CS2009 Design and Analysis of Algorithms BCS-5B					EE1005 Digital Logic Design BCS-3B					EE1005 Digital Logic Design BCS-3D					CS6031 Information Retrieval and Text Mining PCS-1A									D-316	SE6001 Advanced Topics in Requirements Engineering PSE-1A								
+C-403	CS3001 Computer Networks BCS-5F					EE3009 Computer Architecture BCS-5F					CS2009 Design and Analysis of Algorithms BCS-5C					"SS2012 Technical and Business Writing BCS-5C			"														D-401									
+C-404	EE3009 Computer Architecture BCS-5E					CS3001 Computer Networks BCS-5G					CS3001 Computer Networks BCS-5E					CS3014 Applied Human Computer Interaction BCS-5E														D-402									
+C-405	CS2009 Design and Analysis of Algorithms BCS-5A					SS2012 Technical and Business Writing BCS-5A					CS3014 Applied Human Computer Interaction BCS-5G					EE3009 Computer Architecture BCS-5G														D-403									
+C-406	SS2012 Technical and Business Writing BCS-5D					CS2009 Design and Analysis of Algorithms BCS-5D					FSM					FSM														D-404									
+C-407	SS1022 Understanding of Holy Quran II/Ethics II BSE-3A 08:30-09:25					CS2007 Human Computer Interaction BSE-9A										CS3014 Applied Human Computer Interaction BCS-5F														D-405									
+C-408	"CS2009 Design and Analysis of Algorithms BSE-5C			"					AI2002 Artificial Intelligence BSE-5C					CS4039 Software for Mobile Devices BSE-7A					CS4039 Software for Mobile Devices BSE-7B										CS4046 Game Design and Development BSE-7A													
+C-409	SS1013 Ideology and Constitution of Pakistan BSE-1A 08:30-10:15															MT1003 Calculus and Analytical Geometry BSE-1B					SS1013 Ideology and Constitution of Pakistan BSE-1B 02:30-04:15																		
+C-601	"CS1002 Programming Fundamentals BSE-1C					NS1001 Applied Physics BSE-1C					"CS1002 Programming Fundamentals BSE-1D					Arts & Humanities (SE-C) 01:00-02:45 D-402																							
+C-602	NS1001 Applied Physics BSE-1D					MT1004 Linear Algebra BSE-3A					SS1015 Pakistan Studies BSE-3B 11:30-01:15						SS1012 Functional English BSE-1D 01:20-03:05																						
+C-603	Arts & Humanities (SE-E) 08:30-10:15						SS1012 Functional English BSE-1E 10:30-12:15									"CS1002 Programming Fundamentals BSE-1E 					CS2001 Data Structures BSE-3D																		
+C-604	MT1004 Linear Algebra BSE-3B					EE2003 Computer Organization and Assembly Language BSE-3D					SE1001 Introduction to Software Engineering BSE-3D					CS2001 Data Structures BSE-3C					CS3006 Parallel and Distributed Computing BSE-7A																		
+C-605	EE2003 Computer Organization and Assembly Language BSE-3C					SE1001 Introduction to Software Engineering BSE-3C					MT1003 Calculus and Analytical Geometry BSE-1A					SE3005 Software Construction and Development BSE-5C																							
+C-607	SS2012 Technical and Business Writing BSE-5A					SE3002 Software Quality Engineering BSE-5A					AI4009 Generative AI BSE-7A					AI4009 Generative AI BSE-7B					MG4057 AI-Led Transformation BSE-9A																		
+C-609	SE3002 Software Quality Engineering BSE-5B					SS2012 Technical and Business Writing BSE-5B					CS4063 Natural Language Processing BSE-7A					CS4063 Natural Language Processing BSE-7B						SS1019 Understanding Sirat-Un-Nabi (PBUH) BAI-1B  03:00-03:55																	
+D-301	MT1003 Calculus and Analytical Geometry BAI-1C					CS1002 Programming Fundamentals BAI-1C					CS1002 Programming Fundamentals BAI-1A					SS1007 Islamic Studies/Ethics BAI-1C 01:00-02:45																							
+D-302	SS1012 Functional English BAI-1B 08:30-10:15										"CS2005 Database Systems BCY-5B			"					SS1012 Functional English BAI-1A 01:00-02:45																							
+D-303						DS2003 Advanced Statistics BDS-5A					DS2003 Advanced Statistics BDS-5B										SS1015 Pakistan Studies BAI-3A 02:30-04:15																		
+D-304	CS2001 Data Structures BAI-3C					EE2003 Computer Organization and Assembly Language BAI-3C						SS1022 Understanding of Holy Quran II/Ethics II BAI-3C 12:00-12:55				AI2001 Programming for AI BAI-3C																							
+D-305	AI3001 Knowledge Representation and Reasoning BAI-5B					AI3002 Machine Learning BAI-5B					CS3001 Computer Networks BAI-5B																												
+D-306						AI3001 Knowledge Representation and Reasoning BAI-5C					AI3002 Machine Learning BAI-5C					"CS1002 Programming Fundamentals BDS-1C					CS3001 Computer Networks BAI-5C					EE2003 Computer Organization and Assembly Language BAI-5A													
+D-311	SS2012 Technical and Business Writing BAI-5A					AI3002 Machine Learning BAI-5A					MT1004 Linear Algebra BAI-3B					MT1004 Linear Algebra BAI-3A																							
+D-312	MT1003 Calculus and Analytical Geometry BDS-1A					CS1002 Programming Fundamentals BDS-1A                        					DS2001 Introduction to Data Science BDS-3B					SS1007 Islamic Studies/Ethics BDS-1A 01:00-02:45																							
+D-313	AI4015 Agentic Artificial Intelligence BDS-7A					MT1003 Calculus and Analytical Geometry BDS-1B					CS1002 Programming Fundamentals BDS-1B								SS1013 Ideology and Constitution of Pakistan BDS-1B 02:00-03:45																				
+D-314	EE2003 Computer Organization and Assembly Language BDS-3A					DS2001 Introduction to Data Science BDS-3A					MG3040 Methods in Business Research BAI-7C					CS2001 Data Structures BDS-3A						SS1019 Understanding Sirat-Un-Nabi (PBUH) BDS-3A  03:00-03:55																	
+D-315	DS3004 Data Warehousing and Business Intellligence BDS-5A					DS3004 Data Warehousing and Business Intellligence BDS-5B										EE2003 Computer Organization and Assembly Language BDS-3B																							
+D-316	AI4012 Multiagent Systems and Game Theory BDS-7C					AI4012 Multiagent Systems and Game Theory BDS-7A					AI4012 Multiagent Systems and Game Theory BDS-7B					CS3001 Computer Networks BDS-7A					DS3001 Data Analysis and Visualization BDS-5B																		
+D-401						CS3001 Computer Networks BDS-7B					DS3001 Data Analysis and Visualization BDS-5A										MG3040 Methods in Business Research BDS-7C																		
+D-402	SS1015 Pakistan Studies BAI-3B 08:30-10:15																																						
+D-403	SS1013 Ideology and Constitution of Pakistan BDS-1C 08:30-10:15						SS1019 Understanding Sirat-Un-Nabi (PBUH) BDS-1C 10:30-11:25									MT2002 Statistical Modelling BCS-9A																							
+D-404	CS4001 Professional Practices in IT BCS-7A					CS3002 Information Security BCS-7A					CS4085 MLOps BCS-7A					MG4069 Digital Sustainability BCS-9A										MG4069 Digital Sustainability BCS-9B													
+D-405	CS3002 Information Security BCS-7B					CS4001 Professional Practices in IT BCS-7B					AI4009 Generative AI BCS-7A					AI4009 Generative AI BCS-7B																							
+D-406	CS4001 Professional Practices in IT BCS-7C					CS3002 Information Security BCS-7C					AI4015 Agentic Artificial Intelligence BCS-7					AI4015 Agentic Artificial Intelligence BCS-7																							
+D-411	CS3002 Information Security BCS-7D					CS4001 Professional Practices in IT BCS-7D					CS4001 Professional Practices in IT BCS-7H					CS3006 Parallel and Distributed Computing BCS-7D					CS3006 Parallel and Distributed Computing BCS-7A																		
+D-412	CS3014 Applied Human Computer Interaction BCS-7E					CS4085 MLOps BCS-7B										CS3014 Applied Human Computer Interaction BCS-7F																							
+D-413						CS3014 Applied Human Computer Interaction BCS-7G																																	
+D-414	CS1002 Programming Fundamentals BCY-1A					MT1003 Calculus and Analytical Geometry BCY-1A										Arts & Humanities (CY-A) 01:00-02:45																							
+D-415						CS1002 Programming Fundamentals BCY-1B					MT1003 Calculus and Analytical Geometry BCY-1B								SS1012 Functional English BCY-1B 02:00-03:45																				
+D-416	Arts & Humanities (CY-D) 08:30-10:15										CS1002 Programming Fundamentals BCY-1D 					MT1004 Linear Algebra BCY-3B					MT1004 Linear Algebra BCY-3A																		
+D-501			SS1022 Understanding of Holy Quran II/Ethics II BCY-3A 09:30-10:25				SS1022 Understanding of Holy Quran II/Ethics II BCY-3B 10:30-11:25				NS1001 Applied Physics BCY-1C								SS1013 Ideology and Constitution of Pakistan BCY-1D 02:00-03:45																				
+D-502	"CS2001 Data Structures BCY-3C			"					CY2004 Cyber Security BCY-3C										EE2003 Computer Organization and Assembly Language BCY-3C																							
+D-503	CS3002 Information Security BCY-5A					CS2001 Data Structures BDS-3B					CS2005 Database Systems BCY-5A					CS2005 Database Systems BCY-5C					AI2002 Artificial Intelligence BCY-5A																		
+D-504						CS3002 Information Security BCY-5B										CS2006 Operating Systems BCY-5B										AI2002 Artificial Intelligence BCY-5B													
+D-505						CY3003 Information Assurance BCY-7A					CS4001 Professional Practices in IT BCY-7A															CY3002 Vulnerability Assessment and Reverse Engg BCY-9A													
+D-506						CS4001 Professional Practices in IT BCY-7B					CY3003 Information Assurance BCY-7B																												
+C-110	EE Seminar					EE Seminar					CS3012 Fundamentals of Data Visualization BCS-7A																												
+Lab	08:30-11:15										11:30-02:15										02:30-05:15										05:20 - 08:05 (inc. 10 min. break)  								
+IT Lab 1 (D-210)	CL1002 Programming Fundamentals - Lab BSE-1B										CL1002 Programming Fundamentals - Lab BCS-1D										CL1002 Programming Fundamentals - Lab BCS-1C																		
+IT Lab 2 (D-211)	CL1000 Introduction to Information and Communication Technology BCS-1A										CL1000 Introduction to Information and Communication Technology BCS-1B										CL2001 Data Structures - Lab BCS-3E																		
+IT Lab 3 (D-213)	CL1000 Introduction to Information and Communication Technology BCY-1C										CL1000 Introduction to Information and Communication Technology BAI-1B										CL2001 Data Structures - Lab BAI-3B																		
+IT Lab 4-GPU (D-203)	Project (AI/DS)										Project (AI/DS)										Project (AI/DS)																		
+Margala 1 (C-209)											CL2001 Data Structures - Lab BCS-3C										CL1004 Object Oriented Programming - Lab BCS-3B																		
+Margala 3 (C-211)	CL2001 Data Structures - Lab BCS-3A										AL2002 Artificial Intelligence - Lab BSE-5A										CL2001 Data Structures - Lab BCY-3B																		
+Margala 4 (C-212	CL2001 Data Structures - Lab BAI-3A										EL2003 Computer Organization and Assembly Language - Lab BSE-3A										CL2001 Data Structures - Lab BSE-3B																		
+Rawal 1 (C-509)	AL2002 Artificial Intelligence - Lab BCY-5C										CL3001 Computer Networks - Lab BAI-5A										CL1004 Object Oriented Programming - Lab BSE-3A																		
+C-Rawal 4 (C-512)	CL3001 Computer Networks - Lab BCS-5C										CL3001 Computer Networks - Lab BCS-5B										CL2006 Operating Systems - Lab BCY-5C																		
+Cyber (D-514)	Project (CY)										EL2003 Computer Organization and Assembly Language - Lab BCY-3A										CY4048 Security Operations and Administration BCY-9A					Project (CY)													
+CALL-1 (A-213)	SL1012 Functional English - Lab BCS-1B1										FSM										SL1012 Functional English - Lab BSE-1A1																		
+CALL-2 (A-214)	SL1012 Functional English - Lab BCS-1B2										FSM										SL1012 Functional English - Lab BCY-1C2																		
+CALL-3 (A-308)	SL1012 Functional English - Lab BAI-1A1										FSM										SL1012 Functional English - Lab BCY-1C1																		
+Mehran-2 (A-306)	SL1012 Functional English - Lab BAI-1A2										FSM										SL1012 Functional English - Lab BSE-1A2																		
+B-Digital	EL1005 Digital Logic Design - Lab BCS-3B																				EL1005 Digital Logic Design - Lab BCS-3D																		
+.
+Friday																																					
+																																					
+																																					
+																																					
+Room/ Time	08:30-09:50					10:00-11:20					11:30-12:50					01:00-02:20			02:30-03:50					03:55-05:15				Room	05:20-06:40 					06:45-08:05			
+C-301	MT1003 Calculus and Analytical Geometry BSE-1E					NS1001 Applied Physics BCY-1D					MT1003 Calculus and Analytical Geometry BCY-1D					P  R  A  Y  E  R     B  R  E  A  K			SS1013 Ideology and Constitution of Pakistan BCY-1C 02:00-03:45									D-301	CS5001 Research Methodology MCS-1A								
+C-302	NS1001 Applied Physics BCY-1B										NS1001 Applied Physics BCY-1A								NS1001 Applied Physics BSE-1E									D-302									
+C-303	CS1002 Programming Fundamentals BCY-1C					MT1003 Calculus and Analytical Geometry BCY-1C					CS4032 Web Programming BCY-5B								CS6016 Research Topics in Cloud Computing PCS-1A 02:00-04:45									D-303	CS5001 Research Methodology MCY-1A								
+C-304	MT1003 Calculus and Analytical Geometry BDS-1C					SS1007 Islamic Studies/Ethics BDS-1C 10:00-11:45													CS6055 Research Topics in Generative AI PCS-1A 02:00-04:45									D-304	UHQ-I & II (MS-CY, MS CS and MS SE) 05:20-07:10 Sp-2026 & fall-2025								
+C-305	CS1004 Object Oriented Programming BAI-3A																											D-305									
+C-307	"CS4032 Web Programming BCY-5A			"																		"CS4002 Applied Programming MCS-1A
+CS4002 Applied Programming MCY-1A
+CS4002 Applied Programming MSE-1A"									D-306									
+C-308			CS6060 Software Process Mining and Intelligence PCS-1A 09:00-12:00																																		
+C-309						"CS1002 Programming Fundamentals BAI-1B			"					MT1003 Calculus and Analytical Geometry BAI-1B								SS1007 Islamic Studies/Ethics BAI-1B 02:30-04:15																		
+C-310												SS1018 Understanding Holy Quran BCY-5A 12:00-12:55																									
+C-311			CS6002 Advanced Readings PCS-1A 09:00-12:00																																		
+C-401	FYP/Thesis Evaluations					FYP/Thesis Evaluations					FYP/Thesis Evaluations								FYP/Thesis Evaluations					FYP/Thesis Evaluations													
+C-402	FYP/Thesis Evaluations					FYP/Thesis Evaluations					PF (CS-A) Tutorial D-301								FYP/Thesis Evaluations					FYP/Thesis Evaluations													
+C-403	FYP/Thesis Evaluations					FYP/Thesis Evaluations					PF (CS-B) Tutorial D-302								FYP/Thesis Evaluations					FYP/Thesis Evaluations													
+C-404	FYP/Thesis Evaluations					FYP/Thesis Evaluations					PF (CS-C) Tutorial D-303								FYP/Thesis Evaluations					FYP/Thesis Evaluations													
+C-405	FYP/Thesis Evaluations					FYP/Thesis Evaluations					PF (CS-D) Tutorial D-304								FYP/Thesis Evaluations					FYP/Thesis Evaluations													
+C-406	FYP/Thesis Evaluations					FYP/Thesis Evaluations					PF (CS-E) Tutorial D-305								FYP/Thesis Evaluations					FYP/Thesis Evaluations													
+C-407	FYP/Thesis Evaluations					FYP/Thesis Evaluations					PF (CS-F) Tutorial D-306								FYP/Thesis Evaluations					FYP/Thesis Evaluations													
+C-408	FYP/Thesis Evaluations					FYP/Thesis Evaluations					PF (CS-G) Tutorial D-315								FYP/Thesis Evaluations					FYP/Thesis Evaluations													
+C-409	FYP/Thesis Evaluations					FYP/Thesis Evaluations					PF (CS-H) Tutorial D-316								FYP/Thesis Evaluations					FYP/Thesis Evaluations													
+C-601																																					
+C-602																																					
+C-603																																					
+C-604																																					
+C-605																																					
+C-607																																					
+C-608																																					
+C-609																																					
+D-301																																					
+D-302																																					
+D-303																																					
+D-304																																					
+D-305																																					
+D-306																																					
+D-311																																					
+D-312																																					
+D-313																																					
+D-314																																					
+D-315																																					
+D-316																																					
+D-401	FYP/Thesis Evaluations					FYP/Thesis Evaluations					FYP/Thesis Evaluations								FYP/Thesis Evaluations					FYP/Thesis Evaluations													
+D-402	FYP/Thesis Evaluations					FYP/Thesis Evaluations					FYP/Thesis Evaluations								FYP/Thesis Evaluations					FYP/Thesis Evaluations													
+D-403	FYP/Thesis Evaluations					FYP/Thesis Evaluations					FYP/Thesis Evaluations								FYP/Thesis Evaluations					FYP/Thesis Evaluations													
+D-404	FYP/Thesis Evaluations					FYP/Thesis Evaluations					FYP/Thesis Evaluations								FYP/Thesis Evaluations					FYP/Thesis Evaluations													
+D-405	FYP/Thesis Evaluations					FYP/Thesis Evaluations					FYP/Thesis Evaluations								FYP/Thesis Evaluations					FYP/Thesis Evaluations													
+D-406	FYP/Thesis Evaluations					FYP/Thesis Evaluations					FYP/Thesis Evaluations								FYP/Thesis Evaluations					FYP/Thesis Evaluations													
+D-411	FYP/Thesis Evaluations					FYP/Thesis Evaluations					FYP/Thesis Evaluations								FYP/Thesis Evaluations					FYP/Thesis Evaluations													
+D-412	FYP/Thesis Evaluations					FYP/Thesis Evaluations					FYP/Thesis Evaluations								FYP/Thesis Evaluations					FYP/Thesis Evaluations													
+D-413	FYP/Thesis Evaluations					FYP/Thesis Evaluations					FYP/Thesis Evaluations								FYP/Thesis Evaluations					FYP/Thesis Evaluations													
+D-414	FYP/Thesis Evaluations					FYP/Thesis Evaluations					FYP/Thesis Evaluations								FYP/Thesis Evaluations					FYP/Thesis Evaluations													
+D-415	FYP/Thesis Evaluations					FYP/Thesis Evaluations					FYP/Thesis Evaluations								FYP/Thesis Evaluations					FYP/Thesis Evaluations													
+D-416	FYP/Thesis Evaluations					FYP/Thesis Evaluations					FYP/Thesis Evaluations								FYP/Thesis Evaluations					FYP/Thesis Evaluations													
+D-501																																					
+D-502																																					
+D-503																																					
+D-504																																					
+D-505																																					
+D-506																																					
+C-110																																					
+Lab	08:30-11:15																		02:30-05:15																		
+IT Lab 1 (D-210)						CL1002 Programming Fundamentals - Lab BCY-1B 10:00-12:45										P  R  A  Y  E  R     B  R  E  A  K			CL1002 Programming Fundamentals - Lab BDS-1C																		
+IT Lab 2 (D-211)						CL1000 Introduction to Information and Communication Technology BSE-1E 10:00-12:45																															
+IT Lab 3 (D-213)	CL1000 Introduction to Information and Communication Technology BCY-1A																		CL1002 Programming Fundamentals - Lab BCY-1D																		
+IT Lab 4-GPU (D-203)																			Project (AI/DS)																		
+Margala 1 (C-209)	AL2002 Artificial Intelligence - Lab BCY-5B																		CL1004 Object Oriented Programming - Lab BCS-3A																		
+Margala 3 (C-211)	SL3001 Software Construction and Development - Lab BSE-9A																		YL3002 Vulnerability Assessment and Reverse Engg - Lab BCY-9A																		
+Margala 4 (C-212	CL2006 Operating Systems - Lab BDS-5A																		COAL Lab (AI/DS, 24) in Rawal-1 For Today (September 04, 2026)																		
+Rawal 1 (C-509)	EL2003 Computer Organization and Assembly Language - Lab BCS-5A																		EL2003 Computer Organization and Assembly Language - Lab BCS-5B and EL2003 Computer Organization and Assembly Language - Lab BAI-5A																		
+C-Rawal 4 (C-512)						CL1004 Object Oriented Programming - Lab BAI-3A 10:00-12:45													CL1004 Object Oriented Programming - Lab BCS-3D																		
+Cyber (D-514)						CL2005 Database Systems - Lab BCY-5A													CL2006 Operating Systems - Lab BCY-5A																		
+CALL-1 (A-213)	FSM																		SL1012 Functional English - Lab BCY-1A1																		
+CALL-2 (A-214)	FSM																		SL1012 Functional English - Lab BCY-1A2																		
+CALL-3 (A-308)	FSM																		SL1012 Functional English - Lab BCY-1B1																		
+Mehran-2 (A-306)	FSM																		SL1012 Functional English - Lab BCY-1B2																		
+B-Digital																																					
+.
+Saturday																																							
+																																							
+																																							
+																																							
+Room/ Time	08:30-09:50					10:00-11:20					11:30-12:50					01:00-02:20					02:30-03:50					03:55-05:15				Room	05:20-06:40 					06:45-08:05			
+C-301			"CS1002 Programming Fundamentals BSE-1E 09:30-10:50								CS1002 Programming Fundamentals BCY-1D																												
+C-302																																							
+C-303																																							
+C-304																																							
+C-305																																							
+C-307																																							
+C-308																																							
+C-309																																							
+C-310																																							
+C-311																																							
+C-401																																							
+C-402																																							
+C-403																																							
+C-404																																							
+C-405																																							
+C-406																																							
+C-407																																							
+C-408																																							
+C-409																																							
+C-601																																							
+C-602																																							
+C-603																																							
+C-604																																							
+C-605																																							
+C-607																																							
+C-608																																							
+C-609																																							
+D-301																																							
+D-302																																							
+D-303																																							
+D-304																																							
+D-305																																							
+D-306																																							
+D-311																																							
+D-312																																							
+D-313																																							
+D-314																																							
+D-315																																							
+D-316																																							
+D-401																																							
+D-402																																							
+D-403																																							
+D-404																																							
+D-405																																							
+D-406																																							
+D-411																																							
+D-412																																							
+D-413																																							
+D-414																																							
+D-415																																							
+D-416																																							
+D-501																																							
+D-502																																							
+D-503																																							
+D-504																																							
+D-505																																							
+D-506																																							
+Lab	08:30-11:15										11:30-02:15										02:30-05:15										05:20 - 08:05 (inc. 10 min. break)  								
+IT Lab 1 (D-210)	CL1000 Introduction to Information and Communication Technology BDS-1C																				CL1000 Introduction to Information and Communication Technology BCY-1D																		
+IT Lab 2 (D-211)	CL1002 Programming Fundamentals - Lab BAI-1B																																						
+IT Lab 3 (D-213)																																							
+Margala 1 (C-209)											SL1012 Functional English - Lab BAI-1B2																												
+Margala 3 (C-211)	SL1012 Functional English - Lab BCY-1D1										SL1012 Functional English - Lab BSE-1E1										SL1012 Functional English - Lab BDS-1C1																		
+Margala 4 (C-212	SL1012 Functional English - Lab BCY-1D2										SL1012 Functional English - Lab BSE-1E2										SL1012 Functional English - Lab BDS-1C2																		
+Rawal 1 (C-509)																					CL1002 Programming Fundamentals - Lab BSE-1E																		
+C-Rawal 4 (C-512)											SL1012 Functional English - Lab BAI-1B1																												

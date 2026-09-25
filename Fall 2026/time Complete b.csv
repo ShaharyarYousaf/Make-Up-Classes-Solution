@@ -1,0 +1,2377 @@
+Day,TimeSlot,Room,Course Section
+Monday,Slot a,C-301,CS1002 BCS-1A
+Monday,Slot a,C-302,MT1003 BCS-1B
+Monday,Slot a,C-303,MT1003 BCS-1C
+Monday,Slot a,C-304,CS1002 BCS-1D
+Monday,Slot a,C-305,SS1012 BCS-1G
+Monday,Slot a,C-307,CS2001 BCS-3A
+Monday,Slot a,C-308,
+Monday,Slot a,C-309,CS3004 BCS-3C
+Monday,Slot a,C-310,CS2001 BCS-3D
+Monday,Slot a,C-311,
+Monday,Slot a,C-401,
+Monday,Slot a,C-402,EE3009 BCS-5A
+Monday,Slot a,C-403,
+Monday,Slot a,C-404,CS3001 BCS-5D
+Monday,Slot a,C-405,SS2012 BCS-5F
+Monday,Slot a,C-406,
+Monday,Slot a,C-407,
+Monday,Slot a,C-408,
+Monday,Slot a,C-409,SS2012 BSE-5C
+Monday,Slot a,C-601,NS1001 BSE-1B
+Monday,Slot a,C-602,CS1002 BSE-1A
+Monday,Slot a,C-603,CS2001 BSE-3A
+Monday,Slot a,C-604,SE3005 BSE-5B
+Monday,Slot a,C-605,CS1002 BSE-1F
+Monday,Slot a,C-607,MT1004 BSE-3D
+Monday,Slot a,C-609,
+Monday,Slot a,D-301,
+Monday,Slot a,D-302,CS4049 BCY-7A
+Monday,Slot a,D-303,EE2003 BAI-3A
+Monday,Slot a,D-304,CS2001 BAI-3B
+Monday,Slot a,D-305,AI3001 BAI-5A
+Monday,Slot a,D-306,CS2009 BAI-5B
+Monday,Slot a,D-311,SS1012 BDS-1A
+Monday,Slot a,D-312,MT1004 BDS-3B
+Monday,Slot a,D-313,
+Monday,Slot a,D-314,
+Monday,Slot a,D-315,
+Monday,Slot a,D-316,MG3040 BAI-7A
+Monday,Slot a,D-401,AI4015 BAI-7B
+Monday,Slot a,D-402,
+Monday,Slot a,D-403,MG3040 BDS-7B
+Monday,Slot a,D-404,CS3014 BCS-7A
+Monday,Slot a,D-405,CS3014 BCS-7C
+Monday,Slot a,D-406,CS4001 BCS-7E
+Monday,Slot a,D-411,CS3002 BCS-7F
+Monday,Slot a,D-412,CS4001 BCS-7G
+Monday,Slot a,D-413,
+Monday,Slot a,D-414,CS2001 BCY-3A
+Monday,Slot a,D-415,
+Monday,Slot a,D-416,SS1022 BCY-3C
+Monday,Slot a,D-501,AI2002 BCY-5C
+Monday,Slot a,D-502,
+Monday,Slot a,D-503,
+Monday,Slot a,D-504,
+Monday,Slot a,D-505,
+Monday,Slot a,D-506,
+Monday,Slot a,C-110,
+Monday,Slot b,C-301,MT1003 BCS-1A
+Monday,Slot b,C-302,CS1002 BCS-1B
+Monday,Slot b,C-303,CS1002 BCS-1C
+Monday,Slot b,C-304,MT1003 BCS-1D
+Monday,Slot b,C-305,SS1019 BCS-3J
+Monday,Slot b,C-307,CS3004 BCS-3A
+Monday,Slot b,C-308,CS2001 BCS-3B
+Monday,Slot b,C-309,CS2001 BCS-3E
+Monday,Slot b,C-310,
+Monday,Slot b,C-311,SS1021 BCS-3F
+Monday,Slot b,C-401,
+Monday,Slot b,C-402,
+Monday,Slot b,C-403,EE3009 BCS-5B
+Monday,Slot b,C-404,CS3001 BCS-5C
+Monday,Slot b,C-405,CS2009 BCS-5F
+Monday,Slot b,C-406,
+Monday,Slot b,C-407,
+Monday,Slot b,C-408,AI2002 BSE-5A
+Monday,Slot b,C-409,SE3002 BSE-5C
+Monday,Slot b,C-601,NS1001 BSE-1A
+Monday,Slot b,C-602,CS1002 BSE-1B
+Monday,Slot b,C-603,CS2001 BSE-3B
+Monday,Slot b,C-604,MT1004 BSE-3C
+Monday,Slot b,C-605,
+Monday,Slot b,C-607,SS1022 BSE-3D
+Monday,Slot b,C-609,CS3002 BSE-7B
+Monday,Slot b,D-301,MT1003 BAI-1A
+Monday,Slot b,D-302,
+Monday,Slot b,D-303,CS2001 BAI-3A
+Monday,Slot b,D-304,CS1004 BAI-3A
+Monday,Slot b,D-305,
+Monday,Slot b,D-306,SS2012 BAI-5B
+Monday,Slot b,D-311,
+Monday,Slot b,D-312,MT1004 BDS-3A
+Monday,Slot b,D-313,
+Monday,Slot b,D-314,SS2012 BDS-5A
+Monday,Slot b,D-315,CS2009 BDS-5B
+Monday,Slot b,D-316,AI4015 BAI-7A
+Monday,Slot b,D-401,MG3040 BAI-7B
+Monday,Slot b,D-402,
+Monday,Slot b,D-403,CS4059 BDS-7B
+Monday,Slot b,D-404,CS3014 BCS-7B
+Monday,Slot b,D-405,CS3014 BCS-7D
+Monday,Slot b,D-406,CS3002 BCS-7E
+Monday,Slot b,D-411,CS4001 BCS-7F
+Monday,Slot b,D-412,CS3002 BCS-7G
+Monday,Slot b,D-413,
+Monday,Slot b,D-414,
+Monday,Slot b,D-415,CS2001 BCY-3B
+Monday,Slot b,D-416,MT1004 BCY-3C
+Monday,Slot b,D-501,CS3002 BCY-5C
+Monday,Slot b,D-502,
+Monday,Slot b,D-503,CY4048 BCY-7A
+Monday,Slot b,D-504,CS4075 BCY-7B
+Monday,Slot b,D-505,
+Monday,Slot b,D-506,
+Monday,Slot b,C-110,
+Monday,Slot c,C-301,
+Monday,Slot c,C-302,
+Monday,Slot c,C-303,
+Monday,Slot c,C-304,SS1019 BCS-1F
+Monday,Slot c,C-305,EE1005 BCS-3J
+Monday,Slot c,C-307,CS2001 BCS-3C
+Monday,Slot c,C-308,MT1004 BCS-3D
+Monday,Slot c,C-309,CS3004 BCS-3E
+Monday,Slot c,C-310,MT1004 BCS-3F
+Monday,Slot c,C-311,MT1004 BCS-3B
+Monday,Slot c,C-401,
+Monday,Slot c,C-402,CS3014 BCS-5A
+Monday,Slot c,C-403,
+Monday,Slot c,C-404,EE3009 BCS-5C
+Monday,Slot c,C-405,SS2012 BCS-5G
+Monday,Slot c,C-406,CS2009 BCS-5E
+Monday,Slot c,C-407,CS3014 BCS-5D
+Monday,Slot c,C-408,AI2002 BSE-5B
+Monday,Slot c,C-409,CS2009 BSE-5A
+Monday,Slot c,C-601,SS1015 BSE-3C
+Monday,Slot c,C-602,MT1003 BSE-1C
+Monday,Slot c,C-603,SE1001 BSE-3A
+Monday,Slot c,C-604,SE4001 BSE-9A
+Monday,Slot c,C-605,
+Monday,Slot c,C-607,CS3002 BSE-7A
+Monday,Slot c,C-609,CS3006 BSE-7B
+Monday,Slot c,D-301,CL1002 BAI-1A
+Monday,Slot c,D-302,CS4049 BCY-7B
+Monday,Slot c,D-303,MT1004 BAI-3C
+Monday,Slot c,D-304,EE2003 BAI-3B
+Monday,Slot c,D-305,CS2009 BAI-5A
+Monday,Slot c,D-306,CS2009 BAI-5C
+Monday,Slot c,D-311,AI2001 BAI-3A
+Monday,Slot c,D-312,SS1019 BAI-1C
+Monday,Slot c,D-313,
+Monday,Slot c,D-314,CS2009 BDS-5A
+Monday,Slot c,D-315,SS2012 BDS-5B
+Monday,Slot c,D-316,
+Monday,Slot c,D-401,CY4054 BAI-7A
+Monday,Slot c,D-402,AI4019 BDS-9A
+Monday,Slot c,D-403,CS4059 BDS-7A
+Monday,Slot c,D-404,CS4044 BCS-7A
+Monday,Slot c,D-405,AI4019 BAI-9A
+Monday,Slot c,D-406,AI4015 BCS-7C
+Monday,Slot c,D-411,CS4075 BCS-7A
+Monday,Slot c,D-412,CS4045 BCS-7A
+Monday,Slot c,D-413,CS4095 BCS-7A
+Monday,Slot c,D-414,EE2003 BCY-3A
+Monday,Slot c,D-415,
+Monday,Slot c,D-416,
+Monday,Slot c,D-501,
+Monday,Slot c,D-502,
+Monday,Slot c,D-503,CY4048 BCY-7B
+Monday,Slot c,D-504,CS4075 BCY-7A
+Monday,Slot c,D-505,
+Monday,Slot c,D-506,
+Monday,Slot c,C-110,CS4039 BCS-7A
+Monday,Slot d,C-301,SS1013 BCS-1A
+Monday,Slot d,C-302,SS1007 BCS-1B
+Monday,Slot d,C-303,SS1013 BCS-1C
+Monday,Slot d,C-304,SS1007 BCS-1D
+Monday,Slot d,C-305,SS1012 BCS-1F
+Monday,Slot d,C-307,EE1005 BCS-3A
+Monday,Slot d,C-308,CS3004 BCS-3B
+Monday,Slot d,C-309,MT1004 BCS-3C
+Monday,Slot d,C-310,CS3004 BCS-3D
+Monday,Slot d,C-311,MT1004 BCS-3G
+Monday,Slot d,C-401,EE1005 BCS-3H
+Monday,Slot d,C-402,CS3001 BCS-5A
+Monday,Slot d,C-403,CS3014 BCS-5B
+Monday,Slot d,C-404,CS3014 BCS-5C
+Monday,Slot d,C-405,EE3009 BCS-5D
+Monday,Slot d,C-406,SS2012 BCS-5E
+Monday,Slot d,C-407,CS2009 BCS-5G
+Monday,Slot d,C-408,CS2009 BSE-5B
+Monday,Slot d,C-409,SS1012 BSE-1A
+Monday,Slot d,C-601,
+Monday,Slot d,C-602,MT1003 BSE-1D
+Monday,Slot d,C-603,EE2003 BSE-3A
+Monday,Slot d,C-604,#N/A
+Monday,Slot d,C-605,
+Monday,Slot d,C-607,SE3005 BSE-5A
+Monday,Slot d,C-609,SE1001 BSE-3B
+Monday,Slot d,D-301,SS1013 BAI-1A
+Monday,Slot d,D-302,CS4001 BSE-9A
+Monday,Slot d,D-303,
+Monday,Slot d,D-304,AI2001 BAI-3B
+Monday,Slot d,D-305,CS3001 BAI-5A
+Monday,Slot d,D-306,SS2012 BAI-5C
+Monday,Slot d,D-311,
+Monday,Slot d,D-312,
+Monday,Slot d,D-313,
+Monday,Slot d,D-314,
+Monday,Slot d,D-315,
+Monday,Slot d,D-316,SS1007 BDS-1B
+Monday,Slot d,D-401,AI4019 BAI-7A
+Monday,Slot d,D-402,CS3001 BDS-7C
+Monday,Slot d,D-403,MG3040 BDS-7A
+Monday,Slot d,D-404,
+Monday,Slot d,D-405,
+Monday,Slot d,D-406,CS3006 BCS-7B
+Monday,Slot d,D-411,CS4075 BCS-7B
+Monday,Slot d,D-412,
+Monday,Slot d,D-413,
+Monday,Slot d,D-414,CY2004 BCY-3A
+Monday,Slot d,D-415,EE2003 BCY-3B
+Monday,Slot d,D-416,
+Monday,Slot d,D-501,CS4032 BCY-5C
+Monday,Slot d,D-502,
+Monday,Slot d,D-503,
+Monday,Slot d,D-504,
+Monday,Slot d,D-505,
+Monday,Slot d,D-506,
+Monday,Slot d,C-110,
+Monday,Slot e,C-301,
+Monday,Slot e,C-302,
+Monday,Slot e,C-303,
+Monday,Slot e,C-304,
+Monday,Slot e,C-305,
+Monday,Slot e,C-307,
+Monday,Slot e,C-308,CS1004 BCS-3A
+Monday,Slot e,C-309,MT1003 BCS-3Z
+Monday,Slot e,C-310,EE1005 BCS-3E
+Monday,Slot e,C-311,SS1021 BCS-3G
+Monday,Slot e,C-401,SS1019 BCS-3H
+Monday,Slot e,C-402,EE2003 BCS-5A
+Monday,Slot e,C-403,CS3001 BCS-5B
+Monday,Slot e,C-404,
+Monday,Slot e,C-405,
+Monday,Slot e,C-406,
+Monday,Slot e,C-407,
+Monday,Slot e,C-408,
+Monday,Slot e,C-409,
+Monday,Slot e,C-601,
+Monday,Slot e,C-602,
+Monday,Slot e,C-603,EE2003 BSE-3B
+Monday,Slot e,C-604,
+Monday,Slot e,C-605,
+Monday,Slot e,C-607,
+Monday,Slot e,C-609,
+Monday,Slot e,D-301,
+Monday,Slot e,D-302,
+Monday,Slot e,D-303,
+Monday,Slot e,D-304,CS6039 PCS-1A
+Monday,Slot e,D-305,
+Monday,Slot e,D-306,
+Monday,Slot e,D-311,
+Monday,Slot e,D-312,
+Monday,Slot e,D-313,
+Monday,Slot e,D-314,
+Monday,Slot e,D-315,
+Monday,Slot e,D-316,
+Monday,Slot e,D-401,AI4012 BAI-7A
+Monday,Slot e,D-402,
+Monday,Slot e,D-403,
+Monday,Slot e,D-404,
+Monday,Slot e,D-405,
+Monday,Slot e,D-406,CS3006 BCS-7C
+Monday,Slot e,D-411,
+Monday,Slot e,D-412,
+Monday,Slot e,D-413,
+Monday,Slot e,D-414,
+Monday,Slot e,D-415,CY2004 BCY-3B
+Monday,Slot e,D-416,
+Monday,Slot e,D-501,CS2006 BCY-5C
+Monday,Slot e,D-502,
+Monday,Slot e,D-503,
+Monday,Slot e,D-504,
+Monday,Slot e,D-505,
+Monday,Slot e,D-506,
+Monday,Slot e,C-110,
+Monday,Slot f,C-301,
+Monday,Slot f,C-302,
+Monday,Slot f,C-303,
+Monday,Slot f,C-304,
+Monday,Slot f,C-305,
+Monday,Slot f,C-307,
+Monday,Slot f,C-308,CS1004 BCS-3B
+Monday,Slot f,C-309,CS1005 BCS-3A
+Monday,Slot f,C-310,
+Monday,Slot f,C-311,
+Monday,Slot f,C-401,
+Monday,Slot f,C-402,EE2003 BCS-5B
+Monday,Slot f,C-403,CS6018 PCS-1A
+Monday,Slot f,C-404,
+Monday,Slot f,C-405,
+Monday,Slot f,C-406,
+Monday,Slot f,C-407,
+Monday,Slot f,C-408,
+Monday,Slot f,C-409,
+Monday,Slot f,C-601,
+Monday,Slot f,C-602,
+Monday,Slot f,C-603,CS1004 BSE-3A
+Monday,Slot f,C-604,
+Monday,Slot f,C-605,
+Monday,Slot f,C-607,
+Monday,Slot f,C-609,
+Monday,Slot f,D-301,
+Monday,Slot f,D-302,
+Monday,Slot f,D-303,
+Monday,Slot f,D-304,CS6039 PCS-1A
+Monday,Slot f,D-305,
+Monday,Slot f,D-306,
+Monday,Slot f,D-311,
+Monday,Slot f,D-312,
+Monday,Slot f,D-313,
+Monday,Slot f,D-314,SS1021 BDS-3A
+Monday,Slot f,D-315,
+Monday,Slot f,D-316,AI4013 BAI-7A
+Monday,Slot f,D-401,
+Monday,Slot f,D-402,
+Monday,Slot f,D-403,
+Monday,Slot f,D-404,
+Monday,Slot f,D-405,
+Monday,Slot f,D-406,
+Monday,Slot f,D-411,
+Monday,Slot f,D-412,
+Monday,Slot f,D-413,
+Monday,Slot f,D-414,
+Monday,Slot f,D-415,
+Monday,Slot f,D-416,
+Monday,Slot f,D-501,
+Monday,Slot f,D-502,
+Monday,Slot f,D-503,
+Monday,Slot f,D-504,
+Monday,Slot f,D-505,
+Monday,Slot f,D-506,
+Monday,Slot f,C-110,
+Monday,Slot g,IT Lab 1 (D-210),CL1000 BSE-1C
+Monday,Slot g,IT Lab 2 (D-211),CL1000 BCS-1H
+Monday,Slot g,IT Lab 3 (D-213),CL1002 BAI-1C
+Monday,Slot g,IT Lab 4-GPU (D-203),AL3002 BAI-5C
+Monday,Slot g,Margala 1 (C-209),CL1002 BCS-1F
+Monday,Slot g,Margala 3 (C-211),CL1002 BDS-1B
+Monday,Slot g,Margala 4 (C-212,CL2001 BCS-3H
+Monday,Slot g,Rawal 1 (C-509),CL3001 BCS-5E
+Monday,Slot g,C-Rawal 4 (C-512),CL3001 BDS-7A
+Monday,Slot g,Cyber (D-514),CL2001 BAI-3C
+Monday,Slot g,Kybher-2,
+Monday,Slot g,Kybher-3,
+Monday,Slot g,CALL-1 (A-213),
+Monday,Slot g,CALL-2 (A-214),
+Monday,Slot g,CALL-3 (A-308),SL1012 BSE-1D1
+Monday,Slot g,Mehran-2 (A-306),
+Monday,Slot g,B-Computing-3,SL1012 BSE-1D2
+Monday,Slot g,B-Digital,EL1005 BCS-3G
+Monday,Slot h,IT Lab 1 (D-210),CL1002 BCS-1G
+Monday,Slot h,IT Lab 2 (D-211),CL1000 BCS-1E
+Monday,Slot h,IT Lab 3 (D-213),EL2003 BDS-3B
+Monday,Slot h,IT Lab 4-GPU (D-203),DL2001 BDS-3A
+Monday,Slot h,Margala 1 (C-209),CL1000 BDS-1A
+Monday,Slot h,Margala 3 (C-211),AL2002 BSE-5C
+Monday,Slot h,Margala 4 (C-212,EL2003 BSE-3D
+Monday,Slot h,Rawal 1 (C-509),CL3001 BCS-5F
+Monday,Slot h,C-Rawal 4 (C-512),CL3001 BAI-5B
+Monday,Slot h,Cyber (D-514),EL2003 BCY-3C
+Monday,Slot h,Kybher-2,
+Monday,Slot h,Kybher-3,
+Monday,Slot h,CALL-1 (A-213),
+Monday,Slot h,CALL-2 (A-214),
+Monday,Slot h,CALL-3 (A-308),SL1012 BCS-1H1
+Monday,Slot h,Mehran-2 (A-306),SL1012 BCS-1H2
+Monday,Slot h,B-Computing-3,
+Monday,Slot h,B-Digital,
+Monday,Slot i,IT Lab 1 (D-210),CL1002 BSE-1C
+Monday,Slot i,IT Lab 2 (D-211),CL1000 BSE-1D
+Monday,Slot i,IT Lab 3 (D-213),DL3001 BDS-5A
+Monday,Slot i,IT Lab 4-GPU (D-203),AL2001 BAI-3C
+Monday,Slot i,Margala 1 (C-209),CL2001 BCS-3J
+Monday,Slot i,Margala 3 (C-211),CL2001 BDS-3B
+Monday,Slot i,Margala 4 (C-212,CL2001 BSE-3C
+Monday,Slot i,Rawal 1 (C-509),
+Monday,Slot i,C-Rawal 4 (C-512),DL3004 BDS-5B
+Monday,Slot i,Cyber (D-514),
+Monday,Slot i,Kybher-2,
+Monday,Slot i,Kybher-3,
+Monday,Slot i,CALL-1 (A-213),SL1012 BCS-1E1
+Monday,Slot i,CALL-2 (A-214),SL1012 BCS-1E2
+Monday,Slot i,CALL-3 (A-308),SL1012 BAI-1C1
+Monday,Slot i,Mehran-2 (A-306),SL1012 BAI-1C2
+Monday,Slot i,B-Computing-3,
+Monday,Slot i,B-Digital,EL1005 BCS-3F
+Tuesday,Slot a,C-301,CS1002 BCS-1F
+Tuesday,Slot a,C-302,MT1003 BCS-1G
+Tuesday,Slot a,C-303,SS1013 BCS-1H
+Tuesday,Slot a,C-304,SS1007 BCS-1E
+Tuesday,Slot a,C-305,SS1012 BCS-1B
+Tuesday,Slot a,C-307,CS3004 BCS-3F
+Tuesday,Slot a,C-308,EE1005 BCS-3G
+Tuesday,Slot a,C-309,CS3004 BCS-3H
+Tuesday,Slot a,C-310,CS2001 BCS-3J
+Tuesday,Slot a,C-311,
+Tuesday,Slot a,C-401,
+Tuesday,Slot a,C-402,CS3001 BCS-5F
+Tuesday,Slot a,C-403,CS2009 BCS-5A
+Tuesday,Slot a,C-404,EE3009 BCS-5E
+Tuesday,Slot a,C-405,SS2012 BCS-5D
+Tuesday,Slot a,C-406,SS2012 BCS-5B
+Tuesday,Slot a,C-407,
+Tuesday,Slot a,C-408,CS1002 BSE-1C
+Tuesday,Slot a,C-409,NS1001 BSE-1D
+Tuesday,Slot a,C-601,
+Tuesday,Slot a,C-602,MT1004 BSE-3B
+Tuesday,Slot a,C-603,EE2003 BSE-3C
+Tuesday,Slot a,C-604,
+Tuesday,Slot a,C-605,SS2012 BSE-5A
+Tuesday,Slot a,C-607,SE3002 BSE-5B
+Tuesday,Slot a,C-609,CS2009 BSE-5C
+Tuesday,Slot a,D-301,MT1003 BAI-1C
+Tuesday,Slot a,D-302,CS2001 BAI-3C
+Tuesday,Slot a,D-303,
+Tuesday,Slot a,D-304,AI3001 BAI-5B
+Tuesday,Slot a,D-305,
+Tuesday,Slot a,D-306,SS2012 BAI-5A
+Tuesday,Slot a,D-311,MT1003 BDS-1A
+Tuesday,Slot a,D-312,
+Tuesday,Slot a,D-313,EE2003 BDS-3A
+Tuesday,Slot a,D-314,DS3004 BDS-5A
+Tuesday,Slot a,D-315,AI4015 BDS-7A
+Tuesday,Slot a,D-316,AI4012 BDS-7C
+Tuesday,Slot a,D-401,
+Tuesday,Slot a,D-402,SE4009 BSE-7A
+Tuesday,Slot a,D-403,
+Tuesday,Slot a,D-404,CS4001 BCS-7A
+Tuesday,Slot a,D-405,CS3002 BCS-7B
+Tuesday,Slot a,D-406,CS4001 BCS-7C
+Tuesday,Slot a,D-411,CS3002 BCS-7D
+Tuesday,Slot a,D-412,CS3014 BCS-7E
+Tuesday,Slot a,D-413,
+Tuesday,Slot a,D-414,CS1002 BCY-1A
+Tuesday,Slot a,D-415,
+Tuesday,Slot a,D-416,
+Tuesday,Slot a,D-501,SS1015 BCY-3B
+Tuesday,Slot a,D-502,CS2001 BCY-3C
+Tuesday,Slot a,D-503,CS3002 BCY-5A
+Tuesday,Slot a,D-504,
+Tuesday,Slot a,D-505,
+Tuesday,Slot a,D-506,
+Tuesday,Slot a,C-110,
+Tuesday,Slot b,C-301,MT1003 BCS-1F
+Tuesday,Slot b,C-302,CS1002 BCS-1G
+Tuesday,Slot b,C-303,
+Tuesday,Slot b,C-304,
+Tuesday,Slot b,C-305,
+Tuesday,Slot b,C-307,CS2006 BCY-5A
+Tuesday,Slot b,C-308,CS2001 BCS-3G
+Tuesday,Slot b,C-309,SS1022 BCS-3E
+Tuesday,Slot b,C-310,EE1005 BCS-3C
+Tuesday,Slot b,C-311,SS1019 BCS-3B
+Tuesday,Slot b,C-401,SS1021 BCS-3E
+Tuesday,Slot b,C-402,EE3009 BCS-5F
+Tuesday,Slot b,C-403,SS2012 BCS-5A
+Tuesday,Slot b,C-404,CS3001 BCS-5G
+Tuesday,Slot b,C-405,CS2009 BCS-5D
+Tuesday,Slot b,C-406,CS2009 BCS-5B
+Tuesday,Slot b,C-407,CS2007 BSE-9A
+Tuesday,Slot b,C-408,NS1001 BSE-1C
+Tuesday,Slot b,C-409,SE4033 BSE-7A
+Tuesday,Slot b,C-601,
+Tuesday,Slot b,C-602,SS1022 BSE-3B
+Tuesday,Slot b,C-603,SE1001 BSE-3C
+Tuesday,Slot b,C-604,EE2003 BSE-3D
+Tuesday,Slot b,C-605,MT1004 BSE-3A
+Tuesday,Slot b,C-607,SS2012 BSE-5B
+Tuesday,Slot b,C-609,AI2002 BSE-5C
+Tuesday,Slot b,D-301,CS1002 BAI-1C
+Tuesday,Slot b,D-302,EE2003 BAI-3C
+Tuesday,Slot b,D-303,DS2003 BDS-5A
+Tuesday,Slot b,D-304,AI3002 BAI-5B
+Tuesday,Slot b,D-305,AI3001 BAI-5C
+Tuesday,Slot b,D-306,AI3002 BAI-5A
+Tuesday,Slot b,D-311,CS1002 BDS-1A
+Tuesday,Slot b,D-312,MT1003 BDS-1B
+Tuesday,Slot b,D-313,DS2001 BDS-3A
+Tuesday,Slot b,D-314,DS3004 BDS-5B
+Tuesday,Slot b,D-315,CS2001 BDS-3B
+Tuesday,Slot b,D-316,AI4012 BDS-7A
+Tuesday,Slot b,D-401,CS3001 BDS-7B
+Tuesday,Slot b,D-402,
+Tuesday,Slot b,D-403,
+Tuesday,Slot b,D-404,CS3002 BCS-7A
+Tuesday,Slot b,D-405,CS4001 BCS-7B
+Tuesday,Slot b,D-406,CS3002 BCS-7C
+Tuesday,Slot b,D-411,CS4001 BCS-7D
+Tuesday,Slot b,D-412,CS3014 BCS-7G
+Tuesday,Slot b,D-413,CS4085 BCS-7B
+Tuesday,Slot b,D-414,MT1003 BCY-1A
+Tuesday,Slot b,D-415,CS1002 BCY-1B
+Tuesday,Slot b,D-416,
+Tuesday,Slot b,D-501,SS1015 BCY-3A
+Tuesday,Slot b,D-502,CY2004 BCY-3C
+Tuesday,Slot b,D-503,CS2006 BCY-5A
+Tuesday,Slot b,D-504,CS3002 BCY-5B
+Tuesday,Slot b,D-505,CY3003 BCY-7A
+Tuesday,Slot b,D-506,CS4001 BCY-7B
+Tuesday,Slot b,C-110,
+Tuesday,Slot c,C-301,
+Tuesday,Slot c,C-302,
+Tuesday,Slot c,C-303,CS1002 BCS-1H
+Tuesday,Slot c,C-304,MT1003 BCS-1E
+Tuesday,Slot c,C-305,CS2001 BCS-3F
+Tuesday,Slot c,C-307,
+Tuesday,Slot c,C-308,MT1004 BCS-3E
+Tuesday,Slot c,C-309,CS2001 BCS-3H
+Tuesday,Slot c,C-310,MT1004 BCS-3J
+Tuesday,Slot c,C-311,EE1005 BCS-3B
+Tuesday,Slot c,C-401,SS1019 BCS-3D
+Tuesday,Slot c,C-402,
+Tuesday,Slot c,C-403,CS3014 BCS-5G
+Tuesday,Slot c,C-404,CS3001 BCS-5E
+Tuesday,Slot c,C-405,CS2009 BCS-5C
+Tuesday,Slot c,C-406,
+Tuesday,Slot c,C-407,CS4039 BSE-7A
+Tuesday,Slot c,C-408,MT1003 BSE-1A
+Tuesday,Slot c,C-409,CS1002 BSE-1D
+Tuesday,Slot c,C-601,
+Tuesday,Slot c,C-602,SS1015 BSE-3A
+Tuesday,Slot c,C-603,SE3002 BSE-5A
+Tuesday,Slot c,C-604,SE1001 BSE-3D
+Tuesday,Slot c,C-605,
+Tuesday,Slot c,C-607,AI4009 BSE-7A
+Tuesday,Slot c,C-609,CS4063 BSE-7A
+Tuesday,Slot c,D-301,SS1019 BAI-1A
+Tuesday,Slot c,D-302,CS2005 BCY-5B
+Tuesday,Slot c,D-303,DS2003 BDS-5B
+Tuesday,Slot c,D-304,CS3001 BAI-5B
+Tuesday,Slot c,D-305,AI3002 BAI-5C
+Tuesday,Slot c,D-306,
+Tuesday,Slot c,D-311,DS3001 BDS-5A
+Tuesday,Slot c,D-312,CS1002 BDS-1B
+Tuesday,Slot c,D-313,
+Tuesday,Slot c,D-314,MT1004 BAI-3B
+Tuesday,Slot c,D-315,DS2001 BDS-3B
+Tuesday,Slot c,D-316,AI4012 BDS-7B
+Tuesday,Slot c,D-401,
+Tuesday,Slot c,D-402,
+Tuesday,Slot c,D-403,#N/A
+Tuesday,Slot c,D-404,CS4085 BCS-7A
+Tuesday,Slot c,D-405,AI4009 BCS-7A
+Tuesday,Slot c,D-406,AI4015 BCS-7A
+Tuesday,Slot c,D-411,CS4001 BCS-7H
+Tuesday,Slot c,D-412,
+Tuesday,Slot c,D-413,MG3040 BAI-7C
+Tuesday,Slot c,D-414,
+Tuesday,Slot c,D-415,MT1003 BCY-1B
+Tuesday,Slot c,D-416,NS1001 BCY-1C
+Tuesday,Slot c,D-501,
+Tuesday,Slot c,D-502,
+Tuesday,Slot c,D-503,CS2005 BCY-5A
+Tuesday,Slot c,D-504,CS2005 BCY-5B
+Tuesday,Slot c,D-505,CS4001 BCY-7A
+Tuesday,Slot c,D-506,CY3003 BCY-7B
+Tuesday,Slot c,C-110,CS3012 BCS-7A
+Tuesday,Slot d,C-301,SS1013 BCS-1F
+Tuesday,Slot d,C-302,SS1007 BCS-1G
+Tuesday,Slot d,C-303,MT1003 BCS-1H
+Tuesday,Slot d,C-304,CS1002 BCS-1E
+Tuesday,Slot d,C-305,EE1005 BCS-3F
+Tuesday,Slot d,C-307,CS2006 BDS-5A
+Tuesday,Slot d,C-308,CS3004 BCS-3G
+Tuesday,Slot d,C-309,MT1004 BCS-3H
+Tuesday,Slot d,C-310,CS3004 BCS-3J
+Tuesday,Slot d,C-311,MT1004 BCS-3A
+Tuesday,Slot d,C-401,EE1005 BCS-3D
+Tuesday,Slot d,C-402,CS3014 BCS-5E
+Tuesday,Slot d,C-403,CS3014 BCS-5F
+Tuesday,Slot d,C-404,EE3009 BCS-5G
+Tuesday,Slot d,C-405,SS2012 BCS-5C
+Tuesday,Slot d,C-406,CS6035 PCS-1A
+Tuesday,Slot d,C-407,CS4039 BSE-7B
+Tuesday,Slot d,C-408,MT1003 BSE-1B
+Tuesday,Slot d,C-409,SS1012 BSE-1C
+Tuesday,Slot d,C-601,
+Tuesday,Slot d,C-602,
+Tuesday,Slot d,C-603,SE3005 BSE-5C
+Tuesday,Slot d,C-604,SS1013 BSE-1D
+Tuesday,Slot d,C-605,CS2001 BSE-3C
+Tuesday,Slot d,C-607,AI4009 BSE-7B
+Tuesday,Slot d,C-609,CS4063 BSE-7B
+Tuesday,Slot d,D-301,SS1013 BAI-1C
+Tuesday,Slot d,D-302,MT1004 BAI-3A
+Tuesday,Slot d,D-303,
+Tuesday,Slot d,D-304,AI2001 BAI-3C
+Tuesday,Slot d,D-305,
+Tuesday,Slot d,D-306,
+Tuesday,Slot d,D-311,SS1013 BDS-1A
+Tuesday,Slot d,D-312,
+Tuesday,Slot d,D-313,EE2003 BDS-3B
+Tuesday,Slot d,D-314,CS2001 BDS-3A
+Tuesday,Slot d,D-315,
+Tuesday,Slot d,D-316,CS3001 BDS-7A
+Tuesday,Slot d,D-401,
+Tuesday,Slot d,D-402,
+Tuesday,Slot d,D-403,
+Tuesday,Slot d,D-404,MG4069 BCS-9A
+Tuesday,Slot d,D-405,AI4009 BCS-7B
+Tuesday,Slot d,D-406,AI4015 BCS-7B
+Tuesday,Slot d,D-411,CS3006 BCS-7D
+Tuesday,Slot d,D-412,CS3014 BCS-7F
+Tuesday,Slot d,D-413,MT2002 BCS-9A
+Tuesday,Slot d,D-414,SS1013 BCY-1A
+Tuesday,Slot d,D-415,
+Tuesday,Slot d,D-416,MT1004 BCY-3A
+Tuesday,Slot d,D-501,
+Tuesday,Slot d,D-502,EE2003 BCY-3C
+Tuesday,Slot d,D-503,CS2005 BCY-5C
+Tuesday,Slot d,D-504,CS2006 BCY-5B
+Tuesday,Slot d,D-505,
+Tuesday,Slot d,D-506,
+Tuesday,Slot d,C-110,
+Tuesday,Slot e,C-301,
+Tuesday,Slot e,C-302,
+Tuesday,Slot e,C-303,
+Tuesday,Slot e,C-304,SS1019 BCS-1B
+Tuesday,Slot e,C-305,
+Tuesday,Slot e,C-307,CS1004 BCS-3C
+Tuesday,Slot e,C-308,
+Tuesday,Slot e,C-309,
+Tuesday,Slot e,C-310,SS1022 BCS-3A
+Tuesday,Slot e,C-311,SS1021 BCS-3A
+Tuesday,Slot e,C-401,SS1021 BCS-3C
+Tuesday,Slot e,C-402,SS1022 BCS-3C
+Tuesday,Slot e,C-403,
+Tuesday,Slot e,C-404,
+Tuesday,Slot e,C-405,
+Tuesday,Slot e,C-406,
+Tuesday,Slot e,C-407,
+Tuesday,Slot e,C-408,
+Tuesday,Slot e,C-409,
+Tuesday,Slot e,C-601,
+Tuesday,Slot e,C-602,CS2001 BSE-3D
+Tuesday,Slot e,C-603,CS3006 BSE-7A
+Tuesday,Slot e,C-604,
+Tuesday,Slot e,C-605,
+Tuesday,Slot e,C-607,
+Tuesday,Slot e,C-609,
+Tuesday,Slot e,D-301,
+Tuesday,Slot e,D-302,
+Tuesday,Slot e,D-303,CS6001 PCS-1A
+Tuesday,Slot e,D-304,
+Tuesday,Slot e,D-305,
+Tuesday,Slot e,D-306,CS3001 BAI-5C
+Tuesday,Slot e,D-311,
+Tuesday,Slot e,D-312,
+Tuesday,Slot e,D-313,SS1019 BDS-3B
+Tuesday,Slot e,D-314,
+Tuesday,Slot e,D-315,DS3001 BDS-5B
+Tuesday,Slot e,D-316,MG3040 BDS-7C
+Tuesday,Slot e,D-401,
+Tuesday,Slot e,D-402,
+Tuesday,Slot e,D-403,
+Tuesday,Slot e,D-404,
+Tuesday,Slot e,D-405,
+Tuesday,Slot e,D-406,
+Tuesday,Slot e,D-411,CS3006 BCS-7A
+Tuesday,Slot e,D-412,
+Tuesday,Slot e,D-413,
+Tuesday,Slot e,D-414,
+Tuesday,Slot e,D-415,#N/A
+Tuesday,Slot e,D-416,MT1004 BCY-3B
+Tuesday,Slot e,D-501,SS1012 BCY-1C
+Tuesday,Slot e,D-502,
+Tuesday,Slot e,D-503,AI2002 BCY-5A
+Tuesday,Slot e,D-504,
+Tuesday,Slot e,D-505,
+Tuesday,Slot e,D-506,
+Tuesday,Slot e,C-110,
+Tuesday,Slot f,C-301,
+Tuesday,Slot f,C-302,
+Tuesday,Slot f,C-303,
+Tuesday,Slot f,C-304,
+Tuesday,Slot f,C-305,
+Tuesday,Slot f,C-307,CS1004 BCS-3D
+Tuesday,Slot f,C-308,CS1005 BCS-3B
+Tuesday,Slot f,C-309,
+Tuesday,Slot f,C-310,
+Tuesday,Slot f,C-311,SS1022 BCS-3C
+Tuesday,Slot f,C-401,SS1021 BCS-3C
+Tuesday,Slot f,C-402,CS6006 PCS-1B
+Tuesday,Slot f,C-403,
+Tuesday,Slot f,C-404,
+Tuesday,Slot f,C-405,
+Tuesday,Slot f,C-406,
+Tuesday,Slot f,C-407,
+Tuesday,Slot f,C-408,CS4046 BSE-7A
+Tuesday,Slot f,C-409,
+Tuesday,Slot f,C-601,
+Tuesday,Slot f,C-602,
+Tuesday,Slot f,C-603,
+Tuesday,Slot f,C-604,
+Tuesday,Slot f,C-605,
+Tuesday,Slot f,C-607,
+Tuesday,Slot f,C-609,
+Tuesday,Slot f,D-301,
+Tuesday,Slot f,D-302,
+Tuesday,Slot f,D-303,
+Tuesday,Slot f,D-304,
+Tuesday,Slot f,D-305,
+Tuesday,Slot f,D-306,EE2003 BAI-5A
+Tuesday,Slot f,D-311,
+Tuesday,Slot f,D-312,
+Tuesday,Slot f,D-313,
+Tuesday,Slot f,D-314,
+Tuesday,Slot f,D-315,
+Tuesday,Slot f,D-316,
+Tuesday,Slot f,D-401,
+Tuesday,Slot f,D-402,
+Tuesday,Slot f,D-403,
+Tuesday,Slot f,D-404,MG4069 BCS-9B
+Tuesday,Slot f,D-405,
+Tuesday,Slot f,D-406,
+Tuesday,Slot f,D-411,
+Tuesday,Slot f,D-412,
+Tuesday,Slot f,D-413,
+Tuesday,Slot f,D-414,
+Tuesday,Slot f,D-415,
+Tuesday,Slot f,D-416,
+Tuesday,Slot f,D-501,
+Tuesday,Slot f,D-502,
+Tuesday,Slot f,D-503,
+Tuesday,Slot f,D-504,AI2002 BCY-5B
+Tuesday,Slot f,D-505,CY3002 BCY-9A
+Tuesday,Slot f,D-506,
+Tuesday,Slot f,C-110,
+Tuesday,Slot g,IT Lab 1 (D-210),CL1002 BCY-1C
+Tuesday,Slot g,IT Lab 2 (D-211),CL1000 BSE-1A
+Tuesday,Slot g,IT Lab 3 (D-213),CL1000 BAI-1A
+Tuesday,Slot g,IT Lab 4-GPU (D-203),AL2001 BAI-3A
+Tuesday,Slot g,Margala 1 (C-209),CL1002 BCS-1A
+Tuesday,Slot g,Margala 3 (C-211),EL2003 BAI-3B
+Tuesday,Slot g,Margala 4 (C-212,CL1000 BCS-1D
+Tuesday,Slot g,Rawal 1 (C-509),CL1000 BCS-1C
+Tuesday,Slot g,C-Rawal 4 (C-512),CL2001 BCS-3D
+Tuesday,Slot g,Cyber (D-514),CL2005 BCY-5C
+Tuesday,Slot g,Kybher-2,
+Tuesday,Slot g,Kybher-3,
+Tuesday,Slot g,CALL-1 (A-213),
+Tuesday,Slot g,CALL-2 (A-214),
+Tuesday,Slot g,CALL-3 (A-308),SL1012 BSE-1B1
+Tuesday,Slot g,Mehran-2 (A-306),SL1012 BSE-1B2
+Tuesday,Slot g,B-Computing-3,
+Tuesday,Slot g,B-Digital,EL1005 BCS-3A
+Tuesday,Slot h,IT Lab 1 (D-210),CL1002 BCS-1B
+Tuesday,Slot h,IT Lab 2 (D-211),AL3002 BAI-5A
+Tuesday,Slot h,IT Lab 3 (D-213),EL2003 BCY-3B
+Tuesday,Slot h,IT Lab 4-GPU (D-203),#N/A
+Tuesday,Slot h,Margala 1 (C-209),AL2002 BSE-5B
+Tuesday,Slot h,Margala 3 (C-211),CL3001 BDS-7C
+Tuesday,Slot h,Margala 4 (C-212,EL2003 BSE-3B
+Tuesday,Slot h,Rawal 1 (C-509),CL3001 BCS-5A
+Tuesday,Slot h,C-Rawal 4 (C-512),CL3001 BCS-5D
+Tuesday,Slot h,Cyber (D-514),
+Tuesday,Slot h,Kybher-2,SL1012 BCS-1A1
+Tuesday,Slot h,Kybher-3,SL1012 BCS-1A2
+Tuesday,Slot h,CALL-1 (A-213),SL1012 BCS-1D1
+Tuesday,Slot h,CALL-2 (A-214),SL1012 BCS-1D2
+Tuesday,Slot h,CALL-3 (A-308),SL1012 BCS-1C1
+Tuesday,Slot h,Mehran-2 (A-306),SL1012 BCS-1C2
+Tuesday,Slot h,B-Computing-3,
+Tuesday,Slot h,B-Digital,EL1005 BCS-3C
+Tuesday,Slot i,IT Lab 1 (D-210),CL1002 BAI-1C
+Tuesday,Slot i,IT Lab 2 (D-211),CL1002 BSE-1A
+Tuesday,Slot i,IT Lab 3 (D-213),CL1000 BSE-1B
+Tuesday,Slot i,IT Lab 4-GPU (D-203),AL2001 BAI-3B
+Tuesday,Slot i,Margala 1 (C-209),CL2001 BCS-3B
+Tuesday,Slot i,Margala 3 (C-211),CL2001 BCY-3A
+Tuesday,Slot i,Margala 4 (C-212,CL2001 BSE-3A
+Tuesday,Slot i,Rawal 1 (C-509),CL1002 BSE-1F
+Tuesday,Slot i,C-Rawal 4 (C-512),EL2003 BAI-3A
+Tuesday,Slot i,Cyber (D-514),CY4048 BCY-9A
+Tuesday,Slot i,Kybher-2,#N/A
+Tuesday,Slot i,Kybher-3,#N/A
+Tuesday,Slot i,CALL-1 (A-213),#N/A
+Tuesday,Slot i,CALL-2 (A-214),#N/A
+Tuesday,Slot i,CALL-3 (A-308),SL1012 BDS-1B1
+Tuesday,Slot i,Mehran-2 (A-306),SL1012 BDS-1B2
+Tuesday,Slot i,B-Computing-3,
+Tuesday,Slot i,B-Digital,EL1005 BCS-3E
+Wednesday,Slot a,C-301,CS1002 BCS-1A
+Wednesday,Slot a,C-302,MT1003 BCS-1B
+Wednesday,Slot a,C-303,MT1003 BCS-1C
+Wednesday,Slot a,C-304,CS1002 BCS-1D
+Wednesday,Slot a,C-305,SS1012 BCS-1E
+Wednesday,Slot a,C-307,CS2001 BCS-3A
+Wednesday,Slot a,C-308,
+Wednesday,Slot a,C-309,CS3004 BCS-3C
+Wednesday,Slot a,C-310,CS2001 BCS-3D
+Wednesday,Slot a,C-311,
+Wednesday,Slot a,C-401,
+Wednesday,Slot a,C-402,
+Wednesday,Slot a,C-403,EE3009 BCS-5A
+Wednesday,Slot a,C-404,
+Wednesday,Slot a,C-405,
+Wednesday,Slot a,C-406,CS3001 BCS-5D
+Wednesday,Slot a,C-407,SS2012 BCS-5F
+Wednesday,Slot a,C-408,SS2012 BSE-5C
+Wednesday,Slot a,C-409,CS1002 BSE-1A
+Wednesday,Slot a,C-601,NS1001 BSE-1B
+Wednesday,Slot a,C-602,
+Wednesday,Slot a,C-603,CS2001 BSE-3A
+Wednesday,Slot a,C-604,NS1001 BSE-1E
+Wednesday,Slot a,C-605,MT1004 BSE-3D
+Wednesday,Slot a,C-607,SS1022 BSE-3C
+Wednesday,Slot a,C-609,SE3005 BSE-5B
+Wednesday,Slot a,D-301,CS1002 BSE-1F
+Wednesday,Slot a,D-302,CS4049 BCY-7A
+Wednesday,Slot a,D-303,SS1012 BAI-1C
+Wednesday,Slot a,D-304,EE2003 BAI-3A
+Wednesday,Slot a,D-305,CS2001 BAI-3B
+Wednesday,Slot a,D-306,MT1004 BAI-3C
+Wednesday,Slot a,D-311,SS1013 BAI-1B
+Wednesday,Slot a,D-312,CS2009 BAI-5B
+Wednesday,Slot a,D-313,MT1003 BDS-1C
+Wednesday,Slot a,D-314,MT1004 BDS-3A
+Wednesday,Slot a,D-315,AI3001 BAI-5A
+Wednesday,Slot a,D-316,
+Wednesday,Slot a,D-401,MG3040 BDS-7B
+Wednesday,Slot a,D-402,AI4015 BAI-7B
+Wednesday,Slot a,D-403,MG3040 BAI-7A
+Wednesday,Slot a,D-404,
+Wednesday,Slot a,D-405,CS3014 BCS-7A
+Wednesday,Slot a,D-406,CS3014 BCS-7C
+Wednesday,Slot a,D-411,CS4001 BCS-7E
+Wednesday,Slot a,D-412,CS3002 BCS-7F
+Wednesday,Slot a,D-413,CS4001 BCS-7G
+Wednesday,Slot a,D-414,
+Wednesday,Slot a,D-415,CS1002 BCY-1C
+Wednesday,Slot a,D-416,SS1012 BCY-1D
+Wednesday,Slot a,D-501,CS2001 BCY-3A
+Wednesday,Slot a,D-502,
+Wednesday,Slot a,D-503,AI2002 BCY-5C
+Wednesday,Slot a,D-504,CS4049 BCY-7A
+Wednesday,Slot a,D-505,
+Wednesday,Slot a,D-506,
+Wednesday,Slot a,C-110,
+Wednesday,Slot b,C-301,MT1003 BCS-1A
+Wednesday,Slot b,C-302,CS1002 BCS-1B
+Wednesday,Slot b,C-303,
+Wednesday,Slot b,C-304,MT1003 BCS-1D
+Wednesday,Slot b,C-305,SS1019 BCS-3F
+Wednesday,Slot b,C-307,CS3004 BCS-3A
+Wednesday,Slot b,C-308,CS2001 BCS-3B
+Wednesday,Slot b,C-309,
+Wednesday,Slot b,C-310,CS2001 BCS-3E
+Wednesday,Slot b,C-311,
+Wednesday,Slot b,C-401,SS1021 BCS-3J
+Wednesday,Slot b,C-402,
+Wednesday,Slot b,C-403,
+Wednesday,Slot b,C-404,EE3009 BCS-5B
+Wednesday,Slot b,C-405,CS3001 BCS-5C
+Wednesday,Slot b,C-406,
+Wednesday,Slot b,C-407,CS2009 BCS-5F
+Wednesday,Slot b,C-408,SE3002 BSE-5C
+Wednesday,Slot b,C-409,NS1001 BSE-1A
+Wednesday,Slot b,C-601,CS1002 BSE-1B
+Wednesday,Slot b,C-602,SS1013 BSE-1C
+Wednesday,Slot b,C-603,SS1015 BSE-3D
+Wednesday,Slot b,C-604,MT1004 BSE-3C
+Wednesday,Slot b,C-605,CS2001 BSE-3B
+Wednesday,Slot b,C-607,AI2002 BSE-5A
+Wednesday,Slot b,C-609,CS3002 BSE-7B
+Wednesday,Slot b,D-301,MT1003 BAI-1A
+Wednesday,Slot b,D-302,
+Wednesday,Slot b,D-303,SS1012 BDS-1B
+Wednesday,Slot b,D-304,CS2001 BAI-3A
+Wednesday,Slot b,D-305,SS1022 BAI-3B
+Wednesday,Slot b,D-306,
+Wednesday,Slot b,D-311,
+Wednesday,Slot b,D-312,SS2012 BAI-5B
+Wednesday,Slot b,D-313,
+Wednesday,Slot b,D-314,MT1004 BDS-3B
+Wednesday,Slot b,D-315,SS2012 BDS-5A
+Wednesday,Slot b,D-316,CS2009 BDS-5B
+Wednesday,Slot b,D-401,CS4059 BDS-7B
+Wednesday,Slot b,D-402,MG3040 BAI-7B
+Wednesday,Slot b,D-403,AI4015 BAI-7A
+Wednesday,Slot b,D-404,
+Wednesday,Slot b,D-405,CS3014 BCS-7B
+Wednesday,Slot b,D-406,CS3014 BCS-7D
+Wednesday,Slot b,D-411,CS3002 BCS-7E
+Wednesday,Slot b,D-412,CS4001 BCS-7F
+Wednesday,Slot b,D-413,CS3002 BCS-7G
+Wednesday,Slot b,D-414,NS1001 BCY-1B
+Wednesday,Slot b,D-415,MT1003 BCY-1C
+Wednesday,Slot b,D-416,
+Wednesday,Slot b,D-501,CS2001 BCY-3B
+Wednesday,Slot b,D-502,MT1004 BCY-3C
+Wednesday,Slot b,D-503,CS3002 BCY-5C
+Wednesday,Slot b,D-504,CS4032 BCY-5A
+Wednesday,Slot b,D-505,CY4048 BCY-7A
+Wednesday,Slot b,D-506,CS4075 BCY-7B
+Wednesday,Slot b,C-110,
+Wednesday,Slot c,C-301,
+Wednesday,Slot c,C-302,
+Wednesday,Slot c,C-303,CS1002 BCS-1C
+Wednesday,Slot c,C-304,SS1019 BCS-1H
+Wednesday,Slot c,C-305,MT1004 BCS-3F
+Wednesday,Slot c,C-307,MT1004 BCS-3B
+Wednesday,Slot c,C-308,CS3004 BCS-3E
+Wednesday,Slot c,C-309,CS2001 BCS-3C
+Wednesday,Slot c,C-310,MT1004 BCS-3D
+Wednesday,Slot c,C-311,
+Wednesday,Slot c,C-401,CS3014 BCS-5D
+Wednesday,Slot c,C-402,EE1005 BCS-3J
+Wednesday,Slot c,C-403,CS3014 BCS-5A
+Wednesday,Slot c,C-404,EE3009 BCS-5C
+Wednesday,Slot c,C-405,
+Wednesday,Slot c,C-406,CS2009 BCS-5E
+Wednesday,Slot c,C-407,SS2012 BCS-5G
+Wednesday,Slot c,C-408,SE4001 BSE-9A
+Wednesday,Slot c,C-409,CS2009 BSE-5A
+Wednesday,Slot c,C-601,MT1003 BSE-1E
+Wednesday,Slot c,C-602,MT1003 BSE-1C
+Wednesday,Slot c,C-603,
+Wednesday,Slot c,C-604,SE1001 BSE-3A
+Wednesday,Slot c,C-605,AI2002 BSE-5B
+Wednesday,Slot c,C-607,CS3002 BSE-7A
+Wednesday,Slot c,C-609,CS3006 BSE-7B
+Wednesday,Slot c,D-301,SS1019 BDS-1A
+Wednesday,Slot c,D-302,
+Wednesday,Slot c,D-303,SS1019 BDS-1B
+Wednesday,Slot c,D-304,AI2001 BAI-3A
+Wednesday,Slot c,D-305,SS1015 BAI-3C
+Wednesday,Slot c,D-306,EE2003 BAI-3B
+Wednesday,Slot c,D-311,CS1002 BAI-1B
+Wednesday,Slot c,D-312,CS2009 BAI-5C
+Wednesday,Slot c,D-313,CS1002 BDS-1C
+Wednesday,Slot c,D-314,CS2009 BAI-5A
+Wednesday,Slot c,D-315,CS2009 BDS-5A
+Wednesday,Slot c,D-316,SS2012 BDS-5B
+Wednesday,Slot c,D-401,CS4059 BDS-7A
+Wednesday,Slot c,D-402,AI4019 BDS-9A
+Wednesday,Slot c,D-403,CY4054 BAI-7A
+Wednesday,Slot c,D-404,CS4049 BCY-7B
+Wednesday,Slot c,D-405,CS4001 BCS-7A
+Wednesday,Slot c,D-406,AI4019 BAI-9A
+Wednesday,Slot c,D-411,
+Wednesday,Slot c,D-412,
+Wednesday,Slot c,D-413,
+Wednesday,Slot c,D-414,
+Wednesday,Slot c,D-415,NS1001 BCY-1A
+Wednesday,Slot c,D-416,MT1003 BCY-1D
+Wednesday,Slot c,D-501,EE2003 BCY-3A
+Wednesday,Slot c,D-502,SS1015 BCY-3C
+Wednesday,Slot c,D-503,CS4032 BCY-5B
+Wednesday,Slot c,D-504,CS4001 BCS-7A
+Wednesday,Slot c,D-505,
+Wednesday,Slot c,D-506,
+Wednesday,Slot c,C-110,
+Wednesday,Slot d,C-301,SS1007 BCS-1A
+Wednesday,Slot d,C-302,SS1013 BCS-1B
+Wednesday,Slot d,C-303,SS1007 BCS-1C
+Wednesday,Slot d,C-304,SS1013 BCS-1D
+Wednesday,Slot d,C-305,SS1012 BCS-1H
+Wednesday,Slot d,C-307,EE1005 BCS-3A
+Wednesday,Slot d,C-308,CS3004 BCS-3B
+Wednesday,Slot d,C-309,MT1004 BCS-3C
+Wednesday,Slot d,C-310,CS3004 BCS-3D
+Wednesday,Slot d,C-311,MT1004 BCS-3G
+Wednesday,Slot d,C-401,EE1005 BCS-3H
+Wednesday,Slot d,C-402,CS3014 BCS-5B
+Wednesday,Slot d,C-403,CS3001 BCS-5A
+Wednesday,Slot d,C-404,CS3014 BCS-5C
+Wednesday,Slot d,C-405,EE3009 BCS-5D
+Wednesday,Slot d,C-406,SS2012 BCS-5E
+Wednesday,Slot d,C-407,CS2009 BCS-5G
+Wednesday,Slot d,C-408,SE3005 BSE-5A
+Wednesday,Slot d,C-409,#N/A
+Wednesday,Slot d,C-601,SS1012 BSE-1B
+Wednesday,Slot d,C-602,MT1003 BSE-1D
+Wednesday,Slot d,C-603,SS1013 BSE-1E
+Wednesday,Slot d,C-604,EE2003 BSE-3A
+Wednesday,Slot d,C-605,CS2009 BSE-5B
+Wednesday,Slot d,C-607,SE1001 BSE-3B
+Wednesday,Slot d,C-609,CS4001 BSE-9A
+Wednesday,Slot d,D-301,SS1007 BAI-1A
+Wednesday,Slot d,D-302,
+Wednesday,Slot d,D-303,
+Wednesday,Slot d,D-304,SS1022 BAI-3A
+Wednesday,Slot d,D-305,
+Wednesday,Slot d,D-306,AI2001 BAI-3B
+Wednesday,Slot d,D-311,MT1003 BAI-1B
+Wednesday,Slot d,D-312,SS2012 BAI-5C
+Wednesday,Slot d,D-313,SS1012 BDS-1C
+Wednesday,Slot d,D-314,CS3001 BAI-5A
+Wednesday,Slot d,D-315,CS3001 BDS-7C
+Wednesday,Slot d,D-316,#N/A
+Wednesday,Slot d,D-401,MG3040 BDS-7A
+Wednesday,Slot d,D-402,AI4019 BAI-7A
+Wednesday,Slot d,D-403,
+Wednesday,Slot d,D-404,CS4044 BCS-7A
+Wednesday,Slot d,D-405,
+Wednesday,Slot d,D-406,AI4015 BCS-7C
+Wednesday,Slot d,D-411,CS4075 BCS-7A
+Wednesday,Slot d,D-412,CS4045 BCS-7A
+Wednesday,Slot d,D-413,CS4095 BCS-7A
+Wednesday,Slot d,D-414,#N/A
+Wednesday,Slot d,D-415,EE2003 BCY-3B
+Wednesday,Slot d,D-416,NS1001 BCY-1D
+Wednesday,Slot d,D-501,CY2004 BCY-3A
+Wednesday,Slot d,D-502,
+Wednesday,Slot d,D-503,CS4032 BCY-5C
+Wednesday,Slot d,D-504,
+Wednesday,Slot d,D-505,CY4048 BCY-7B
+Wednesday,Slot d,D-506,CS4075 BCY-7A
+Wednesday,Slot d,C-110,CS4039 BCS-7A
+Wednesday,Slot e,C-301,
+Wednesday,Slot e,C-302,
+Wednesday,Slot e,C-303,
+Wednesday,Slot e,C-304,SS1019 BCS-1E
+Wednesday,Slot e,C-305,SS1019 BCS-1G
+Wednesday,Slot e,C-307,CS1004 BCS-3A
+Wednesday,Slot e,C-308,MT1003 BCS-3Z
+Wednesday,Slot e,C-309,EE1005 BCS-3E
+Wednesday,Slot e,C-310,SS1019 BCS-3G
+Wednesday,Slot e,C-311,SS1019 BCS-3G
+Wednesday,Slot e,C-401,SS1022 BCS-3H
+Wednesday,Slot e,C-402,#N/A
+Wednesday,Slot e,C-403,
+Wednesday,Slot e,C-404,
+Wednesday,Slot e,C-405,CS3001 BCS-5B
+Wednesday,Slot e,C-406,
+Wednesday,Slot e,C-407,
+Wednesday,Slot e,C-408,
+Wednesday,Slot e,C-409,
+Wednesday,Slot e,C-601,
+Wednesday,Slot e,C-602,#N/A
+Wednesday,Slot e,C-603,
+Wednesday,Slot e,C-604,
+Wednesday,Slot e,C-605,
+Wednesday,Slot e,C-607,
+Wednesday,Slot e,C-609,
+Wednesday,Slot e,D-301,
+Wednesday,Slot e,D-302,
+Wednesday,Slot e,D-303,
+Wednesday,Slot e,D-304,
+Wednesday,Slot e,D-305,
+Wednesday,Slot e,D-306,
+Wednesday,Slot e,D-311,
+Wednesday,Slot e,D-312,
+Wednesday,Slot e,D-313,#N/A
+Wednesday,Slot e,D-314,SS1021 BDS-3B
+Wednesday,Slot e,D-315,
+Wednesday,Slot e,D-316,
+Wednesday,Slot e,D-401,
+Wednesday,Slot e,D-402,
+Wednesday,Slot e,D-403,AI4012 BAI-7A
+Wednesday,Slot e,D-404,
+Wednesday,Slot e,D-405,
+Wednesday,Slot e,D-406,CS3006 BCS-7B
+Wednesday,Slot e,D-411,CS4075 BCS-7B
+Wednesday,Slot e,D-412,
+Wednesday,Slot e,D-413,
+Wednesday,Slot e,D-414,SS1013 BCY-1B
+Wednesday,Slot e,D-415,SS1012 BCY-1A
+Wednesday,Slot e,D-416,
+Wednesday,Slot e,D-501,
+Wednesday,Slot e,D-502,CY2004 BCY-3B
+Wednesday,Slot e,D-503,CS2006 BCY-5C
+Wednesday,Slot e,D-504,
+Wednesday,Slot e,D-505,
+Wednesday,Slot e,D-506,
+Wednesday,Slot e,C-110,
+Wednesday,Slot f,C-301,
+Wednesday,Slot f,C-302,
+Wednesday,Slot f,C-303,
+Wednesday,Slot f,C-304,
+Wednesday,Slot f,C-305,
+Wednesday,Slot f,C-307,
+Wednesday,Slot f,C-308,CS1004 BCS-3B
+Wednesday,Slot f,C-309,CS1005 BCS-3A
+Wednesday,Slot f,C-310,
+Wednesday,Slot f,C-311,
+Wednesday,Slot f,C-401,
+Wednesday,Slot f,C-402,
+Wednesday,Slot f,C-403,EE2003 BCS-5B
+Wednesday,Slot f,C-404,#N/A
+Wednesday,Slot f,C-405,CS6018 PCS-1A
+Wednesday,Slot f,C-406,
+Wednesday,Slot f,C-407,
+Wednesday,Slot f,C-408,
+Wednesday,Slot f,C-409,
+Wednesday,Slot f,C-601,
+Wednesday,Slot f,C-602,
+Wednesday,Slot f,C-603,
+Wednesday,Slot f,C-604,CS1004 BSE-3A
+Wednesday,Slot f,C-605,
+Wednesday,Slot f,C-607,
+Wednesday,Slot f,C-609,
+Wednesday,Slot f,D-301,
+Wednesday,Slot f,D-302,
+Wednesday,Slot f,D-303,
+Wednesday,Slot f,D-304,
+Wednesday,Slot f,D-305,
+Wednesday,Slot f,D-306,
+Wednesday,Slot f,D-311,
+Wednesday,Slot f,D-312,
+Wednesday,Slot f,D-313,
+Wednesday,Slot f,D-314,
+Wednesday,Slot f,D-315,
+Wednesday,Slot f,D-316,
+Wednesday,Slot f,D-401,
+Wednesday,Slot f,D-402,AI4013 BAI-7A
+Wednesday,Slot f,D-403,
+Wednesday,Slot f,D-404,
+Wednesday,Slot f,D-405,CS6003 PCS-1A
+Wednesday,Slot f,D-406,CS3006 BCS-7C
+Wednesday,Slot f,D-411,
+Wednesday,Slot f,D-412,
+Wednesday,Slot f,D-413,
+Wednesday,Slot f,D-414,
+Wednesday,Slot f,D-415,
+Wednesday,Slot f,D-416,
+Wednesday,Slot f,D-501,
+Wednesday,Slot f,D-502,
+Wednesday,Slot f,D-503,
+Wednesday,Slot f,D-504,
+Wednesday,Slot f,D-505,
+Wednesday,Slot f,D-506,
+Wednesday,Slot f,C-110,
+Wednesday,Slot g,IT Lab 1 (D-210),CL1002 BCY-1A
+Wednesday,Slot g,IT Lab 2 (D-211),CL1000 BCS-1F
+Wednesday,Slot g,IT Lab 3 (D-213),CL1002 BSE-1D
+Wednesday,Slot g,IT Lab 4-GPU (D-203),#N/A
+Wednesday,Slot g,Margala 1 (C-209),CL1002 BCS-1H
+Wednesday,Slot g,Margala 3 (C-211),CL1002 BDS-1A
+Wednesday,Slot g,Margala 4 (C-212,CL2001 BCS-3G
+Wednesday,Slot g,Rawal 1 (C-509),CL3001 BCS-5G
+Wednesday,Slot g,C-Rawal 4 (C-512),CL3001 BAI-5C
+Wednesday,Slot g,Cyber (D-514),CL2005 BCY-5B
+Wednesday,Slot g,Kybher-2,
+Wednesday,Slot g,Kybher-3,
+Wednesday,Slot g,CALL-1 (A-213),SL1012 BCS-1G1
+Wednesday,Slot g,CALL-2 (A-214),SL1012 BCS-1G2
+Wednesday,Slot g,CALL-3 (A-308),
+Wednesday,Slot g,Mehran-2 (A-306),#N/A
+Wednesday,Slot g,B-Computing-3,EL1005 BCS-3H
+Wednesday,Slot g,B-Digital,
+Wednesday,Slot h,IT Lab 1 (D-210),CL1000 BCY-1B
+Wednesday,Slot h,IT Lab 2 (D-211),CL1000 BCS-1G
+Wednesday,Slot h,IT Lab 3 (D-213),CL1000 BAI-1C
+Wednesday,Slot h,IT Lab 4-GPU (D-203),DL2001 BDS-3B
+Wednesday,Slot h,Margala 1 (C-209),CL1002 BCS-1E
+Wednesday,Slot h,Margala 3 (C-211),EL2003 BDS-3A
+Wednesday,Slot h,Margala 4 (C-212,EL2003 BSE-3C
+Wednesday,Slot h,Rawal 1 (C-509),CL3001 BDS-7B
+Wednesday,Slot h,C-Rawal 4 (C-512),AL3002 BAI-5B
+Wednesday,Slot h,Cyber (D-514),AL2002 BCY-5A
+Wednesday,Slot h,Kybher-2,
+Wednesday,Slot h,Kybher-3,
+Wednesday,Slot h,CALL-1 (A-213),#N/A
+Wednesday,Slot h,CALL-2 (A-214),#N/A
+Wednesday,Slot h,CALL-3 (A-308),SL1012 BCS-1F1
+Wednesday,Slot h,Mehran-2 (A-306),SL1012 BCS-1F2
+Wednesday,Slot h,B-Computing-3,
+Wednesday,Slot h,B-Digital,
+Wednesday,Slot i,IT Lab 1 (D-210),CL1000 BDS-1B
+Wednesday,Slot i,IT Lab 2 (D-211),DL3004 BDS-5A
+Wednesday,Slot i,IT Lab 3 (D-213),EL2003 BAI-3C
+Wednesday,Slot i,IT Lab 4-GPU (D-203),#N/A
+Wednesday,Slot i,Margala 1 (C-209),CL2001 BDS-3A
+Wednesday,Slot i,Margala 3 (C-211),CL2001 BCY-3C
+Wednesday,Slot i,Margala 4 (C-212,CL2001 BSE-3D
+Wednesday,Slot i,Rawal 1 (C-509),DL3001 BDS-5B
+Wednesday,Slot i,C-Rawal 4 (C-512),CL2001 BCS-3F
+Wednesday,Slot i,Cyber (D-514),CL2006 BCY-5B
+Wednesday,Slot i,Kybher-2,
+Wednesday,Slot i,Kybher-3,
+Wednesday,Slot i,CALL-1 (A-213),SL1012 BDS-1A1
+Wednesday,Slot i,CALL-2 (A-214),SL1012 BDS-1A2
+Wednesday,Slot i,CALL-3 (A-308),SL1012 BSE-1C1
+Wednesday,Slot i,Mehran-2 (A-306),SL1012 BSE-1C2
+Wednesday,Slot i,B-Computing-3,EL1005 BCS-3J
+Wednesday,Slot i,B-Digital,
+Thursday,Slot a,C-301,CS1002 BCS-1F
+Thursday,Slot a,C-302,MT1003 BCS-1G
+Thursday,Slot a,C-303,SS1007 BCS-1H
+Thursday,Slot a,C-304,SS1013 BCS-1E
+Thursday,Slot a,C-305,SS1012 BCS-1D
+Thursday,Slot a,C-307,CS3004 BCS-3F
+Thursday,Slot a,C-308,CS2001 BCS-3J
+Thursday,Slot a,C-309,EE1005 BCS-3G
+Thursday,Slot a,C-310,CS3004 BCS-3H
+Thursday,Slot a,C-311,SS1019 BCS-3C
+Thursday,Slot a,C-401,SE4009 BSE-7A
+Thursday,Slot a,C-402,SS2012 BCS-5B
+Thursday,Slot a,C-403,CS3001 BCS-5F
+Thursday,Slot a,C-404,EE3009 BCS-5E
+Thursday,Slot a,C-405,CS2009 BCS-5A
+Thursday,Slot a,C-406,SS2012 BCS-5D
+Thursday,Slot a,C-407,SS1022 BSE-3A
+Thursday,Slot a,C-408,CS2009 BSE-5C
+Thursday,Slot a,C-409,SS1013 BSE-1A
+Thursday,Slot a,C-601,CS1002 BSE-1C
+Thursday,Slot a,C-602,NS1001 BSE-1D
+Thursday,Slot a,C-603,#N/A
+Thursday,Slot a,C-604,MT1004 BSE-3B
+Thursday,Slot a,C-605,EE2003 BSE-3C
+Thursday,Slot a,C-607,SS2012 BSE-5A
+Thursday,Slot a,C-609,SE3002 BSE-5B
+Thursday,Slot a,D-301,MT1003 BAI-1C
+Thursday,Slot a,D-302,SS1012 BAI-1B
+Thursday,Slot a,D-303,
+Thursday,Slot a,D-304,CS2001 BAI-3C
+Thursday,Slot a,D-305,AI3001 BAI-5B
+Thursday,Slot a,D-306,
+Thursday,Slot a,D-311,SS2012 BAI-5A
+Thursday,Slot a,D-312,MT1003 BDS-1A
+Thursday,Slot a,D-313,AI4015 BDS-7A
+Thursday,Slot a,D-314,EE2003 BDS-3A
+Thursday,Slot a,D-315,DS3004 BDS-5A
+Thursday,Slot a,D-316,AI4012 BDS-7C
+Thursday,Slot a,D-401,
+Thursday,Slot a,D-402,SS1015 BAI-3B
+Thursday,Slot a,D-403,SS1013 BDS-1C
+Thursday,Slot a,D-404,CS4001 BCS-7A
+Thursday,Slot a,D-405,CS3002 BCS-7B
+Thursday,Slot a,D-406,CS4001 BCS-7C
+Thursday,Slot a,D-411,CS3002 BCS-7D
+Thursday,Slot a,D-412,CS3014 BCS-7E
+Thursday,Slot a,D-413,
+Thursday,Slot a,D-414,CS1002 BCY-1A
+Thursday,Slot a,D-415,
+Thursday,Slot a,D-416,#N/A
+Thursday,Slot a,D-501,SS1022 BCY-3A
+Thursday,Slot a,D-502,CS2001 BCY-3C
+Thursday,Slot a,D-503,CS3002 BCY-5A
+Thursday,Slot a,D-504,
+Thursday,Slot a,D-505,
+Thursday,Slot a,D-506,
+Thursday,Slot a,C-110,
+Thursday,Slot b,C-301,MT1003 BCS-1F
+Thursday,Slot b,C-302,CS1002 BCS-1G
+Thursday,Slot b,C-303,
+Thursday,Slot b,C-304,
+Thursday,Slot b,C-305,SS1019 BCS-3E
+Thursday,Slot b,C-307,CS2006 BCY-5A
+Thursday,Slot b,C-308,SS1012 BCS-1C
+Thursday,Slot b,C-309,CS2001 BCS-3G
+Thursday,Slot b,C-310,EE1005 BCS-3C
+Thursday,Slot b,C-311,#N/A
+Thursday,Slot b,C-401,SE4033 BSE-7A
+Thursday,Slot b,C-402,CS2009 BCS-5B
+Thursday,Slot b,C-403,EE3009 BCS-5F
+Thursday,Slot b,C-404,CS3001 BCS-5G
+Thursday,Slot b,C-405,SS2012 BCS-5A
+Thursday,Slot b,C-406,CS2009 BCS-5D
+Thursday,Slot b,C-407,CS2007 BSE-9A
+Thursday,Slot b,C-408,AI2002 BSE-5C
+Thursday,Slot b,C-409,
+Thursday,Slot b,C-601,NS1001 BSE-1C
+Thursday,Slot b,C-602,MT1004 BSE-3A
+Thursday,Slot b,C-603,SS1012 BSE-1E
+Thursday,Slot b,C-604,EE2003 BSE-3D
+Thursday,Slot b,C-605,SE1001 BSE-3C
+Thursday,Slot b,C-607,SE3002 BSE-5A
+Thursday,Slot b,C-609,SS2012 BSE-5B
+Thursday,Slot b,D-301,CS1002 BAI-1C
+Thursday,Slot b,D-302,
+Thursday,Slot b,D-303,DS2003 BDS-5A
+Thursday,Slot b,D-304,EE2003 BAI-3C
+Thursday,Slot b,D-305,AI3002 BAI-5B
+Thursday,Slot b,D-306,AI3001 BAI-5C
+Thursday,Slot b,D-311,AI3002 BAI-5A
+Thursday,Slot b,D-312,CS1002 BDS-1A
+Thursday,Slot b,D-313,MT1003 BDS-1B
+Thursday,Slot b,D-314,DS2001 BDS-3A
+Thursday,Slot b,D-315,DS3004 BDS-5B
+Thursday,Slot b,D-316,AI4012 BDS-7A
+Thursday,Slot b,D-401,CS3001 BDS-7B
+Thursday,Slot b,D-402,
+Thursday,Slot b,D-403,SS1019 BDS-1C
+Thursday,Slot b,D-404,CS3002 BCS-7A
+Thursday,Slot b,D-405,CS4001 BCS-7B
+Thursday,Slot b,D-406,CS3002 BCS-7C
+Thursday,Slot b,D-411,CS4001 BCS-7D
+Thursday,Slot b,D-412,CS4085 BCS-7B
+Thursday,Slot b,D-413,CS3014 BCS-7G
+Thursday,Slot b,D-414,MT1003 BCY-1A
+Thursday,Slot b,D-415,CS1002 BCY-1B
+Thursday,Slot b,D-416,
+Thursday,Slot b,D-501,SS1022 BCY-3B
+Thursday,Slot b,D-502,CY2004 BCY-3C
+Thursday,Slot b,D-503,CS2001 BDS-3B
+Thursday,Slot b,D-504,CS3002 BCY-5B
+Thursday,Slot b,D-505,CY3003 BCY-7A
+Thursday,Slot b,D-506,CS4001 BCY-7B
+Thursday,Slot b,C-110,
+Thursday,Slot c,C-301,SS1019 BCS-1A
+Thursday,Slot c,C-302,
+Thursday,Slot c,C-303,CS1002 BCS-1H
+Thursday,Slot c,C-304,MT1003 BCS-1E
+Thursday,Slot c,C-305,MT1004 BCS-3E
+Thursday,Slot c,C-307,CS2001 BCS-3F
+Thursday,Slot c,C-308,SS1019 BCS-1C
+Thursday,Slot c,C-309,
+Thursday,Slot c,C-310,CS2001 BCS-3H
+Thursday,Slot c,C-311,MT1004 BCS-3J
+Thursday,Slot c,C-401,
+Thursday,Slot c,C-402,EE1005 BCS-3B
+Thursday,Slot c,C-403,CS2009 BCS-5C
+Thursday,Slot c,C-404,CS3001 BCS-5E
+Thursday,Slot c,C-405,CS3014 BCS-5G
+Thursday,Slot c,C-406,#N/A
+Thursday,Slot c,C-407,
+Thursday,Slot c,C-408,CS4039 BSE-7A
+Thursday,Slot c,C-409,
+Thursday,Slot c,C-601,CS1002 BSE-1D
+Thursday,Slot c,C-602,SS1015 BSE-3B
+Thursday,Slot c,C-603,
+Thursday,Slot c,C-604,SE1001 BSE-3D
+Thursday,Slot c,C-605,MT1003 BSE-1A
+Thursday,Slot c,C-607,AI4009 BSE-7A
+Thursday,Slot c,C-609,CS4063 BSE-7A
+Thursday,Slot c,D-301,CS1002 BAI-1A
+Thursday,Slot c,D-302,CS2005 BCY-5B
+Thursday,Slot c,D-303,DS2003 BDS-5B
+Thursday,Slot c,D-304,SS1022 BAI-3C
+Thursday,Slot c,D-305,CS3001 BAI-5B
+Thursday,Slot c,D-306,AI3002 BAI-5C
+Thursday,Slot c,D-311,MT1004 BAI-3B
+Thursday,Slot c,D-312,DS2001 BDS-3B
+Thursday,Slot c,D-313,CS1002 BDS-1B
+Thursday,Slot c,D-314,MG3040 BAI-7C
+Thursday,Slot c,D-315,
+Thursday,Slot c,D-316,AI4012 BDS-7B
+Thursday,Slot c,D-401,DS3001 BDS-5A
+Thursday,Slot c,D-402,
+Thursday,Slot c,D-403,
+Thursday,Slot c,D-404,CS4085 BCS-7A
+Thursday,Slot c,D-405,AI4009 BCS-7A
+Thursday,Slot c,D-406,AI4015 BCS-7A
+Thursday,Slot c,D-411,CS4001 BCS-7H
+Thursday,Slot c,D-412,
+Thursday,Slot c,D-413,
+Thursday,Slot c,D-414,
+Thursday,Slot c,D-415,MT1003 BCY-1B
+Thursday,Slot c,D-416,CS1002 BCY-1D
+Thursday,Slot c,D-501,NS1001 BCY-1C
+Thursday,Slot c,D-502,
+Thursday,Slot c,D-503,CS2005 BCY-5A
+Thursday,Slot c,D-504,
+Thursday,Slot c,D-505,CS4001 BCY-7A
+Thursday,Slot c,D-506,CY3003 BCY-7B
+Thursday,Slot c,C-110,CS3012 BCS-7A
+Thursday,Slot d,C-301,SS1007 BCS-1F
+Thursday,Slot d,C-302,SS1013 BCS-1G
+Thursday,Slot d,C-303,MT1003 BCS-1H
+Thursday,Slot d,C-304,CS1002 BCS-1E
+Thursday,Slot d,C-305,SS1012 BCS-1A
+Thursday,Slot d,C-307,CS2006 BDS-5A
+Thursday,Slot d,C-308,EE1005 BCS-3F
+Thursday,Slot d,C-309,CS3004 BCS-3G
+Thursday,Slot d,C-310,MT1004 BCS-3H
+Thursday,Slot d,C-311,CS3004 BCS-3J
+Thursday,Slot d,C-401,MT1004 BCS-3A
+Thursday,Slot d,C-402,EE1005 BCS-3D
+Thursday,Slot d,C-403,SS2012 BCS-5C
+Thursday,Slot d,C-404,CS3014 BCS-5E
+Thursday,Slot d,C-405,EE3009 BCS-5G
+Thursday,Slot d,C-406,#N/A
+Thursday,Slot d,C-407,CS3014 BCS-5F
+Thursday,Slot d,C-408,CS4039 BSE-7B
+Thursday,Slot d,C-409,MT1003 BSE-1B
+Thursday,Slot d,C-601,#N/A
+Thursday,Slot d,C-602,SS1012 BSE-1D
+Thursday,Slot d,C-603,CS1002 BSE-1E
+Thursday,Slot d,C-604,CS2001 BSE-3C
+Thursday,Slot d,C-605,SE3005 BSE-5C
+Thursday,Slot d,C-607,AI4009 BSE-7B
+Thursday,Slot d,C-609,CS4063 BSE-7B
+Thursday,Slot d,D-301,SS1007 BAI-1C
+Thursday,Slot d,D-302,SS1012 BAI-1A
+Thursday,Slot d,D-303,
+Thursday,Slot d,D-304,AI2001 BAI-3C
+Thursday,Slot d,D-305,
+Thursday,Slot d,D-306,CS1002 BDS-1C
+Thursday,Slot d,D-311,MT1004 BAI-3A
+Thursday,Slot d,D-312,SS1007 BDS-1A
+Thursday,Slot d,D-313,
+Thursday,Slot d,D-314,CS2001 BDS-3A
+Thursday,Slot d,D-315,EE2003 BDS-3B
+Thursday,Slot d,D-316,CS3001 BDS-7A
+Thursday,Slot d,D-401,
+Thursday,Slot d,D-402,
+Thursday,Slot d,D-403,MT2002 BCS-9A
+Thursday,Slot d,D-404,MG4069 BCS-9A
+Thursday,Slot d,D-405,AI4009 BCS-7B
+Thursday,Slot d,D-406,AI4015 BCS-7B
+Thursday,Slot d,D-411,CS3006 BCS-7D
+Thursday,Slot d,D-412,CS3014 BCS-7F
+Thursday,Slot d,D-413,
+Thursday,Slot d,D-414,#N/A
+Thursday,Slot d,D-415,
+Thursday,Slot d,D-416,MT1004 BCY-3B
+Thursday,Slot d,D-501,
+Thursday,Slot d,D-502,EE2003 BCY-3C
+Thursday,Slot d,D-503,CS2005 BCY-5C
+Thursday,Slot d,D-504,CS2006 BCY-5B
+Thursday,Slot d,D-505,
+Thursday,Slot d,D-506,
+Thursday,Slot d,C-110,
+Thursday,Slot e,C-301,SS1019 BCS-1D
+Thursday,Slot e,C-302,
+Thursday,Slot e,C-303,
+Thursday,Slot e,C-304,
+Thursday,Slot e,C-305,
+Thursday,Slot e,C-307,
+Thursday,Slot e,C-308,CS1004 BCS-3C
+Thursday,Slot e,C-309,
+Thursday,Slot e,C-310,SS1021 BCS-3B
+Thursday,Slot e,C-311,SS1022 BCS-3B
+Thursday,Slot e,C-401,SS1019 BCS-3A
+Thursday,Slot e,C-402,CS6031 PCS-1A
+Thursday,Slot e,C-403,
+Thursday,Slot e,C-404,
+Thursday,Slot e,C-405,
+Thursday,Slot e,C-406,
+Thursday,Slot e,C-407,
+Thursday,Slot e,C-408,
+Thursday,Slot e,C-409,SS1013 BSE-1B
+Thursday,Slot e,C-601,
+Thursday,Slot e,C-602,
+Thursday,Slot e,C-603,CS2001 BSE-3D
+Thursday,Slot e,C-604,CS3006 BSE-7A
+Thursday,Slot e,C-605,
+Thursday,Slot e,C-607,
+Thursday,Slot e,C-609,SS1019 BAI-1B
+Thursday,Slot e,D-301,
+Thursday,Slot e,D-302,
+Thursday,Slot e,D-303,SS1015 BAI-3A
+Thursday,Slot e,D-304,
+Thursday,Slot e,D-305,
+Thursday,Slot e,D-306,CS3001 BAI-5C
+Thursday,Slot e,D-311,
+Thursday,Slot e,D-312,
+Thursday,Slot e,D-313,SS1013 BDS-1B
+Thursday,Slot e,D-314,SS1019 BDS-3A
+Thursday,Slot e,D-315,
+Thursday,Slot e,D-316,DS3001 BDS-5B
+Thursday,Slot e,D-401,MG3040 BDS-7C
+Thursday,Slot e,D-402,
+Thursday,Slot e,D-403,
+Thursday,Slot e,D-404,
+Thursday,Slot e,D-405,
+Thursday,Slot e,D-406,
+Thursday,Slot e,D-411,CS3006 BCS-7A
+Thursday,Slot e,D-412,
+Thursday,Slot e,D-413,
+Thursday,Slot e,D-414,
+Thursday,Slot e,D-415,SS1012 BCY-1B
+Thursday,Slot e,D-416,MT1004 BCY-3A
+Thursday,Slot e,D-501,SS1013 BCY-1D
+Thursday,Slot e,D-502,
+Thursday,Slot e,D-503,AI2002 BCY-5A
+Thursday,Slot e,D-504,
+Thursday,Slot e,D-505,
+Thursday,Slot e,D-506,
+Thursday,Slot e,C-110,
+Thursday,Slot f,C-301,
+Thursday,Slot f,C-302,
+Thursday,Slot f,C-303,
+Thursday,Slot f,C-304,
+Thursday,Slot f,C-305,
+Thursday,Slot f,C-307,
+Thursday,Slot f,C-308,CS1004 BCS-3D
+Thursday,Slot f,C-309,CS1005 BCS-3B
+Thursday,Slot f,C-310,
+Thursday,Slot f,C-311,
+Thursday,Slot f,C-401,
+Thursday,Slot f,C-402,
+Thursday,Slot f,C-403,
+Thursday,Slot f,C-404,
+Thursday,Slot f,C-405,
+Thursday,Slot f,C-406,
+Thursday,Slot f,C-407,
+Thursday,Slot f,C-408,CS4046 BSE-7A
+Thursday,Slot f,C-409,
+Thursday,Slot f,C-601,
+Thursday,Slot f,C-602,
+Thursday,Slot f,C-603,
+Thursday,Slot f,C-604,
+Thursday,Slot f,C-605,
+Thursday,Slot f,C-607,
+Thursday,Slot f,C-609,
+Thursday,Slot f,D-301,
+Thursday,Slot f,D-302,
+Thursday,Slot f,D-303,
+Thursday,Slot f,D-304,
+Thursday,Slot f,D-305,
+Thursday,Slot f,D-306,EE2003 BAI-5A
+Thursday,Slot f,D-311,
+Thursday,Slot f,D-312,
+Thursday,Slot f,D-313,
+Thursday,Slot f,D-314,
+Thursday,Slot f,D-315,
+Thursday,Slot f,D-316,
+Thursday,Slot f,D-401,
+Thursday,Slot f,D-402,
+Thursday,Slot f,D-403,
+Thursday,Slot f,D-404,MG4069 BCS-9B
+Thursday,Slot f,D-405,
+Thursday,Slot f,D-406,
+Thursday,Slot f,D-411,
+Thursday,Slot f,D-412,
+Thursday,Slot f,D-413,
+Thursday,Slot f,D-414,
+Thursday,Slot f,D-415,
+Thursday,Slot f,D-416,
+Thursday,Slot f,D-501,
+Thursday,Slot f,D-502,
+Thursday,Slot f,D-503,
+Thursday,Slot f,D-504,AI2002 BCY-5B
+Thursday,Slot f,D-505,CY3002 BCY-9A
+Thursday,Slot f,D-506,
+Thursday,Slot f,C-110,
+Thursday,Slot g,IT Lab 1 (D-210),CL1002 BSE-1B
+Thursday,Slot g,IT Lab 2 (D-211),CL1000 BCS-1A
+Thursday,Slot g,IT Lab 3 (D-213),CL1000 BCY-1C
+Thursday,Slot g,IT Lab 4-GPU (D-203),
+Thursday,Slot g,Margala 1 (C-209),
+Thursday,Slot g,Margala 3 (C-211),CL2001 BCS-3A
+Thursday,Slot g,Margala 4 (C-212,CL2001 BAI-3A
+Thursday,Slot g,Rawal 1 (C-509),AL2002 BCY-5C
+Thursday,Slot g,C-Rawal 4 (C-512),CL3001 BCS-5C
+Thursday,Slot g,Cyber (D-514),
+Thursday,Slot g,Kybher-2,
+Thursday,Slot g,Kybher-3,
+Thursday,Slot g,CALL-1 (A-213),SL1012 BCS-1B1
+Thursday,Slot g,CALL-2 (A-214),SL1012 BCS-1B2
+Thursday,Slot g,CALL-3 (A-308),SL1012 BAI-1A1
+Thursday,Slot g,Mehran-2 (A-306),SL1012 BAI-1A2
+Thursday,Slot g,B-Computing-3,EL1005 BCS-3B
+Thursday,Slot g,B-Digital,
+Thursday,Slot h,IT Lab 1 (D-210),CL1002 BCS-1D
+Thursday,Slot h,IT Lab 2 (D-211),CL1000 BCS-1B
+Thursday,Slot h,IT Lab 3 (D-213),CL1000 BAI-1B
+Thursday,Slot h,IT Lab 4-GPU (D-203),
+Thursday,Slot h,Margala 1 (C-209),CL2001 BCS-3C
+Thursday,Slot h,Margala 3 (C-211),AL2002 BSE-5A
+Thursday,Slot h,Margala 4 (C-212,EL2003 BSE-3A
+Thursday,Slot h,Rawal 1 (C-509),CL3001 BAI-5A
+Thursday,Slot h,C-Rawal 4 (C-512),CL3001 BCS-5B
+Thursday,Slot h,Cyber (D-514),EL2003 BCY-3A
+Thursday,Slot h,Kybher-2,
+Thursday,Slot h,Kybher-3,
+Thursday,Slot h,CALL-1 (A-213),
+Thursday,Slot h,CALL-2 (A-214),
+Thursday,Slot h,CALL-3 (A-308),
+Thursday,Slot h,Mehran-2 (A-306),
+Thursday,Slot h,B-Computing-3,
+Thursday,Slot h,B-Digital,
+Thursday,Slot i,IT Lab 1 (D-210),CL1002 BCS-1C
+Thursday,Slot i,IT Lab 2 (D-211),CL2001 BCS-3E
+Thursday,Slot i,IT Lab 3 (D-213),CL2001 BAI-3B
+Thursday,Slot i,IT Lab 4-GPU (D-203),
+Thursday,Slot i,Margala 1 (C-209),CL1004 BCS-3B
+Thursday,Slot i,Margala 3 (C-211),CL2001 BCY-3B
+Thursday,Slot i,Margala 4 (C-212,CL2001 BSE-3B
+Thursday,Slot i,Rawal 1 (C-509),CL1004 BSE-3A
+Thursday,Slot i,C-Rawal 4 (C-512),CL2006 BCY-5C
+Thursday,Slot i,Cyber (D-514),CY4048 BCY-9A
+Thursday,Slot i,Kybher-2,
+Thursday,Slot i,Kybher-3,
+Thursday,Slot i,CALL-1 (A-213),SL1012 BSE-1A1
+Thursday,Slot i,CALL-2 (A-214),SL1012 BCY-1C2
+Thursday,Slot i,CALL-3 (A-308),SL1012 BCY-1C1
+Thursday,Slot i,Mehran-2 (A-306),SL1012 BSE-1A2
+Thursday,Slot i,B-Computing-3,EL1005 BCS-3D
+Thursday,Slot i,B-Digital,
+Friday,Slot a,C-301,MT1003 BSE-1E
+Friday,Slot a,C-302,NS1001 BCY-1B
+Friday,Slot a,C-303,CS1002 BCY-1C
+Friday,Slot a,C-304,MT1003 BDS-1C
+Friday,Slot a,C-305,CS1004 BAI-3A
+Friday,Slot a,C-307,CS4032 BCY-5A
+Friday,Slot a,C-308,
+Friday,Slot a,C-309,
+Friday,Slot a,C-310,
+Friday,Slot a,C-311,
+Friday,Slot a,C-401,
+Friday,Slot a,C-402,
+Friday,Slot a,C-403,
+Friday,Slot a,C-404,
+Friday,Slot a,C-405,
+Friday,Slot a,C-406,
+Friday,Slot a,C-407,
+Friday,Slot a,C-408,
+Friday,Slot a,C-409,
+Friday,Slot a,C-601,
+Friday,Slot a,C-602,
+Friday,Slot a,C-603,
+Friday,Slot a,C-604,
+Friday,Slot a,C-605,
+Friday,Slot a,C-607,
+Friday,Slot a,C-609,
+Friday,Slot a,D-301,
+Friday,Slot a,D-302,
+Friday,Slot a,D-303,
+Friday,Slot a,D-304,
+Friday,Slot a,D-305,
+Friday,Slot a,D-306,
+Friday,Slot a,D-311,
+Friday,Slot a,D-312,
+Friday,Slot a,D-313,
+Friday,Slot a,D-314,
+Friday,Slot a,D-315,
+Friday,Slot a,D-316,
+Friday,Slot a,D-401,
+Friday,Slot a,D-402,
+Friday,Slot a,D-403,
+Friday,Slot a,D-404,
+Friday,Slot a,D-405,
+Friday,Slot a,D-406,
+Friday,Slot a,D-411,
+Friday,Slot a,D-412,
+Friday,Slot a,D-413,
+Friday,Slot a,D-414,
+Friday,Slot a,D-415,
+Friday,Slot a,D-416,
+Friday,Slot a,D-501,
+Friday,Slot a,D-502,
+Friday,Slot a,D-503,
+Friday,Slot a,D-504,
+Friday,Slot a,D-505,
+Friday,Slot a,D-506,
+Friday,Slot a,C-110,
+Friday,Slot b,C-301,NS1001 BCY-1D
+Friday,Slot b,C-302,
+Friday,Slot b,C-303,MT1003 BCY-1C
+Friday,Slot b,C-304,SS1007 BDS-1C
+Friday,Slot b,C-305,
+Friday,Slot b,C-307,
+Friday,Slot b,C-308,
+Friday,Slot b,C-309,CS1002 BAI-1B
+Friday,Slot b,C-310,
+Friday,Slot b,C-311,
+Friday,Slot b,C-401,
+Friday,Slot b,C-402,
+Friday,Slot b,C-403,
+Friday,Slot b,C-404,
+Friday,Slot b,C-405,
+Friday,Slot b,C-406,
+Friday,Slot b,C-407,
+Friday,Slot b,C-408,
+Friday,Slot b,C-409,
+Friday,Slot b,C-601,
+Friday,Slot b,C-602,
+Friday,Slot b,C-603,
+Friday,Slot b,C-604,
+Friday,Slot b,C-605,
+Friday,Slot b,C-607,
+Friday,Slot b,C-609,
+Friday,Slot b,D-301,
+Friday,Slot b,D-302,
+Friday,Slot b,D-303,
+Friday,Slot b,D-304,
+Friday,Slot b,D-305,
+Friday,Slot b,D-306,
+Friday,Slot b,D-311,
+Friday,Slot b,D-312,
+Friday,Slot b,D-313,
+Friday,Slot b,D-314,
+Friday,Slot b,D-315,
+Friday,Slot b,D-316,
+Friday,Slot b,D-401,
+Friday,Slot b,D-402,
+Friday,Slot b,D-403,
+Friday,Slot b,D-404,
+Friday,Slot b,D-405,
+Friday,Slot b,D-406,
+Friday,Slot b,D-411,
+Friday,Slot b,D-412,
+Friday,Slot b,D-413,
+Friday,Slot b,D-414,
+Friday,Slot b,D-415,
+Friday,Slot b,D-416,
+Friday,Slot b,D-501,
+Friday,Slot b,D-502,
+Friday,Slot b,D-503,
+Friday,Slot b,D-504,
+Friday,Slot b,D-505,
+Friday,Slot b,D-506,
+Friday,Slot b,C-110,
+Friday,Slot c,C-301,MT1003 BCY-1D
+Friday,Slot c,C-302,NS1001 BCY-1A
+Friday,Slot c,C-303,CS4032 BCY-5B
+Friday,Slot c,C-304,
+Friday,Slot c,C-305,
+Friday,Slot c,C-307,
+Friday,Slot c,C-308,
+Friday,Slot c,C-309,MT1003 BAI-1B
+Friday,Slot c,C-310,SS1018 BCY-5A
+Friday,Slot c,C-311,
+Friday,Slot c,C-401,
+Friday,Slot c,C-402,
+Friday,Slot c,C-403,
+Friday,Slot c,C-404,
+Friday,Slot c,C-405,
+Friday,Slot c,C-406,
+Friday,Slot c,C-407,
+Friday,Slot c,C-408,
+Friday,Slot c,C-409,
+Friday,Slot c,C-601,
+Friday,Slot c,C-602,
+Friday,Slot c,C-603,
+Friday,Slot c,C-604,
+Friday,Slot c,C-605,
+Friday,Slot c,C-607,
+Friday,Slot c,C-609,
+Friday,Slot c,D-301,
+Friday,Slot c,D-302,
+Friday,Slot c,D-303,
+Friday,Slot c,D-304,
+Friday,Slot c,D-305,
+Friday,Slot c,D-306,
+Friday,Slot c,D-311,
+Friday,Slot c,D-312,
+Friday,Slot c,D-313,
+Friday,Slot c,D-314,
+Friday,Slot c,D-315,
+Friday,Slot c,D-316,
+Friday,Slot c,D-401,
+Friday,Slot c,D-402,
+Friday,Slot c,D-403,
+Friday,Slot c,D-404,
+Friday,Slot c,D-405,
+Friday,Slot c,D-406,
+Friday,Slot c,D-411,
+Friday,Slot c,D-412,
+Friday,Slot c,D-413,
+Friday,Slot c,D-414,
+Friday,Slot c,D-415,
+Friday,Slot c,D-416,
+Friday,Slot c,D-501,
+Friday,Slot c,D-502,
+Friday,Slot c,D-503,
+Friday,Slot c,D-504,
+Friday,Slot c,D-505,
+Friday,Slot c,D-506,
+Friday,Slot c,C-110,
+Friday,Slot d,C-301,Prayer break
+Friday,Slot d,C-302,Prayer break
+Friday,Slot d,C-303,Prayer break
+Friday,Slot d,C-304,Prayer break
+Friday,Slot d,C-305,Prayer break
+Friday,Slot d,C-307,Prayer break
+Friday,Slot d,C-308,Prayer break
+Friday,Slot d,C-309,Prayer break
+Friday,Slot d,C-310,Prayer break
+Friday,Slot d,C-311,Prayer break
+Friday,Slot d,C-401,Prayer break
+Friday,Slot d,C-402,Prayer break
+Friday,Slot d,C-403,Prayer break
+Friday,Slot d,C-404,Prayer break
+Friday,Slot d,C-405,Prayer break
+Friday,Slot d,C-406,Prayer break
+Friday,Slot d,C-407,Prayer break
+Friday,Slot d,C-408,Prayer break
+Friday,Slot d,C-409,Prayer break
+Friday,Slot d,C-601,Prayer break
+Friday,Slot d,C-602,Prayer break
+Friday,Slot d,C-603,Prayer break
+Friday,Slot d,C-604,Prayer break
+Friday,Slot d,C-605,Prayer break
+Friday,Slot d,C-607,Prayer break
+Friday,Slot d,C-609,Prayer break
+Friday,Slot d,D-301,Prayer break
+Friday,Slot d,D-302,Prayer break
+Friday,Slot d,D-303,Prayer break
+Friday,Slot d,D-304,Prayer break
+Friday,Slot d,D-305,Prayer break
+Friday,Slot d,D-306,Prayer break
+Friday,Slot d,D-311,Prayer break
+Friday,Slot d,D-312,Prayer break
+Friday,Slot d,D-313,Prayer break
+Friday,Slot d,D-314,Prayer break
+Friday,Slot d,D-315,Prayer break
+Friday,Slot d,D-316,Prayer break
+Friday,Slot d,D-401,Prayer break
+Friday,Slot d,D-402,Prayer break
+Friday,Slot d,D-403,Prayer break
+Friday,Slot d,D-404,Prayer break
+Friday,Slot d,D-405,Prayer break
+Friday,Slot d,D-406,Prayer break
+Friday,Slot d,D-411,Prayer break
+Friday,Slot d,D-412,Prayer break
+Friday,Slot d,D-413,Prayer break
+Friday,Slot d,D-414,Prayer break
+Friday,Slot d,D-415,Prayer break
+Friday,Slot d,D-416,Prayer break
+Friday,Slot d,D-501,Prayer break
+Friday,Slot d,D-502,Prayer break
+Friday,Slot d,D-503,Prayer break
+Friday,Slot d,D-504,Prayer break
+Friday,Slot d,D-505,Prayer break
+Friday,Slot d,D-506,Prayer break
+Friday,Slot d,C-110,Prayer break
+Friday,Slot e,C-301,SS1013 BCY-1C
+Friday,Slot e,C-302,NS1001 BSE-1E
+Friday,Slot e,C-303,
+Friday,Slot e,C-304,
+Friday,Slot e,C-305,
+Friday,Slot e,C-307,
+Friday,Slot e,C-308,
+Friday,Slot e,C-309,SS1007 BAI-1B
+Friday,Slot e,C-310,
+Friday,Slot e,C-311,
+Friday,Slot e,C-401,
+Friday,Slot e,C-402,
+Friday,Slot e,C-403,
+Friday,Slot e,C-404,
+Friday,Slot e,C-405,
+Friday,Slot e,C-406,
+Friday,Slot e,C-407,
+Friday,Slot e,C-408,
+Friday,Slot e,C-409,
+Friday,Slot e,C-601,
+Friday,Slot e,C-602,
+Friday,Slot e,C-603,
+Friday,Slot e,C-604,
+Friday,Slot e,C-605,
+Friday,Slot e,C-607,
+Friday,Slot e,C-609,
+Friday,Slot e,D-301,
+Friday,Slot e,D-302,
+Friday,Slot e,D-303,
+Friday,Slot e,D-304,
+Friday,Slot e,D-305,
+Friday,Slot e,D-306,
+Friday,Slot e,D-311,
+Friday,Slot e,D-312,
+Friday,Slot e,D-313,
+Friday,Slot e,D-314,
+Friday,Slot e,D-315,
+Friday,Slot e,D-316,
+Friday,Slot e,D-401,
+Friday,Slot e,D-402,
+Friday,Slot e,D-403,
+Friday,Slot e,D-404,
+Friday,Slot e,D-405,
+Friday,Slot e,D-406,
+Friday,Slot e,D-411,
+Friday,Slot e,D-412,
+Friday,Slot e,D-413,
+Friday,Slot e,D-414,
+Friday,Slot e,D-415,
+Friday,Slot e,D-416,
+Friday,Slot e,D-501,
+Friday,Slot e,D-502,
+Friday,Slot e,D-503,
+Friday,Slot e,D-504,
+Friday,Slot e,D-505,
+Friday,Slot e,D-506,
+Friday,Slot e,C-110,
+Friday,Slot f,C-301,
+Friday,Slot f,C-302,
+Friday,Slot f,C-303,
+Friday,Slot f,C-304,
+Friday,Slot f,C-305,
+Friday,Slot f,C-307,
+Friday,Slot f,C-308,
+Friday,Slot f,C-309,
+Friday,Slot f,C-310,
+Friday,Slot f,C-311,
+Friday,Slot f,C-401,
+Friday,Slot f,C-402,
+Friday,Slot f,C-403,
+Friday,Slot f,C-404,
+Friday,Slot f,C-405,
+Friday,Slot f,C-406,
+Friday,Slot f,C-407,
+Friday,Slot f,C-408,
+Friday,Slot f,C-409,
+Friday,Slot f,C-601,
+Friday,Slot f,C-602,
+Friday,Slot f,C-603,
+Friday,Slot f,C-604,
+Friday,Slot f,C-605,
+Friday,Slot f,C-607,
+Friday,Slot f,C-609,
+Friday,Slot f,D-301,
+Friday,Slot f,D-302,
+Friday,Slot f,D-303,
+Friday,Slot f,D-304,
+Friday,Slot f,D-305,
+Friday,Slot f,D-306,
+Friday,Slot f,D-311,
+Friday,Slot f,D-312,
+Friday,Slot f,D-313,
+Friday,Slot f,D-314,
+Friday,Slot f,D-315,
+Friday,Slot f,D-316,
+Friday,Slot f,D-401,
+Friday,Slot f,D-402,
+Friday,Slot f,D-403,
+Friday,Slot f,D-404,
+Friday,Slot f,D-405,
+Friday,Slot f,D-406,
+Friday,Slot f,D-411,
+Friday,Slot f,D-412,
+Friday,Slot f,D-413,
+Friday,Slot f,D-414,
+Friday,Slot f,D-415,
+Friday,Slot f,D-416,
+Friday,Slot f,D-501,
+Friday,Slot f,D-502,
+Friday,Slot f,D-503,
+Friday,Slot f,D-504,
+Friday,Slot f,D-505,
+Friday,Slot f,D-506,
+Friday,Slot f,C-110,
+Friday,Slot g,IT Lab 1 (D-210),CL1002 BCY-1B
+Friday,Slot g,IT Lab 2 (D-211),CL1000 BSE-1E
+Friday,Slot g,IT Lab 3 (D-213),CL1000 BCY-1A
+Friday,Slot g,IT Lab 4-GPU (D-203),
+Friday,Slot g,Margala 1 (C-209),AL2002 BCY-5B
+Friday,Slot g,Margala 3 (C-211),SL3001 BSE-9A
+Friday,Slot g,Margala 4 (C-212,CL2006 BDS-5A
+Friday,Slot g,Rawal 1 (C-509),EL2003 BCS-5A
+Friday,Slot g,C-Rawal 4 (C-512),CL1004 BAI-3A
+Friday,Slot g,Cyber (D-514),CL2005 BCY-5A
+Friday,Slot g,Kybher-2,
+Friday,Slot g,Kybher-3,
+Friday,Slot g,CALL-1 (A-213),
+Friday,Slot g,CALL-2 (A-214),
+Friday,Slot g,CALL-3 (A-308),
+Friday,Slot g,Mehran-2 (A-306),
+Friday,Slot g,B-Computing-3,
+Friday,Slot g,B-Digital,
+Friday,Slot h,IT Lab 1 (D-210),
+Friday,Slot h,IT Lab 2 (D-211),
+Friday,Slot h,IT Lab 3 (D-213),
+Friday,Slot h,IT Lab 4-GPU (D-203),
+Friday,Slot h,Margala 1 (C-209),
+Friday,Slot h,Margala 3 (C-211),
+Friday,Slot h,Margala 4 (C-212,
+Friday,Slot h,Rawal 1 (C-509),
+Friday,Slot h,C-Rawal 4 (C-512),
+Friday,Slot h,Cyber (D-514),
+Friday,Slot h,Kybher-2,
+Friday,Slot h,Kybher-3,
+Friday,Slot h,CALL-1 (A-213),
+Friday,Slot h,CALL-2 (A-214),
+Friday,Slot h,CALL-3 (A-308),
+Friday,Slot h,Mehran-2 (A-306),
+Friday,Slot h,B-Computing-3,
+Friday,Slot h,B-Digital,
+Friday,Slot i,IT Lab 1 (D-210),CL1002 BDS-1C
+Friday,Slot i,IT Lab 2 (D-211),
+Friday,Slot i,IT Lab 3 (D-213),CL1002 BCY-1D
+Friday,Slot i,IT Lab 4-GPU (D-203),
+Friday,Slot i,Margala 1 (C-209),CL1004 BCS-3A
+Friday,Slot i,Margala 3 (C-211),YL3002 BCY-9A
+Friday,Slot i,Margala 4 (C-212,EL2003 BAI-5A
+Friday,Slot i,Rawal 1 (C-509),EL2003 BCS-5B
+Friday,Slot i,C-Rawal 4 (C-512),CL1004 BCS-3D
+Friday,Slot i,Cyber (D-514),CL2006 BCY-5A
+Friday,Slot i,Kybher-2,
+Friday,Slot i,Kybher-3,
+Friday,Slot i,CALL-1 (A-213),SL1012 BCY-1A1
+Friday,Slot i,CALL-2 (A-214),SL1012 BCY-1A2
+Friday,Slot i,CALL-3 (A-308),SL1012 BCY-1B1
+Friday,Slot i,Mehran-2 (A-306),SL1012 BCY-1B2
+Friday,Slot i,B-Computing-3,
+Friday,Slot i,B-Digital,
+Saturday,Slot a,C-301,CS1002 BSE-1E
+Saturday,Slot a,C-302,
+Saturday,Slot a,C-303,
+Saturday,Slot a,C-304,
+Saturday,Slot a,C-305,
+Saturday,Slot a,C-307,
+Saturday,Slot a,C-308,
+Saturday,Slot a,C-309,
+Saturday,Slot a,C-310,
+Saturday,Slot a,C-311,
+Saturday,Slot a,C-401,
+Saturday,Slot a,C-402,
+Saturday,Slot a,C-403,
+Saturday,Slot a,C-404,
+Saturday,Slot a,C-405,
+Saturday,Slot a,C-406,
+Saturday,Slot a,C-407,
+Saturday,Slot a,C-408,
+Saturday,Slot a,C-409,
+Saturday,Slot a,C-601,
+Saturday,Slot a,C-602,
+Saturday,Slot a,C-603,
+Saturday,Slot a,C-604,
+Saturday,Slot a,C-605,
+Saturday,Slot a,C-607,
+Saturday,Slot a,C-609,
+Saturday,Slot a,D-301,
+Saturday,Slot a,D-302,
+Saturday,Slot a,D-303,
+Saturday,Slot a,D-304,
+Saturday,Slot a,D-305,
+Saturday,Slot a,D-306,
+Saturday,Slot a,D-311,
+Saturday,Slot a,D-312,
+Saturday,Slot a,D-313,
+Saturday,Slot a,D-314,
+Saturday,Slot a,D-315,
+Saturday,Slot a,D-316,
+Saturday,Slot a,D-401,
+Saturday,Slot a,D-402,
+Saturday,Slot a,D-403,
+Saturday,Slot a,D-404,
+Saturday,Slot a,D-405,
+Saturday,Slot a,D-406,
+Saturday,Slot a,D-411,
+Saturday,Slot a,D-412,
+Saturday,Slot a,D-413,
+Saturday,Slot a,D-414,
+Saturday,Slot a,D-415,
+Saturday,Slot a,D-416,
+Saturday,Slot a,D-501,
+Saturday,Slot a,D-502,
+Saturday,Slot a,D-503,
+Saturday,Slot a,D-504,
+Saturday,Slot a,D-505,
+Saturday,Slot a,D-506,
+Saturday,Slot a,C-110,
+Saturday,Slot b,C-301,CS1002 BSE-1E
+Saturday,Slot b,C-302,
+Saturday,Slot b,C-303,
+Saturday,Slot b,C-304,
+Saturday,Slot b,C-305,
+Saturday,Slot b,C-307,
+Saturday,Slot b,C-308,
+Saturday,Slot b,C-309,
+Saturday,Slot b,C-310,
+Saturday,Slot b,C-311,
+Saturday,Slot b,C-401,
+Saturday,Slot b,C-402,
+Saturday,Slot b,C-403,
+Saturday,Slot b,C-404,
+Saturday,Slot b,C-405,
+Saturday,Slot b,C-406,
+Saturday,Slot b,C-407,
+Saturday,Slot b,C-408,
+Saturday,Slot b,C-409,
+Saturday,Slot b,C-601,
+Saturday,Slot b,C-602,
+Saturday,Slot b,C-603,
+Saturday,Slot b,C-604,
+Saturday,Slot b,C-605,
+Saturday,Slot b,C-607,
+Saturday,Slot b,C-609,
+Saturday,Slot b,D-301,
+Saturday,Slot b,D-302,
+Saturday,Slot b,D-303,
+Saturday,Slot b,D-304,
+Saturday,Slot b,D-305,
+Saturday,Slot b,D-306,
+Saturday,Slot b,D-311,
+Saturday,Slot b,D-312,
+Saturday,Slot b,D-313,
+Saturday,Slot b,D-314,
+Saturday,Slot b,D-315,
+Saturday,Slot b,D-316,
+Saturday,Slot b,D-401,
+Saturday,Slot b,D-402,
+Saturday,Slot b,D-403,
+Saturday,Slot b,D-404,
+Saturday,Slot b,D-405,
+Saturday,Slot b,D-406,
+Saturday,Slot b,D-411,
+Saturday,Slot b,D-412,
+Saturday,Slot b,D-413,
+Saturday,Slot b,D-414,
+Saturday,Slot b,D-415,
+Saturday,Slot b,D-416,
+Saturday,Slot b,D-501,
+Saturday,Slot b,D-502,
+Saturday,Slot b,D-503,
+Saturday,Slot b,D-504,
+Saturday,Slot b,D-505,
+Saturday,Slot b,D-506,
+Saturday,Slot b,C-110,
+Saturday,Slot c,C-301,CS1002 BCY-1D
+Saturday,Slot c,C-302,
+Saturday,Slot c,C-303,
+Saturday,Slot c,C-304,
+Saturday,Slot c,C-305,
+Saturday,Slot c,C-307,
+Saturday,Slot c,C-308,
+Saturday,Slot c,C-309,
+Saturday,Slot c,C-310,
+Saturday,Slot c,C-311,
+Saturday,Slot c,C-401,
+Saturday,Slot c,C-402,
+Saturday,Slot c,C-403,
+Saturday,Slot c,C-404,
+Saturday,Slot c,C-405,
+Saturday,Slot c,C-406,
+Saturday,Slot c,C-407,
+Saturday,Slot c,C-408,
+Saturday,Slot c,C-409,
+Saturday,Slot c,C-601,
+Saturday,Slot c,C-602,
+Saturday,Slot c,C-603,
+Saturday,Slot c,C-604,
+Saturday,Slot c,C-605,
+Saturday,Slot c,C-607,
+Saturday,Slot c,C-609,
+Saturday,Slot c,D-301,
+Saturday,Slot c,D-302,
+Saturday,Slot c,D-303,
+Saturday,Slot c,D-304,
+Saturday,Slot c,D-305,
+Saturday,Slot c,D-306,
+Saturday,Slot c,D-311,
+Saturday,Slot c,D-312,
+Saturday,Slot c,D-313,
+Saturday,Slot c,D-314,
+Saturday,Slot c,D-315,
+Saturday,Slot c,D-316,
+Saturday,Slot c,D-401,
+Saturday,Slot c,D-402,
+Saturday,Slot c,D-403,
+Saturday,Slot c,D-404,
+Saturday,Slot c,D-405,
+Saturday,Slot c,D-406,
+Saturday,Slot c,D-411,
+Saturday,Slot c,D-412,
+Saturday,Slot c,D-413,
+Saturday,Slot c,D-414,
+Saturday,Slot c,D-415,
+Saturday,Slot c,D-416,
+Saturday,Slot c,D-501,
+Saturday,Slot c,D-502,
+Saturday,Slot c,D-503,
+Saturday,Slot c,D-504,
+Saturday,Slot c,D-505,
+Saturday,Slot c,D-506,
+Saturday,Slot c,C-110,
+Saturday,Slot d,C-301,
+Saturday,Slot d,C-302,
+Saturday,Slot d,C-303,
+Saturday,Slot d,C-304,
+Saturday,Slot d,C-305,
+Saturday,Slot d,C-307,
+Saturday,Slot d,C-308,
+Saturday,Slot d,C-309,
+Saturday,Slot d,C-310,
+Saturday,Slot d,C-311,
+Saturday,Slot d,C-401,
+Saturday,Slot d,C-402,
+Saturday,Slot d,C-403,
+Saturday,Slot d,C-404,
+Saturday,Slot d,C-405,
+Saturday,Slot d,C-406,
+Saturday,Slot d,C-407,
+Saturday,Slot d,C-408,
+Saturday,Slot d,C-409,
+Saturday,Slot d,C-601,
+Saturday,Slot d,C-602,
+Saturday,Slot d,C-603,
+Saturday,Slot d,C-604,
+Saturday,Slot d,C-605,
+Saturday,Slot d,C-607,
+Saturday,Slot d,C-609,
+Saturday,Slot d,D-301,
+Saturday,Slot d,D-302,
+Saturday,Slot d,D-303,
+Saturday,Slot d,D-304,
+Saturday,Slot d,D-305,
+Saturday,Slot d,D-306,
+Saturday,Slot d,D-311,
+Saturday,Slot d,D-312,
+Saturday,Slot d,D-313,
+Saturday,Slot d,D-314,
+Saturday,Slot d,D-315,
+Saturday,Slot d,D-316,
+Saturday,Slot d,D-401,
+Saturday,Slot d,D-402,
+Saturday,Slot d,D-403,
+Saturday,Slot d,D-404,
+Saturday,Slot d,D-405,
+Saturday,Slot d,D-406,
+Saturday,Slot d,D-411,
+Saturday,Slot d,D-412,
+Saturday,Slot d,D-413,
+Saturday,Slot d,D-414,
+Saturday,Slot d,D-415,
+Saturday,Slot d,D-416,
+Saturday,Slot d,D-501,
+Saturday,Slot d,D-502,
+Saturday,Slot d,D-503,
+Saturday,Slot d,D-504,
+Saturday,Slot d,D-505,
+Saturday,Slot d,D-506,
+Saturday,Slot d,C-110,
+Saturday,Slot e,C-301,
+Saturday,Slot e,C-302,
+Saturday,Slot e,C-303,
+Saturday,Slot e,C-304,
+Saturday,Slot e,C-305,
+Saturday,Slot e,C-307,
+Saturday,Slot e,C-308,
+Saturday,Slot e,C-309,
+Saturday,Slot e,C-310,
+Saturday,Slot e,C-311,
+Saturday,Slot e,C-401,
+Saturday,Slot e,C-402,
+Saturday,Slot e,C-403,
+Saturday,Slot e,C-404,
+Saturday,Slot e,C-405,
+Saturday,Slot e,C-406,
+Saturday,Slot e,C-407,
+Saturday,Slot e,C-408,
+Saturday,Slot e,C-409,
+Saturday,Slot e,C-601,
+Saturday,Slot e,C-602,
+Saturday,Slot e,C-603,
+Saturday,Slot e,C-604,
+Saturday,Slot e,C-605,
+Saturday,Slot e,C-607,
+Saturday,Slot e,C-609,
+Saturday,Slot e,D-301,
+Saturday,Slot e,D-302,
+Saturday,Slot e,D-303,
+Saturday,Slot e,D-304,
+Saturday,Slot e,D-305,
+Saturday,Slot e,D-306,
+Saturday,Slot e,D-311,
+Saturday,Slot e,D-312,
+Saturday,Slot e,D-313,
+Saturday,Slot e,D-314,
+Saturday,Slot e,D-315,
+Saturday,Slot e,D-316,
+Saturday,Slot e,D-401,
+Saturday,Slot e,D-402,
+Saturday,Slot e,D-403,
+Saturday,Slot e,D-404,
+Saturday,Slot e,D-405,
+Saturday,Slot e,D-406,
+Saturday,Slot e,D-411,
+Saturday,Slot e,D-412,
+Saturday,Slot e,D-413,
+Saturday,Slot e,D-414,
+Saturday,Slot e,D-415,
+Saturday,Slot e,D-416,
+Saturday,Slot e,D-501,
+Saturday,Slot e,D-502,
+Saturday,Slot e,D-503,
+Saturday,Slot e,D-504,
+Saturday,Slot e,D-505,
+Saturday,Slot e,D-506,
+Saturday,Slot e,C-110,
+Saturday,Slot f,C-301,
+Saturday,Slot f,C-302,
+Saturday,Slot f,C-303,
+Saturday,Slot f,C-304,
+Saturday,Slot f,C-305,
+Saturday,Slot f,C-307,
+Saturday,Slot f,C-308,
+Saturday,Slot f,C-309,
+Saturday,Slot f,C-310,
+Saturday,Slot f,C-311,
+Saturday,Slot f,C-401,
+Saturday,Slot f,C-402,
+Saturday,Slot f,C-403,
+Saturday,Slot f,C-404,
+Saturday,Slot f,C-405,
+Saturday,Slot f,C-406,
+Saturday,Slot f,C-407,
+Saturday,Slot f,C-408,
+Saturday,Slot f,C-409,
+Saturday,Slot f,C-601,
+Saturday,Slot f,C-602,
+Saturday,Slot f,C-603,
+Saturday,Slot f,C-604,
+Saturday,Slot f,C-605,
+Saturday,Slot f,C-607,
+Saturday,Slot f,C-609,
+Saturday,Slot f,D-301,
+Saturday,Slot f,D-302,
+Saturday,Slot f,D-303,
+Saturday,Slot f,D-304,
+Saturday,Slot f,D-305,
+Saturday,Slot f,D-306,
+Saturday,Slot f,D-311,
+Saturday,Slot f,D-312,
+Saturday,Slot f,D-313,
+Saturday,Slot f,D-314,
+Saturday,Slot f,D-315,
+Saturday,Slot f,D-316,
+Saturday,Slot f,D-401,
+Saturday,Slot f,D-402,
+Saturday,Slot f,D-403,
+Saturday,Slot f,D-404,
+Saturday,Slot f,D-405,
+Saturday,Slot f,D-406,
+Saturday,Slot f,D-411,
+Saturday,Slot f,D-412,
+Saturday,Slot f,D-413,
+Saturday,Slot f,D-414,
+Saturday,Slot f,D-415,
+Saturday,Slot f,D-416,
+Saturday,Slot f,D-501,
+Saturday,Slot f,D-502,
+Saturday,Slot f,D-503,
+Saturday,Slot f,D-504,
+Saturday,Slot f,D-505,
+Saturday,Slot f,D-506,
+Saturday,Slot f,C-110,
+Saturday,Slot g,IT Lab 1 (D-210),CL1000 BDS-1C
+Saturday,Slot g,IT Lab 2 (D-211),CL1002 BAI-1B
+Saturday,Slot g,IT Lab 3 (D-213),
+Saturday,Slot g,IT Lab 4-GPU (D-203),
+Saturday,Slot g,Margala 1 (C-209),
+Saturday,Slot g,Margala 3 (C-211),SL1012 BCY-1D1
+Saturday,Slot g,Margala 4 (C-212,SL1012 BCY-1D2
+Saturday,Slot g,Rawal 1 (C-509),
+Saturday,Slot g,C-Rawal 4 (C-512),
+Saturday,Slot g,Cyber (D-514),
+Saturday,Slot g,Kybher-2,
+Saturday,Slot g,Kybher-3,
+Saturday,Slot g,CALL-1 (A-213),
+Saturday,Slot g,CALL-2 (A-214),
+Saturday,Slot g,CALL-3 (A-308),
+Saturday,Slot g,Mehran-2 (A-306),
+Saturday,Slot g,B-Computing-3,
+Saturday,Slot g,B-Digital,
+Saturday,Slot h,IT Lab 1 (D-210),
+Saturday,Slot h,IT Lab 2 (D-211),
+Saturday,Slot h,IT Lab 3 (D-213),
+Saturday,Slot h,IT Lab 4-GPU (D-203),
+Saturday,Slot h,Margala 1 (C-209),SL1012 BAI-1B2
+Saturday,Slot h,Margala 3 (C-211),SL1012 BSE-1E1
+Saturday,Slot h,Margala 4 (C-212,SL1012 BSE-1E2
+Saturday,Slot h,Rawal 1 (C-509),
+Saturday,Slot h,C-Rawal 4 (C-512),SL1012 BAI-1B1
+Saturday,Slot h,Cyber (D-514),
+Saturday,Slot h,Kybher-2,
+Saturday,Slot h,Kybher-3,
+Saturday,Slot h,CALL-1 (A-213),
+Saturday,Slot h,CALL-2 (A-214),
+Saturday,Slot h,CALL-3 (A-308),
+Saturday,Slot h,Mehran-2 (A-306),
+Saturday,Slot h,B-Computing-3,
+Saturday,Slot h,B-Digital,
+Saturday,Slot i,IT Lab 1 (D-210),CL1000 BCY-1D
+Saturday,Slot i,IT Lab 2 (D-211),
+Saturday,Slot i,IT Lab 3 (D-213),
+Saturday,Slot i,IT Lab 4-GPU (D-203),
+Saturday,Slot i,Margala 1 (C-209),
+Saturday,Slot i,Margala 3 (C-211),SL1012 BDS-1C1
+Saturday,Slot i,Margala 4 (C-212,SL1012 BDS-1C2
+Saturday,Slot i,Rawal 1 (C-509),CL1002 BSE-1E
+Saturday,Slot i,C-Rawal 4 (C-512),
+Saturday,Slot i,Cyber (D-514),
+Saturday,Slot i,Kybher-2,
+Saturday,Slot i,Kybher-3,
+Saturday,Slot i,CALL-1 (A-213),
+Saturday,Slot i,CALL-2 (A-214),
+Saturday,Slot i,CALL-3 (A-308),
+Saturday,Slot i,Mehran-2 (A-306),
+Saturday,Slot i,B-Computing-3,
+Saturday,Slot i,B-Digital,

@@ -1,0 +1,39 @@
+# Dependencies
+node_modules
+/.pnp
+.pnp.js
+
+# Testing & Coverage
+coverage
+
+# Next.js build output
+.next/
+out/
+build/
+dist/
+
+# Environment Variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# Vercel & Turbopack
+.vercel
+.turbo
+
+# OS Generated
+.DS_Store
+Thumbs.db
+
+# Progress & Internal Reports
+PROGRESS_REPORT.md
+progress.md
+PROGRESS.md
