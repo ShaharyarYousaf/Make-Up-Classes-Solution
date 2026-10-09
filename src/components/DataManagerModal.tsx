@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
+import { useShallow } from 'zustand/react/shallow';
 import { useTimetableStore } from '../store/timetableStore';
 import {
   X,
@@ -16,13 +17,22 @@ import {
   FileText,
 } from 'lucide-react';
 import {
+  ImportReport,
+  isReservedAllocation,
   parseCoursesCSV,
+  parseRoomsCSV,
   parseStudentsCSV,
   parseTimetableCSV,
   SAMPLE_COURSES_CSV,
+  SAMPLE_ROOMS_CSV,
   SAMPLE_STUDENTS_CSV,
   SAMPLE_TIMETABLE_CSV,
 } from '../lib/csvParser';
+
+type CsvDataType = 'students' | 'courses' | 'timetable' | 'rooms';
+
+const JSON_PREVIEW_CHARS = 20000;
+const ROSTER_PREVIEW_LIMIT = 200;
 
 export const DataManagerModal: React.FC = () => {
   const {
@@ -35,40 +45,68 @@ export const DataManagerModal: React.FC = () => {
     importDatasets,
     resetToDefaultData,
     showToast,
-  } = useTimetableStore();
+  } = useTimetableStore(
+    useShallow((s) => ({
+      isDataManagerOpen: s.isDataManagerOpen,
+      closeDataManager: s.closeDataManager,
+      rooms: s.rooms,
+      courses: s.courses,
+      students: s.students,
+      allocations: s.allocations,
+      importDatasets: s.importDatasets,
+      resetToDefaultData: s.resetToDefaultData,
+      showToast: s.showToast,
+    }))
+  );
 
   const [activeTab, setActiveTab] = useState<'csv' | 'json' | 'export' | 'roster'>('csv');
   const [pastedCSV, setPastedCSV] = useState('');
-  const [csvDataType, setCsvDataType] = useState<'students' | 'courses' | 'timetable'>('students');
+  const [csvDataType, setCsvDataType] = useState<CsvDataType>('students');
   const [jsonInput, setJsonInput] = useState('');
   const [copied, setCopied] = useState(false);
-  const [importStatus, setImportStatus] = useState<{ msg: string; type: 'success' | 'error' } | null>(null);
+  const [importStatus, setImportStatus] = useState<{
+    msg: string;
+    type: 'success' | 'error';
+    report?: ImportReport;
+  } | null>(null);
+
+  // Serializing the full dataset is expensive (several MB), so only do it for the export tab
+  const exportPreview = useMemo(() => {
+    if (!isDataManagerOpen || activeTab !== 'export') return '';
+    const json = JSON.stringify({ rooms, courses, students, allocations }, null, 2);
+    return json.length > JSON_PREVIEW_CHARS
+      ? `${json.slice(0, JSON_PREVIEW_CHARS)}\n\n… preview truncated (${(json.length / 1024 / 1024).toFixed(1)} MB total) – use Download JSON for the full file`
+      : json;
+  }, [isDataManagerOpen, activeTab, rooms, courses, students, allocations]);
 
   if (!isDataManagerOpen) return null;
 
-  const currentDataset = {
-    metadata: {
-      generatedAt: new Date().toISOString(),
-      institution: 'FAST-NUCES Department of Computer Science & AI',
-      semester: 'Fall 2026',
-    },
-    rooms,
-    courses,
-    students,
-    allocations,
-  };
-
-  const formattedJson = JSON.stringify(currentDataset, null, 2);
+  const buildDatasetJson = () =>
+    JSON.stringify(
+      {
+        metadata: {
+          generatedAt: new Date().toISOString(),
+          institution: 'FAST-NUCES Department of Computer Science & AI',
+          semester: 'Fall 2026',
+        },
+        rooms,
+        courses,
+        students,
+        allocations,
+      },
+      null,
+      2
+    );
 
   const handleCopyJson = () => {
-    navigator.clipboard.writeText(formattedJson);
+    navigator.clipboard.writeText(buildDatasetJson());
     setCopied(true);
     showToast('Dataset copied to clipboard!', 'success');
     setTimeout(() => setCopied(false), 2500);
   };
 
   const handleDownloadJson = () => {
-    const blob = new Blob([formattedJson], { type: 'application/json' });
+    const blob = new Blob([buildDatasetJson()], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
@@ -78,7 +116,7 @@ export const DataManagerModal: React.FC = () => {
     showToast('Exported complete dataset as JSON', 'info');
   };
 
-  const handleDownloadCSVTemplate = (type: 'students' | 'courses' | 'timetable') => {
+  const handleDownloadCSVTemplate = (type: CsvDataType) => {
     let content = '';
     let filename = '';
     if (type === 'students') {
@@ -87,6 +125,9 @@ export const DataManagerModal: React.FC = () => {
     } else if (type === 'courses') {
       content = SAMPLE_COURSES_CSV;
       filename = 'courses_list_template.csv';
+    } else if (type === 'rooms') {
+      content = SAMPLE_ROOMS_CSV;
+      filename = 'rooms_template.csv';
     } else {
       content = SAMPLE_TIMETABLE_CSV;
       filename = 'timetable_schedule_template.csv';
@@ -120,47 +161,74 @@ export const DataManagerModal: React.FC = () => {
           setImportStatus({ msg: `JSON File Error: ${err.message}`, type: 'error' });
         }
       } else {
-        // Treat as CSV
-        setPastedCSV(text);
+        // Treat as CSV; large files are not echoed into the textarea (re-rendering MBs of text is slow)
+        setPastedCSV(text.length > 200000 ? '' : text);
         processCSV(text, csvDataType);
       }
     };
     reader.readAsText(file);
+    // Allow re-uploading the same file after fixing it
+    e.target.value = '';
   };
 
-  const processCSV = (text: string, type: 'students' | 'courses' | 'timetable') => {
+  const finishImport = (label: string, report: ImportReport, extraWarnings: string[] = []) => {
+    const fullReport = { ...report, warnings: [...report.warnings, ...extraWarnings] };
+    const skippedText = report.skipped > 0 ? `, ${report.skipped} row${report.skipped > 1 ? 's' : ''} rejected` : '';
+    setImportStatus({
+      msg: `Imported ${report.imported} ${label}${skippedText}.`,
+      type: 'success',
+      report: fullReport,
+    });
+  };
+
+  const processCSV = (text: string, type: CsvDataType) => {
     setImportStatus(null);
     try {
       if (type === 'students') {
-        const parsedStudents = parseStudentsCSV(text);
-        if (parsedStudents.length === 0) {
+        const { items, report } = parseStudentsCSV(text, courses);
+        if (items.length === 0) {
           throw new Error('No valid student rows found in CSV. Check headers.');
         }
-        importDatasets({ students: parsedStudents });
-        setImportStatus({
-          msg: `Successfully imported ${parsedStudents.length} student records!`,
-          type: 'success',
-        });
+        importDatasets({ students: items });
+        finishImport('students', report);
       } else if (type === 'courses') {
-        const parsedCourses = parseCoursesCSV(text);
-        if (parsedCourses.length === 0) {
+        const { items, report } = parseCoursesCSV(text);
+        if (items.length === 0) {
           throw new Error('No valid course rows found in CSV. Check headers.');
         }
-        importDatasets({ courses: parsedCourses });
-        setImportStatus({
-          msg: `Successfully imported ${parsedCourses.length} course sections!`,
-          type: 'success',
-        });
-      } else {
-        const parsedAllocations = parseTimetableCSV(text, rooms);
-        if (parsedAllocations.length === 0) {
-          throw new Error('No valid timetable rows found in CSV. Check headers.');
+        const newIds = new Set(items.map((c) => c.id));
+        const orphaned = allocations.filter(
+          (a) => !isReservedAllocation(a.courseSectionId) && !newIds.has(a.courseSectionId)
+        ).length;
+        importDatasets({ courses: items });
+        finishImport(
+          'course sections',
+          report,
+          orphaned > 0
+            ? [`${orphaned} timetable entries reference courses missing from this list – re-import the timetable if it changed`]
+            : []
+        );
+      } else if (type === 'rooms') {
+        const { items, report } = parseRoomsCSV(text, rooms);
+        if (report.imported === 0) {
+          throw new Error('No valid room rows found in CSV. Check headers (Room Name, Type, Capacity, Building).');
         }
-        importDatasets({ allocations: parsedAllocations });
-        setImportStatus({
-          msg: `Successfully imported ${parsedAllocations.length} timetable slot allocations!`,
-          type: 'success',
+        importDatasets({ rooms: items });
+        finishImport('rooms', report);
+      } else {
+        const { items, newRooms, report } = parseTimetableCSV(text, rooms, courses);
+        if (items.length === 0) {
+          throw new Error(
+            report.errors.length > 0
+              ? `No valid timetable rows. ${report.errors[0]}`
+              : 'No valid timetable rows found in CSV. Check headers.'
+          );
+        }
+        importDatasets({
+          allocations: items,
+          rooms: newRooms.length > 0 ? [...rooms, ...newRooms] : undefined,
         });
+        finishImport('timetable entries', report);
       }
     } catch (err: any) {
       setImportStatus({ msg: `CSV Parse Error: ${err.message}`, type: 'error' });
@@ -305,6 +373,39 @@ export const DataManagerModal: React.FC = () => {
             </div>
           )}
 
+          {importStatus?.report &&
+            (importStatus.report.errors.length > 0 ||
+              importStatus.report.warnings.length > 0 ||
+              importStatus.report.info.length > 0) && (
+              <div className="mb-4 space-y-2 text-[11px]">
+                {importStatus.report.errors.length > 0 && (
+                  <div className="p-3 rounded-xl border bg-rose-50 text-rose-900 border-rose-200 dark:bg-rose-950/40 dark:text-rose-200 dark:border-rose-800">
+                    <strong className="block mb-1">Rejected rows (not imported)</strong>
+                    <ul className="list-disc pl-4 space-y-0.5">
+                      {importStatus.report.errors.map((msg) => (
+                        <li key={msg}>{msg}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                {importStatus.report.warnings.length > 0 && (
+                  <div className="p-3 rounded-xl border bg-amber-50 text-amber-900 border-amber-200 dark:bg-amber-950/40 dark:text-amber-200 dark:border-amber-800">
+                    <strong className="block mb-1">Imported with warnings</strong>
+                    <ul className="list-disc pl-4 space-y-0.5">
+                      {importStatus.report.warnings.map((msg) => (
+                        <li key={msg}>{msg}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                {importStatus.report.info.length > 0 && (
+                  <div className="px-3 py-2 rounded-xl border bg-gray-50 text-gray-700 border-gray-200 dark:bg-zinc-800/60 dark:text-gray-300 dark:border-zinc-700">
+                    {importStatus.report.info.join(' • ')}
+                  </div>
+                )}
+              </div>
+            )}
+
           {activeTab === 'csv' ? (
             <div className="space-y-4">
               {/* Template Download strip */}
@@ -336,6 +437,12 @@ export const DataManagerModal: React.FC = () => {
                   >
                     Timetable Template
                   </button>
+                  <button
+                    onClick={() => handleDownloadCSVTemplate('rooms')}
+                    className="px-2.5 py-1 bg-white dark:bg-zinc-800 text-blue-700 dark:text-blue-300 rounded-md text-[11px] font-bold border border-blue-300 dark:border-blue-800 hover:bg-blue-50"
+                  >
+                    Rooms Template
+                  </button>
                 </div>
               </div>
 
@@ -347,12 +454,13 @@ export const DataManagerModal: React.FC = () => {
                   </label>
                   <select
                     value={csvDataType}
-                    onChange={(e) => setCsvDataType(e.target.value as any)}
+                    onChange={(e) => setCsvDataType(e.target.value as CsvDataType)}
                     className="w-full px-3 py-2 text-xs font-semibold bg-gray-50 dark:bg-zinc-800 border border-gray-300 dark:border-zinc-700 rounded-lg focus:ring-2 focus:ring-blue-500"
                   >
                     <option value="students">Student Enrollments (Roll No, Name, Course Section)</option>
                     <option value="courses">Course Sections List (Code, Title, Section, Dept)</option>
                     <option value="timetable">Current Timetable (Day, Slot, Room, Course)</option>
+                    <option value="rooms">Rooms (Name, Type, Capacity, Building)</option>
                   </select>
                 </div>
 
@@ -385,6 +493,8 @@ export const DataManagerModal: React.FC = () => {
                       ? 'Student ID,Student Name,Course Section Code\n21I-0412,Syed Umar Javed,AI4015 BCS-7B\n...'
                       : csvDataType === 'courses'
                       ? 'Course Code,Course Title,Section,Department,Instructor,Credit Hours\nAI4015,Agentic Artificial Intelligence,BCS-7B,Artificial Intelligence,Dr. Zeeshan Ali,3\n...'
+                      : csvDataType === 'rooms'
+                      ? 'Room Name,Type,Capacity,Building\nC-301,Lecture,50,Academic Block C\n...'
                       : 'Day,TimeSlot,Room,Course Section\nMonday,Slot 2,Room A-1,AI4015 BCS-7B\n...'
                   }
                   value={pastedCSV}
@@ -464,7 +574,7 @@ export const DataManagerModal: React.FC = () => {
 
               <textarea
                 readOnly
-                value={formattedJson}
+                value={exportPreview}
                 rows={12}
                 className="w-full p-3 font-mono text-[11px] bg-gray-50 dark:bg-zinc-950 border border-gray-300 dark:border-zinc-800 rounded-xl focus:outline-none text-gray-800 dark:text-gray-200"
               />
@@ -474,7 +584,8 @@ export const DataManagerModal: React.FC = () => {
             <div className="space-y-3">
               <div className="flex items-center justify-between">
                 <p className="text-xs text-gray-600 dark:text-gray-400">
-                  All {students.length} students currently tracked by the clash engine:
+                  All {students.length} students currently tracked by the clash engine
+                  {students.length > ROSTER_PREVIEW_LIMIT ? ` (showing first ${ROSTER_PREVIEW_LIMIT})` : ''}:
                 </p>
                 <button
                   onClick={() => handleDownloadCSVTemplate('students')}
@@ -486,7 +597,7 @@ export const DataManagerModal: React.FC = () => {
               </div>
 
               <div className="divide-y divide-gray-200 dark:divide-zinc-800 border border-gray-200 dark:border-zinc-800 rounded-xl overflow-hidden max-h-[50vh] overflow-y-auto">
-                {students.map((student) => (
+                {students.slice(0, ROSTER_PREVIEW_LIMIT).map((student) => (
                   <div
                     key={student.id}
                     className="p-3 bg-white dark:bg-zinc-900 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs"

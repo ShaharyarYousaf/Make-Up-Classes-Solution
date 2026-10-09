@@ -1,4 +1,5 @@
 import React from 'react';
+import { useShallow } from 'zustand/react/shallow';
 import { useTimetableStore } from '../store/timetableStore';
 import {
   CalendarDays,
@@ -25,7 +26,20 @@ export const Header: React.FC = () => {
     openVacantRoomsModal,
     openRescheduleReview,
     openDataManager,
-  } = useTimetableStore();
+  } = useTimetableStore(
+    useShallow((s) => ({
+      allocations: s.allocations,
+      rooms: s.rooms,
+      students: s.students,
+      courses: s.courses,
+      allocationHistory: s.allocationHistory,
+      undoLastReschedule: s.undoLastReschedule,
+      openFlexibleModal: s.openFlexibleModal,
+      openVacantRoomsModal: s.openVacantRoomsModal,
+      openRescheduleReview: s.openRescheduleReview,
+      openDataManager: s.openDataManager,
+    }))
+  );
 
   const rescheduledCount = allocations.filter((a) => a.isRescheduled).length;
   const canUndo = allocationHistory.length > 0;

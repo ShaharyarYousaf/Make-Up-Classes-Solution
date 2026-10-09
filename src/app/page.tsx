@@ -11,6 +11,7 @@ import { VacantRoomsModal } from '../components/VacantRoomsModal';
 import { RescheduleReviewModal } from '../components/RescheduleReviewModal';
 import { QuickRescheduleBar } from '../components/QuickRescheduleBar';
 import { Toast } from '../components/Toast';
+import { useShallow } from 'zustand/react/shallow';
 import { useTimetableStore } from '../store/timetableStore';
 import {
   Sparkles,
@@ -33,7 +34,19 @@ export default function Home() {
     setSelectedRoomId,
     setSelectedDay,
     setViewMode,
-  } = useTimetableStore();
+  } = useTimetableStore(
+    useShallow((s) => ({
+      allocations: s.allocations,
+      courses: s.courses,
+      rooms: s.rooms,
+      students: s.students,
+      initiateReschedule: s.initiateReschedule,
+      openFlexibleModal: s.openFlexibleModal,
+      setSelectedRoomId: s.setSelectedRoomId,
+      setSelectedDay: s.setSelectedDay,
+      setViewMode: s.setViewMode,
+    }))
+  );
 
   return (
     <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-zinc-950">

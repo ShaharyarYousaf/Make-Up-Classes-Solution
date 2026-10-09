@@ -102,6 +102,26 @@ export interface StudentConflictResult {
   severity: ClashSeverity;
 }
 
+export interface InstructorConflictResult {
+  hasConflict: boolean;
+  conflicts: {
+    instructor: string;
+    allocation: Allocation;
+    course: CourseSection;
+    roomName: string;
+    timeLabel: string;
+  }[];
+  reason?: string;
+}
+
+export interface CapacityCheckResult {
+  overCapacity: boolean;
+  roomTypeMismatch: boolean;
+  enrolledCount: number;
+  capacity: number;
+  warnings: string[];
+}
+
 export type SlotSafetyStatus = 'SAFE' | 'MINOR_CLASH' | 'BLOCKED';
 
 export interface SlotRecommendation {
@@ -113,6 +133,8 @@ export interface SlotRecommendation {
   roomType: RoomType;
   isRoomFree: boolean;
   roomConflict?: RoomConflictResult;
+  instructorConflict?: InstructorConflictResult;
+  suitability: CapacityCheckResult;
   studentClashes: StudentConflictResult;
   status: SlotSafetyStatus;
   statusLabel: string;
@@ -131,6 +153,8 @@ export interface FlexibleSlotOption {
   endMinutes: number;
   durationMinutes: number;
   studentClashes: StudentConflictResult;
+  instructorConflict?: InstructorConflictResult;
+  suitability: CapacityCheckResult;
   status: SlotSafetyStatus;
 }
 

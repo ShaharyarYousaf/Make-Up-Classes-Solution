@@ -1,5 +1,8 @@
 import React, { useState, useRef, useEffect, useMemo } from 'react';
+import { useShallow } from 'zustand/react/shallow';
 import { useTimetableStore } from '../store/timetableStore';
+import { getCourseMap, getSectionRoster } from '../lib/engine';
+import { getReservedLabel, isReservedAllocation } from '../lib/csvParser';
 import { DAYS_OF_WEEK, STANDARD_TIME_SLOTS } from '../lib/constants';
 import { CourseCard } from './CourseCard';
 import {
@@ -17,7 +20,7 @@ import {
   CheckCircle2,
   Maximize2,
 } from 'lucide-react';
-import { DayOfWeek, Room, TimeSlot } from '../types/timetable';
+import { Allocation, DayOfWeek, Room, TimeSlot } from '../types/timetable';
 
 export const TimetableGrid: React.FC = () => {
   const {
@@ -36,7 +39,38 @@ export const TimetableGrid: React.FC = () => {
     departmentFilter,
     setDepartmentFilter,
     openFlexibleModal,
-  } = useTimetableStore();
+  } = useTimetableStore(
+    useShallow((s) => ({
+      viewMode: s.viewMode,
+      setViewMode: s.setViewMode,
+      rooms: s.rooms,
+      courses: s.courses,
+      students: s.students,
+      allocations: s.allocations,
+      selectedRoomId: s.selectedRoomId,
+      setSelectedRoomId: s.setSelectedRoomId,
+      selectedDay: s.selectedDay,
+      setSelectedDay: s.setSelectedDay,
+      searchQuery: s.searchQuery,
+      setSearchQuery: s.setSearchQuery,
+      departmentFilter: s.departmentFilter,
+      setDepartmentFilter: s.setDepartmentFilter,
+      openFlexibleModal: s.openFlexibleModal,
+    }))
+  );
+
+  const courseMap = getCourseMap(courses);
+  const sectionRoster = getSectionRoster(students);
+
+  // day|room|slot -> allocation, built once instead of scanning all allocations per cell
+  const cellIndex = useMemo(() => {
+    const index = new Map<string, Allocation>();
+    for (const alloc of allocations) {
+      const key = `${alloc.day}|${alloc.roomId}|${alloc.slotId}`;
+      if (!index.has(key)) index.set(key, alloc);
+    }
+    return index;
+  }, [allocations]);
 
   // Scroll synchronization refs
   const topScrollRef = useRef<HTMLDivElement>(null);
@@ -160,7 +194,7 @@ export const TimetableGrid: React.FC = () => {
 
   // Helper to filter allocations based on search & department
   const isAllocationVisible = (courseId: string) => {
-    const course = courses.find((c) => c.id === courseId);
+    const course = courseMap.get(courseId);
     if (!course) return false;
 
     if (departmentFilter !== 'ALL' && course.department !== departmentFilter) {
@@ -178,6 +212,22 @@ export const TimetableGrid: React.FC = () => {
     }
 
     return true;
+  };
+
+  // Reserved block (e.g. prayer break) or a class missing from the course list: the room is not free
+  const renderBlockedCell = (cellAllocation: Allocation) => {
+    const reserved = isReservedAllocation(cellAllocation.courseSectionId);
+    return (
+      <div
+        className="h-full w-full rounded-lg bg-gray-100 dark:bg-zinc-800/70 border border-gray-300 dark:border-zinc-700 flex flex-col items-center justify-center text-center p-2"
+        title={reserved ? 'Reserved time – room is not available' : 'This course section is not in the course list'}
+      >
+        <span className="text-[11px] font-bold text-gray-600 dark:text-gray-300">
+          {reserved ? getReservedLabel(cellAllocation.courseSectionId) : cellAllocation.courseSectionId}
+        </span>
+        <span className="text-[9px] text-gray-500 mt-0.5">{reserved ? 'Reserved' : 'Not in course list'}</span>
+      </div>
+    );
   };
 
   return (
@@ -457,16 +507,9 @@ export const TimetableGrid: React.FC = () => {
 
                     {/* Day Cells */}
                     {DAYS_OF_WEEK.map((day) => {
-                      const cellAllocation = allocations.find(
-                        (a) =>
-                          a.day === day &&
-                          a.roomId === selectedRoomId &&
-                          a.slotId === slot.id
-                      );
+                      const cellAllocation = cellIndex.get(`${day}|${selectedRoomId}|${slot.id}`);
 
-                      const course = cellAllocation
-                        ? courses.find((c) => c.id === cellAllocation.courseSectionId)
-                        : null;
+                      const course = cellAllocation ? courseMap.get(cellAllocation.courseSectionId) : undefined;
 
                       const isVisible = cellAllocation ? isAllocationVisible(cellAllocation.courseSectionId) : true;
 
@@ -480,8 +523,10 @@ export const TimetableGrid: React.FC = () => {
                               allocation={cellAllocation}
                               course={course}
                               room={selectedRoom}
-                              students={students}
+                              enrolledCount={sectionRoster.get(course.id)?.length || 0}
                             />
+                          ) : cellAllocation && !course ? (
+                            renderBlockedCell(cellAllocation)
                           ) : (
                             <div
                               onClick={() => openFlexibleModal(undefined)}
@@ -574,16 +619,9 @@ export const TimetableGrid: React.FC = () => {
 
                     {/* Room Columns */}
                     {filteredRooms.map((room) => {
-                      const cellAllocation = allocations.find(
-                        (a) =>
-                          a.day === selectedDay &&
-                          a.roomId === room.id &&
-                          a.slotId === slot.id
-                      );
+                      const cellAllocation = cellIndex.get(`${selectedDay}|${room.id}|${slot.id}`);
 
-                      const course = cellAllocation
-                        ? courses.find((c) => c.id === cellAllocation.courseSectionId)
-                        : null;
+                      const course = cellAllocation ? courseMap.get(cellAllocation.courseSectionId) : undefined;
 
                       const isVisible = cellAllocation ? isAllocationVisible(cellAllocation.courseSectionId) : true;
 
@@ -597,8 +635,10 @@ export const TimetableGrid: React.FC = () => {
                               allocation={cellAllocation}
                               course={course}
                               room={room}
-                              students={students}
+                              enrolledCount={sectionRoster.get(course.id)?.length || 0}
                             />
+                          ) : cellAllocation && !course ? (
+                            renderBlockedCell(cellAllocation)
                           ) : (
                             <div
                               onClick={() => openFlexibleModal(undefined)}

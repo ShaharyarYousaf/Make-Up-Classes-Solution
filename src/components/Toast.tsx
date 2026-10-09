@@ -1,9 +1,17 @@
 import React, { useEffect } from 'react';
+import { useShallow } from 'zustand/react/shallow';
 import { useTimetableStore } from '../store/timetableStore';
 import { CheckCircle2, AlertCircle, Info, X, Undo2 } from 'lucide-react';
 
 export const Toast: React.FC = () => {
-  const { toastMessage, clearToast, undoLastReschedule, allocationHistory } = useTimetableStore();
+  const { toastMessage, clearToast, undoLastReschedule, canUndo } = useTimetableStore(
+    useShallow((s) => ({
+      toastMessage: s.toastMessage,
+      clearToast: s.clearToast,
+      undoLastReschedule: s.undoLastReschedule,
+      canUndo: s.allocationHistory.length > 0,
+    }))
+  );
 
   useEffect(() => {
     if (!toastMessage) return;
@@ -15,7 +23,6 @@ export const Toast: React.FC = () => {
 
   if (!toastMessage) return null;
 
-  const canUndo = allocationHistory.length > 0;
 
   return (
     <div className="fixed bottom-5 right-5 z-50 animate-in slide-in-from-bottom-5 duration-300">

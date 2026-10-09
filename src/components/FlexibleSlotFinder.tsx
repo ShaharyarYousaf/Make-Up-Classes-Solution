@@ -1,4 +1,5 @@
 import React, { useMemo, useState } from 'react';
+import { useShallow } from 'zustand/react/shallow';
 import { useTimetableStore } from '../store/timetableStore';
 import { findFlexibleSlots } from '../lib/engine';
 import { DAYS_OF_WEEK } from '../lib/constants';
@@ -25,7 +26,17 @@ export const FlexibleSlotFinder: React.FC = () => {
     students,
     allocations,
     createFlexibleAllocation,
-  } = useTimetableStore();
+  } = useTimetableStore(
+    useShallow((s) => ({
+      isFlexibleModalOpen: s.isFlexibleModalOpen,
+      closeFlexibleModal: s.closeFlexibleModal,
+      courses: s.courses,
+      rooms: s.rooms,
+      students: s.students,
+      allocations: s.allocations,
+      createFlexibleAllocation: s.createFlexibleAllocation,
+    }))
+  );
 
   const [selectedCourseId, setSelectedCourseId] = useState<string>(
     courses[0]?.id || ''
@@ -37,9 +48,9 @@ export const FlexibleSlotFinder: React.FC = () => {
 
   const selectedCourse = courses.find((c) => c.id === selectedCourseId) || courses[0];
 
-  // Run scanner
+  // Run scanner (only while the modal is open – this component stays mounted when closed)
   const flexibleSlots = useMemo(() => {
-    if (!selectedCourse) return [];
+    if (!isFlexibleModalOpen || !selectedCourse) return [];
     return findFlexibleSlots(
       selectedCourse.id,
       duration,
@@ -51,6 +62,7 @@ export const FlexibleSlotFinder: React.FC = () => {
       selectedRoomType === 'ALL' ? undefined : selectedRoomType
     );
   }, [
+    isFlexibleModalOpen,
     selectedCourse,
     duration,
     allocations,
@@ -230,6 +242,8 @@ export const FlexibleSlotFinder: React.FC = () => {
                 className={`p-3.5 rounded-xl border flex flex-col sm:flex-row sm:items-center justify-between gap-3 transition-all ${
                   slot.status === 'SAFE'
                     ? 'bg-emerald-50/50 dark:bg-emerald-950/20 border-emerald-200 dark:border-emerald-800/60 hover:border-emerald-400'
+                    : slot.instructorConflict
+                    ? 'bg-rose-50/40 dark:bg-rose-950/20 border-rose-200 dark:border-rose-900/60 opacity-80'
                     : 'bg-amber-50/50 dark:bg-amber-950/20 border-amber-200 dark:border-amber-800/60'
                 }`}
               >
@@ -263,11 +277,25 @@ export const FlexibleSlotFinder: React.FC = () => {
                       <span>•</span>
                       <span>Capacity: {slot.capacity} seats</span>
                     </div>
+                    {slot.suitability.warnings.length > 0 && (
+                      <div className="flex items-center gap-1 text-[10px] text-amber-700 dark:text-amber-300 mt-0.5">
+                        <AlertTriangle className="w-3 h-3" />
+                        {slot.suitability.warnings.join(' • ')}
+                      </div>
+                    )}
                   </div>
                 </div>
 
                 <div className="flex items-center gap-3 justify-between sm:justify-end">
-                  {slot.status === 'SAFE' ? (
+                  {slot.instructorConflict ? (
+                    <span
+                      title={slot.instructorConflict.reason}
+                      className="flex items-center gap-1 text-xs font-bold text-rose-700 dark:text-rose-300 bg-rose-100 dark:bg-rose-900/60 px-2.5 py-1 rounded-md"
+                    >
+                      <AlertTriangle className="w-3.5 h-3.5 text-rose-600" />
+                      Teacher Busy ({slot.instructorConflict.conflicts[0].course.courseCode})
+                    </span>
+                  ) : slot.status === 'SAFE' ? (
                     <span className="flex items-center gap-1 text-xs font-bold text-emerald-700 dark:text-emerald-300 bg-emerald-100 dark:bg-emerald-900/60 px-2.5 py-1 rounded-md">
                       <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
                       0 Student Clashes
@@ -281,7 +309,9 @@ export const FlexibleSlotFinder: React.FC = () => {
 
                   <button
                     onClick={() => handleBookSlot(slot)}
-                    className="flex items-center gap-1.5 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-lg transition-all shadow-sm hover:shadow-md"
+                    disabled={!!slot.instructorConflict}
+                    title={slot.instructorConflict ? 'The instructor is already teaching at this time' : undefined}
+                    className="flex items-center gap-1.5 px-4 py-2 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-300 dark:disabled:bg-zinc-800 disabled:text-gray-500 disabled:cursor-not-allowed text-white text-xs font-bold rounded-lg transition-all shadow-sm hover:shadow-md"
                   >
                     <CheckCircle className="w-3.5 h-3.5" />
                     Book Slot
