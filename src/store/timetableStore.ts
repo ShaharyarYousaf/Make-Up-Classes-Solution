@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
+import { persist, PersistStorage } from 'zustand/middleware';
 import {
   Allocation,
   CourseSection,
@@ -109,6 +109,52 @@ interface TimetableStore {
   showToast: (text: string, type?: 'success' | 'info' | 'warning') => void;
 }
 
+// Undo snapshots are full copies of the timetable, so keep a bounded, in-memory history only
+const MAX_HISTORY = 20;
+const pushHistory = (history: Allocation[][], snapshot: Allocation[]) => [...history, snapshot].slice(-MAX_HISTORY);
+
+type PersistedState = Pick<
+  TimetableStore,
+  'rooms' | 'courses' | 'students' | 'allocations' | 'selectedRoomId' | 'selectedDay'
+>;
+
+/**
+ * localStorage adapter that only serializes when persisted data actually changed.
+ * zustand calls setItem on every state update (opening a modal, typing in search…),
+ * and serializing thousands of students each time made the UI sluggish.
+ */
+let lastPersisted: PersistedState | null = null;
+const timetableStorage: PersistStorage<PersistedState> = {
+  getItem: (name) => {
+    try {
+      const raw = localStorage.getItem(name);
+      return raw ? JSON.parse(raw) : null;
+    } catch {
+      return null;
+    }
+  },
+  setItem: (name, value) => {
+    const next = value.state;
+    const prev = lastPersisted;
+    if (prev && (Object.keys(next) as (keyof PersistedState)[]).every((key) => prev[key] === next[key])) {
+      return;
+    }
+    lastPersisted = next;
+    try {
+      localStorage.setItem(name, JSON.stringify(value));
+    } catch (err) {
+      console.warn('Could not save timetable to browser storage (quota exceeded?)', err);
+    }
+  },
+  removeItem: (name) => {
+    try {
+      localStorage.removeItem(name);
+    } catch {
+      // ignore
+    }
+  },
+};
+
 export const useTimetableStore = create<TimetableStore>()(
   persist(
     (set, get) => ({
@@ -206,7 +252,7 @@ export const useTimetableStore = create<TimetableStore>()(
     }
 
     // Save previous state for Undo
-    const nextHistory = [...allocationHistory, allocations];
+    const nextHistory = pushHistory(allocationHistory, allocations);
 
     const updatedAllocations = allocations.map((alloc) => {
       if (alloc.id === selectedAllocation.id) {
@@ -298,7 +344,7 @@ export const useTimetableStore = create<TimetableStore>()(
 
     set({
       allocations: [...allocations, newAlloc],
-      allocationHistory: [...allocationHistory, allocations],
+      allocationHistory: pushHistory(allocationHistory, allocations),
       isFlexibleModalOpen: false,
       toastMessage: {
         text: `Allocated extra slot for ${course?.courseCode || courseSectionId} on ${day} (${customInterval.startTime} - ${customInterval.endTime})`,
@@ -329,7 +375,7 @@ export const useTimetableStore = create<TimetableStore>()(
     const course = courses.find((c) => c.id === targetAlloc.courseSectionId);
     const targetRoom = rooms.find((r) => r.id === newRoomId);
 
-    const nextHistory = [...allocationHistory, allocations];
+    const nextHistory = pushHistory(allocationHistory, allocations);
     const updatedAllocations = allocations.map((a) => {
       if (a.id === allocationId) {
         return {
@@ -368,7 +414,7 @@ export const useTimetableStore = create<TimetableStore>()(
     if (!targetAlloc) return;
 
     const course = courses.find((c) => c.id === targetAlloc.courseSectionId);
-    const nextHistory = [...allocationHistory, allocations];
+    const nextHistory = pushHistory(allocationHistory, allocations);
 
     // If it was a newly created flexible makeup slot without prior history, remove it
     if (!targetAlloc.rescheduledFrom) {
@@ -419,7 +465,7 @@ export const useTimetableStore = create<TimetableStore>()(
     if (!targetAlloc) return;
 
     const course = courses.find((c) => c.id === targetAlloc.courseSectionId);
-    const nextHistory = [...allocationHistory, allocations];
+    const nextHistory = pushHistory(allocationHistory, allocations);
 
     const updatedAllocations = allocations.map((a) => {
       if (a.id === allocationId) {
@@ -448,7 +494,7 @@ export const useTimetableStore = create<TimetableStore>()(
     const rescheduledCount = allocations.filter((a) => a.isRescheduled).length;
     if (rescheduledCount === 0) return;
 
-    const nextHistory = [...allocationHistory, allocations];
+    const nextHistory = pushHistory(allocationHistory, allocations);
 
     const updatedAllocations = allocations
       .filter((a) => !(a.isRescheduled && !a.rescheduledFrom))
@@ -485,7 +531,7 @@ export const useTimetableStore = create<TimetableStore>()(
     const rescheduledCount = allocations.filter((a) => a.isRescheduled).length;
     if (rescheduledCount === 0) return;
 
-    const nextHistory = [...allocationHistory, allocations];
+    const nextHistory = pushHistory(allocationHistory, allocations);
 
     const updatedAllocations = allocations.map((a) => {
       if (a.isRescheduled) {
@@ -515,12 +561,20 @@ export const useTimetableStore = create<TimetableStore>()(
 
   importDatasets: ({ rooms, courses, students, allocations }) => {
     const currentState = get();
+    const nextRooms = rooms || currentState.rooms;
+    const roomStillExists = nextRooms.some((r) => r.id === currentState.selectedRoomId);
     set({
-      rooms: rooms || currentState.rooms,
+      rooms: nextRooms,
       courses: courses || currentState.courses,
       students: students || currentState.students,
       allocations: allocations || currentState.allocations,
-      isDataManagerOpen: false,
+      // Undo snapshots from a previous dataset would mix two timetables
+      allocationHistory: allocations ? [] : currentState.allocationHistory,
+      selectedRoomId: roomStillExists ? currentState.selectedRoomId : nextRooms[0]?.id || '',
+      selectedAllocation: null,
+      selectedCourse: null,
+      isRescheduleDrawerOpen: false,
+      isImpactModalOpen: false,
       toastMessage: {
         text: 'New dataset imported successfully!',
         type: 'success',
@@ -552,12 +606,12 @@ export const useTimetableStore = create<TimetableStore>()(
   }),
   {
     name: 'unischedule_master_storage',
-    partialize: (state) => ({
+    storage: timetableStorage,
+    partialize: (state): PersistedState => ({
       rooms: state.rooms,
       courses: state.courses,
       students: state.students,
       allocations: state.allocations,
-      allocationHistory: state.allocationHistory,
       selectedRoomId: state.selectedRoomId,
       selectedDay: state.selectedDay,
     }),

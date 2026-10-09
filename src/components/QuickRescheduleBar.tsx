@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+import { useShallow } from 'zustand/react/shallow';
 import { useTimetableStore } from '../store/timetableStore';
 import { getAllocationInterval } from '../lib/utils';
 import {
@@ -19,7 +20,16 @@ export const QuickRescheduleBar: React.FC = () => {
     openVacantRoomsModal,
     setSelectedRoomId,
     setViewMode,
-  } = useTimetableStore();
+  } = useTimetableStore(
+    useShallow((s) => ({
+      courses: s.courses,
+      allocations: s.allocations,
+      initiateReschedule: s.initiateReschedule,
+      openVacantRoomsModal: s.openVacantRoomsModal,
+      setSelectedRoomId: s.setSelectedRoomId,
+      setViewMode: s.setViewMode,
+    }))
+  );
 
   const [selectedCourseCode, setSelectedCourseCode] = useState<string>('AI4015');
   const [selectedSection, setSelectedSection] = useState<string>('BCS-7B');

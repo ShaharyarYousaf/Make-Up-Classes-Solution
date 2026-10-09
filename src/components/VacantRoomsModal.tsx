@@ -1,7 +1,8 @@
 import React, { useState, useMemo } from 'react';
+import { useShallow } from 'zustand/react/shallow';
 import { useTimetableStore } from '../store/timetableStore';
 import { DAYS_OF_WEEK, STANDARD_TIME_SLOTS } from '../lib/constants';
-import { getVacantRooms, VacantRoomResult } from '../lib/engine';
+import { getSectionRoster, getVacantRooms, VacantRoomResult } from '../lib/engine';
 import { getAllocationInterval } from '../lib/utils';
 import { DayOfWeek, Room } from '../types/timetable';
 import {
@@ -30,7 +31,19 @@ export const VacantRoomsModal: React.FC = () => {
     students,
     reassignRoom,
     initiateReschedule,
-  } = useTimetableStore();
+  } = useTimetableStore(
+    useShallow((s) => ({
+      isVacantRoomsModalOpen: s.isVacantRoomsModalOpen,
+      closeVacantRoomsModal: s.closeVacantRoomsModal,
+      vacantRoomsTargetCourseId: s.vacantRoomsTargetCourseId,
+      courses: s.courses,
+      rooms: s.rooms,
+      allocations: s.allocations,
+      students: s.students,
+      reassignRoom: s.reassignRoom,
+      initiateReschedule: s.initiateReschedule,
+    }))
+  );
 
   // Search & selections
   const [courseSearch, setCourseSearch] = useState('');
@@ -156,7 +169,7 @@ export const VacantRoomsModal: React.FC = () => {
   // Enrolled student count for current course
   const enrolledStudents = useMemo(() => {
     if (!currentCourse) return [];
-    return students.filter((s) => s.enrolledSectionIds.includes(currentCourse.id));
+    return getSectionRoster(students).get(currentCourse.id) || [];
   }, [students, currentCourse]);
 
   // Target interval in minutes
@@ -170,7 +183,9 @@ export const VacantRoomsModal: React.FC = () => {
   }, [targetSlotId]);
 
   // Compute vacant rooms
+  // Only scan while the modal is open – this component stays mounted when closed
   const roomVacancyResults: VacantRoomResult[] = useMemo(() => {
+    if (!isVacantRoomsModalOpen) return [];
     return getVacantRooms(
       targetDay,
       targetInterval,
@@ -182,6 +197,7 @@ export const VacantRoomsModal: React.FC = () => {
       activeAllocation?.id
     );
   }, [
+    isVacantRoomsModalOpen,
     targetDay,
     targetInterval,
     allocations,

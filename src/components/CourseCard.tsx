@@ -1,5 +1,5 @@
 import React from 'react';
-import { Allocation, CourseSection, Room, Student } from '../types/timetable';
+import { Allocation, CourseSection, Room } from '../types/timetable';
 import { useTimetableStore } from '../store/timetableStore';
 import { ArrowRightLeft, Users, Sparkles, MapPin, Clock } from 'lucide-react';
 import { STANDARD_TIME_SLOTS } from '../lib/constants';
@@ -8,22 +8,17 @@ interface CourseCardProps {
   allocation: Allocation;
   course: CourseSection;
   room: Room;
-  students: Student[];
+  enrolledCount: number;
 }
 
-export const CourseCard: React.FC<CourseCardProps> = ({
+export const CourseCard: React.FC<CourseCardProps> = React.memo(function CourseCard({
   allocation,
   course,
   room,
-  students,
-}) => {
-  const { initiateReschedule, selectedAllocation } = useTimetableStore();
-
-  const enrolledCount = students.filter(s =>
-    s.enrolledSectionIds.includes(course.id)
-  ).length;
-
-  const isSelected = selectedAllocation?.id === allocation.id;
+  enrolledCount,
+}) {
+  const initiateReschedule = useTimetableStore((s) => s.initiateReschedule);
+  const isSelected = useTimetableStore((s) => s.selectedAllocation?.id === allocation.id);
 
   const standardSlot = STANDARD_TIME_SLOTS.find(s => s.id === allocation.slotId);
   const timeDisplay = standardSlot
@@ -121,4 +116,4 @@ export const CourseCard: React.FC<CourseCardProps> = ({
       </div>
     </div>
   );
-};
+});

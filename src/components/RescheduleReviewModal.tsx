@@ -1,5 +1,7 @@
 import React, { useState, useMemo } from 'react';
+import { useShallow } from 'zustand/react/shallow';
 import { useTimetableStore } from '../store/timetableStore';
+import { getEnrolledCount } from '../lib/engine';
 import { getAllocationInterval } from '../lib/utils';
 import { STANDARD_TIME_SLOTS } from '../lib/constants';
 import {
@@ -32,7 +34,21 @@ export const RescheduleReviewModal: React.FC = () => {
     revertAllRescheduled,
     keepAllRescheduled,
     initiateReschedule,
-  } = useTimetableStore();
+  } = useTimetableStore(
+    useShallow((s) => ({
+      isRescheduleReviewOpen: s.isRescheduleReviewOpen,
+      closeRescheduleReview: s.closeRescheduleReview,
+      allocations: s.allocations,
+      courses: s.courses,
+      rooms: s.rooms,
+      students: s.students,
+      revertAllocationToOriginal: s.revertAllocationToOriginal,
+      keepAllocationForWeek: s.keepAllocationForWeek,
+      revertAllRescheduled: s.revertAllRescheduled,
+      keepAllRescheduled: s.keepAllRescheduled,
+      initiateReschedule: s.initiateReschedule,
+    }))
+  );
 
   const [confirmRevertAll, setConfirmRevertAll] = useState(false);
 
@@ -145,9 +161,7 @@ export const RescheduleReviewModal: React.FC = () => {
               {rescheduledAllocations.map((alloc) => {
                 const course = courses.find((c) => c.id === alloc.courseSectionId);
                 const room = rooms.find((r) => r.id === alloc.roomId);
-                const enrolledCount = students.filter((s) =>
-                  s.enrolledSectionIds.includes(alloc.courseSectionId)
-                ).length;
+                const enrolledCount = getEnrolledCount(alloc.courseSectionId, students);
 
                 const currentSlot = STANDARD_TIME_SLOTS.find((s) => s.id === alloc.slotId);
                 const currentInterval = getAllocationInterval(alloc.slotId, alloc.customInterval);

@@ -1,8 +1,11 @@
 import React, { useMemo, useState } from 'react';
+import { useShallow } from 'zustand/react/shallow';
 import { useTimetableStore } from '../store/timetableStore';
 import { DAYS_OF_WEEK, STANDARD_TIME_SLOTS } from '../lib/constants';
 import {
+  checkRoomSuitability,
   getBestSlotsAcrossAllRooms,
+  getEnrolledCount,
   getSlotRecommendationsForRoom,
 } from '../lib/engine';
 import {
@@ -33,7 +36,21 @@ export const RescheduleDrawer: React.FC = () => {
     targetRoomId,
     setTargetRoomId,
     selectTargetSlot,
-  } = useTimetableStore();
+  } = useTimetableStore(
+    useShallow((s) => ({
+      isRescheduleDrawerOpen: s.isRescheduleDrawerOpen,
+      closeRescheduleDrawer: s.closeRescheduleDrawer,
+      selectedAllocation: s.selectedAllocation,
+      selectedCourse: s.selectedCourse,
+      rooms: s.rooms,
+      courses: s.courses,
+      students: s.students,
+      allocations: s.allocations,
+      targetRoomId: s.targetRoomId,
+      setTargetRoomId: s.setTargetRoomId,
+      selectTargetSlot: s.selectTargetSlot,
+    }))
+  );
 
   const [activeTab, setActiveTab] = useState<'current-room' | 'all-rooms'>('current-room');
   const [filterSafeOnly, setFilterSafeOnly] = useState<boolean>(false);
@@ -41,7 +58,7 @@ export const RescheduleDrawer: React.FC = () => {
 
   // Compute recommendations for the currently selected room
   const roomRecommendations = useMemo(() => {
-    if (!selectedAllocation || !selectedCourse) return [];
+    if (!isRescheduleDrawerOpen || !selectedAllocation || !selectedCourse) return [];
     return getSlotRecommendationsForRoom(
       selectedCourse.id,
       targetRoomId,
@@ -51,11 +68,11 @@ export const RescheduleDrawer: React.FC = () => {
       rooms,
       selectedAllocation.id
     );
-  }, [selectedAllocation, selectedCourse, targetRoomId, allocations, students, courses, rooms]);
+  }, [isRescheduleDrawerOpen, selectedAllocation, selectedCourse, targetRoomId, allocations, students, courses, rooms]);
 
-  // Compute best slots across ALL campus rooms
+  // Compute best slots across ALL campus rooms (only when that tab is open – it scans every room)
   const allRoomsRecommendations = useMemo(() => {
-    if (!selectedAllocation || !selectedCourse) return [];
+    if (!isRescheduleDrawerOpen || activeTab !== 'all-rooms' || !selectedAllocation || !selectedCourse) return [];
     return getBestSlotsAcrossAllRooms(
       selectedCourse.id,
       allocations,
@@ -65,7 +82,7 @@ export const RescheduleDrawer: React.FC = () => {
       selectedAllocation.id,
       selectedFilterDay === 'ALL' ? undefined : selectedFilterDay
     );
-  }, [selectedAllocation, selectedCourse, allocations, students, courses, rooms, selectedFilterDay]);
+  }, [isRescheduleDrawerOpen, activeTab, selectedAllocation, selectedCourse, allocations, students, courses, rooms, selectedFilterDay]);
 
   if (!isRescheduleDrawerOpen || !selectedAllocation || !selectedCourse) {
     return null;
@@ -73,9 +90,8 @@ export const RescheduleDrawer: React.FC = () => {
 
   const currentRoom = rooms.find((r) => r.id === selectedAllocation.roomId);
   const targetRoom = rooms.find((r) => r.id === targetRoomId) || rooms[0];
-  const enrolledCount = students.filter((s) =>
-    s.enrolledSectionIds.includes(selectedCourse.id)
-  ).length;
+  const enrolledCount = getEnrolledCount(selectedCourse.id, students);
+  const targetRoomSuitability = checkRoomSuitability(selectedCourse, targetRoom, enrolledCount);
 
   const currentStandardSlot = STANDARD_TIME_SLOTS.find(
     (s) => s.id === selectedAllocation.slotId
@@ -186,6 +202,15 @@ export const RescheduleDrawer: React.FC = () => {
           </label>
         </div>
 
+        {targetRoomSuitability.warnings.length > 0 && (
+          <div className="px-5 py-2 border-b border-amber-200 dark:border-amber-900 bg-amber-50 dark:bg-amber-950/40 text-xs text-amber-900 dark:text-amber-200 flex items-center gap-2">
+            <AlertTriangle className="w-3.5 h-3.5 text-amber-600 shrink-0" />
+            <span>
+              <strong>{targetRoom.name}:</strong> {targetRoomSuitability.warnings.join(' • ')}
+            </span>
+          </div>
+        )}
+
         {/* View Switch Tabs */}
         <div className="px-5 pt-3 pb-0 flex items-center gap-4 border-b border-gray-200 dark:border-zinc-800">
           <button
@@ -228,7 +253,7 @@ export const RescheduleDrawer: React.FC = () => {
                   </span>
                   <span className="flex items-center gap-1.5">
                     <span className="w-3 h-3 rounded-full bg-rose-500 border border-white shadow-xs"></span>
-                    <strong>Red:</strong> Room occupied or &gt;3 clashes
+                    <strong>Red:</strong> Room occupied, teacher busy or &gt;3 clashes
                   </span>
                 </div>
                 <span className="text-[11px] text-gray-500 hidden sm:inline">
@@ -311,7 +336,11 @@ export const RescheduleDrawer: React.FC = () => {
                         badge = (
                           <span className="flex items-center gap-1 text-[9px] font-bold px-1.5 py-0.5 rounded bg-rose-100 text-rose-800 dark:bg-rose-900 dark:text-rose-200">
                             <Ban className="w-2.5 h-2.5 text-rose-600" />
-                            {rec.roomConflict?.hasConflict ? 'Occupied' : `${rec.studentClashes.clashCount} Clashes`}
+                            {rec.roomConflict?.hasConflict
+                              ? 'Occupied'
+                              : rec.instructorConflict
+                              ? 'Teacher Busy'
+                              : `${rec.studentClashes.clashCount} Clashes`}
                           </span>
                         );
                       }
@@ -339,7 +368,11 @@ export const RescheduleDrawer: React.FC = () => {
 
                           <span className="text-[11px] font-medium leading-tight line-clamp-2">
                             {rec.roomConflict?.hasConflict
-                              ? rec.roomConflict.conflictingCourse?.courseCode || 'Booked'
+                              ? rec.roomConflict.conflictingCourse?.courseCode ||
+                                rec.roomConflict.conflictingAllocation?.note ||
+                                'Booked'
+                              : rec.instructorConflict
+                              ? `Teaching ${rec.instructorConflict.conflicts[0].course.courseCode}`
                               : rec.status === 'SAFE'
                               ? 'Room Available'
                               : `${rec.studentClashes.clashPercentage}% Clash`}
@@ -413,6 +446,12 @@ export const RescheduleDrawer: React.FC = () => {
                           <span>•</span>
                           <span>{rec.roomType} ({rec.roomCapacity} seats)</span>
                         </div>
+                        {rec.suitability.warnings.length > 0 && (
+                          <span className="text-[10px] text-amber-700 dark:text-amber-300 flex items-center gap-1">
+                            <AlertTriangle className="w-3 h-3" />
+                            {rec.suitability.warnings.join(' • ')}
+                          </span>
+                        )}
                       </div>
 
                       <div className="flex flex-col items-end gap-1">
@@ -428,7 +467,7 @@ export const RescheduleDrawer: React.FC = () => {
                           </span>
                         ) : (
                           <span className="text-xs font-bold text-rose-700 dark:text-rose-300 bg-rose-100 dark:bg-rose-900/60 px-2 py-0.5 rounded-md">
-                            {rec.studentClashes.clashCount} Clashes
+                            {rec.instructorConflict ? 'Teacher Busy' : `${rec.studentClashes.clashCount} Clashes`}
                           </span>
                         )}
                         <span className="text-[10px] text-blue-600 dark:text-blue-400 font-semibold flex items-center gap-0.5">

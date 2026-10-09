@@ -1,6 +1,12 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
+import { useShallow } from 'zustand/react/shallow';
 import { useTimetableStore } from '../store/timetableStore';
-import { checkRoomConflict, checkStudentClashes } from '../lib/engine';
+import {
+  checkInstructorConflict,
+  checkRoomConflict,
+  checkRoomSuitability,
+  checkStudentClashes,
+} from '../lib/engine';
 import { getAllocationInterval } from '../lib/utils';
 import {
   X,
@@ -32,10 +38,32 @@ export const ImpactModal: React.FC = () => {
     students,
     allocations,
     confirmReschedule,
-  } = useTimetableStore();
+  } = useTimetableStore(
+    useShallow((s) => ({
+      isImpactModalOpen: s.isImpactModalOpen,
+      closeImpactModal: s.closeImpactModal,
+      selectedAllocation: s.selectedAllocation,
+      selectedCourse: s.selectedCourse,
+      targetDay: s.targetDay,
+      targetSlot: s.targetSlot,
+      targetRoomId: s.targetRoomId,
+      targetCustomInterval: s.targetCustomInterval,
+      rooms: s.rooms,
+      courses: s.courses,
+      students: s.students,
+      allocations: s.allocations,
+      confirmReschedule: s.confirmReschedule,
+    }))
+  );
 
   const [overrideNote, setOverrideNote] = useState('');
   const [acknowledgedOverride, setAcknowledgedOverride] = useState(false);
+
+  // An override must be re-confirmed for every proposed slot, never carried over
+  useEffect(() => {
+    setAcknowledgedOverride(false);
+    setOverrideNote('');
+  }, [selectedAllocation, targetDay, targetSlot, targetRoomId, targetCustomInterval]);
 
   // Target interval
   const targetInterval = useMemo(() => {
@@ -87,6 +115,20 @@ export const ImpactModal: React.FC = () => {
     );
   }, [targetDay, targetInterval, allocations, students, courses, rooms, selectedAllocation, selectedCourse]);
 
+  // Evaluate instructor double-booking
+  const instructorConflict = useMemo(() => {
+    if (!targetDay || !selectedAllocation || !selectedCourse) return { hasConflict: false, conflicts: [] };
+    return checkInstructorConflict(
+      selectedCourse.id,
+      targetDay,
+      targetInterval,
+      allocations,
+      courses,
+      rooms,
+      selectedAllocation.id
+    );
+  }, [targetDay, targetInterval, allocations, courses, rooms, selectedAllocation, selectedCourse]);
+
   if (!isImpactModalOpen || !selectedAllocation || !selectedCourse || !targetDay) {
     return null;
   }
@@ -99,9 +141,13 @@ export const ImpactModal: React.FC = () => {
     selectedAllocation.customInterval
   );
 
+  const suitability = checkRoomSuitability(selectedCourse, targetRoom, studentClashes.totalEnrolled);
+
   const hasRoomBlock = roomConflict.hasConflict;
+  const hasInstructorBlock = instructorConflict.hasConflict;
+  const hasHardBlock = hasRoomBlock || hasInstructorBlock;
   const hasStudentClashes = studentClashes.clashCount > 0;
-  const canConfirm = !hasRoomBlock || acknowledgedOverride;
+  const canConfirm = !hasHardBlock || acknowledgedOverride;
 
   const handleConfirm = () => {
     if (!canConfirm) return;
@@ -212,6 +258,60 @@ export const ImpactModal: React.FC = () => {
                 {roomConflict.reason}. Rescheduling to this slot will conflict with another instructor's class.
               </div>
             )}
+
+            {suitability.warnings.length > 0 && (
+              <div className="mt-3 p-3 bg-amber-50 dark:bg-amber-950/40 rounded-lg border border-amber-200 dark:border-amber-800 text-xs text-amber-900 dark:text-amber-200 flex items-start gap-2">
+                <AlertTriangle className="w-4 h-4 text-amber-600 shrink-0" />
+                <span>
+                  <strong>Room may not suit this class:</strong> {suitability.warnings.join(' • ')}
+                </span>
+              </div>
+            )}
+          </div>
+
+          {/* Section 1b: Instructor availability */}
+          <div className="p-4 rounded-xl border border-gray-200 dark:border-zinc-800">
+            <div className="flex items-start justify-between">
+              <div className="flex items-center gap-2">
+                {hasInstructorBlock ? (
+                  <UserX className="w-5 h-5 text-rose-600" />
+                ) : (
+                  <CheckCircle2 className="w-5 h-5 text-emerald-600" />
+                )}
+                <div>
+                  <h4 className="text-sm font-bold text-gray-900 dark:text-white">
+                    Instructor Availability
+                  </h4>
+                  <p className="text-xs text-gray-500">{selectedCourse.instructor}</p>
+                </div>
+              </div>
+
+              {hasInstructorBlock ? (
+                <span className="px-2.5 py-1 text-xs font-bold rounded-md bg-rose-100 text-rose-800 dark:bg-rose-900/60 dark:text-rose-200">
+                  Teacher Busy
+                </span>
+              ) : (
+                <span className="px-2.5 py-1 text-xs font-bold rounded-md bg-emerald-100 text-emerald-800 dark:bg-emerald-900/60 dark:text-emerald-200">
+                  Teacher Free
+                </span>
+              )}
+            </div>
+
+            {hasInstructorBlock && (
+              <div className="mt-3 p-3 bg-rose-50 dark:bg-rose-950/40 rounded-lg border border-rose-200 dark:border-rose-800 text-xs text-rose-900 dark:text-rose-200 space-y-1">
+                {instructorConflict.conflicts.map((c) =>
+                  c.course.id === selectedCourse.id ? (
+                    <div key={c.allocation.id}>
+                      This section already has another session at this time (in {c.roomName}, {c.timeLabel}).
+                    </div>
+                  ) : (
+                    <div key={c.allocation.id}>
+                      Already teaching <strong>{c.course.courseCode} ({c.course.section})</strong> – {c.course.courseTitle} in {c.roomName}, {c.timeLabel}
+                    </div>
+                  )
+                )}
+              </div>
+            )}
           </div>
 
           {/* Section 2: Student Clash Breakdown */}
@@ -311,8 +411,8 @@ export const ImpactModal: React.FC = () => {
             />
           </div>
 
-          {/* Room Conflict Override Checkbox */}
-          {hasRoomBlock && (
+          {/* Room / Instructor Conflict Override Checkbox */}
+          {hasHardBlock && (
             <div className="p-3 bg-amber-50 dark:bg-amber-950/40 rounded-lg border border-amber-300 dark:border-amber-800">
               <label className="flex items-start gap-2 cursor-pointer text-xs font-semibold text-amber-900 dark:text-amber-200">
                 <input
@@ -322,7 +422,11 @@ export const ImpactModal: React.FC = () => {
                   className="mt-0.5 rounded border-amber-400 text-amber-600 focus:ring-amber-500"
                 />
                 <span>
-                  I understand the target room is currently booked, and I wish to force-override this schedule change.
+                  {hasRoomBlock && hasInstructorBlock
+                    ? 'I understand the target room is booked and the instructor is already teaching at this time, and I wish to force-override this schedule change.'
+                    : hasRoomBlock
+                    ? 'I understand the target room is currently booked, and I wish to force-override this schedule change.'
+                    : 'I understand the instructor is already teaching another class at this time, and I wish to force-override this schedule change.'}
                 </span>
               </label>
             </div>
