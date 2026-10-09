@@ -67,7 +67,7 @@ export default function Home() {
               Intelligent Clash Resolution Engine
             </div>
             <h2 className="text-xl sm:text-2xl font-black tracking-tight leading-snug">
-              University Timetable Rescheduler & Room Optimizer
+              Reschedule Classes &amp; Plan Make-Ups at FAST Islamabad
             </h2>
             <p className="text-xs sm:text-sm text-slate-300 max-w-3xl leading-relaxed">
               Select any course and section below to inspect <strong>Vacant Rooms</strong>, detect <strong>Cross-Enrollment Clashes</strong>, and reschedule class slots across the 6-day academic schedule.
@@ -124,7 +124,7 @@ export default function Home() {
       {/* Footer */}
       <footer className="border-t border-gray-200 dark:border-zinc-800 py-4 text-center text-xs text-gray-500 dark:text-zinc-500 bg-white dark:bg-zinc-900">
         <p>
-          UniSchedule Pro • Academic Rescheduling & Conflict Resolution System • FAST-NUCES Dataset
+          Make-Up Class Scheduler • FAST-NUCES Islamabad • National University of Computer & Emerging Sciences
         </p>
       </footer>
     </div>

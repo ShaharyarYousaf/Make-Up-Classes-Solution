@@ -86,7 +86,7 @@ export const DataManagerModal: React.FC = () => {
       {
         metadata: {
           generatedAt: new Date().toISOString(),
-          institution: 'FAST-NUCES Department of Computer Science & AI',
+          institution: 'FAST-NUCES Islamabad',
           semester: 'Fall 2026',
         },
         rooms,
@@ -110,7 +110,7 @@ export const DataManagerModal: React.FC = () => {
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `unischedule_dataset_${new Date().toISOString().slice(0, 10)}.json`;
+    a.download = `fast_makeup_dataset_${new Date().toISOString().slice(0, 10)}.json`;
     a.click();
     URL.revokeObjectURL(url);
     showToast('Exported complete dataset as JSON', 'info');

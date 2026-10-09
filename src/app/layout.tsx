@@ -2,8 +2,10 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'UniSchedule Pro - University Timetable Rescheduler & Clash Guard',
-  description: 'Interactive university timetable management and slot conflict resolution application.',
+  title: 'Make-Up Class Scheduler | FAST-NUCES Islamabad',
+  description:
+    'Reschedule classes and plan clash-free make-up sessions for FAST-NUCES Islamabad using the live timetable, rooms and student enrollments.',
+  icons: { icon: '/branding/nu-favicon.jpg' },
 };
 
 export default function RootLayout({

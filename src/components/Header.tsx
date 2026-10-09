@@ -2,7 +2,6 @@ import React from 'react';
 import { useShallow } from 'zustand/react/shallow';
 import { useTimetableStore } from '../store/timetableStore';
 import {
-  CalendarDays,
   Sparkles,
   Undo2,
   Database,
@@ -49,21 +48,23 @@ export const Header: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 gap-4">
           {/* Logo & Brand */}
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center text-white shadow-md shadow-blue-500/20">
-              <CalendarDays className="w-5 h-5" />
-            </div>
-            <div>
+          <div className="flex items-center gap-3 shrink-0">
+            <img
+              src="/branding/fast-nu-logo.png"
+              alt="FAST – National University of Computer and Emerging Sciences"
+              className="h-9 sm:h-10 w-auto shrink-0"
+            />
+            <div className="hidden sm:block pl-3 border-l border-gray-200 dark:border-zinc-700">
               <div className="flex items-center gap-2">
-                <h1 className="text-base sm:text-lg font-black tracking-tight text-gray-900 dark:text-white">
-                  UniSchedule<span className="text-blue-600 dark:text-blue-400">Pro</span>
+                <h1 className="text-base lg:text-lg font-black tracking-tight text-gray-900 dark:text-white whitespace-nowrap">
+                  Make-Up <span className="text-[#29abe2]">Class Scheduler</span>
                 </h1>
-                <span className="hidden sm:inline-block text-[10px] font-extrabold uppercase tracking-wider bg-blue-50 dark:bg-blue-950/80 text-blue-700 dark:text-blue-300 px-2 py-0.5 rounded-full border border-blue-200 dark:border-blue-900">
-                  Rescheduler & Clash Guard
+                <span className="hidden xl:inline-block whitespace-nowrap text-[10px] font-extrabold uppercase tracking-wider bg-sky-50 dark:bg-sky-950/80 text-sky-700 dark:text-sky-300 px-2 py-0.5 rounded-full border border-sky-200 dark:border-sky-900">
+                  Islamabad Campus
                 </span>
               </div>
-              <p className="text-[11px] text-gray-500 hidden md:block">
-                Department of Computer Science & AI • University Timetable Matrix
+              <p className="text-[11px] text-gray-500 hidden xl:block whitespace-nowrap">
+                FAST-NUCES Islamabad • Class Rescheduling & Clash-Free Make-Up Planning
               </p>
             </div>
           </div>
