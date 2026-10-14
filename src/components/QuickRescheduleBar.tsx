@@ -2,6 +2,8 @@ import React, { useState, useMemo } from 'react';
 import { useShallow } from 'zustand/react/shallow';
 import { useTimetableStore } from '../store/timetableStore';
 import { getAllocationInterval } from '../lib/utils';
+import { Combobox } from './Combobox';
+import { courseCodeOptions, sectionOptions } from '../lib/courseOptions';
 import {
   Sparkles,
   Zap,
@@ -34,16 +36,8 @@ export const QuickRescheduleBar: React.FC = () => {
   const [selectedCourseCode, setSelectedCourseCode] = useState<string>('AI4015');
   const [selectedSection, setSelectedSection] = useState<string>('BCS-7B');
 
-  // Unique course codes for the quick picker
-  const uniqueCourseOptions = useMemo(() => {
-    const map = new Map<string, string>();
-    courses.forEach((c) => {
-      if (!map.has(c.courseCode)) {
-        map.set(c.courseCode, c.courseTitle);
-      }
-    });
-    return Array.from(map.entries()).map(([code, title]) => ({ code, title }));
-  }, [courses]);
+  const courseOptions = useMemo(() => courseCodeOptions(courses), [courses]);
+  const sectionChoices = useMemo(() => sectionOptions(courses, selectedCourseCode), [courses, selectedCourseCode]);
 
   // Available sections for the selected course code
   const availableSections = useMemo(() => {
@@ -98,43 +92,35 @@ export const QuickRescheduleBar: React.FC = () => {
       {/* Selector Controls */}
       <div className="flex flex-wrap items-center gap-3 flex-1">
         {/* Course Code Dropdown */}
-        <div className="flex flex-col gap-1 min-w-[180px]">
+        <div className="flex flex-col gap-1 min-w-[220px] flex-1 sm:flex-none sm:w-72">
           <span className="text-[11px] font-bold text-blue-200 uppercase tracking-wider flex items-center gap-1">
             <Search className="w-3 h-3 text-blue-300" />
             Select Course:
           </span>
-          <select
+          <Combobox
+            options={courseOptions}
             value={selectedCourseCode}
-            onChange={(e) => handleCourseChange(e.target.value)}
-            aria-label="Select course"
-            className="bg-white dark:bg-zinc-800 text-gray-900 dark:text-white text-xs font-bold rounded-xl px-3 py-2 border border-blue-400/40 focus:outline-none focus:ring-2 focus:ring-blue-400 shadow-sm"
-          >
-            {uniqueCourseOptions.map((c) => (
-              <option key={c.code} value={c.code}>
-                {c.code} - {c.title.slice(0, 28)}
-              </option>
-            ))}
-          </select>
+            onChange={handleCourseChange}
+            ariaLabel="Select course"
+            placeholder="Code, title, section or teacher…"
+            inputClassName="bg-white dark:bg-zinc-800 text-gray-900 dark:text-white text-xs font-bold rounded-xl px-3 py-2 border border-blue-400/40 focus:outline-none focus:ring-2 focus:ring-blue-400 shadow-sm"
+          />
         </div>
 
         {/* Section Dropdown */}
-        <div className="flex flex-col gap-1 min-w-[130px]">
+        <div className="flex flex-col gap-1 w-40">
           <span className="text-[11px] font-bold text-blue-200 uppercase tracking-wider flex items-center gap-1">
             <Users className="w-3 h-3 text-blue-300" />
             Section:
           </span>
-          <select
+          <Combobox
+            options={sectionChoices}
             value={selectedSection}
-            onChange={(e) => setSelectedSection(e.target.value)}
-            aria-label="Select section"
-            className="bg-white dark:bg-zinc-800 text-blue-700 dark:text-blue-300 text-xs font-extrabold rounded-xl px-3 py-2 border border-blue-400/40 focus:outline-none focus:ring-2 focus:ring-blue-400 shadow-sm"
-          >
-            {availableSections.map((sec) => (
-              <option key={sec.id} value={sec.section}>
-                Section {sec.section}
-              </option>
-            ))}
-          </select>
+            onChange={setSelectedSection}
+            ariaLabel="Select section"
+            placeholder="Section…"
+            inputClassName="bg-white dark:bg-zinc-800 text-blue-700 dark:text-blue-300 text-xs font-extrabold rounded-xl px-3 py-2 border border-blue-400/40 focus:outline-none focus:ring-2 focus:ring-blue-400 shadow-sm"
+          />
         </div>
 
         {/* Current Schedule Status Pill */}
@@ -149,7 +135,8 @@ export const QuickRescheduleBar: React.FC = () => {
                 <strong>{activeAlloc.day}</strong> in <strong>{activeAlloc.roomId}</strong>
               </span>
               <span className="text-[10px] text-blue-300/80 font-mono">
-                ({getAllocationInterval(activeAlloc.slotId).startTime} - {getAllocationInterval(activeAlloc.slotId).endTime})
+                ({getAllocationInterval(activeAlloc.slotId, activeAlloc.customInterval).startTime} -{' '}
+                {getAllocationInterval(activeAlloc.slotId, activeAlloc.customInterval).endTime})
               </span>
             </div>
           ) : (

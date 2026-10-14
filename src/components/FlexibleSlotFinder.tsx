@@ -4,6 +4,8 @@ import { useTimetableStore } from '../store/timetableStore';
 import { findFlexibleSlots } from '../lib/engine';
 import { DAYS_OF_WEEK } from '../lib/constants';
 import { minutesToTimeString } from '../lib/utils';
+import { Combobox } from './Combobox';
+import { courseCodeOptions, sectionOptions } from '../lib/courseOptions';
 import {
   X,
   Sparkles,
@@ -29,6 +31,7 @@ export const FlexibleSlotFinder: React.FC = () => {
     createFlexibleAllocation,
     gap,
     clearGap,
+    preselectedCourse,
   } = useTimetableStore(
     useShallow((s) => ({
       isFlexibleModalOpen: s.isFlexibleModalOpen,
@@ -40,6 +43,7 @@ export const FlexibleSlotFinder: React.FC = () => {
       createFlexibleAllocation: s.createFlexibleAllocation,
       gap: s.flexibleGap,
       clearGap: s.clearFlexibleGap,
+      preselectedCourse: s.selectedCourse,
     }))
   );
 
@@ -52,6 +56,24 @@ export const FlexibleSlotFinder: React.FC = () => {
   const [safeOnly, setSafeOnly] = useState<boolean>(true);
 
   const selectedCourse = courses.find((c) => c.id === selectedCourseId) || courses[0];
+  const courseOptions = useMemo(() => courseCodeOptions(courses), [courses]);
+  const sectionChoices = useMemo(
+    () => (selectedCourse ? sectionOptions(courses, selectedCourse.courseCode) : []),
+    [courses, selectedCourse]
+  );
+  const handleCourseCodeChange = (code: string) => {
+    const first = courses.find((c) => c.courseCode === code);
+    if (first) setSelectedCourseId(first.id);
+  };
+  const handleSectionChange = (section: string) => {
+    const match = courses.find((c) => c.courseCode === selectedCourse?.courseCode && c.section === section);
+    if (match) setSelectedCourseId(match.id);
+  };
+
+  // Opened for a specific course (e.g. from a class card): start with it selected
+  useEffect(() => {
+    if (isFlexibleModalOpen && preselectedCourse) setSelectedCourseId(preselectedCourse.id);
+  }, [isFlexibleModalOpen, preselectedCourse]);
   const gapRoom = gap ? rooms.find((r) => r.id === gap.roomId) : undefined;
   const gapLength = gap ? gap.endMinutes - gap.startMinutes : 0;
 
@@ -142,23 +164,30 @@ export const FlexibleSlotFinder: React.FC = () => {
 
         {/* Configuration Bar */}
         <div className="p-4 border-b border-gray-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-          {/* Course selector */}
-          <div>
-            <label className="block text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-1">
-              Course Section
-            </label>
-            <select
-              value={selectedCourseId}
-              onChange={(e) => setSelectedCourseId(e.target.value)}
-              aria-label="Course Section"
-              className="w-full px-2.5 py-1.5 text-xs font-medium bg-gray-50 dark:bg-zinc-800 border border-gray-300 dark:border-zinc-700 rounded-lg focus:ring-2 focus:ring-blue-500"
-            >
-              {courses.map((c) => (
-                <option key={c.id} value={c.id}>
-                  {c.courseCode} ({c.section})
-                </option>
-              ))}
-            </select>
+          {/* Course and section pickers */}
+          <div className="sm:col-span-2 lg:col-span-1 grid grid-cols-[1fr_7rem] gap-2">
+            <div className="min-w-0">
+              <label className="block text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-1">Course</label>
+              <Combobox
+                options={courseOptions}
+                value={selectedCourse?.courseCode || ''}
+                onChange={handleCourseCodeChange}
+                ariaLabel="Course"
+                placeholder="Code, title, teacher…"
+                inputClassName="px-2.5 py-1.5 text-xs font-medium bg-gray-50 dark:bg-zinc-800 border border-gray-300 dark:border-zinc-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+            <div className="min-w-0">
+              <label className="block text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-1">Section</label>
+              <Combobox
+                options={sectionChoices}
+                value={selectedCourse?.section || ''}
+                onChange={handleSectionChange}
+                ariaLabel="Section"
+                placeholder="Section…"
+                inputClassName="px-2.5 py-1.5 text-xs font-bold text-blue-700 dark:text-blue-300 bg-gray-50 dark:bg-zinc-800 border border-gray-300 dark:border-zinc-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
           </div>
 
           {/* Duration selector */}

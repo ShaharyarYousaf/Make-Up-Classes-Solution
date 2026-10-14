@@ -3,6 +3,8 @@ import { useShallow } from 'zustand/react/shallow';
 import { useTimetableStore } from '../store/timetableStore';
 import { DAYS_OF_WEEK, STANDARD_TIME_SLOTS } from '../lib/constants';
 import { getSectionRoster, getVacantRooms, VacantRoomResult } from '../lib/engine';
+import { Combobox } from './Combobox';
+import { courseCodeOptions, sectionOptions } from '../lib/courseOptions';
 import { getAllocationInterval } from '../lib/utils';
 import { DayOfWeek, Room } from '../types/timetable';
 import {
@@ -46,7 +48,6 @@ export const VacantRoomsModal: React.FC = () => {
   );
 
   // Search & selections
-  const [courseSearch, setCourseSearch] = useState('');
   const [selectedCourseCode, setSelectedCourseCode] = useState<string>('');
   const [selectedSection, setSelectedSection] = useState<string>('');
   const [selectedAllocationId, setSelectedAllocationId] = useState<string>('');
@@ -89,25 +90,8 @@ export const VacantRoomsModal: React.FC = () => {
     }
   }, [isVacantRoomsModalOpen, vacantRoomsTargetCourseId, courses, allocations]);
 
-  // Unique course codes for picker
-  const uniqueCourseCodes = useMemo(() => {
-    const map = new Map<string, string>();
-    courses.forEach((c) => {
-      if (!map.has(c.courseCode)) {
-        map.set(c.courseCode, c.courseTitle);
-      }
-    });
-    return Array.from(map.entries()).map(([code, title]) => ({ code, title }));
-  }, [courses]);
-
-  // Filtered course codes by search
-  const filteredCourses = useMemo(() => {
-    if (!courseSearch.trim()) return uniqueCourseCodes;
-    const q = courseSearch.toLowerCase();
-    return uniqueCourseCodes.filter(
-      (c) => c.code.toLowerCase().includes(q) || c.title.toLowerCase().includes(q)
-    );
-  }, [uniqueCourseCodes, courseSearch]);
+  const courseOptions = useMemo(() => courseCodeOptions(courses), [courses]);
+  const sectionChoices = useMemo(() => sectionOptions(courses, selectedCourseCode), [courses, selectedCourseCode]);
 
   // Sections for currently selected course code
   const availableSections = useMemo(() => {
@@ -286,18 +270,15 @@ export const VacantRoomsModal: React.FC = () => {
               1. Select Course Code:
             </label>
             <div className="flex gap-2">
-              <select
+              <Combobox
+                className="flex-1 min-w-0"
+                options={courseOptions}
                 value={selectedCourseCode}
-                onChange={(e) => handleCourseCodeChange(e.target.value)}
-                aria-label="Select course code"
-                className="flex-1 bg-white dark:bg-zinc-800 border border-gray-300 dark:border-zinc-700 rounded-lg px-2.5 py-1.5 font-semibold text-gray-800 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              >
-                {uniqueCourseCodes.map((c) => (
-                  <option key={c.code} value={c.code}>
-                    {c.code} - {c.title.slice(0, 32)}
-                  </option>
-                ))}
-              </select>
+                onChange={handleCourseCodeChange}
+                ariaLabel="Select course code"
+                placeholder="Code, title, section or teacher…"
+                inputClassName="bg-white dark:bg-zinc-800 border border-gray-300 dark:border-zinc-700 rounded-lg px-2.5 py-1.5 font-semibold text-gray-800 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
             </div>
             {currentCourse && (
               <span className="text-[11px] text-gray-500 font-medium truncate">
@@ -313,18 +294,15 @@ export const VacantRoomsModal: React.FC = () => {
               2. Select Section:
             </label>
             <div className="flex items-center gap-2">
-              <select
+              <Combobox
+                className="flex-1 min-w-0"
+                options={sectionChoices}
                 value={selectedSection}
-                onChange={(e) => handleSectionChange(e.target.value)}
-                aria-label="Select section"
-                className="flex-1 bg-white dark:bg-zinc-800 border border-gray-300 dark:border-zinc-700 rounded-lg px-2.5 py-1.5 font-bold text-blue-700 dark:text-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              >
-                {availableSections.map((sec) => (
-                  <option key={sec.id} value={sec.section}>
-                    Section {sec.section}
-                  </option>
-                ))}
-              </select>
+                onChange={handleSectionChange}
+                ariaLabel="Select section"
+                placeholder="Section…"
+                inputClassName="bg-white dark:bg-zinc-800 border border-gray-300 dark:border-zinc-700 rounded-lg px-2.5 py-1.5 font-bold text-blue-700 dark:text-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
               <span className="px-2 py-1 bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 rounded font-semibold text-[11px] border border-blue-200 dark:border-blue-900 shrink-0">
                 {enrolledStudents.length} Students
               </span>
@@ -337,7 +315,8 @@ export const VacantRoomsModal: React.FC = () => {
                   Now: <strong>{activeAllocation.day}</strong> in <strong>{activeAllocation.roomId}</strong>
                 </span>
                 <span className="text-gray-400 font-mono text-[10px]">
-                  {getAllocationInterval(activeAllocation.slotId).startTime} - {getAllocationInterval(activeAllocation.slotId).endTime}
+                  {getAllocationInterval(activeAllocation.slotId, activeAllocation.customInterval).startTime} -{' '}
+                  {getAllocationInterval(activeAllocation.slotId, activeAllocation.customInterval).endTime}
                 </span>
               </div>
             ) : (
