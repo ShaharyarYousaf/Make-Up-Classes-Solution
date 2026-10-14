@@ -418,6 +418,8 @@ export const TimetableGrid: React.FC = () => {
               const room = rooms.find((r) => r.id === col.roomId) || selectedRoom;
               return {
                 key: `${col.day}|${col.roomId}`,
+                day: col.day,
+                roomId: col.roomId,
                 allocations: col.allocations,
                 roomFor: () => room,
                 freeLabel: viewMode === 'room' ? `${room.name} on ${col.day}` : `${room.name} on ${selectedDay}`,
@@ -452,7 +454,7 @@ export const TimetableGrid: React.FC = () => {
             courseMap={courseMap}
             enrolledCount={(id) => sectionRoster.get(id)?.length || 0}
             isVisible={isAllocationVisible}
-            onFreeClick={() => openFlexibleModal(undefined)}
+            onFreeClick={(gap) => openFlexibleModal(undefined, gap)}
           />
         </div>
       </div>

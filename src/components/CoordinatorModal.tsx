@@ -22,7 +22,7 @@ const secondaryButton =
   'flex items-center justify-center gap-1 px-3 py-2 rounded-lg border border-gray-300 dark:border-zinc-700 text-gray-700 dark:text-gray-300 font-semibold hover:bg-gray-50 dark:hover:bg-zinc-800 disabled:opacity-60';
 
 export const CoordinatorModal: React.FC = () => {
-  const { isOpen, close, authEmail, canEdit, syncStatus, allocations, students, showToast } = useTimetableStore(
+  const { isOpen, close, authEmail, canEdit, syncStatus, allocations, students, showToast, pendingChanges } = useTimetableStore(
     useShallow((s) => ({
       isOpen: s.isCoordinatorModalOpen,
       close: s.closeCoordinatorModal,
@@ -32,6 +32,7 @@ export const CoordinatorModal: React.FC = () => {
       allocations: s.allocations.length,
       students: s.students.length,
       showToast: s.showToast,
+      pendingChanges: s.pendingChanges,
     }))
   );
   const [email, setEmail] = useState('');
@@ -178,6 +179,12 @@ export const CoordinatorModal: React.FC = () => {
 
         <div className="p-5 flex flex-col gap-4 text-sm">
           <p className="text-xs text-gray-600 dark:text-gray-400">{STATUS_TEXT[syncStatus]}</p>
+          {pendingChanges > 0 && (
+            <p className="text-xs rounded-lg px-3 py-2 bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-900 text-amber-900 dark:text-amber-200">
+              <strong>{pendingChanges}</strong> change{pendingChanges > 1 ? 's are' : ' is'} not saved to the database yet.
+              {canEdit ? ' Retrying automatically.' : ' Unlock editing to save them.'} Keep this browser open until this clears.
+            </p>
+          )}
           {syncStatus === 'local' ? null : canEdit ? unlockedPanel : REQUIRE_SIGN_IN ? signInForm : pinForm}
           {error && (
             <p className="text-xs text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-950/40 rounded-lg px-3 py-2">{error}</p>

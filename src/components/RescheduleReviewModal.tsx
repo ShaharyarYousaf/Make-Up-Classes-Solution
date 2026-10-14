@@ -3,7 +3,6 @@ import { useShallow } from 'zustand/react/shallow';
 import { useTimetableStore } from '../store/timetableStore';
 import { getEnrolledCount } from '../lib/engine';
 import { getAllocationInterval } from '../lib/utils';
-import { STANDARD_TIME_SLOTS } from '../lib/constants';
 import {
   X,
   RotateCcw,
@@ -163,15 +162,11 @@ export const RescheduleReviewModal: React.FC = () => {
                 const room = rooms.find((r) => r.id === alloc.roomId);
                 const enrolledCount = getEnrolledCount(alloc.courseSectionId, students);
 
-                const currentSlot = STANDARD_TIME_SLOTS.find((s) => s.id === alloc.slotId);
                 const currentInterval = getAllocationInterval(alloc.slotId, alloc.customInterval);
 
                 const hasOriginal = !!alloc.rescheduledFrom;
                 const originalRoom = hasOriginal
                   ? rooms.find((r) => r.id === alloc.rescheduledFrom?.roomId)
-                  : null;
-                const originalSlot = hasOriginal
-                  ? STANDARD_TIME_SLOTS.find((s) => s.id === alloc.rescheduledFrom?.slotId)
                   : null;
                 const originalInterval = hasOriginal
                   ? getAllocationInterval(alloc.rescheduledFrom!.slotId, alloc.rescheduledFrom!.customInterval)

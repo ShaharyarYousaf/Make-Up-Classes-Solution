@@ -17,6 +17,8 @@ import {
   INITIAL_STUDENTS,
 } from '../lib/mockData';
 import { STANDARD_TIME_SLOTS } from '../lib/constants';
+import { timeFieldsForInterval, toTimeInterval } from '../lib/timeline';
+import { getAllocationInterval } from '../lib/utils';
 
 interface TimetableStore {
   // Data
@@ -24,7 +26,8 @@ interface TimetableStore {
   courses: CourseSection[];
   students: Student[];
   allocations: Allocation[];
-  allocationHistory: Allocation[][];
+  /** Undo steps: what each action changed, so undo reverses only that */
+  allocationHistory: HistoryStep[];
 
   // View state
   viewMode: 'room' | 'day';
@@ -53,6 +56,8 @@ interface TimetableStore {
   syncStatus: 'local' | 'loading' | 'synced' | 'saving' | 'offline' | 'empty';
   canEdit: boolean;
   authEmail: string | null;
+  /** Local edits the database has not confirmed yet (retried automatically) */
+  pendingChanges: number;
   isCoordinatorModalOpen: boolean;
   openCoordinatorModal: () => void;
   closeCoordinatorModal: () => void;
@@ -82,7 +87,10 @@ interface TimetableStore {
   undoLastReschedule: () => void;
 
   // Flexible makeup slot
-  openFlexibleModal: (preselectedCourseId?: string) => void;
+  /** Free window clicked on the grid: the finder then looks only there */
+  flexibleGap: FreeGap | null;
+  openFlexibleModal: (preselectedCourseId?: string, gap?: FreeGap) => void;
+  clearFlexibleGap: () => void;
   closeFlexibleModal: () => void;
   createFlexibleAllocation: (
     courseSectionId: string,
@@ -132,9 +140,61 @@ function requireEditAccess(
   return false;
 }
 
-// Undo snapshots are full copies of the timetable, so keep a bounded, in-memory history only
+/** One undo step: each class the action touched, before and after (null = did not exist) */
+export interface FreeGap {
+  day: DayOfWeek;
+  roomId: string;
+  startMinutes: number;
+  endMinutes: number;
+}
+
+export type HistoryStep = { id: string; before: Allocation | null; after: Allocation | null }[];
+
 const MAX_HISTORY = 20;
-const pushHistory = (history: Allocation[][], snapshot: Allocation[]) => [...history, snapshot].slice(-MAX_HISTORY);
+
+/** Records what changed between two timetables (unchanged classes keep the same object). */
+function pushHistory(history: HistoryStep[], prev: Allocation[], next: Allocation[]): HistoryStep[] {
+  const prevById = new Map(prev.map((a) => [a.id, a]));
+  const nextIds = new Set(next.map((a) => a.id));
+  const step: HistoryStep = [];
+  for (const a of next) {
+    const before = prevById.get(a.id);
+    if (before !== a) step.push({ id: a.id, before: before || null, after: a });
+  }
+  for (const a of prev) if (!nextIds.has(a.id)) step.push({ id: a.id, before: a, after: null });
+  return step.length > 0 ? [...history, step].slice(-MAX_HISTORY) : history;
+}
+
+/**
+ * Reverses one step against the current timetable. Classes someone else has changed since
+ * (current version is no longer this step's "after") are left alone.
+ */
+export function undoStep(current: Allocation[], step: HistoryStep): { allocations: Allocation[]; skipped: number } {
+  const byId = new Map(current.map((a) => [a.id, a]));
+  let skipped = 0;
+  for (const { id, before, after } of step) {
+    const now = byId.get(id) || null;
+    const untouched = now === after || (now && after && JSON.stringify(now) === JSON.stringify(after));
+    if (!untouched) {
+      skipped++;
+      continue;
+    }
+    if (before) byId.set(id, before);
+    else byId.delete(id);
+  }
+  // Keep the original order; restored classes go back where they were
+  const result: Allocation[] = [];
+  const seen = new Set<string>();
+  for (const a of current) {
+    const v = byId.get(a.id);
+    if (v) result.push(v);
+    seen.add(a.id);
+  }
+  byId.forEach((v, id) => {
+    if (!seen.has(id)) result.push(v);
+  });
+  return { allocations: result, skipped };
+}
 
 type PersistedState = Pick<
   TimetableStore,
@@ -202,6 +262,7 @@ export const useTimetableStore = create<TimetableStore>()(
   isRescheduleDrawerOpen: false,
   isImpactModalOpen: false,
   isFlexibleModalOpen: false,
+  flexibleGap: null,
   isDataManagerOpen: false,
   isVacantRoomsModalOpen: false,
   vacantRoomsTargetCourseId: null,
@@ -213,6 +274,7 @@ export const useTimetableStore = create<TimetableStore>()(
   syncStatus: 'loading',
   canEdit: false,
   authEmail: null,
+  pendingChanges: 0,
   isCoordinatorModalOpen: false,
   openCoordinatorModal: () => set({ isCoordinatorModalOpen: true }),
   closeCoordinatorModal: () => set({ isCoordinatorModalOpen: false }),
@@ -251,11 +313,21 @@ export const useTimetableStore = create<TimetableStore>()(
 
   selectTargetSlot: (day, slot, roomId, customInterval) => {
     const currentTargetRoom = roomId || get().targetRoomId || get().selectedAllocation?.roomId || INITIAL_ROOMS[0].id;
+    // Moving to a slot keeps the class's own length: a 105-minute class stays 105 minutes
+    let interval = customInterval || null;
+    const selected = get().selectedAllocation;
+    if (!interval && slot && selected) {
+      const current = getAllocationInterval(selected.slotId, selected.customInterval);
+      const duration = current.endMinutes - current.startMinutes;
+      if (duration !== slot.endMinutes - slot.startMinutes) {
+        interval = toTimeInterval(slot.startMinutes, slot.startMinutes + duration);
+      }
+    }
     set({
       targetDay: day,
       targetSlot: slot,
       targetRoomId: currentTargetRoom,
-      targetCustomInterval: customInterval || null,
+      targetCustomInterval: interval,
       isImpactModalOpen: true,
     });
   },
@@ -284,15 +356,15 @@ export const useTimetableStore = create<TimetableStore>()(
     }
 
     // Save previous state for Undo
-    const nextHistory = pushHistory(allocationHistory, allocations);
 
     const updatedAllocations = allocations.map((alloc) => {
       if (alloc.id === selectedAllocation.id) {
         return {
           ...alloc,
           day: targetDay,
-          slotId: targetSlot ? targetSlot.id : 'custom',
-          customInterval: targetCustomInterval || undefined,
+          ...(targetCustomInterval
+            ? timeFieldsForInterval(targetCustomInterval)
+            : { slotId: targetSlot!.id, customInterval: undefined }),
           roomId: targetRoomId,
           isRescheduled: true,
           rescheduledFrom: alloc.rescheduledFrom || {
@@ -310,7 +382,7 @@ export const useTimetableStore = create<TimetableStore>()(
 
     set({
       allocations: updatedAllocations,
-      allocationHistory: nextHistory,
+      allocationHistory: pushHistory(allocationHistory, allocations, updatedAllocations),
       isImpactModalOpen: false,
       isRescheduleDrawerOpen: false,
       selectedAllocation: null,
@@ -318,7 +390,9 @@ export const useTimetableStore = create<TimetableStore>()(
       targetDay: null,
       targetSlot: null,
       toastMessage: {
-        text: `Successfully rescheduled ${selectedCourse?.courseCode || 'class'} to ${targetDay} ${targetSlot ? targetSlot.label : 'Custom Slot'}!`,
+        text: `Successfully rescheduled ${selectedCourse?.courseCode || 'class'} to ${targetDay} ${
+          targetCustomInterval ? `${targetCustomInterval.startTime}–${targetCustomInterval.endTime}` : targetSlot?.label || ''
+        }!`,
         type: 'success',
       },
     });
@@ -326,23 +400,26 @@ export const useTimetableStore = create<TimetableStore>()(
 
   undoLastReschedule: () => {
     if (!requireEditAccess(get, set)) return;
-    const { allocationHistory } = get();
+    const { allocationHistory, allocations } = get();
     if (allocationHistory.length === 0) return;
 
-    const previousAllocations = allocationHistory[allocationHistory.length - 1];
+    const { allocations: restored, skipped } = undoStep(allocations, allocationHistory[allocationHistory.length - 1]);
     const newHistory = allocationHistory.slice(0, -1);
 
     set({
-      allocations: previousAllocations,
+      allocations: restored,
       allocationHistory: newHistory,
       toastMessage: {
-        text: 'Action undone! Restored prior schedule allocation.',
+        text:
+          skipped > 0
+            ? `Undone. ${skipped} class${skipped > 1 ? 'es were' : ' was'} changed by someone else since and left as is.`
+            : 'Action undone! Restored prior schedule allocation.',
         type: 'info',
       },
     });
   },
 
-  openFlexibleModal: (preselectedCourseId) => {
+  openFlexibleModal: (preselectedCourseId, gap) => {
     const { courses } = get();
     const course = preselectedCourseId
       ? courses.find((c) => c.id === preselectedCourseId) || null
@@ -350,12 +427,15 @@ export const useTimetableStore = create<TimetableStore>()(
     set({
       isFlexibleModalOpen: true,
       selectedCourse: course,
+      flexibleGap: gap || null,
     });
   },
+  clearFlexibleGap: () => set({ flexibleGap: null }),
 
   closeFlexibleModal: () => {
     set({
       isFlexibleModalOpen: false,
+      flexibleGap: null,
     });
   },
 
@@ -378,7 +458,7 @@ export const useTimetableStore = create<TimetableStore>()(
 
     set({
       allocations: [...allocations, newAlloc],
-      allocationHistory: pushHistory(allocationHistory, allocations),
+      allocationHistory: pushHistory(allocationHistory, allocations, [...allocations, newAlloc]),
       isFlexibleModalOpen: false,
       toastMessage: {
         text: `Allocated extra slot for ${course?.courseCode || courseSectionId} on ${day} (${customInterval.startTime} - ${customInterval.endTime})`,
@@ -409,8 +489,6 @@ export const useTimetableStore = create<TimetableStore>()(
 
     const course = courses.find((c) => c.id === targetAlloc.courseSectionId);
     const targetRoom = rooms.find((r) => r.id === newRoomId);
-
-    const nextHistory = pushHistory(allocationHistory, allocations);
     const updatedAllocations = allocations.map((a) => {
       if (a.id === allocationId) {
         return {
@@ -432,7 +510,7 @@ export const useTimetableStore = create<TimetableStore>()(
 
     set({
       allocations: updatedAllocations,
-      allocationHistory: nextHistory,
+      allocationHistory: pushHistory(allocationHistory, allocations, updatedAllocations),
       toastMessage: {
         text: `Moved ${course?.courseCode || 'class'} (${course?.section || ''}) to vacant room ${targetRoom?.name || newRoomId}!`,
         type: 'success',
@@ -450,14 +528,13 @@ export const useTimetableStore = create<TimetableStore>()(
     if (!targetAlloc) return;
 
     const course = courses.find((c) => c.id === targetAlloc.courseSectionId);
-    const nextHistory = pushHistory(allocationHistory, allocations);
 
     // If it was a newly created flexible makeup slot without prior history, remove it
     if (!targetAlloc.rescheduledFrom) {
       const updatedAllocations = allocations.filter((a) => a.id !== allocationId);
       set({
         allocations: updatedAllocations,
-        allocationHistory: nextHistory,
+        allocationHistory: pushHistory(allocationHistory, allocations, updatedAllocations),
         toastMessage: {
           text: `Removed makeup session for ${course?.courseCode || 'course'}`,
           type: 'info',
@@ -487,7 +564,7 @@ export const useTimetableStore = create<TimetableStore>()(
 
     set({
       allocations: updatedAllocations,
-      allocationHistory: nextHistory,
+      allocationHistory: pushHistory(allocationHistory, allocations, updatedAllocations),
       toastMessage: {
         text: `Reverted ${course?.courseCode || 'course'} back to ${from.day} (${from.roomId})!`,
         type: 'info',
@@ -502,7 +579,6 @@ export const useTimetableStore = create<TimetableStore>()(
     if (!targetAlloc) return;
 
     const course = courses.find((c) => c.id === targetAlloc.courseSectionId);
-    const nextHistory = pushHistory(allocationHistory, allocations);
 
     const updatedAllocations = allocations.map((a) => {
       if (a.id === allocationId) {
@@ -518,7 +594,7 @@ export const useTimetableStore = create<TimetableStore>()(
 
     set({
       allocations: updatedAllocations,
-      allocationHistory: nextHistory,
+      allocationHistory: pushHistory(allocationHistory, allocations, updatedAllocations),
       toastMessage: {
         text: `Confirmed and locked ${course?.courseCode || 'course'} (${course?.section || ''}) for this week.`,
         type: 'success',
@@ -531,8 +607,6 @@ export const useTimetableStore = create<TimetableStore>()(
     const { allocations, allocationHistory } = get();
     const rescheduledCount = allocations.filter((a) => a.isRescheduled).length;
     if (rescheduledCount === 0) return;
-
-    const nextHistory = pushHistory(allocationHistory, allocations);
 
     const updatedAllocations = allocations
       .filter((a) => !(a.isRescheduled && !a.rescheduledFrom))
@@ -555,7 +629,7 @@ export const useTimetableStore = create<TimetableStore>()(
 
     set({
       allocations: updatedAllocations,
-      allocationHistory: nextHistory,
+      allocationHistory: pushHistory(allocationHistory, allocations, updatedAllocations),
       isRescheduleReviewOpen: false,
       toastMessage: {
         text: `Reverted all ${rescheduledCount} weekly reschedules back to original schedule.`,
@@ -569,8 +643,6 @@ export const useTimetableStore = create<TimetableStore>()(
     const { allocations, allocationHistory } = get();
     const rescheduledCount = allocations.filter((a) => a.isRescheduled).length;
     if (rescheduledCount === 0) return;
-
-    const nextHistory = pushHistory(allocationHistory, allocations);
 
     const updatedAllocations = allocations.map((a) => {
       if (a.isRescheduled) {
@@ -586,7 +658,7 @@ export const useTimetableStore = create<TimetableStore>()(
 
     set({
       allocations: updatedAllocations,
-      allocationHistory: nextHistory,
+      allocationHistory: pushHistory(allocationHistory, allocations, updatedAllocations),
       isRescheduleReviewOpen: false,
       toastMessage: {
         text: `Confirmed all ${rescheduledCount} rescheduled classes for the current week.`,

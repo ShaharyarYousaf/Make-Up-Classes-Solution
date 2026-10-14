@@ -11,10 +11,13 @@ import {
   checkStudentClashes,
   findFlexibleSlots,
   getSlotRecommendationsForRoom,
+  moveWindow,
 } from '../src/lib/engine';
 import { isReservedAllocation, parseTimetableCSV } from '../src/lib/csvParser';
 import { STANDARD_TIME_SLOTS } from '../src/lib/constants';
 import { extractTimeRange, getFreeIntervals, layoutLanes, timeFieldsForInterval } from '../src/lib/timeline';
+import { useTimetableStore, undoStep } from '../src/store/timetableStore';
+import { getAllocationInterval } from '../src/lib/utils';
 import { Allocation, CourseSection, Room } from '../src/types/timetable';
 
 console.log('====================================================');
@@ -216,6 +219,45 @@ const lanes = layoutLanes([{ s: 780, e: 885 }, { s: 870, e: 950 }, { s: 960, e: 
 check('Overlapping blocks are laid out side by side', lanes[0].lanes === 2 && lanes[1].lane === 1 && lanes[2].lanes === 1);
 check('Campus clock: "11:30-01:15" ends at 13:15', extractTimeRange('X 11:30-01:15')?.interval.endMinutes === 795);
 check('Exact standard times map back to the plain slot', timeFieldsForInterval({ startMinutes: 780, endMinutes: 860 }).slotId === 'slot-4' && !timeFieldsForInterval({ startMinutes: 780, endMinutes: 860 }).customInterval);
+
+// 9. Audit fixes: moves keep their length, undo leaves other people's changes alone, exact times in messages
+console.log('\n--- Test 9: Audit Fixes ---');
+const longSlot4: Allocation = { id: 'long', courseSectionId: INITIAL_COURSES[0].id, day: 'Monday', roomId: 'c-301', ...timeFieldsForInterval({ startMinutes: 780, endMinutes: 885 }) };
+const targetSlot2 = STANDARD_TIME_SLOTS.find(s => s.id === 'slot-2')!;
+check('Move window keeps the class length (Slot 2 → 10:00–11:45)', moveWindow(targetSlot2, 105).endMinutes === 705);
+
+// Something sits at 11:20–11:45 in C-302: an 80-minute check would call Slot 2 free, a 105-minute one must not
+const blocker: Allocation = { id: 'blk', courseSectionId: INITIAL_COURSES[1].id, day: 'Tuesday', roomId: 'c-302', ...timeFieldsForInterval({ startMinutes: 685, endMinutes: 705 }) };
+const recs = getSlotRecommendationsForRoom(longSlot4.courseSectionId, 'c-302', [longSlot4, blocker], [], INITIAL_COURSES, INITIAL_ROOMS, 'long', 105);
+check('Recommendation for a 105-min class sees a clash after the slot ends', recs.find(r => r.day === 'Tuesday' && r.slot.id === 'slot-2')?.status === 'BLOCKED');
+
+const st = useTimetableStore;
+st.setState({ canEdit: true, allocations: [longSlot4], allocationHistory: [], courses: INITIAL_COURSES, rooms: INITIAL_ROOMS });
+st.getState().initiateReschedule(longSlot4);
+st.getState().selectTargetSlot('Tuesday', targetSlot2, 'c-302');
+st.getState().confirmReschedule();
+const moved = st.getState().allocations[0];
+const movedInterval = getAllocationInterval(moved.slotId, moved.customInterval);
+check('Rescheduling a 13:00–14:45 class to Slot 2 gives 10:00–11:45', moved.day === 'Tuesday' && movedInterval.startMinutes === 600 && movedInterval.endMinutes === 705);
+check('…and keeps where it came from', moved.rescheduledFrom?.customInterval?.endMinutes === 885);
+
+// Undo after someone else changed a different class: only our move is undone
+const othersChange: Allocation = { ...blocker, roomId: 'c-303' };
+st.setState({ allocations: [moved, othersChange] });
+st.getState().undoLastReschedule();
+const afterUndo = st.getState().allocations;
+check('Undo restores our class', afterUndo.find(a => a.id === 'long')?.day === 'Monday');
+check("Undo leaves another coordinator's change alone", afterUndo.find(a => a.id === 'blk')?.roomId === 'c-303');
+const conflicting = undoStep([{ ...moved, roomId: 'c-304' }], [{ id: 'long', before: longSlot4, after: moved }]);
+check('Undo skips a class someone else edited since', conflicting.skipped === 1 && conflicting.allocations[0].roomId === 'c-304');
+
+const clashing = checkStudentClashes(
+  'X1 A', 'Monday', { startMinutes: 840, endMinutes: 900 },
+  [{ ...longSlot4, courseSectionId: 'X2 B' }],
+  [{ id: 's1', name: 'S', degreeProgram: '', batch: '', enrolledSectionIds: ['X1 A', 'X2 B'] }],
+  [{ ...INITIAL_COURSES[0], id: 'X2 B' }], INITIAL_ROOMS
+);
+check('Clash details show the exact time (13:00 - 14:45), not "Slot 4"', clashing.clashStudents[0]?.timeSlotLabel === '13:00 - 14:45');
 
 if (failures > 0) {
   console.log(`\n${failures} TEST(S) FAILED ❌`);

@@ -105,10 +105,21 @@ function getOverlappingAllocations(
 }
 
 function formatAllocationTime(alloc: Allocation): string {
+  // An exact time wins over the slot it is labelled with (e.g. 13:00 - 14:45 rather than "Slot 4")
+  if (alloc.customInterval) return `${alloc.customInterval.startTime} - ${alloc.customInterval.endTime}`;
   const standardSlot = STANDARD_TIME_SLOTS.find(s => s.id === alloc.slotId);
-  return standardSlot
-    ? standardSlot.label
-    : `${alloc.customInterval?.startTime} - ${alloc.customInterval?.endTime}`;
+  return standardSlot ? standardSlot.label : '';
+}
+
+/**
+ * The window a class would occupy if moved to start at `slot`: it keeps its own length,
+ * so a 13:00–14:45 class moved to Slot 2 runs 10:00–11:45, not 10:00–11:20.
+ */
+export function moveWindow(slot: TimeSlot, durationMinutes?: number): Interval {
+  return {
+    startMinutes: slot.startMinutes,
+    endMinutes: slot.startMinutes + (durationMinutes ?? slot.endMinutes - slot.startMinutes),
+  };
 }
 
 /**
@@ -473,7 +484,8 @@ export function getSlotRecommendationsForRoom(
   students: Student[],
   courses: CourseSection[],
   rooms: Room[],
-  excludeAllocationId?: string
+  excludeAllocationId?: string,
+  durationMinutes?: number
 ): SlotRecommendation[] {
   const targetRoom = getRoomMap(rooms).get(targetRoomId);
   const course = getCourseMap(courses).get(courseSectionId);
@@ -484,9 +496,10 @@ export function getSlotRecommendationsForRoom(
 
   for (const day of DAYS_OF_WEEK) {
     for (const slot of STANDARD_TIME_SLOTS) {
-      const roomConflict = checkRoomConflict(day, slot, targetRoomId, allocations, courses, excludeAllocationId);
+      const window = moveWindow(slot, durationMinutes);
+      const roomConflict = checkRoomConflict(day, window, targetRoomId, allocations, courses, excludeAllocationId);
       recommendations.push(
-        buildRecommendation(day, slot, targetRoom, targetRoomId, roomConflict, evaluateWindow(day, slot), suitability)
+        buildRecommendation(day, slot, targetRoom, targetRoomId, roomConflict, evaluateWindow(day, window), suitability)
       );
     }
   }
@@ -504,7 +517,8 @@ export function getBestSlotsAcrossAllRooms(
   courses: CourseSection[],
   rooms: Room[],
   excludeAllocationId?: string,
-  filterDay?: DayOfWeek
+  filterDay?: DayOfWeek,
+  durationMinutes?: number
 ): SlotRecommendation[] {
   const course = getCourseMap(courses).get(courseSectionId);
   const enrolledCount = getEnrolledCount(courseSectionId, students);
@@ -517,13 +531,15 @@ export function getBestSlotsAcrossAllRooms(
     const suitability = checkRoomSuitability(course, room, enrolledCount);
     for (const day of daysToScan) {
       for (const slot of STANDARD_TIME_SLOTS) {
-        const roomConflict = checkRoomConflict(day, slot, room.id, allocations, courses, excludeAllocationId);
+        const window = moveWindow(slot, durationMinutes);
+        if (window.endMinutes > CAMPUS_DAY_END_MINUTES) continue;
+        const roomConflict = checkRoomConflict(day, window, room.id, allocations, courses, excludeAllocationId);
 
         // Skip occupied rooms when finding best slots across all rooms
         if (roomConflict.hasConflict) continue;
 
         allRecommendations.push(
-          buildRecommendation(day, slot, room, room.id, roomConflict, evaluateWindow(day, slot), suitability)
+          buildRecommendation(day, slot, room, room.id, roomConflict, evaluateWindow(day, window), suitability)
         );
       }
     }

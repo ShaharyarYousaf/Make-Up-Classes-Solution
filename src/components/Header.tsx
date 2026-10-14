@@ -33,6 +33,7 @@ export const Header: React.FC = () => {
     authEmail,
     syncStatus,
     canEdit,
+    pendingChanges,
   } = useTimetableStore(
     useShallow((s) => ({
       allocations: s.allocations,
@@ -49,6 +50,7 @@ export const Header: React.FC = () => {
       authEmail: s.authEmail,
       syncStatus: s.syncStatus,
       canEdit: s.canEdit,
+      pendingChanges: s.pendingChanges,
     }))
   );
 
@@ -184,6 +186,14 @@ export const Header: React.FC = () => {
                   <ShieldCheck className="w-3.5 h-3.5 text-gray-500" />
                 )}
                 <span className="hidden md:inline">{canEdit ? 'Editing on' : REQUIRE_SIGN_IN ? 'Sign in' : 'Enter PIN'}</span>
+                {pendingChanges > 0 && (
+                  <span
+                    className="ml-0.5 px-1.5 rounded-full bg-amber-500 text-white text-[10px] font-bold"
+                    title={`${pendingChanges} change(s) not saved to the database yet – retrying`}
+                  >
+                    {pendingChanges}
+                  </span>
+                )}
               </button>
             )}
           </div>

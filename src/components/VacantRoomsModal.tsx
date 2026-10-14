@@ -172,10 +172,17 @@ export const VacantRoomsModal: React.FC = () => {
     return getSectionRoster(students).get(currentCourse.id) || [];
   }, [students, currentCourse]);
 
-  // Target interval in minutes
+  // Target interval in minutes: the class's exact time in its own slot, otherwise its length from the slot start
   const targetInterval = useMemo(() => {
-    return getAllocationInterval(targetSlotId);
-  }, [targetSlotId]);
+    const slotInterval = getAllocationInterval(targetSlotId);
+    if (!activeAllocation) return slotInterval;
+    const own = getAllocationInterval(activeAllocation.slotId, activeAllocation.customInterval);
+    if (activeAllocation.day === targetDay && activeAllocation.slotId === targetSlotId) return own;
+    return {
+      ...slotInterval,
+      endMinutes: slotInterval.startMinutes + (own.endMinutes - own.startMinutes),
+    };
+  }, [targetSlotId, targetDay, activeAllocation]);
 
   // Selected slot object
   const currentSlotObj = useMemo(() => {

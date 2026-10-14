@@ -22,6 +22,7 @@ import {
   CheckCircle2,
 } from 'lucide-react';
 import { DayOfWeek, SlotRecommendation } from '../types/timetable';
+import { getAllocationInterval } from '../lib/utils';
 
 export const RescheduleDrawer: React.FC = () => {
   const {
@@ -56,6 +57,13 @@ export const RescheduleDrawer: React.FC = () => {
   const [filterSafeOnly, setFilterSafeOnly] = useState<boolean>(false);
   const [selectedFilterDay, setSelectedFilterDay] = useState<DayOfWeek | 'ALL'>('ALL');
 
+  // Moves keep the class's own length, so every candidate start time is checked for that long
+  const durationMinutes = useMemo(() => {
+    if (!selectedAllocation) return undefined;
+    const interval = getAllocationInterval(selectedAllocation.slotId, selectedAllocation.customInterval);
+    return interval.endMinutes - interval.startMinutes;
+  }, [selectedAllocation]);
+
   // Compute recommendations for the currently selected room
   const roomRecommendations = useMemo(() => {
     if (!isRescheduleDrawerOpen || !selectedAllocation || !selectedCourse) return [];
@@ -66,9 +74,10 @@ export const RescheduleDrawer: React.FC = () => {
       students,
       courses,
       rooms,
-      selectedAllocation.id
+      selectedAllocation.id,
+      durationMinutes
     );
-  }, [isRescheduleDrawerOpen, selectedAllocation, selectedCourse, targetRoomId, allocations, students, courses, rooms]);
+  }, [isRescheduleDrawerOpen, selectedAllocation, selectedCourse, targetRoomId, allocations, students, courses, rooms, durationMinutes]);
 
   // Compute best slots across ALL campus rooms (only when that tab is open – it scans every room)
   const allRoomsRecommendations = useMemo(() => {
@@ -80,9 +89,10 @@ export const RescheduleDrawer: React.FC = () => {
       courses,
       rooms,
       selectedAllocation.id,
-      selectedFilterDay === 'ALL' ? undefined : selectedFilterDay
+      selectedFilterDay === 'ALL' ? undefined : selectedFilterDay,
+      durationMinutes
     );
-  }, [isRescheduleDrawerOpen, activeTab, selectedAllocation, selectedCourse, allocations, students, courses, rooms, selectedFilterDay]);
+  }, [isRescheduleDrawerOpen, activeTab, selectedAllocation, selectedCourse, allocations, students, courses, rooms, selectedFilterDay, durationMinutes]);
 
   if (!isRescheduleDrawerOpen || !selectedAllocation || !selectedCourse) {
     return null;
@@ -93,9 +103,7 @@ export const RescheduleDrawer: React.FC = () => {
   const enrolledCount = getEnrolledCount(selectedCourse.id, students);
   const targetRoomSuitability = checkRoomSuitability(selectedCourse, targetRoom, enrolledCount);
 
-  const currentStandardSlot = STANDARD_TIME_SLOTS.find(
-    (s) => s.id === selectedAllocation.slotId
-  );
+  const currentInterval = getAllocationInterval(selectedAllocation.slotId, selectedAllocation.customInterval);
 
   // Summary counts for current room
   const safeCount = roomRecommendations.filter((r) => r.status === 'SAFE').length;
@@ -131,7 +139,7 @@ export const RescheduleDrawer: React.FC = () => {
             <div className="flex items-center gap-3 mt-2 text-xs text-gray-600 dark:text-gray-400 flex-wrap">
               <span className="flex items-center gap-1 bg-white dark:bg-zinc-800 px-2 py-1 rounded-md border border-gray-200 dark:border-zinc-700">
                 <Clock className="w-3.5 h-3.5 text-gray-400" />
-                Current: <strong className="text-gray-800 dark:text-gray-200">{selectedAllocation.day}</strong> ({currentStandardSlot?.startTime || '08:30'} - {currentStandardSlot?.endTime || '09:50'})
+                Current: <strong className="text-gray-800 dark:text-gray-200">{selectedAllocation.day}</strong> ({currentInterval.startTime} - {currentInterval.endTime})
               </span>
               <span className="flex items-center gap-1 bg-white dark:bg-zinc-800 px-2 py-1 rounded-md border border-gray-200 dark:border-zinc-700">
                 <Building2 className="w-3.5 h-3.5 text-gray-400" />

@@ -34,6 +34,17 @@ type CsvDataType = 'students' | 'courses' | 'timetable' | 'rooms';
 const JSON_PREVIEW_CHARS = 20000;
 const ROSTER_PREVIEW_LIMIT = 200;
 
+/** UTF-8, or Windows-1252 when Excel saved the CSV in its legacy encoding (e.g. "–" in course titles) */
+function decodeFileText(buffer: ArrayBuffer): string {
+  let text: string;
+  try {
+    text = new TextDecoder('utf-8', { fatal: true }).decode(buffer);
+  } catch {
+    text = new TextDecoder('windows-1252').decode(buffer);
+  }
+  return text.replace(/^\uFEFF/, '');
+}
+
 export const DataManagerModal: React.FC = () => {
   const {
     isDataManagerOpen,
@@ -149,7 +160,7 @@ export const DataManagerModal: React.FC = () => {
 
     const reader = new FileReader();
     reader.onload = (event) => {
-      const text = event.target?.result as string;
+      const text = decodeFileText(event.target?.result as ArrayBuffer);
       if (!text) return;
 
       if (file.name.endsWith('.json')) {
@@ -166,7 +177,8 @@ export const DataManagerModal: React.FC = () => {
         processCSV(text, csvDataType);
       }
     };
-    reader.readAsText(file);
+    // Read raw bytes: Excel often saves CSVs in Windows-1252, which readAsText would garble
+    reader.readAsArrayBuffer(file);
     // Allow re-uploading the same file after fixing it
     e.target.value = '';
   };

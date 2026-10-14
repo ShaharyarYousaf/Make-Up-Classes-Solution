@@ -1,8 +1,9 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useShallow } from 'zustand/react/shallow';
 import { useTimetableStore } from '../store/timetableStore';
 import { findFlexibleSlots } from '../lib/engine';
 import { DAYS_OF_WEEK } from '../lib/constants';
+import { minutesToTimeString } from '../lib/utils';
 import {
   X,
   Sparkles,
@@ -26,6 +27,8 @@ export const FlexibleSlotFinder: React.FC = () => {
     students,
     allocations,
     createFlexibleAllocation,
+    gap,
+    clearGap,
   } = useTimetableStore(
     useShallow((s) => ({
       isFlexibleModalOpen: s.isFlexibleModalOpen,
@@ -35,6 +38,8 @@ export const FlexibleSlotFinder: React.FC = () => {
       students: s.students,
       allocations: s.allocations,
       createFlexibleAllocation: s.createFlexibleAllocation,
+      gap: s.flexibleGap,
+      clearGap: s.clearFlexibleGap,
     }))
   );
 
@@ -47,6 +52,16 @@ export const FlexibleSlotFinder: React.FC = () => {
   const [safeOnly, setSafeOnly] = useState<boolean>(true);
 
   const selectedCourse = courses.find((c) => c.id === selectedCourseId) || courses[0];
+  const gapRoom = gap ? rooms.find((r) => r.id === gap.roomId) : undefined;
+  const gapLength = gap ? gap.endMinutes - gap.startMinutes : 0;
+
+  // Opened from a free block on the grid: that day, and a session that fits the window
+  useEffect(() => {
+    if (!isFlexibleModalOpen || !gap) return;
+    setSelectedDayFilter(gap.day);
+    setSelectedRoomType('ALL');
+    setDuration((d) => (d <= gapLength ? d : [120, 80, 60].find((v) => v <= gapLength) || gapLength));
+  }, [isFlexibleModalOpen, gap, gapLength]);
 
   // Run scanner (only while the modal is open – this component stays mounted when closed)
   const flexibleSlots = useMemo(() => {
@@ -74,9 +89,14 @@ export const FlexibleSlotFinder: React.FC = () => {
   ]);
 
   const filteredSlots = useMemo(() => {
-    if (!safeOnly) return flexibleSlots;
-    return flexibleSlots.filter((s) => s.status === 'SAFE');
-  }, [flexibleSlots, safeOnly]);
+    const inGap = gap
+      ? flexibleSlots.filter(
+          (s) => s.roomId === gap.roomId && s.day === gap.day && s.startMinutes >= gap.startMinutes && s.endMinutes <= gap.endMinutes
+        )
+      : flexibleSlots;
+    if (!safeOnly) return inGap;
+    return inGap.filter((s) => s.status === 'SAFE');
+  }, [flexibleSlots, safeOnly, gap]);
 
   if (!isFlexibleModalOpen) return null;
 
@@ -151,6 +171,8 @@ export const FlexibleSlotFinder: React.FC = () => {
                 { label: '60m (1h)', val: 60 },
                 { label: '80m', val: 80 },
                 { label: '120m (2h)', val: 120 },
+                // A free window shorter than an hour can still be used in full
+                ...(gap && gapLength < 60 ? [{ label: `${gapLength}m (whole gap)`, val: gapLength }] : []),
               ].map((item) => (
                 <button
                   key={item.val}
@@ -207,6 +229,20 @@ export const FlexibleSlotFinder: React.FC = () => {
             </select>
           </div>
         </div>
+
+        {gap && (
+          <div className="px-5 py-2 bg-blue-50 dark:bg-blue-950/40 border-b border-blue-200 dark:border-blue-900 flex items-center justify-between gap-3 text-xs text-blue-900 dark:text-blue-200">
+            <span>
+              Showing only <strong>{gapRoom?.name || gap.roomId}</strong> on <strong>{gap.day}</strong>, free{' '}
+              <strong>
+                {minutesToTimeString(gap.startMinutes)}–{minutesToTimeString(gap.endMinutes)}
+              </strong>
+            </span>
+            <button onClick={clearGap} className="font-semibold underline hover:no-underline">
+              Search all rooms instead
+            </button>
+          </div>
+        )}
 
         {/* Results Bar */}
         <div className="px-5 py-2.5 bg-gray-50 dark:bg-zinc-900 border-b border-gray-200 dark:border-zinc-800 flex items-center justify-between text-xs">

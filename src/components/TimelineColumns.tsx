@@ -1,6 +1,6 @@
 import React from 'react';
 import { PlusCircle } from 'lucide-react';
-import { Allocation, CourseSection, Room, TimeSlot } from '../types/timetable';
+import { Allocation, CourseSection, DayOfWeek, Room, TimeSlot } from '../types/timetable';
 import { getReservedLabel, isReservedAllocation } from '../lib/csvParser';
 import {
   allocationInterval,
@@ -18,6 +18,8 @@ const MIN_FREE_MINUTES = 30;
 
 export interface TimelineColumn {
   key: string;
+  day: DayOfWeek;
+  roomId: string;
   header: React.ReactNode;
   allocations: Allocation[];
   /** Room shown on cards; in the day view every column is a room */
@@ -36,7 +38,7 @@ interface TimelineColumnsProps {
   courseMap: Map<string, CourseSection>;
   enrolledCount: (sectionId: string) => number;
   isVisible: (alloc: Allocation) => boolean;
-  onFreeClick: () => void;
+  onFreeClick: (gap: { day: DayOfWeek; roomId: string; startMinutes: number; endMinutes: number }) => void;
 }
 
 const fmt = minutesToTimeString;
@@ -127,7 +129,7 @@ export const TimelineColumns: React.FC<TimelineColumnsProps> = ({
               <button
                 key={`free-${f.startMinutes}`}
                 type="button"
-                onClick={onFreeClick}
+                onClick={() => onFreeClick({ day: col.day, roomId: col.roomId, ...f })}
                 className="absolute inset-x-1 rounded-lg border border-transparent hover:border-blue-300 dark:hover:border-blue-800 hover:bg-blue-50/80 dark:hover:bg-blue-950/30 flex flex-col items-center justify-center text-gray-400 dark:text-zinc-500 group transition-all"
                 style={{ top: y(f.startMinutes) + 2, height: (f.endMinutes - f.startMinutes) * PX_PER_MINUTE - 4 }}
                 title={`${col.freeLabel} is free ${fmt(f.startMinutes)}–${fmt(f.endMinutes)} – click to plan a make-up class`}
