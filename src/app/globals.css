@@ -43,3 +43,231 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(156, 163, 175, 0.7);
 }
+
+/* ------------------------------------------------------------------
+   Printable room schedules (PrintRoomsModal): one A4 landscape page per room
+   ------------------------------------------------------------------ */
+#print-root {
+  display: none;
+}
+
+@media print {
+  @page {
+    size: A4 landscape;
+    margin: 8mm;
+  }
+
+  body > *:not(#print-root) {
+    display: none !important;
+  }
+
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  #print-root {
+    display: block;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
+
+.print-page {
+  width: 281mm;
+  height: 192mm;
+  display: flex;
+  flex-direction: column;
+  gap: 3mm;
+  overflow: hidden;
+  break-after: page;
+  page-break-after: always;
+}
+
+.print-page:last-child {
+  break-after: auto;
+  page-break-after: auto;
+}
+
+.print-header {
+  display: flex;
+  align-items: center;
+  gap: 5mm;
+  border-bottom: 0.6mm solid #1e3a8a;
+  padding-bottom: 2.5mm;
+}
+
+.print-logo {
+  height: 13mm;
+  width: auto;
+}
+
+.print-title {
+  flex: 1;
+}
+
+.print-title h1 {
+  font-size: 26pt;
+  font-weight: 900;
+  line-height: 1;
+  margin: 0;
+  color: #0f172a;
+}
+
+.print-title p {
+  margin: 1mm 0 0;
+  font-size: 10pt;
+  color: #334155;
+}
+
+.print-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-size: 8pt;
+  color: #475569;
+}
+
+.print-meta strong {
+  font-size: 11pt;
+  color: #1e3a8a;
+}
+
+.print-grid {
+  display: grid;
+  grid-template-columns: 20mm repeat(6, 1fr);
+  column-gap: 1mm;
+}
+
+.print-axis-head {
+  height: 6mm;
+}
+
+.print-day-head {
+  height: 6mm;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9pt;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #fff;
+  background: #1e3a8a;
+  border-radius: 1mm;
+}
+
+.print-axis,
+.print-day {
+  position: relative;
+  margin-top: 1mm;
+}
+
+.print-day {
+  border: 0.2mm solid #cbd5e1;
+  border-radius: 1mm;
+}
+
+.print-axis-slot {
+  position: absolute;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 7.5pt;
+  font-weight: 800;
+  color: #0f172a;
+  background: #f1f5f9;
+  border-radius: 1mm;
+}
+
+.print-axis-time {
+  font-size: 6.5pt;
+  font-weight: 500;
+  color: #475569;
+}
+
+.print-band {
+  position: absolute;
+  left: 0;
+  right: 0;
+  background: #f8fafc;
+  border-top: 0.2mm dashed #e2e8f0;
+}
+
+.print-block {
+  position: absolute;
+  box-sizing: border-box;
+  padding: 0.8mm 1.2mm;
+  border: 0.3mm solid #2563eb;
+  border-left-width: 1mm;
+  border-radius: 1mm;
+  background: #eff6ff;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3mm;
+  line-height: 1.15;
+}
+
+.print-block-reserved {
+  border-color: #94a3b8;
+  background: repeating-linear-gradient(45deg, #f1f5f9, #f1f5f9 1.5mm, #e2e8f0 1.5mm, #e2e8f0 3mm);
+}
+
+.print-block-code {
+  font-size: 8.5pt;
+  font-weight: 900;
+  color: #0f172a;
+}
+
+.print-block-section {
+  font-weight: 700;
+  color: #1d4ed8;
+}
+
+.print-block-tag {
+  margin-left: 1mm;
+  padding: 0 0.8mm;
+  font-size: 6pt;
+  font-weight: 700;
+  color: #92400e;
+  background: #fef3c7;
+  border-radius: 0.6mm;
+}
+
+.print-block-title {
+  font-size: 7pt;
+  font-weight: 600;
+  color: #1e293b;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.print-block-teacher {
+  font-size: 6.5pt;
+  color: #475569;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.print-block-time {
+  margin-top: auto;
+  font-size: 6.5pt;
+  font-weight: 700;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  color: #334155;
+}
+
+.print-footer {
+  margin-top: auto;
+  font-size: 7pt;
+  color: #64748b;
+  text-align: center;
+}

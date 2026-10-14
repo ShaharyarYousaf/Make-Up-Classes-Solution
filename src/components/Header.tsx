@@ -15,6 +15,7 @@ import {
   ShieldCheck,
   Cloud,
   CloudOff,
+  Printer,
 } from 'lucide-react';
 
 export const Header: React.FC = () => {
@@ -29,6 +30,7 @@ export const Header: React.FC = () => {
     openVacantRoomsModal,
     openRescheduleReview,
     openDataManager,
+    openPrintModal,
     openCoordinatorModal,
     authEmail,
     syncStatus,
@@ -46,6 +48,7 @@ export const Header: React.FC = () => {
       openVacantRoomsModal: s.openVacantRoomsModal,
       openRescheduleReview: s.openRescheduleReview,
       openDataManager: s.openDataManager,
+      openPrintModal: s.openPrintModal,
       openCoordinatorModal: s.openCoordinatorModal,
       authEmail: s.authEmail,
       syncStatus: s.syncStatus,
@@ -155,6 +158,16 @@ export const Header: React.FC = () => {
               <Plus className="w-3.5 h-3.5" />
               <span className="hidden sm:inline">Extra / Makeup Slot</span>
               <span className="sm:hidden">Makeup</span>
+            </button>
+
+            {/* Print room schedules */}
+            <button
+              onClick={openPrintModal}
+              title="Print room schedules to post outside classrooms"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-gray-100 dark:bg-zinc-800 hover:bg-gray-200 dark:hover:bg-zinc-700 text-gray-700 dark:text-gray-300 transition-colors border border-gray-200 dark:border-zinc-700"
+            >
+              <Printer className="w-3.5 h-3.5 text-gray-500" />
+              <span className="hidden md:inline">Print</span>
             </button>
 
             {/* Data Manager Button */}

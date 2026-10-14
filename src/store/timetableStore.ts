@@ -47,6 +47,7 @@ interface TimetableStore {
   isImpactModalOpen: boolean;
   isFlexibleModalOpen: boolean;
   isDataManagerOpen: boolean;
+  isPrintModalOpen: boolean;
   isVacantRoomsModalOpen: boolean;
   vacantRoomsTargetCourseId: string | null;
   isRescheduleReviewOpen: boolean;
@@ -115,6 +116,8 @@ interface TimetableStore {
 
   // Data management
   openDataManager: () => void;
+  openPrintModal: () => void;
+  closePrintModal: () => void;
   closeDataManager: () => void;
   importDatasets: (payload: {
     rooms?: Room[];
@@ -264,6 +267,7 @@ export const useTimetableStore = create<TimetableStore>()(
   isFlexibleModalOpen: false,
   flexibleGap: null,
   isDataManagerOpen: false,
+  isPrintModalOpen: false,
   isVacantRoomsModalOpen: false,
   vacantRoomsTargetCourseId: null,
   isRescheduleReviewOpen: false,
@@ -668,6 +672,8 @@ export const useTimetableStore = create<TimetableStore>()(
   },
 
   openDataManager: () => set({ isDataManagerOpen: true }),
+  openPrintModal: () => set({ isPrintModalOpen: true }),
+  closePrintModal: () => set({ isPrintModalOpen: false }),
   closeDataManager: () => set({ isDataManagerOpen: false }),
 
   importDatasets: ({ rooms, courses, students, allocations }) => {
