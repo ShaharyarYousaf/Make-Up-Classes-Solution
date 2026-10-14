@@ -17,6 +17,8 @@ interface Dataset {
 
 const PAGE = 1000;
 const CHUNK = 500;
+/** ids per delete request, keeps the URL short */
+const DELETE_CHUNK = 150;
 /** More changed classes than this in one step (e.g. a timetable import) republishes the whole dataset */
 const BULK_THRESHOLD = 50;
 
@@ -77,15 +79,31 @@ async function loadAll() {
   }
 }
 
-async function replaceTable(table: Table, items: { id: string }[]) {
-  const { error } = await supabase!.from(table).delete().neq('id', '');
-  if (error) throw error;
+/**
+ * Makes a table match `items`: upserts every row, then deletes only rows that are gone.
+ * Never empties the table first, so the live events other browsers receive (some of which the
+ * realtime service may drop under load) always describe the final state.
+ */
+async function syncTable(table: Table, items: { id: string }[]) {
   const now = new Date().toISOString();
   for (let i = 0; i < items.length; i += CHUNK) {
-    const { error: insertError } = await supabase!
+    const { error } = await supabase!
       .from(table)
-      .insert(items.slice(i, i + CHUNK).map((item) => ({ id: item.id, data: item, updated_at: now })));
-    if (insertError) throw insertError;
+      .upsert(items.slice(i, i + CHUNK).map((item) => ({ id: item.id, data: item, updated_at: now })));
+    if (error) throw error;
+  }
+
+  const keep = new Set(items.map((item) => item.id));
+  const stale: string[] = [];
+  for (let from = 0; ; from += PAGE) {
+    const { data, error } = await supabase!.from(table).select('id').order('id').range(from, from + PAGE - 1);
+    if (error) throw error;
+    for (const row of data || []) if (!keep.has(row.id)) stale.push(row.id);
+    if (!data || data.length < PAGE) break;
+  }
+  for (let i = 0; i < stale.length; i += DELETE_CHUNK) {
+    const { error } = await supabase!.from(table).delete().in('id', stale.slice(i, i + DELETE_CHUNK));
+    if (error) throw error;
   }
 }
 
@@ -95,10 +113,10 @@ export async function publishDataset(): Promise<void> {
   const { rooms, courses, students, allocations } = store.getState();
   store.setState({ syncStatus: 'saving' });
   try {
-    await replaceTable('rooms', rooms);
-    await replaceTable('courses', courses);
-    await replaceTable('students', students);
-    await replaceTable('allocations', allocations);
+    await syncTable('rooms', rooms);
+    await syncTable('courses', courses);
+    await syncTable('students', students);
+    await syncTable('allocations', allocations);
     const version = Date.now();
     lastPublishedVersion = version;
     const { error } = await supabase.from('meta').upsert({ key: 'dataset', value: { version }, updated_at: new Date().toISOString() });
@@ -207,7 +225,8 @@ export function startRemoteSync() {
   // Save local edits; queued so writes reach the database in order
   store.subscribe((state, prev) => {
     if (applyingRemote || !state.canEdit || state.syncStatus === 'local') return;
-    if (state.syncStatus === 'empty' || state.syncStatus === 'loading') return;
+    // Edits made while a reload is running are still saved; the reload's data is then corrected by their live echo
+    if (state.syncStatus === 'empty') return;
     const datasetReplaced = state.rooms !== prev.rooms || state.courses !== prev.courses || state.students !== prev.students;
     if (!datasetReplaced && state.allocations === prev.allocations) return;
 
