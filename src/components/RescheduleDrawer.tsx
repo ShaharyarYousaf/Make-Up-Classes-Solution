@@ -24,6 +24,7 @@ import {
 } from 'lucide-react';
 import { DayOfWeek, SlotRecommendation } from '../types/timetable';
 import { getAllocationInterval } from '../lib/utils';
+import { EditClassTime } from './EditClassTime';
 
 export const RescheduleDrawer: React.FC = () => {
   const {
@@ -178,6 +179,8 @@ export const RescheduleDrawer: React.FC = () => {
             </button>
           </div>
         </div>
+
+        <EditClassTime allocation={selectedAllocation} />
 
         {/* Control Sub-bar */}
         <div className="p-4 border-b border-gray-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 flex flex-wrap items-center justify-between gap-3">

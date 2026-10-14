@@ -18,6 +18,9 @@ import { STANDARD_TIME_SLOTS } from '../src/lib/constants';
 import { extractTimeRange, getFreeIntervals, layoutLanes, timeFieldsForInterval, toTimeInterval } from '../src/lib/timeline';
 import { defaultSessionMinutes, expectedWeeklyMinutes, scheduledMinutesBySection } from '../src/lib/courseLoad';
 import { batchAvailability } from '../src/lib/batchAvailability';
+import { buildSheets, toCSV } from '../src/lib/exportData';
+import { parseCoursesCSV, parseRoomsCSV, parseStudentsCSV } from '../src/lib/csvParser';
+import { INITIAL_STUDENTS as ALL_STUDENTS } from '../src/lib/mockData';
 import { useTimetableStore, undoStep } from '../src/store/timetableStore';
 import { getAllocationInterval } from '../src/lib/utils';
 import { Allocation, CourseSection, Room } from '../src/types/timetable';
@@ -323,6 +326,35 @@ const midday = batchAvailability({ ...hBase, basis: 'students', maxBusy: 0, minD
 check('Partial windows are exact to 5 minutes (09:50–10:00 found)', midday.some(w => w.startMinutes === 590 && w.endMinutes === 600));
 const busyRooms = batchAvailability({ ...hBase, basis: 'students', maxBusy: 1 }).days.find(d => d.day === 'Monday')!.windows[0].freeRooms;
 check('Rooms booked during the window are excluded', !busyRooms.some(r => r.id === 'c-301' || r.id === 'c-302' || r.id === 'c-303'));
+
+// 13. Editing a class's time in the app, and exporting everything
+console.log('\n--- Test 13: Edit Time & Export ---');
+const editMe: Allocation = { id: 'edit', courseSectionId: INITIAL_COURSES[0].id, day: 'Monday', roomId: 'c-301', slotId: 'slot-4' };
+st.setState({ canEdit: true, allocations: [editMe], allocationHistory: [], rooms: INITIAL_ROOMS, courses: INITIAL_COURSES });
+st.getState().updateAllocationTime('edit', { day: 'Wednesday', roomId: 'c-302', startMinutes: 780, endMinutes: 885 });
+const edited = st.getState().allocations[0];
+check('Edit sets the exact time 13:00–14:45, day and room', edited.day === 'Wednesday' && edited.roomId === 'c-302' && edited.customInterval?.startTime === '13:00' && edited.customInterval?.endTime === '14:45');
+check('A time correction is not marked Rescheduled', !edited.isRescheduled && !edited.rescheduledFrom);
+st.getState().updateAllocationTime('edit', { day: 'Wednesday', roomId: 'c-302', startMinutes: 780, endMinutes: 860 });
+check('Setting an exact slot time turns it back into a plain slot', st.getState().allocations[0].slotId === 'slot-4' && !st.getState().allocations[0].customInterval);
+st.getState().undoLastReschedule();
+check('Undo restores the previous time', st.getState().allocations[0].customInterval?.endTime === '14:45');
+
+// Export the real dataset and read it back with the importers: nothing may change
+const sheets = buildSheets({ rooms: INITIAL_ROOMS, courses: INITIAL_COURSES, students: ALL_STUDENTS, allocations: INITIAL_ALLOCATIONS });
+const csvOf = (name: string) => toCSV(sheets.find(x => x.name === name)!.rows).replace(/^﻿/, '');
+const backCourses = parseCoursesCSV(csvOf('Courses')).items;
+const backRooms = parseRoomsCSV(csvOf('Rooms'), INITIAL_ROOMS).items;
+const backStudents = parseStudentsCSV(csvOf('Students'), INITIAL_COURSES).items;
+const backTimetable = parseTimetableCSV(csvOf('Timetable'), INITIAL_ROOMS, INITIAL_COURSES);
+const sig = (a: Allocation) => { const i = getAllocationInterval(a.slotId, a.customInterval); return `${a.day}|${a.roomId}|${a.courseSectionId}|${i.startMinutes}-${i.endMinutes}`; };
+const beforeSigs = INITIAL_ALLOCATIONS.map(sig).sort();
+const afterSigs = backTimetable.items.map(sig).sort();
+check(`Timetable round-trips (${beforeSigs.length} classes, custom times kept)`, backTimetable.report.skipped === 0 && JSON.stringify(beforeSigs) === JSON.stringify(afterSigs));
+check(`Courses round-trip (${backCourses.length})`, backCourses.length === INITIAL_COURSES.length && backCourses.every(c => INITIAL_COURSES.some(o => o.id === c.id && o.instructor === c.instructor)));
+check(`Students round-trip (${backStudents.length}, every enrolment)`, backStudents.length === ALL_STUDENTS.length && backStudents.reduce((n, x) => n + x.enrolledSectionIds.length, 0) === ALL_STUDENTS.reduce((n, x) => n + x.enrolledSectionIds.length, 0));
+check(`Rooms round-trip (${backRooms.length}, capacities kept)`, backRooms.length === INITIAL_ROOMS.length && backRooms.every(r => INITIAL_ROOMS.find(o => o.id === r.id)?.capacity === r.capacity));
+check('Commas and quotes in titles survive the CSV', toCSV([['a, "b"']]).includes('"a, ""b"""'));
 
 if (failures > 0) {
   console.log(`\n${failures} TEST(S) FAILED ❌`);

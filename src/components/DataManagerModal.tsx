@@ -45,6 +45,8 @@ function decodeFileText(buffer: ArrayBuffer): string {
   return text.replace(/^\uFEFF/, '');
 }
 
+import { buildSheets, downloadCSV, downloadWorkbook } from '../lib/exportData';
+
 export const DataManagerModal: React.FC = () => {
   const {
     isDataManagerOpen,
@@ -71,6 +73,7 @@ export const DataManagerModal: React.FC = () => {
   );
 
   const [activeTab, setActiveTab] = useState<'csv' | 'json' | 'export' | 'roster'>('csv');
+  const [exporting, setExporting] = useState(false);
   const [pastedCSV, setPastedCSV] = useState('');
   const [csvDataType, setCsvDataType] = useState<CsvDataType>('students');
   const [jsonInput, setJsonInput] = useState('');
@@ -562,6 +565,53 @@ export const DataManagerModal: React.FC = () => {
             </div>
           ) : activeTab === 'export' ? (
             <div className="space-y-4">
+              {/* Current data as sheets (same layout the importer reads) */}
+              <div className="rounded-xl border border-emerald-200 dark:border-emerald-900 bg-emerald-50/60 dark:bg-emerald-950/30 p-4 flex flex-col gap-3">
+                <div>
+                  <p className="text-sm font-bold text-gray-900 dark:text-white">Export current data sheets</p>
+                  <p className="text-xs text-gray-600 dark:text-gray-400">
+                    Everything as it is now, including reschedules, make-ups, corrected times and deletions: {allocations.length} classes,{' '}
+                    {courses.length} sections, {students.length} students, {rooms.length} rooms. The CSVs use the import format, so you can
+                    edit and re-import them.
+                  </p>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  <button
+                    disabled={exporting}
+                    onClick={async () => {
+                      setExporting(true);
+                      try {
+                        const stamp = new Date().toISOString().slice(0, 10);
+                        await downloadWorkbook(buildSheets({ rooms, courses, students, allocations }), `timetable_data_${stamp}.xlsx`);
+                        showToast('Exported all data sheets as an Excel workbook', 'success');
+                      } catch (err: any) {
+                        showToast(`Export failed: ${err?.message || err}`, 'warning');
+                      } finally {
+                        setExporting(false);
+                      }
+                    }}
+                    className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold bg-emerald-600 hover:bg-emerald-700 disabled:opacity-60 text-white rounded-lg transition-colors"
+                  >
+                    <Download className="w-3.5 h-3.5" />
+                    {exporting ? 'Preparing…' : 'Export all (Excel, 4 sheets)'}
+                  </button>
+                  {buildSheets({ rooms: [], courses: [], students: [], allocations: [] }).map((empty, i) => (
+                    <button
+                      key={empty.name}
+                      onClick={() => {
+                        const sheet = buildSheets({ rooms, courses, students, allocations })[i];
+                        downloadCSV(sheet, new Date().toISOString().slice(0, 10));
+                        showToast(`Downloaded ${sheet.name} (${sheet.rows.length - 1} rows)`, 'info');
+                      }}
+                      className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg border border-gray-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 hover:bg-gray-100 dark:hover:bg-zinc-700 transition-colors"
+                    >
+                      <Download className="w-3.5 h-3.5" />
+                      {empty.name} CSV
+                    </button>
+                  ))}
+                </div>
+              </div>
+
               <div className="flex items-center justify-between">
                 <span className="text-xs text-gray-600 dark:text-gray-400">
                   Full dataset snapshot ready for backup or sharing:

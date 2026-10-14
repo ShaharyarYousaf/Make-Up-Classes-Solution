@@ -119,6 +119,11 @@ interface TimetableStore {
   reassignRoom: (allocationId: string, newRoomId: string, note?: string) => void;
   /** Removes a class from the timetable (undoable, needs edit access) */
   deleteAllocation: (allocationId: string) => void;
+  /** Corrects a class's day, exact time and room in place – not a reschedule (undoable, needs edit access) */
+  updateAllocationTime: (
+    allocationId: string,
+    change: { day: DayOfWeek; roomId: string; startMinutes: number; endMinutes: number }
+  ) => void;
 
   // Weekly Rescheduled Classes Review & Actions
   openRescheduleReview: () => void;
@@ -527,6 +532,34 @@ export const useTimetableStore = create<TimetableStore>()(
     set({
       isVacantRoomsModalOpen: false,
       vacantRoomsTargetCourseId: null,
+    });
+  },
+
+  updateAllocationTime: (allocationId, { day, roomId, startMinutes, endMinutes }) => {
+    if (!requireEditAccess(get, set)) return;
+    const { allocations, allocationHistory, courses, rooms, selectedAllocation } = get();
+    const target = allocations.find((a) => a.id === allocationId);
+    if (!target) return;
+    const updated: Allocation = {
+      ...target,
+      day,
+      roomId,
+      // An exact standard slot stays a plain slot; anything else keeps its exact interval
+      ...timeFieldsForInterval({ startMinutes, endMinutes }),
+      allocatedAt: new Date().toISOString(),
+    };
+    const updatedAllocations = allocations.map((a) => (a.id === allocationId ? updated : a));
+    const course = courses.find((c) => c.id === target.courseSectionId);
+    const room = rooms.find((r) => r.id === roomId);
+    const interval = getAllocationInterval(updated.slotId, updated.customInterval);
+    set({
+      allocations: updatedAllocations,
+      allocationHistory: pushHistory(allocationHistory, allocations, updatedAllocations),
+      ...(selectedAllocation?.id === allocationId ? { selectedAllocation: updated } : {}),
+      toastMessage: {
+        text: `${course?.courseCode || target.courseSectionId} ${course?.section || ''} now ${day} ${interval.startTime}–${interval.endTime} in ${room?.name || roomId}`,
+        type: 'success',
+      },
     });
   },
 
