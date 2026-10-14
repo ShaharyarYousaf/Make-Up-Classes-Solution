@@ -495,7 +495,7 @@ export const DataManagerModal: React.FC = () => {
                       ? 'Course Code,Course Title,Section,Department,Instructor,Credit Hours\nAI4015,Agentic Artificial Intelligence,BCS-7B,Artificial Intelligence,Dr. Zeeshan Ali,3\n...'
                       : csvDataType === 'rooms'
                       ? 'Room Name,Type,Capacity,Building\nC-301,Lecture,50,Academic Block C\n...'
-                      : 'Day,TimeSlot,Room,Course Section\nMonday,Slot 2,Room A-1,AI4015 BCS-7B\n...'
+                      : 'Day,TimeSlot,Room,Course Section,Start Time,End Time\nMonday,Slot 2,Room A-1,AI4015 BCS-7B,,\nMonday,Slot 4,C-301,SS1013 BCS-1A,13:00,14:45\n...'
                   }
                   value={pastedCSV}
                   onChange={(e) => setPastedCSV(e.target.value)}

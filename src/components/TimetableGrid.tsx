@@ -2,25 +2,19 @@ import React, { useState, useRef, useEffect, useMemo } from 'react';
 import { useShallow } from 'zustand/react/shallow';
 import { useTimetableStore } from '../store/timetableStore';
 import { getCourseMap, getSectionRoster } from '../lib/engine';
-import { getReservedLabel, isReservedAllocation } from '../lib/csvParser';
 import { DAYS_OF_WEEK, STANDARD_TIME_SLOTS } from '../lib/constants';
-import { CourseCard } from './CourseCard';
+import { TimelineColumn, TimelineColumns } from './TimelineColumns';
+import { allocationInterval } from '../lib/timeline';
 import {
   Building2,
   Calendar,
   Search,
   Filter,
-  Sparkles,
-  PlusCircle,
   ChevronLeft,
   ChevronRight,
   Layers,
-  SlidersHorizontal,
-  Clock,
-  CheckCircle2,
-  Maximize2,
 } from 'lucide-react';
-import { Allocation, DayOfWeek, Room, TimeSlot } from '../types/timetable';
+import { Allocation, DayOfWeek } from '../types/timetable';
 
 export const TimetableGrid: React.FC = () => {
   const {
@@ -62,12 +56,14 @@ export const TimetableGrid: React.FC = () => {
   const courseMap = getCourseMap(courses);
   const sectionRoster = getSectionRoster(students);
 
-  // day|room|slot -> allocation, built once instead of scanning all allocations per cell
-  const cellIndex = useMemo(() => {
-    const index = new Map<string, Allocation>();
+  // day|room -> allocations, built once instead of filtering all allocations per column
+  const dayRoomIndex = useMemo(() => {
+    const index = new Map<string, Allocation[]>();
     for (const alloc of allocations) {
-      const key = `${alloc.day}|${alloc.roomId}|${alloc.slotId}`;
-      if (!index.has(key)) index.set(key, alloc);
+      const key = `${alloc.day}|${alloc.roomId}`;
+      const list = index.get(key);
+      if (list) list.push(alloc);
+      else index.set(key, [alloc]);
     }
     return index;
   }, [allocations]);
@@ -79,8 +75,6 @@ export const TimetableGrid: React.FC = () => {
 
   // Room categories filter
   const [roomCategoryFilter, setRoomCategoryFilter] = useState<'ALL' | 'Block C' | 'Block D' | 'Labs'>('ALL');
-  // Adaptive slots toggle: when true, hides irrelevant slots (e.g. lab slots for classrooms, theory slots for labs)
-  const [adaptiveSlotsOnly, setAdaptiveSlotsOnly] = useState<boolean>(true);
 
   // Selected room object
   const selectedRoom = rooms.find((r) => r.id === selectedRoomId) || rooms[0];
@@ -108,44 +102,35 @@ export const TimetableGrid: React.FC = () => {
     return ['ALL', ...Array.from(new Set(courses.map((c) => c.department)))];
   }, [courses]);
 
-  // Determine active slots adaptively
-  const activeSlots = useMemo(() => {
-    if (!adaptiveSlotsOnly) {
-      return STANDARD_TIME_SLOTS;
-    }
+  const visibleColumns = useMemo(() => {
+    const columns: { day: DayOfWeek; roomId: string }[] =
+      viewMode === 'room'
+        ? DAYS_OF_WEEK.map((day) => ({ day, roomId: selectedRoomId }))
+        : filteredRooms.map((room) => ({ day: selectedDay, roomId: room.id }));
+    return columns.map((c) => ({ ...c, allocations: dayRoomIndex.get(`${c.day}|${c.roomId}`) || [] }));
+  }, [viewMode, selectedRoomId, selectedDay, filteredRooms, dayRoomIndex]);
 
-    if (viewMode === 'room') {
-      const isLab = selectedRoom.type === 'Lab';
-      if (isLab) {
-        // Show lab slots 9 to 12
-        return STANDARD_TIME_SLOTS.filter(
-          (s) => s.slotNumber >= 9 || s.id.startsWith('lab')
-        );
-      } else {
-        // Show theory slots 1 to 6 (and 7-8 if evening courses exist)
-        const hasEvening = allocations.some(
-          (a) =>
-            a.roomId === selectedRoomId &&
-            (a.slotId === 'slot-7' || a.slotId === 'slot-8')
-        );
-        return STANDARD_TIME_SLOTS.filter(
-          (s) => s.slotNumber <= 6 || (hasEvening && (s.slotNumber === 7 || s.slotNumber === 8))
-        );
-      }
-    } else {
-      // Day View
-      if (roomCategoryFilter === 'Labs') {
-        return STANDARD_TIME_SLOTS.filter(
-          (s) => s.slotNumber >= 9 || s.id.startsWith('lab')
-        );
-      } else if (roomCategoryFilter === 'Block C' || roomCategoryFilter === 'Block D') {
-        return STANDARD_TIME_SLOTS.filter((s) => s.slotNumber <= 8);
-      } else {
-        // All rooms: return all slots
-        return STANDARD_TIME_SLOTS;
+  // Timeline range: the regular day, stretched to cover anything earlier or later
+  const { dayStart, dayEnd } = useMemo(() => {
+    let start = 8 * 60 + 30;
+    let end = 17 * 60 + 15;
+    for (const col of visibleColumns) {
+      for (const alloc of col.allocations) {
+        const interval = allocationInterval(alloc);
+        start = Math.min(start, interval.startMinutes);
+        end = Math.max(end, interval.endMinutes);
       }
     }
-  }, [adaptiveSlotsOnly, viewMode, selectedRoom, selectedRoomId, roomCategoryFilter, allocations]);
+    return { dayStart: Math.floor(start / 30) * 30, dayEnd: Math.ceil(end / 15) * 15 };
+  }, [visibleColumns]);
+
+  // Slot bands drawn behind the timeline: lab blocks for labs, theory slots otherwise
+  const bands = useMemo(() => {
+    const labView = viewMode === 'room' ? selectedRoom?.type === 'Lab' : roomCategoryFilter === 'Labs';
+    return STANDARD_TIME_SLOTS.filter(
+      (s) => (labView ? s.id.startsWith('lab') : !s.id.startsWith('lab')) && s.startMinutes < dayEnd && s.endMinutes > dayStart
+    );
+  }, [viewMode, selectedRoom, roomCategoryFilter, dayStart, dayEnd]);
 
   // Sync top scrollbar with main scroll container
   const handleTopScroll = () => {
@@ -174,7 +159,7 @@ export const TimetableGrid: React.FC = () => {
       clearTimeout(timer);
       window.removeEventListener('resize', updateWidth);
     };
-  }, [viewMode, filteredRooms, selectedRoomId, selectedDay, activeSlots]);
+  }, [viewMode, filteredRooms, selectedRoomId, selectedDay, dayStart, dayEnd]);
 
   // Quick scroll buttons
   const scrollHorizontally = (delta: number) => {
@@ -193,8 +178,8 @@ export const TimetableGrid: React.FC = () => {
   };
 
   // Helper to filter allocations based on search & department
-  const isAllocationVisible = (courseId: string) => {
-    const course = courseMap.get(courseId);
+  const isAllocationVisible = (alloc: Allocation) => {
+    const course = courseMap.get(alloc.courseSectionId);
     if (!course) return false;
 
     if (departmentFilter !== 'ALL' && course.department !== departmentFilter) {
@@ -212,22 +197,6 @@ export const TimetableGrid: React.FC = () => {
     }
 
     return true;
-  };
-
-  // Reserved block (e.g. prayer break) or a class missing from the course list: the room is not free
-  const renderBlockedCell = (cellAllocation: Allocation) => {
-    const reserved = isReservedAllocation(cellAllocation.courseSectionId);
-    return (
-      <div
-        className="h-full w-full rounded-lg bg-gray-100 dark:bg-zinc-800/70 border border-gray-300 dark:border-zinc-700 flex flex-col items-center justify-center text-center p-2"
-        title={reserved ? 'Reserved time – room is not available' : 'This course section is not in the course list'}
-      >
-        <span className="text-[11px] font-bold text-gray-600 dark:text-gray-300">
-          {reserved ? getReservedLabel(cellAllocation.courseSectionId) : cellAllocation.courseSectionId}
-        </span>
-        <span className="text-[9px] text-gray-500 mt-0.5">{reserved ? 'Reserved' : 'Not in course list'}</span>
-      </div>
-    );
   };
 
   return (
@@ -260,20 +229,6 @@ export const TimetableGrid: React.FC = () => {
               Day Overview ({filteredRooms.length} Rooms)
             </button>
           </div>
-
-          {/* Adaptive Slot Toggle Pill */}
-          <button
-            onClick={() => setAdaptiveSlotsOnly(!adaptiveSlotsOnly)}
-            className={`hidden sm:flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-semibold border transition-all ${
-              adaptiveSlotsOnly
-                ? 'bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 border-blue-200 dark:border-blue-900'
-                : 'bg-white dark:bg-zinc-800 text-gray-600 dark:text-gray-400 border-gray-200 dark:border-zinc-700'
-            }`}
-            title="Automatically hides irrelevant slots (e.g. lab slots for classrooms, theory slots for labs)"
-          >
-            <SlidersHorizontal className="w-3 h-3 text-blue-600 dark:text-blue-400" />
-            <span>{adaptiveSlotsOnly ? 'Adaptive Slots: ON' : 'All 12 Slots: ON'}</span>
-          </button>
         </div>
 
         {/* Center: Search Input & Department Filter */}
@@ -455,214 +410,51 @@ export const TimetableGrid: React.FC = () => {
       <div
         ref={mainScrollRef}
         onScroll={handleMainScroll}
-        className="flex-1 overflow-x-auto overflow-y-auto max-h-[72vh] p-3 sm:p-4 bg-slate-50/50 dark:bg-zinc-950/40 relative"
+        className="flex-1 overflow-x-auto overflow-y-auto max-h-[72vh] px-3 pb-3 sm:px-4 sm:pb-4 bg-slate-50/50 dark:bg-zinc-950/40 relative"
       >
-        {viewMode === 'room' ? (
-          /* ROOM VIEW: Columns are 6 Days (Mon - Sat), Rows are Slots */
-          <div className="min-w-[960px]">
-            <div className="grid grid-cols-[140px_repeat(6,minmax(130px,1fr))] gap-2.5">
-              {/* Header Row: Corner Sticky Time Slot */}
-              <div className="sticky left-0 top-0 z-30 p-2.5 text-center text-xs font-black text-gray-700 dark:text-gray-200 uppercase tracking-wider bg-gray-100/95 dark:bg-zinc-800/95 backdrop-blur-md rounded-xl border border-gray-300 dark:border-zinc-700 flex items-center justify-center shadow-xs">
-                Time Slot
-              </div>
-
-              {/* Day Headers (Sticky Top) */}
-              {DAYS_OF_WEEK.map((day) => (
-                <div
-                  key={day}
-                  className="sticky top-0 z-10 p-2.5 text-center text-xs font-extrabold text-gray-800 dark:text-gray-100 uppercase tracking-wider bg-gray-100/95 dark:bg-zinc-800/95 backdrop-blur-md rounded-xl border border-gray-200 dark:border-zinc-700 shadow-xs"
-                >
-                  {day}
-                </div>
-              ))}
-
-              {/* Time Slot Rows */}
-              {activeSlots.map((slot) => {
-                const isLabSlot = slot.slotNumber >= 9 || slot.id.startsWith('lab');
-
-                return (
-                  <React.Fragment key={slot.id}>
-                    {/* Time Slot Label Cell (Sticky Left Column) */}
-                    <div
-                      className={`sticky left-0 z-20 p-2 rounded-xl border flex flex-col justify-center items-center text-center backdrop-blur-md shadow-xs ${
-                        isLabSlot
-                          ? 'bg-amber-50/95 dark:bg-amber-950/80 border-amber-300 dark:border-amber-800 text-amber-900 dark:text-amber-200'
-                          : 'bg-white/95 dark:bg-zinc-800/95 border-gray-200 dark:border-zinc-700 text-gray-800 dark:text-gray-200'
-                      }`}
-                    >
-                      <div className="flex items-center gap-1">
-                        <span className="text-xs font-black">
-                          {isLabSlot ? `Lab ${slot.slotNumber - 8}` : `Slot ${slot.slotNumber}`}
-                        </span>
-                        {isLabSlot && (
-                          <span className="text-[9px] font-bold px-1 rounded bg-amber-200 dark:bg-amber-900 text-amber-900 dark:text-amber-200">
-                            2h 45m
-                          </span>
-                        )}
-                      </div>
-                      <span className="text-[10px] opacity-75 font-mono mt-0.5">
-                        {slot.startTime} - {slot.endTime}
-                      </span>
+        <div style={{ minWidth: `${112 + visibleColumns.length * (viewMode === 'room' ? 140 : 150)}px` }}>
+          <TimelineColumns
+            columns={visibleColumns.map((col): TimelineColumn => {
+              const room = rooms.find((r) => r.id === col.roomId) || selectedRoom;
+              return {
+                key: `${col.day}|${col.roomId}`,
+                allocations: col.allocations,
+                roomFor: () => room,
+                freeLabel: viewMode === 'room' ? `${room.name} on ${col.day}` : `${room.name} on ${selectedDay}`,
+                header:
+                  viewMode === 'room' ? (
+                    <div className="p-2.5 text-center text-xs font-extrabold text-gray-800 dark:text-gray-100 uppercase tracking-wider bg-gray-100/95 dark:bg-zinc-800/95 backdrop-blur-md rounded-xl border border-gray-200 dark:border-zinc-700 shadow-xs">
+                      {col.day}
                     </div>
-
-                    {/* Day Cells */}
-                    {DAYS_OF_WEEK.map((day) => {
-                      const cellAllocation = cellIndex.get(`${day}|${selectedRoomId}|${slot.id}`);
-
-                      const course = cellAllocation ? courseMap.get(cellAllocation.courseSectionId) : undefined;
-
-                      const isVisible = cellAllocation ? isAllocationVisible(cellAllocation.courseSectionId) : true;
-
-                      return (
-                        <div
-                          key={`${day}-${slot.id}`}
-                          className="min-h-[115px] p-1 bg-white/70 dark:bg-zinc-900/60 rounded-xl border border-dashed border-gray-200 dark:border-zinc-800 flex flex-col transition-all"
-                        >
-                          {cellAllocation && course && isVisible ? (
-                            <CourseCard
-                              allocation={cellAllocation}
-                              course={course}
-                              room={selectedRoom}
-                              enrolledCount={sectionRoster.get(course.id)?.length || 0}
-                            />
-                          ) : cellAllocation && !course ? (
-                            renderBlockedCell(cellAllocation)
-                          ) : (
-                            <div
-                              onClick={() => openFlexibleModal(undefined)}
-                              className="h-full w-full rounded-lg hover:bg-blue-50/80 dark:hover:bg-blue-950/30 hover:border-blue-300 dark:hover:border-blue-800 border border-transparent flex flex-col items-center justify-center text-gray-400 dark:text-zinc-600 transition-all group cursor-pointer p-2"
-                              title={`Allocate makeup/seminar in ${selectedRoom.name} on ${day} (${slot.startTime}-${slot.endTime})`}
-                            >
-                              <span className="text-[11px] font-semibold opacity-60 group-hover:opacity-100 flex items-center gap-1 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-all">
-                                <PlusCircle className="w-3.5 h-3.5 text-blue-500" />
-                                Available
-                              </span>
-                              <span className="text-[9px] opacity-40 font-mono mt-0.5">
-                                {isLabSlot ? '165m window' : '80m window'}
-                              </span>
-                            </div>
-                          )}
-                        </div>
-                      );
-                    })}
-                  </React.Fragment>
-                );
-              })}
-            </div>
-          </div>
-        ) : (
-          /* DAY VIEW: Columns are Rooms, Rows are Slots */
-          <div
-            style={{
-              minWidth: `${140 + filteredRooms.length * 150}px`,
-            }}
-          >
-            <div
-              className="grid gap-2.5"
-              style={{
-                gridTemplateColumns: `140px repeat(${filteredRooms.length}, minmax(140px, 1fr))`,
-              }}
-            >
-              {/* Corner Header (Sticky Top-Left) */}
-              <div className="sticky left-0 top-0 z-30 p-2.5 text-center text-xs font-black text-gray-700 dark:text-gray-200 uppercase tracking-wider bg-gray-100/95 dark:bg-zinc-800/95 backdrop-blur-md rounded-xl border border-gray-300 dark:border-zinc-700 flex items-center justify-center shadow-xs">
-                Time Slot
-              </div>
-
-              {/* Room Headers (Sticky Top) */}
-              {filteredRooms.map((room) => (
-                <div
-                  key={room.id}
-                  onClick={() => {
-                    setSelectedRoomId(room.id);
-                    setViewMode('room');
-                  }}
-                  className="sticky top-0 z-10 p-2.5 text-center bg-gray-100/95 dark:bg-zinc-800/95 backdrop-blur-md rounded-xl border border-gray-200 dark:border-zinc-700 shadow-xs cursor-pointer hover:border-blue-400 transition-colors group"
-                  title="Click to switch to this Room's weekly view"
-                >
-                  <div className="text-xs font-black text-gray-900 dark:text-white uppercase tracking-wider group-hover:text-blue-600 transition-colors">
-                    {room.name}
-                  </div>
-                  <div className="text-[10px] text-gray-500 dark:text-gray-400 font-medium">
-                    {room.type} • {room.capacity} seats
-                  </div>
-                </div>
-              ))}
-
-              {/* Time Slot Rows */}
-              {activeSlots.map((slot) => {
-                const isLabSlot = slot.slotNumber >= 9 || slot.id.startsWith('lab');
-
-                return (
-                  <React.Fragment key={slot.id}>
-                    {/* Time Slot Label Cell (Sticky Left Column) */}
+                  ) : (
                     <div
-                      className={`sticky left-0 z-20 p-2 rounded-xl border flex flex-col justify-center items-center text-center backdrop-blur-md shadow-xs ${
-                        isLabSlot
-                          ? 'bg-amber-50/95 dark:bg-amber-950/80 border-amber-300 dark:border-amber-800 text-amber-900 dark:text-amber-200'
-                          : 'bg-white/95 dark:bg-zinc-800/95 border-gray-200 dark:border-zinc-700 text-gray-800 dark:text-gray-200'
-                      }`}
+                      onClick={() => {
+                        setSelectedRoomId(room.id);
+                        setViewMode('room');
+                      }}
+                      className="p-2.5 text-center bg-gray-100/95 dark:bg-zinc-800/95 backdrop-blur-md rounded-xl border border-gray-200 dark:border-zinc-700 shadow-xs cursor-pointer hover:border-blue-400 transition-colors group"
+                      title="Click to switch to this Room's weekly view"
                     >
-                      <div className="flex items-center gap-1">
-                        <span className="text-xs font-black">
-                          {isLabSlot ? `Lab ${slot.slotNumber - 8}` : `Slot ${slot.slotNumber}`}
-                        </span>
-                        {isLabSlot && (
-                          <span className="text-[9px] font-bold px-1 rounded bg-amber-200 dark:bg-amber-900 text-amber-900 dark:text-amber-200">
-                            2h 45m
-                          </span>
-                        )}
+                      <div className="text-xs font-black text-gray-900 dark:text-white uppercase tracking-wider group-hover:text-blue-600 transition-colors">
+                        {room.name}
                       </div>
-                      <span className="text-[10px] opacity-75 font-mono mt-0.5">
-                        {slot.startTime} - {slot.endTime}
-                      </span>
+                      <div className="text-[10px] text-gray-500 dark:text-gray-400 font-medium">
+                        {room.type} • {room.capacity} seats
+                      </div>
                     </div>
-
-                    {/* Room Columns */}
-                    {filteredRooms.map((room) => {
-                      const cellAllocation = cellIndex.get(`${selectedDay}|${room.id}|${slot.id}`);
-
-                      const course = cellAllocation ? courseMap.get(cellAllocation.courseSectionId) : undefined;
-
-                      const isVisible = cellAllocation ? isAllocationVisible(cellAllocation.courseSectionId) : true;
-
-                      return (
-                        <div
-                          key={`${room.id}-${slot.id}`}
-                          className="min-h-[115px] p-1 bg-white/70 dark:bg-zinc-900/60 rounded-xl border border-dashed border-gray-200 dark:border-zinc-800 flex flex-col transition-all"
-                        >
-                          {cellAllocation && course && isVisible ? (
-                            <CourseCard
-                              allocation={cellAllocation}
-                              course={course}
-                              room={room}
-                              enrolledCount={sectionRoster.get(course.id)?.length || 0}
-                            />
-                          ) : cellAllocation && !course ? (
-                            renderBlockedCell(cellAllocation)
-                          ) : (
-                            <div
-                              onClick={() => openFlexibleModal(undefined)}
-                              className="h-full w-full rounded-lg hover:bg-blue-50/80 dark:hover:bg-blue-950/30 hover:border-blue-300 dark:hover:border-blue-800 border border-transparent flex flex-col items-center justify-center text-gray-400 dark:text-zinc-600 transition-all group cursor-pointer p-2"
-                              title={`Room ${room.name} is free on ${selectedDay} (${slot.startTime}-${slot.endTime})`}
-                            >
-                              <span className="text-[11px] font-semibold opacity-60 group-hover:opacity-100 flex items-center gap-1 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-all">
-                                <PlusCircle className="w-3.5 h-3.5 text-blue-500" />
-                                Available
-                              </span>
-                              <span className="text-[9px] opacity-40 font-mono mt-0.5">
-                                {isLabSlot ? '165m window' : '80m window'}
-                              </span>
-                            </div>
-                          )}
-                        </div>
-                      );
-                    })}
-                  </React.Fragment>
-                );
-              })}
-            </div>
-          </div>
-        )}
+                  ),
+              };
+            })}
+            columnWidth={viewMode === 'room' ? 130 : 140}
+            bands={bands}
+            dayStart={dayStart}
+            dayEnd={dayEnd}
+            courseMap={courseMap}
+            enrolledCount={(id) => sectionRoster.get(id)?.length || 0}
+            isVisible={isAllocationVisible}
+            onFreeClick={() => openFlexibleModal(undefined)}
+          />
+        </div>
       </div>
     </div>
   );

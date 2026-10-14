@@ -1,6 +1,8 @@
 import { Allocation, CourseSection, Room, RoomType, Student } from '../types/timetable';
 import { DAYS_OF_WEEK, STANDARD_TIME_SLOTS } from './constants';
 import { getInstructorNames } from './engine';
+import { Interval, extractTimeRange, parseClockTime, timeFieldsForInterval } from './timeline';
+import { isTimeOverlap } from './utils';
 
 /**
  * Robust CSV Line Splitter that handles quoted fields with commas and newlines
@@ -327,7 +329,11 @@ export function parseTimetableCSV(
 
   const headers = rows[0].map(normalizeHeader);
   const dayIdx = headers.findIndex(h => h.includes('day'));
-  const slotIdx = headers.findIndex(h => h.includes('slot') || h.includes('time'));
+  const startIdx = headers.findIndex(h => h === 'start' || h === 'starttime' || h === 'from');
+  const endIdx = headers.findIndex(h => h === 'end' || h === 'endtime' || h === 'to');
+  const slotIdx = headers.findIndex(
+    (h, i) => i !== startIdx && i !== endIdx && (h.includes('slot') || h.includes('time'))
+  );
   const roomIdx = headers.findIndex(h => h.includes('room'));
   const courseIdx = headers.findIndex(h => h.includes('course') || h.includes('section'));
 
@@ -338,12 +344,15 @@ export function parseTimetableCSV(
   }
   const newRooms: Room[] = [];
   const knownCourseIds = new Set(knownCourses.map(c => c.id));
-  const occupiedCells = new Map<string, string>();
+  // day|room -> exact intervals already booked, to catch overlaps that do not share a slot
+  const occupied = new Map<string, { interval: Interval; course: string; alloc: Allocation }[]>();
 
   const allocations: Allocation[] = [];
   const importStamp = Date.now();
   let emptyCells = 0;
   let reservedCells = 0;
+  let exactTimes = 0;
+  let mergedRows = 0;
 
   for (let i = 1; i < rows.length; i++) {
     const row = rows[i];
@@ -351,7 +360,9 @@ export function parseTimetableCSV(
     const rawDay = (dayIdx !== -1 ? row[dayIdx] : row[0])?.trim();
     const rawSlot = (slotIdx !== -1 ? row[slotIdx] : row[1])?.trim();
     const rawRoom = (roomIdx !== -1 ? row[roomIdx] : row[2])?.trim();
-    const rawCourse = (courseIdx !== -1 ? row[courseIdx] : row[3])?.trim().replace(/\s+/g, ' ');
+    let rawCourse = (courseIdx !== -1 ? row[courseIdx] : row[3])?.trim().replace(/\s+/g, ' ');
+    const rawStart = startIdx !== -1 ? row[startIdx]?.trim() : '';
+    const rawEnd = endIdx !== -1 ? row[endIdx]?.trim() : '';
     const where = `line ${line}: ${rawDay || '?'} ${rawSlot || '?'} ${rawRoom || '?'}`;
 
     // A blank course cell is just a free room in a full grid export
@@ -359,7 +370,29 @@ export function parseTimetableCSV(
       emptyCells++;
       continue;
     }
-    if (!rawDay || !rawSlot || !rawRoom) {
+    // Exact time from Start/End columns, or written into the cell ("SS1007 BCS-1B 01:00-02:45")
+    let exact: Interval | undefined;
+    if (rawStart || rawEnd) {
+      const startMinutes = parseClockTime(rawStart || '');
+      const endMinutes = parseClockTime(rawEnd || '');
+      if (startMinutes === undefined || endMinutes === undefined || endMinutes <= startMinutes) {
+        errors.add('Invalid start/end time', `${where} ("${rawStart}"–"${rawEnd}")`);
+        continue;
+      }
+      exact = { startMinutes, endMinutes };
+    } else {
+      const embedded = extractTimeRange(rawCourse);
+      if (embedded) {
+        exact = embedded.interval;
+        rawCourse = embedded.rest;
+      }
+    }
+    if (!rawCourse) {
+      emptyCells++;
+      continue;
+    }
+
+    if (!rawDay || (!rawSlot && !exact) || !rawRoom) {
       errors.add('Missing day, slot or room', where);
       continue;
     }
@@ -374,11 +407,13 @@ export function parseTimetableCSV(
       continue;
     }
 
-    const slot = matchSlot(rawSlot);
-    if (!slot) {
+    const slot = rawSlot ? matchSlot(rawSlot) : undefined;
+    if (!slot && !exact) {
       errors.add('Unrecognised time slot', `${where} ("${rawSlot}")`);
       continue;
     }
+    const interval: Interval = exact || { startMinutes: slot!.startMinutes, endMinutes: slot!.endMinutes };
+    if (exact) exactTimes++;
 
     let room = roomLookup.get(rawRoom.toLowerCase());
     if (!room) {
@@ -398,28 +433,42 @@ export function parseTimetableCSV(
       warnings.add('Course section not in course list (kept so the room stays blocked)', `${where} → ${rawCourse}`);
     }
 
-    const cellKey = `${day}|${slot.id}|${room.id}`;
-    const previous = occupiedCells.get(cellKey);
-    if (previous) {
-      warnings.add('Room double-booked in the source file', `${where}: ${previous} and ${rawCourse}`);
-    } else {
-      occupiedCells.set(cellKey, rawCourse);
+    const roomKey = `${day}|${room.id}`;
+    const booked = occupied.get(roomKey) || [];
+    const clash = booked.find(b => isTimeOverlap(b.interval.startMinutes, b.interval.endMinutes, interval.startMinutes, interval.endMinutes));
+    // A long class written into every slot row it covers is one class, not a double booking
+    if (clash && clash.course === rawCourse) {
+      clash.interval = {
+        startMinutes: Math.min(clash.interval.startMinutes, interval.startMinutes),
+        endMinutes: Math.max(clash.interval.endMinutes, interval.endMinutes),
+      };
+      Object.assign(clash.alloc, timeFieldsForInterval(clash.interval));
+      mergedRows++;
+      continue;
     }
+    if (clash) {
+      warnings.add('Room double-booked in the source file', `${where}: ${clash.course} and ${rawCourse}`);
+    }
+    occupied.set(roomKey, booked);
 
-    allocations.push({
+    const allocation: Allocation = {
       id: `alloc-import-${importStamp}-${i}`,
       courseSectionId,
       day,
-      slotId: slot.id,
+      ...(exact ? timeFieldsForInterval(exact) : { slotId: slot!.id }),
       roomId: room.id,
       note: isReservedAllocation(courseSectionId) ? rawCourse : undefined,
       allocatedAt: new Date().toISOString(),
-    });
+    };
+    allocations.push(allocation);
+    booked.push({ interval, course: rawCourse, alloc: allocation });
   }
 
   const info: string[] = [];
   if (emptyCells > 0) info.push(`${emptyCells} empty cells ignored (free rooms)`);
   if (reservedCells > 0) info.push(`${reservedCells} reserved cells (e.g. prayer break) imported as room blocks`);
+  if (mergedRows > 0) info.push(`${mergedRows} rows continue a class from the previous slot and were merged into it`);
+  if (exactTimes > 0) info.push(`${exactTimes} classes use their exact start/end time instead of the slot`);
   const warningMessages = warnings.toMessages();
   if (newRooms.length > 0) {
     warningMessages.push(
@@ -560,10 +609,11 @@ D-301,Smart Classroom,45,Academic Block D
 IT Lab 1 (D-210),Lab,40,Academic Block D
 `;
 
-export const SAMPLE_TIMETABLE_CSV = `Day,TimeSlot,Room,Course Section
-Monday,Slot 2,Room A-1,AI4015 BCS-7B
-Monday,Slot 4,CS-101,CS3001 BAI-5A
-Tuesday,Slot 3,Room A-1,CS4001 BCS-7B
-Wednesday,Slot 2,Room A-1,AI4015 BCS-7B
-Wednesday,Slot 4,CS-102,SE3002 BSE-6A
+// Start Time / End Time are optional: fill them only for classes that do not match their slot
+export const SAMPLE_TIMETABLE_CSV = `Day,TimeSlot,Room,Course Section,Start Time,End Time
+Monday,Slot 2,Room A-1,AI4015 BCS-7B,,
+Monday,Slot 4,CS-101,CS3001 BAI-5A,13:00,14:45
+Tuesday,Slot 3,Room A-1,CS4001 BCS-7B,,
+Wednesday,Slot 2,Room A-1,AI4015 BCS-7B,,
+Wednesday,Slot 4,CS-102,SE3002 BSE-6A,,
 `;

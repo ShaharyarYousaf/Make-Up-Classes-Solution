@@ -16,6 +16,7 @@ import {
 } from '../types/timetable';
 import { CAMPUS_DAY_END_MINUTES, CAMPUS_DAY_START_MINUTES, DAYS_OF_WEEK, STANDARD_TIME_SLOTS } from './constants';
 import { getAllocationInterval, isTimeOverlap, minutesToTimeString } from './utils';
+import { getFreeIntervals } from './timeline';
 
 type Interval = { startMinutes: number; endMinutes: number };
 type TimedAllocation = { alloc: Allocation; startMinutes: number; endMinutes: number };
@@ -568,7 +569,8 @@ export function findFlexibleSlots(
   const allocationsByDay = getAllocationsByDay(allocations);
 
   const results: FlexibleSlotOption[] = [];
-  const STEP_MINUTES = 30; // Scan in 30 min increments (e.g. 08:30, 09:00, ...)
+  // Candidate starts inside each exact free gap: the gap edges plus every quarter hour in between
+  const QUARTER = 15;
 
   for (const day of daysToScan) {
     const dayAllocations = allocationsByDay.get(day) || [];
@@ -577,19 +579,16 @@ export function findFlexibleSlots(
       const occupiedIntervals = dayAllocations.filter(entry => entry.alloc.roomId === room.id);
       const suitability = checkRoomSuitability(course, room, enrolledCount);
 
-      // Search continuous free slots from CAMPUS_DAY_START_MINUTES to CAMPUS_DAY_END_MINUTES
-      for (
-        let start = CAMPUS_DAY_START_MINUTES;
-        start + durationMinutes <= CAMPUS_DAY_END_MINUTES;
-        start += STEP_MINUTES
-      ) {
-        const end = start + durationMinutes;
+      const starts = new Set<number>();
+      for (const gap of getFreeIntervals(occupiedIntervals, durationMinutes, CAMPUS_DAY_START_MINUTES, CAMPUS_DAY_END_MINUTES)) {
+        const latest = gap.endMinutes - durationMinutes;
+        starts.add(gap.startMinutes);
+        for (let t = Math.ceil(gap.startMinutes / QUARTER) * QUARTER; t <= latest; t += QUARTER) starts.add(t);
+        starts.add(latest);
+      }
 
-        // Check if [start, end) conflicts with any occupied interval
-        const hasRoomConflict = occupiedIntervals.some(occ =>
-          isTimeOverlap(start, end, occ.startMinutes, occ.endMinutes)
-        );
-        if (hasRoomConflict) continue;
+      for (const start of Array.from(starts).sort((a, b) => a - b)) {
+        const end = start + durationMinutes;
 
         const { studentClashes, instructorConflict } = evaluateWindow(day, { startMinutes: start, endMinutes: end });
 

@@ -14,6 +14,7 @@ import {
 } from '../src/lib/engine';
 import { isReservedAllocation, parseTimetableCSV } from '../src/lib/csvParser';
 import { STANDARD_TIME_SLOTS } from '../src/lib/constants';
+import { extractTimeRange, getFreeIntervals, layoutLanes, timeFieldsForInterval } from '../src/lib/timeline';
 import { Allocation, CourseSection, Room } from '../src/types/timetable';
 
 console.log('====================================================');
@@ -185,6 +186,36 @@ check('"Prayer break" becomes a reserved room block', isReservedAllocation(parse
 check('#N/A and unknown day are rejected and reported', parsed.report.skipped === 2 && parsed.report.errors.length === 2);
 const prayerBlocks = checkRoomConflict('Friday', STANDARD_TIME_SLOTS[3], 'c-301', parsed.items, INITIAL_COURSES);
 check('Reserved block makes the room unavailable', prayerBlocks.hasConflict);
+
+// 8. Exact times (Req F): classes that do not fit their slot
+console.log('\n--- Test 8: Exact Start/End Times ---');
+const timedCsv = [
+  'Day,TimeSlot,Room,Course Section,Start Time,End Time',
+  'Monday,Slot 4,C-301,A1 X,13:00,14:45',
+  'Monday,Slot 5,C-301,B2 Y,,',
+  'Monday,Slot 4,C-302,C3 Z 01:00-02:45,,',
+  'Monday,Slot 5,C-303,D4 W,14:20,15:00',
+  'Monday,Slot 5,C-304,E5 V,3:00,2:00',
+].join('\n');
+const timed = parseTimetableCSV(timedCsv, INITIAL_ROOMS);
+const longClass = timed.items[0];
+check('Start/End columns override the slot (13:00–14:45)', longClass?.customInterval?.startMinutes === 780 && longClass?.customInterval?.endMinutes === 885);
+check('Exact-time class keeps the nearest slot as its label', longClass?.slotId === 'slot-4');
+check('Time written in the course cell is used and stripped', timed.items[2]?.courseSectionId === 'C3 Z' && timed.items[2]?.customInterval?.endTime === '14:45');
+check('Overlap with the next slot (02:30 class vs class until 02:45) is reported as a double booking', timed.report.warnings.some(w => w.includes('double-booked')));
+check('End before start is rejected', timed.report.errors.some(e => e.includes('Invalid start/end')));
+
+const studentFree = checkRoomConflict('Monday', { startMinutes: 14 * 60 + 20, endMinutes: 14 * 60 + 45 }, 'c-301', [longClass], INITIAL_COURSES);
+check('Room is busy 14:20–14:45 (no false availability after Slot 4)', studentFree.hasConflict);
+const backToBack = checkRoomConflict('Monday', { startMinutes: 14 * 60 + 45, endMinutes: 15 * 60 + 30 }, 'c-301', [longClass], INITIAL_COURSES);
+check('Back-to-back at 14:45 is not a clash', !backToBack.hasConflict);
+
+const free = getFreeIntervals([{ startMinutes: 780, endMinutes: 885 }, { startMinutes: 870, endMinutes: 950 }], 5, 750, 1000);
+check('Free windows are exact (12:30–13:00 and 15:50–16:40)', free.length === 2 && free[0].endMinutes === 780 && free[1].startMinutes === 950);
+const lanes = layoutLanes([{ s: 780, e: 885 }, { s: 870, e: 950 }, { s: 960, e: 1000 }], x => ({ startMinutes: x.s, endMinutes: x.e }));
+check('Overlapping blocks are laid out side by side', lanes[0].lanes === 2 && lanes[1].lane === 1 && lanes[2].lanes === 1);
+check('Campus clock: "11:30-01:15" ends at 13:15', extractTimeRange('X 11:30-01:15')?.interval.endMinutes === 795);
+check('Exact standard times map back to the plain slot', timeFieldsForInterval({ startMinutes: 780, endMinutes: 860 }).slotId === 'slot-4' && !timeFieldsForInterval({ startMinutes: 780, endMinutes: 860 }).customInterval);
 
 if (failures > 0) {
   console.log(`\n${failures} TEST(S) FAILED ❌`);

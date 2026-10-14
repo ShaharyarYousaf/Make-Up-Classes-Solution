@@ -69,7 +69,8 @@ npm start
 
 Every visitor starts with the dataset bundled in `data/`, so nobody has to import CSVs themselves.
 
-1. Replace the CSVs in `Fall 2026/` (courses, rooms, `time Complete a.csv`, student enrollments).
+1. Replace the CSVs in `Fall 2026/` (courses, rooms, `timetable_with_custom_times.csv`, student enrollments).
+   In the timetable, leave **Start Time / End Time** blank for regular classes and fill both for classes that don't match their slot (e.g. `13:00`, `14:45`).
 2. Run `npm run build:data` and check the import report it prints.
 3. Commit the changed files in `data/` and push to `main`. Vercel redeploys automatically.
 

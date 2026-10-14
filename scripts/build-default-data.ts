@@ -21,11 +21,22 @@ const DATA_DIR = join(__dirname, '..', 'data');
 const FILES = {
   courses: 'courses_list_Fall_2026.csv',
   rooms: 'rooms_Fall_2026.csv',
-  timetable: 'time Complete a.csv',
+  // Optional Start Time / End Time columns hold exact times for classes that do not fit their slot
+  timetable: 'timetable_with_custom_times.csv',
   students: 'students_enrollment_Fall_2026.csv',
 };
 
-const read = (file: string) => readFileSync(join(SOURCE_DIR, file), 'utf8').replace(/^\uFEFF/, '');
+/** UTF-8, or Windows-1252 when Excel saved the CSV in its legacy encoding */
+function read(file: string): string {
+  const bytes = readFileSync(join(SOURCE_DIR, file));
+  let text: string;
+  try {
+    text = new TextDecoder('utf-8', { fatal: true }).decode(bytes);
+  } catch {
+    text = new TextDecoder('windows-1252').decode(bytes);
+  }
+  return text.replace(/^﻿/, '');
+}
 
 let failed = false;
 function log(label: string, report: ImportReport) {
@@ -36,35 +47,42 @@ function log(label: string, report: ImportReport) {
   if (report.imported === 0) failed = true;
 }
 
-// Same order as the Data Manager: courses → rooms → timetable → students
-const courses = parseCoursesCSV(read(FILES.courses));
-log('Courses', courses.report);
+async function main() {
+  // Same order as the Data Manager: courses → rooms → timetable → students
+  const courses = parseCoursesCSV(read(FILES.courses));
+  log('Courses', courses.report);
 
-const rooms = parseRoomsCSV(read(FILES.rooms), []);
-log('Rooms', rooms.report);
+  const rooms = parseRoomsCSV(read(FILES.rooms), []);
+  log('Rooms', rooms.report);
 
-const timetable = parseTimetableCSV(read(FILES.timetable), rooms.items, courses.items);
-log('Timetable', timetable.report);
+  const timetable = parseTimetableCSV(read(FILES.timetable), rooms.items, courses.items);
+  log('Timetable', timetable.report);
 
-const students = parseStudentsCSV(read(FILES.students), courses.items);
-log('Students', students.report);
+  const students = parseStudentsCSV(read(FILES.students), courses.items);
+  log('Students', students.report);
 
-if (failed) {
-  console.error('\nA dataset came out empty – data/ was not updated.');
-  process.exit(1);
+  if (failed) {
+    console.error('\nA dataset came out empty – data/ was not updated.');
+    process.exit(1);
+  }
+
+  const allRooms = [...rooms.items, ...timetable.newRooms];
+  // Changes whenever the data does, so browsers holding an older cached timetable reload the new one
+  const version = Date.now();
+
+  writeFileSync(
+    join(DATA_DIR, 'real_timetable_data.json'),
+    JSON.stringify({ version, rooms: allRooms, courses: courses.items, allocations: timetable.items })
+  );
+  writeFileSync(join(DATA_DIR, 'students_roster.json'), JSON.stringify(students.items));
+
+  console.log(
+    `\nWrote data/: ${allRooms.length} rooms, ${courses.items.length} courses, ` +
+      `${timetable.items.length} allocations, ${students.items.length} students (version ${version}).`
+  );
 }
 
-const allRooms = [...rooms.items, ...timetable.newRooms];
-// Changes whenever the data does, so browsers holding an older cached timetable reload the new one
-const version = Date.now();
-
-writeFileSync(
-  join(DATA_DIR, 'real_timetable_data.json'),
-  JSON.stringify({ version, rooms: allRooms, courses: courses.items, allocations: timetable.items })
-);
-writeFileSync(join(DATA_DIR, 'students_roster.json'), JSON.stringify(students.items));
-
-console.log(
-  `\nWrote data/: ${allRooms.length} rooms, ${courses.items.length} courses, ` +
-    `${timetable.items.length} allocations, ${students.items.length} students (version ${version}).`
-);
+main().catch((err) => {
+  console.error(err);
+  process.exit(1);
+});

@@ -2,13 +2,15 @@ import React from 'react';
 import { Allocation, CourseSection, Room } from '../types/timetable';
 import { useTimetableStore } from '../store/timetableStore';
 import { ArrowRightLeft, Users, Sparkles, MapPin, Clock } from 'lucide-react';
-import { STANDARD_TIME_SLOTS } from '../lib/constants';
+import { getAllocationInterval } from '../lib/utils';
 
 interface CourseCardProps {
   allocation: Allocation;
   course: CourseSection;
   room: Room;
   enrolledCount: number;
+  /** Short or side-by-side blocks on the timeline: only the essentials */
+  compact?: boolean;
 }
 
 export const CourseCard: React.FC<CourseCardProps> = React.memo(function CourseCard({
@@ -16,26 +18,42 @@ export const CourseCard: React.FC<CourseCardProps> = React.memo(function CourseC
   course,
   room,
   enrolledCount,
+  compact = false,
 }) {
   const initiateReschedule = useTimetableStore((s) => s.initiateReschedule);
   const isSelected = useTimetableStore((s) => s.selectedAllocation?.id === allocation.id);
 
-  const standardSlot = STANDARD_TIME_SLOTS.find(s => s.id === allocation.slotId);
-  const timeDisplay = standardSlot
-    ? `${standardSlot.startTime} - ${standardSlot.endTime}`
-    : allocation.customInterval
-    ? `${allocation.customInterval.startTime} - ${allocation.customInterval.endTime}`
-    : '';
+  const interval = getAllocationInterval(allocation.slotId, allocation.customInterval);
+  const timeDisplay = `${interval.startTime} - ${interval.endTime}`;
+  const isCustomTime = !!allocation.customInterval;
 
-  const isLabSlot =
-    allocation.slotId.startsWith('lab') ||
-    ['slot-9', 'slot-10', 'slot-11', 'slot-12'].includes(allocation.slotId) ||
-    room.type === 'Lab';
+  const isLabSlot = allocation.slotId.startsWith('lab') || room.type === 'Lab';
+
+  if (compact) {
+    return (
+      <div
+        onClick={() => initiateReschedule(allocation)}
+        title={`${course.courseCode} ${course.courseTitle} (${course.section}) • ${timeDisplay} • ${course.instructor} • click to reschedule`}
+        className={`h-full overflow-hidden flex flex-col px-2 py-1 rounded-lg border cursor-pointer shadow-sm hover:shadow-md hover:border-blue-400 transition-all ${course.color.bg} ${course.color.border} ${
+          isSelected ? 'ring-2 ring-blue-500 border-blue-500' : ''
+        }`}
+      >
+        <div className="flex items-center gap-1 min-w-0">
+          <span className="text-[11px] font-extrabold text-gray-900 dark:text-white truncate">{course.courseCode}</span>
+          <span className={`text-[9px] font-bold px-1 rounded ${course.color.badge} truncate`}>{course.section}</span>
+          {allocation.isRescheduled && <Sparkles className="w-2.5 h-2.5 text-amber-600 shrink-0" />}
+        </div>
+        <span className={`text-[10px] font-mono ${isCustomTime ? 'text-purple-700 dark:text-purple-300 font-bold' : 'text-gray-600 dark:text-gray-400'}`}>
+          {timeDisplay}
+        </span>
+      </div>
+    );
+  }
 
   return (
     <div
       onClick={() => initiateReschedule(allocation)}
-      className={`group relative flex flex-col justify-between p-3 rounded-xl border transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md ${course.color.bg} ${course.color.border} ${
+      className={`group relative h-full overflow-hidden flex flex-col justify-between p-3 rounded-xl border transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md ${course.color.bg} ${course.color.border} ${
         isSelected
           ? 'ring-2 ring-blue-500 shadow-lg scale-[1.02] border-blue-500'
           : 'hover:border-blue-400 hover:scale-[1.01]'
@@ -51,7 +69,7 @@ export const CourseCard: React.FC<CourseCardProps> = React.memo(function CourseC
           </span>
           {isLabSlot && (
             <span className="text-[9px] font-bold px-1.5 py-0.5 rounded bg-amber-100 dark:bg-amber-950/80 text-amber-900 dark:text-amber-200 border border-amber-300 dark:border-amber-700">
-              Lab • 2h 45m
+              Lab
             </span>
           )}
         </div>
@@ -99,12 +117,13 @@ export const CourseCard: React.FC<CourseCardProps> = React.memo(function CourseC
             <MapPin className="w-2.5 h-2.5 text-gray-400" />
             {room.name}
           </span>
-          {allocation.slotId === 'custom' && (
-            <span className="flex items-center gap-1 font-mono text-purple-700 dark:text-purple-300">
-              <Clock className="w-2.5 h-2.5" />
-              {timeDisplay}
-            </span>
-          )}
+          <span
+            className={`flex items-center gap-1 font-mono ${isCustomTime ? 'font-bold text-purple-700 dark:text-purple-300' : ''}`}
+            title={isCustomTime ? 'Exact time – differs from the standard slot' : undefined}
+          >
+            <Clock className="w-2.5 h-2.5" />
+            {timeDisplay}
+          </span>
         </div>
       </div>
 
