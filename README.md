@@ -75,3 +75,16 @@ Every visitor starts with the dataset bundled in `data/`, so nobody has to impor
 3. Commit the changed files in `data/` and push to `main`. Vercel redeploys automatically.
 
 Browsers that cached an older timetable switch to the new one on their next visit. Reschedules made in a browser stay on that device only.
+
+---
+
+## 🗄️ Shared Database (Supabase)
+
+With Supabase configured, everyone sees the same timetable and coordinators' changes appear live in every open browser. Without it, the app runs on the bundled data and changes stay in each browser.
+
+1. In Supabase → **SQL Editor**, run [`supabase/schema.sql`](supabase/schema.sql).
+2. In **Authentication → Users**, add a user for each coordinator, then turn off public sign-ups.
+3. Put the project URL and publishable/anon key in `.env.local` (see `.env.example`) and in Vercel's environment variables.
+4. Open the app, click **Sign in**, and choose **Publish this browser's timetable to everyone** once to fill the database.
+
+Anyone can view. Only signed-in coordinators can reschedule, add make-ups or import data. Every change is recorded in the `change_log` table.

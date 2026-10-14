@@ -48,6 +48,15 @@ interface TimetableStore {
   vacantRoomsTargetCourseId: string | null;
   isRescheduleReviewOpen: boolean;
 
+  // Shared database & coordinator sign-in
+  /** local: no database configured · empty: database has no timetable yet */
+  syncStatus: 'local' | 'loading' | 'synced' | 'saving' | 'offline' | 'empty';
+  canEdit: boolean;
+  authEmail: string | null;
+  isCoordinatorModalOpen: boolean;
+  openCoordinatorModal: () => void;
+  closeCoordinatorModal: () => void;
+
   // Notification / Toast
   toastMessage: { text: string; type: 'success' | 'info' | 'warning' } | null;
 
@@ -108,6 +117,19 @@ interface TimetableStore {
   resetToDefaultData: () => void;
   clearToast: () => void;
   showToast: (text: string, type?: 'success' | 'info' | 'warning') => void;
+}
+
+/** Changes to the shared timetable need a signed-in coordinator; viewers get a hint instead. */
+function requireEditAccess(
+  get: () => TimetableStore,
+  set: (partial: Partial<TimetableStore>) => void
+): boolean {
+  if (get().canEdit) return true;
+  set({
+    isCoordinatorModalOpen: true,
+    toastMessage: { text: 'Sign in as a coordinator to change the timetable.', type: 'warning' },
+  });
+  return false;
 }
 
 // Undo snapshots are full copies of the timetable, so keep a bounded, in-memory history only
@@ -187,6 +209,14 @@ export const useTimetableStore = create<TimetableStore>()(
 
   toastMessage: null,
 
+  // Edits stay locked until remoteSync knows whether a database is in use
+  syncStatus: 'loading',
+  canEdit: false,
+  authEmail: null,
+  isCoordinatorModalOpen: false,
+  openCoordinatorModal: () => set({ isCoordinatorModalOpen: true }),
+  closeCoordinatorModal: () => set({ isCoordinatorModalOpen: false }),
+
   setViewMode: (mode) => set({ viewMode: mode }),
   setSelectedRoomId: (roomId) => set({ selectedRoomId: roomId }),
   setSelectedDay: (day) => set({ selectedDay: day }),
@@ -237,6 +267,7 @@ export const useTimetableStore = create<TimetableStore>()(
   },
 
   confirmReschedule: (overrideNote) => {
+    if (!requireEditAccess(get, set)) return;
     const {
       selectedAllocation,
       selectedCourse,
@@ -294,6 +325,7 @@ export const useTimetableStore = create<TimetableStore>()(
   },
 
   undoLastReschedule: () => {
+    if (!requireEditAccess(get, set)) return;
     const { allocationHistory } = get();
     if (allocationHistory.length === 0) return;
 
@@ -328,6 +360,7 @@ export const useTimetableStore = create<TimetableStore>()(
   },
 
   createFlexibleAllocation: (courseSectionId, day, roomId, customInterval, note) => {
+    if (!requireEditAccess(get, set)) return;
     const { allocations, allocationHistory, courses } = get();
     const course = courses.find((c) => c.id === courseSectionId);
 
@@ -369,6 +402,7 @@ export const useTimetableStore = create<TimetableStore>()(
   },
 
   reassignRoom: (allocationId, newRoomId, note) => {
+    if (!requireEditAccess(get, set)) return;
     const { allocations, allocationHistory, courses, rooms } = get();
     const targetAlloc = allocations.find((a) => a.id === allocationId);
     if (!targetAlloc) return;
@@ -410,6 +444,7 @@ export const useTimetableStore = create<TimetableStore>()(
   closeRescheduleReview: () => set({ isRescheduleReviewOpen: false }),
 
   revertAllocationToOriginal: (allocationId) => {
+    if (!requireEditAccess(get, set)) return;
     const { allocations, allocationHistory, courses } = get();
     const targetAlloc = allocations.find((a) => a.id === allocationId);
     if (!targetAlloc) return;
@@ -461,6 +496,7 @@ export const useTimetableStore = create<TimetableStore>()(
   },
 
   keepAllocationForWeek: (allocationId) => {
+    if (!requireEditAccess(get, set)) return;
     const { allocations, allocationHistory, courses } = get();
     const targetAlloc = allocations.find((a) => a.id === allocationId);
     if (!targetAlloc) return;
@@ -491,6 +527,7 @@ export const useTimetableStore = create<TimetableStore>()(
   },
 
   revertAllRescheduled: () => {
+    if (!requireEditAccess(get, set)) return;
     const { allocations, allocationHistory } = get();
     const rescheduledCount = allocations.filter((a) => a.isRescheduled).length;
     if (rescheduledCount === 0) return;
@@ -528,6 +565,7 @@ export const useTimetableStore = create<TimetableStore>()(
   },
 
   keepAllRescheduled: () => {
+    if (!requireEditAccess(get, set)) return;
     const { allocations, allocationHistory } = get();
     const rescheduledCount = allocations.filter((a) => a.isRescheduled).length;
     if (rescheduledCount === 0) return;
@@ -561,6 +599,7 @@ export const useTimetableStore = create<TimetableStore>()(
   closeDataManager: () => set({ isDataManagerOpen: false }),
 
   importDatasets: ({ rooms, courses, students, allocations }) => {
+    if (!requireEditAccess(get, set)) return;
     const currentState = get();
     const nextRooms = rooms || currentState.rooms;
     const roomStillExists = nextRooms.some((r) => r.id === currentState.selectedRoomId);
@@ -584,6 +623,7 @@ export const useTimetableStore = create<TimetableStore>()(
   },
 
   resetToDefaultData: () => {
+    if (!requireEditAccess(get, set)) return;
     set({
       rooms: INITIAL_ROOMS,
       courses: INITIAL_COURSES,

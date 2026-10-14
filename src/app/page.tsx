@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Header } from '../components/Header';
 import { TimetableGrid } from '../components/TimetableGrid';
 import { RescheduleDrawer } from '../components/RescheduleDrawer';
@@ -11,6 +11,8 @@ import { VacantRoomsModal } from '../components/VacantRoomsModal';
 import { RescheduleReviewModal } from '../components/RescheduleReviewModal';
 import { QuickRescheduleBar } from '../components/QuickRescheduleBar';
 import { Toast } from '../components/Toast';
+import { CoordinatorModal } from '../components/CoordinatorModal';
+import { startRemoteSync } from '../lib/remoteSync';
 import { useShallow } from 'zustand/react/shallow';
 import { useTimetableStore } from '../store/timetableStore';
 import {
@@ -47,6 +49,10 @@ export default function Home() {
       setViewMode: s.setViewMode,
     }))
   );
+
+  useEffect(() => {
+    startRemoteSync();
+  }, []);
 
   return (
     <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-zinc-950">
@@ -119,6 +125,7 @@ export default function Home() {
       <VacantRoomsModal />
       <RescheduleReviewModal />
       <DataManagerModal />
+      <CoordinatorModal />
       <Toast />
 
       {/* Footer */}

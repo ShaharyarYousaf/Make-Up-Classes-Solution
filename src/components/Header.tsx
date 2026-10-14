@@ -11,6 +11,9 @@ import {
   Plus,
   RotateCcw,
   DoorOpen,
+  ShieldCheck,
+  Cloud,
+  CloudOff,
 } from 'lucide-react';
 
 export const Header: React.FC = () => {
@@ -25,6 +28,9 @@ export const Header: React.FC = () => {
     openVacantRoomsModal,
     openRescheduleReview,
     openDataManager,
+    openCoordinatorModal,
+    authEmail,
+    syncStatus,
   } = useTimetableStore(
     useShallow((s) => ({
       allocations: s.allocations,
@@ -37,6 +43,9 @@ export const Header: React.FC = () => {
       openVacantRoomsModal: s.openVacantRoomsModal,
       openRescheduleReview: s.openRescheduleReview,
       openDataManager: s.openDataManager,
+      openCoordinatorModal: s.openCoordinatorModal,
+      authEmail: s.authEmail,
+      syncStatus: s.syncStatus,
     }))
   );
 
@@ -152,6 +161,28 @@ export const Header: React.FC = () => {
               <Database className="w-3.5 h-3.5 text-gray-500" />
               <span className="hidden md:inline">Datasets</span>
             </button>
+
+            {/* Coordinator sign-in & database status */}
+            {syncStatus !== 'local' && (
+              <button
+                onClick={openCoordinatorModal}
+                title={authEmail ? `Signed in as ${authEmail}` : 'Sign in to change the timetable'}
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold border transition-colors ${
+                  authEmail
+                    ? 'bg-emerald-50 dark:bg-emerald-950/50 text-emerald-800 dark:text-emerald-200 border-emerald-200 dark:border-emerald-900'
+                    : 'bg-gray-100 dark:bg-zinc-800 text-gray-700 dark:text-gray-300 border-gray-200 dark:border-zinc-700 hover:bg-gray-200 dark:hover:bg-zinc-700'
+                }`}
+              >
+                {syncStatus === 'offline' ? (
+                  <CloudOff className="w-3.5 h-3.5 text-red-500" />
+                ) : authEmail ? (
+                  <Cloud className="w-3.5 h-3.5 text-emerald-600" />
+                ) : (
+                  <ShieldCheck className="w-3.5 h-3.5 text-gray-500" />
+                )}
+                <span className="hidden md:inline">{authEmail ? 'Coordinator' : 'Sign in'}</span>
+              </button>
+            )}
           </div>
         </div>
       </div>
