@@ -17,6 +17,7 @@ import {
 export const QuickRescheduleBar: React.FC = () => {
   const {
     courses,
+    rooms,
     allocations,
     initiateReschedule,
     openVacantRoomsModal,
@@ -25,6 +26,7 @@ export const QuickRescheduleBar: React.FC = () => {
   } = useTimetableStore(
     useShallow((s) => ({
       courses: s.courses,
+      rooms: s.rooms,
       allocations: s.allocations,
       initiateReschedule: s.initiateReschedule,
       openVacantRoomsModal: s.openVacantRoomsModal,
@@ -132,7 +134,7 @@ export const QuickRescheduleBar: React.FC = () => {
             <div className="bg-blue-950/60 text-blue-200 border border-blue-400/30 rounded-xl px-3 py-1.5 text-xs flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-emerald-400 inline-block animate-pulse"></span>
               <span>
-                <strong>{activeAlloc.day}</strong> in <strong>{activeAlloc.roomId}</strong>
+                <strong>{activeAlloc.day}</strong> in <strong>{rooms.find((r) => r.id === activeAlloc.roomId)?.name || activeAlloc.roomId}</strong>
               </span>
               <span className="text-[10px] text-blue-300/80 font-mono">
                 ({getAllocationInterval(activeAlloc.slotId, activeAlloc.customInterval).startTime} -{' '}

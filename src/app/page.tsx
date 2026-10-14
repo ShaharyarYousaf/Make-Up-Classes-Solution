@@ -61,7 +61,7 @@ export default function Home() {
       <Header />
 
       {/* Main Container */}
-      <main className="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8 flex flex-col gap-5">
+      <main className="flex-1 max-w-7xl 2xl:max-w-[1440px] w-full mx-auto p-4 sm:p-6 lg:p-8 flex flex-col gap-5">
         {/* Quick Reschedule & Feature Banner */}
         <div className="bg-gradient-to-r from-blue-900 via-indigo-900 to-slate-900 text-white rounded-2xl p-5 sm:p-6 shadow-xl relative overflow-hidden flex flex-col gap-5">
           {/* Subtle background glow */}

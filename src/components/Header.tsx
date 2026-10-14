@@ -62,8 +62,8 @@ export const Header: React.FC = () => {
 
   return (
     <header className="bg-white dark:bg-zinc-900 border-b border-gray-200 dark:border-zinc-800 sticky top-0 z-30 shadow-xs">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 gap-4">
+      <div className="max-w-7xl 2xl:max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-wrap items-center justify-between min-h-16 py-2 gap-x-4 gap-y-2">
           {/* Logo & Brand */}
           <div className="flex items-center gap-3 shrink-0">
             <img
@@ -76,18 +76,12 @@ export const Header: React.FC = () => {
                 <h1 className="text-base lg:text-lg font-black tracking-tight text-gray-900 dark:text-white whitespace-nowrap">
                   Make-Up <span className="text-[#29abe2]">Class Scheduler</span>
                 </h1>
-                <span className="hidden xl:inline-block whitespace-nowrap text-[10px] font-extrabold uppercase tracking-wider bg-sky-50 dark:bg-sky-950/80 text-sky-700 dark:text-sky-300 px-2 py-0.5 rounded-full border border-sky-200 dark:border-sky-900">
-                  Islamabad Campus
-                </span>
               </div>
-              <p className="text-[11px] text-gray-500 hidden xl:block whitespace-nowrap">
-                FAST-NUCES Islamabad • Class Rescheduling & Clash-Free Make-Up Planning
-              </p>
             </div>
           </div>
 
           {/* Center Stats Badges */}
-          <div className="hidden lg:flex items-center gap-2.5">
+          <div className="hidden 2xl:flex items-center gap-2.5">
             <div className="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-gray-100 dark:bg-zinc-800 text-xs text-gray-700 dark:text-gray-300 font-medium">
               <BookOpen className="w-3.5 h-3.5 text-blue-500" />
               <span>
@@ -118,21 +112,33 @@ export const Header: React.FC = () => {
             </div>
           </div>
 
-          {/* Action Buttons */}
-          <div className="flex items-center gap-2">
+          {/* Action Buttons: icons only on smaller screens (labels are in the tooltips) */}
+          <div className="flex flex-wrap items-center justify-end gap-1.5 sm:gap-2">
+            {/* Rescheduled review: the stats badge is hidden below 2xl */}
+            <button
+              onClick={openRescheduleReview}
+              title={`${rescheduledCount} rescheduled – review this week's changes`}
+              className={`2xl:hidden flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-bold border transition-colors ${
+                rescheduledCount > 0
+                  ? 'bg-amber-50 dark:bg-amber-950/50 text-amber-800 dark:text-amber-200 border-amber-300 dark:border-amber-700/80'
+                  : 'bg-gray-100 dark:bg-zinc-800 text-gray-500 border-gray-200 dark:border-zinc-700'
+              }`}
+            >
+              <RotateCcw className="w-3.5 h-3.5" />
+              <span>{rescheduledCount}</span>
+            </button>
             {/* Undo Button */}
             <button
               onClick={undoLastReschedule}
               disabled={!canUndo}
               title="Undo last reschedule change"
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all border ${
+              className={`flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-semibold transition-all border ${
                 canUndo
                   ? 'bg-amber-50 dark:bg-amber-950/40 text-amber-800 dark:text-amber-200 border-amber-300 dark:border-amber-800 hover:bg-amber-100 cursor-pointer shadow-xs'
                   : 'bg-gray-100 dark:bg-zinc-800 text-gray-400 border-transparent cursor-not-allowed'
               }`}
             >
               <Undo2 className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">Undo</span>
               {canUndo && (
                 <span className="w-4 h-4 rounded-full bg-amber-200 dark:bg-amber-800 text-amber-900 dark:text-amber-100 text-[10px] flex items-center justify-center font-bold">
                   {allocationHistory.length}
@@ -144,40 +150,37 @@ export const Header: React.FC = () => {
             <button
               onClick={() => openVacantRoomsModal()}
               title="Scan all campus rooms for vacancies"
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold bg-blue-50 dark:bg-blue-950/60 hover:bg-blue-100 dark:hover:bg-blue-900/60 text-blue-700 dark:text-blue-300 transition-all border border-blue-200 dark:border-blue-900"
+              className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-bold bg-blue-50 dark:bg-blue-950/60 hover:bg-blue-100 dark:hover:bg-blue-900/60 text-blue-700 dark:text-blue-300 transition-all border border-blue-200 dark:border-blue-900"
             >
               <DoorOpen className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
-              <span className="hidden md:inline">Vacant Rooms</span>
+              <span className="hidden lg:inline">Vacant Rooms</span>
             </button>
 
             {/* Extra / Makeup Finder Button */}
             <button
               onClick={() => openFlexibleModal()}
-              className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-bold bg-indigo-600 hover:bg-indigo-700 text-white transition-all shadow-sm hover:shadow-indigo-500/20"
+              className="flex items-center gap-1.5 px-2.5 sm:px-3.5 py-1.5 rounded-lg text-xs font-bold bg-indigo-600 hover:bg-indigo-700 text-white transition-all shadow-sm hover:shadow-indigo-500/20"
             >
               <Plus className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">Extra / Makeup Slot</span>
-              <span className="sm:hidden">Makeup</span>
+              <span className="hidden sm:inline">Makeup</span>
             </button>
 
             {/* Print room schedules */}
             <button
               onClick={openPrintModal}
               title="Print room schedules to post outside classrooms"
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-gray-100 dark:bg-zinc-800 hover:bg-gray-200 dark:hover:bg-zinc-700 text-gray-700 dark:text-gray-300 transition-colors border border-gray-200 dark:border-zinc-700"
+              className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-semibold bg-gray-100 dark:bg-zinc-800 hover:bg-gray-200 dark:hover:bg-zinc-700 text-gray-700 dark:text-gray-300 transition-colors border border-gray-200 dark:border-zinc-700"
             >
               <Printer className="w-3.5 h-3.5 text-gray-500" />
-              <span className="hidden md:inline">Print</span>
             </button>
 
             {/* Data Manager Button */}
             <button
               onClick={openDataManager}
               title="Manage Datasets, Import/Export JSON"
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-gray-100 dark:bg-zinc-800 hover:bg-gray-200 dark:hover:bg-zinc-700 text-gray-700 dark:text-gray-300 transition-colors border border-gray-200 dark:border-zinc-700"
+              className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-semibold bg-gray-100 dark:bg-zinc-800 hover:bg-gray-200 dark:hover:bg-zinc-700 text-gray-700 dark:text-gray-300 transition-colors border border-gray-200 dark:border-zinc-700"
             >
               <Database className="w-3.5 h-3.5 text-gray-500" />
-              <span className="hidden md:inline">Datasets</span>
             </button>
 
             {/* Coordinator sign-in & database status */}
@@ -185,7 +188,7 @@ export const Header: React.FC = () => {
               <button
                 onClick={openCoordinatorModal}
                 title={canEdit ? 'Editing unlocked – database options' : REQUIRE_SIGN_IN ? 'Sign in to change the timetable' : 'Enter the edit PIN to change the timetable'}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold border transition-colors ${
+                className={`flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-semibold border transition-colors ${
                   canEdit
                     ? 'bg-emerald-50 dark:bg-emerald-950/50 text-emerald-800 dark:text-emerald-200 border-emerald-200 dark:border-emerald-900'
                     : 'bg-gray-100 dark:bg-zinc-800 text-gray-700 dark:text-gray-300 border-gray-200 dark:border-zinc-700 hover:bg-gray-200 dark:hover:bg-zinc-700'
@@ -198,7 +201,7 @@ export const Header: React.FC = () => {
                 ) : (
                   <ShieldCheck className="w-3.5 h-3.5 text-gray-500" />
                 )}
-                <span className="hidden md:inline">{canEdit ? 'Editing on' : REQUIRE_SIGN_IN ? 'Sign in' : 'Enter PIN'}</span>
+                <span className="hidden lg:inline">{canEdit ? 'Editing on' : REQUIRE_SIGN_IN ? 'Sign in' : 'Enter PIN'}</span>
                 {pendingChanges > 0 && (
                   <span
                     className="ml-0.5 px-1.5 rounded-full bg-amber-500 text-white text-[10px] font-bold"

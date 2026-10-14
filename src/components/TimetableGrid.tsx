@@ -4,12 +4,14 @@ import { useTimetableStore } from '../store/timetableStore';
 import { getCourseMap, getSectionRoster } from '../lib/engine';
 import { DAYS_OF_WEEK, STANDARD_TIME_SLOTS } from '../lib/constants';
 import { TimelineColumn, TimelineColumns } from './TimelineColumns';
-import { allocationInterval } from '../lib/timeline';
+import { allocationInterval, layoutLanes } from '../lib/timeline';
 import {
   Building2,
   Calendar,
   Search,
   Filter,
+  X,
+  CalendarRange,
   ChevronLeft,
   ChevronRight,
   Layers,
@@ -102,13 +104,57 @@ export const TimetableGrid: React.FC = () => {
     return ['ALL', ...Array.from(new Set(courses.map((c) => c.department)))];
   }, [courses]);
 
+  // Searching for a course or teacher switches to a week grid of every matching session (Req C)
+  const searchTerm = searchQuery.trim().toLowerCase();
+  const searchActive = searchTerm !== '';
+  const roomById = useMemo(() => new Map(rooms.map((r) => [r.id, r])), [rooms]);
+
+  const searchMatches = useMemo(() => {
+    if (!searchActive) return [];
+    return allocations.filter((alloc) => {
+      const course = courseMap.get(alloc.courseSectionId);
+      if (!course) return false;
+      if (departmentFilter !== 'ALL' && course.department !== departmentFilter) return false;
+      return (
+        course.courseCode.toLowerCase().includes(searchTerm) ||
+        course.courseTitle.toLowerCase().includes(searchTerm) ||
+        course.section.toLowerCase().includes(searchTerm) ||
+        course.instructor.toLowerCase().includes(searchTerm)
+      );
+    });
+  }, [searchActive, searchTerm, allocations, courseMap, departmentFilter]);
+
+  /** Too broad a search ("CS") would draw hundreds of side-by-side tiles */
+  const SEARCH_LIMIT = 150;
+  const searchShown = searchMatches.length > SEARCH_LIMIT ? searchMatches.slice(0, SEARCH_LIMIT) : searchMatches;
+  const searchSummary = useMemo(() => {
+    const sections = new Set(searchMatches.map((a) => a.courseSectionId));
+    const teachers = new Set(
+      searchMatches.map((a) => courseMap.get(a.courseSectionId)?.instructor).filter((t): t is string => !!t)
+    );
+    return { sections: sections.size, teachers: Array.from(teachers) };
+  }, [searchMatches, courseMap]);
+
   const visibleColumns = useMemo(() => {
+    if (searchActive) {
+      return DAYS_OF_WEEK.map((day) => ({ day, roomId: '', allocations: searchShown.filter((a) => a.day === day) }));
+    }
     const columns: { day: DayOfWeek; roomId: string }[] =
       viewMode === 'room'
         ? DAYS_OF_WEEK.map((day) => ({ day, roomId: selectedRoomId }))
         : filteredRooms.map((room) => ({ day: selectedDay, roomId: room.id }));
     return columns.map((c) => ({ ...c, allocations: dayRoomIndex.get(`${c.day}|${c.roomId}`) || [] }));
-  }, [viewMode, selectedRoomId, selectedDay, filteredRooms, dayRoomIndex]);
+  }, [searchActive, searchShown, viewMode, selectedRoomId, selectedDay, filteredRooms, dayRoomIndex]);
+
+  // Week view columns widen with the most sessions running at the same time on any day
+  const searchColumnWidth = useMemo(() => {
+    if (!searchActive) return 0;
+    let maxLanes = 1;
+    for (const col of visibleColumns) {
+      for (const e of layoutLanes(col.allocations, allocationInterval)) maxLanes = Math.max(maxLanes, e.lanes);
+    }
+    return Math.min(Math.max(150, maxLanes * 110), 660);
+  }, [searchActive, visibleColumns]);
 
   // Timeline range: the regular day, stretched to cover anything earlier or later
   const { dayStart, dayEnd } = useMemo(() => {
@@ -126,11 +172,15 @@ export const TimetableGrid: React.FC = () => {
 
   // Slot bands drawn behind the timeline: lab blocks for labs, theory slots otherwise
   const bands = useMemo(() => {
-    const labView = viewMode === 'room' ? selectedRoom?.type === 'Lab' : roomCategoryFilter === 'Labs';
+    const labView = searchActive
+      ? false
+      : viewMode === 'room'
+      ? selectedRoom?.type === 'Lab'
+      : roomCategoryFilter === 'Labs';
     return STANDARD_TIME_SLOTS.filter(
       (s) => (labView ? s.id.startsWith('lab') : !s.id.startsWith('lab')) && s.startMinutes < dayEnd && s.endMinutes > dayStart
     );
-  }, [viewMode, selectedRoom, roomCategoryFilter, dayStart, dayEnd]);
+  }, [searchActive, viewMode, selectedRoom, roomCategoryFilter, dayStart, dayEnd]);
 
   // Sync top scrollbar with main scroll container
   const handleTopScroll = () => {
@@ -159,7 +209,7 @@ export const TimetableGrid: React.FC = () => {
       clearTimeout(timer);
       window.removeEventListener('resize', updateWidth);
     };
-  }, [viewMode, filteredRooms, selectedRoomId, selectedDay, dayStart, dayEnd]);
+  }, [viewMode, filteredRooms, selectedRoomId, selectedDay, dayStart, dayEnd, searchActive, searchColumnWidth]);
 
   // Quick scroll buttons
   const scrollHorizontally = (delta: number) => {
@@ -207,9 +257,12 @@ export const TimetableGrid: React.FC = () => {
         <div className="flex items-center gap-2">
           <div className="flex items-center gap-1 bg-gray-200/80 dark:bg-zinc-800 p-1 rounded-xl">
             <button
-              onClick={() => setViewMode('room')}
+              onClick={() => {
+                setViewMode('room');
+                setSearchQuery('');
+              }}
               className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
-                viewMode === 'room'
+                viewMode === 'room' && !searchActive
                   ? 'bg-white dark:bg-zinc-700 text-blue-700 dark:text-blue-300 shadow-xs'
                   : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
               }`}
@@ -218,9 +271,12 @@ export const TimetableGrid: React.FC = () => {
               Room Schedule
             </button>
             <button
-              onClick={() => setViewMode('day')}
+              onClick={() => {
+                setViewMode('day');
+                setSearchQuery('');
+              }}
               className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
-                viewMode === 'day'
+                viewMode === 'day' && !searchActive
                   ? 'bg-white dark:bg-zinc-700 text-blue-700 dark:text-blue-300 shadow-xs'
                   : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
               }`}
@@ -232,23 +288,35 @@ export const TimetableGrid: React.FC = () => {
         </div>
 
         {/* Center: Search Input & Department Filter */}
-        <div className="flex items-center gap-2">
-          <div className="relative">
+        <div className="flex items-center gap-2 w-full sm:w-auto">
+          <div className="relative flex-1 sm:flex-none">
             <Search className="w-3.5 h-3.5 absolute left-2.5 top-1/2 -translate-y-1/2 text-gray-400" />
             <input
               type="text"
-              placeholder="Search course or instructor..."
+              placeholder="Course or teacher → week view"
+              aria-label="Search course or teacher"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-8 pr-3 py-1.5 text-xs bg-white dark:bg-zinc-800 border border-gray-300 dark:border-zinc-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 w-44 sm:w-56"
+              className={`pl-8 pr-7 py-1.5 text-xs bg-white dark:bg-zinc-800 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 w-full sm:w-56 ${
+                searchActive ? 'border-blue-500 ring-1 ring-blue-500' : 'border-gray-300 dark:border-zinc-700'
+              }`}
             />
+            {searchActive && (
+              <button
+                onClick={() => setSearchQuery('')}
+                aria-label="Clear search"
+                className="absolute right-1.5 top-1/2 -translate-y-1/2 p-0.5 rounded text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
+              >
+                <X className="w-3.5 h-3.5" />
+              </button>
+            )}
           </div>
 
           <select
             value={departmentFilter}
             onChange={(e) => setDepartmentFilter(e.target.value)}
             aria-label="Filter by department"
-            className="px-2.5 py-1.5 text-xs bg-white dark:bg-zinc-800 border border-gray-300 dark:border-zinc-700 rounded-lg text-gray-700 dark:text-gray-300 font-medium focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="max-w-[40vw] sm:max-w-none px-2.5 py-1.5 text-xs bg-white dark:bg-zinc-800 border border-gray-300 dark:border-zinc-700 rounded-lg text-gray-700 dark:text-gray-300 font-medium focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
             {departments.map((dept) => (
               <option key={dept} value={dept}>
@@ -259,10 +327,34 @@ export const TimetableGrid: React.FC = () => {
         </div>
       </div>
 
+      {searchActive && (
+        <div className="px-4 py-2.5 border-b border-blue-200 dark:border-blue-900 bg-blue-50 dark:bg-blue-950/40 flex flex-wrap items-center justify-between gap-2 text-xs text-blue-900 dark:text-blue-200">
+          <span className="flex items-center gap-1.5 min-w-0">
+            <CalendarRange className="w-4 h-4 shrink-0" />
+            <span className="truncate">
+              Week view for <strong>“{searchQuery.trim()}”</strong>: {searchMatches.length} session
+              {searchMatches.length === 1 ? '' : 's'} · {searchSummary.sections} section{searchSummary.sections === 1 ? '' : 's'}
+              {searchSummary.teachers.length > 0 && searchSummary.teachers.length <= 3 && <> · {searchSummary.teachers.join(', ')}</>}
+              {searchSummary.teachers.length > 3 && <> · {searchSummary.teachers.length} teachers</>}
+            </span>
+          </span>
+          {searchMatches.length > SEARCH_LIMIT && (
+            <span className="font-semibold text-amber-700 dark:text-amber-300">
+              Showing the first {SEARCH_LIMIT} – type more to narrow it down
+            </span>
+          )}
+          {searchMatches.length === 0 && <span className="font-semibold">No classes match. Try a course code, title, section or teacher.</span>}
+        </div>
+      )}
+
       {/* Sub-bar: Room Category Filter & Context Selector */}
-      <div className="px-4 py-2.5 border-b border-gray-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 flex flex-wrap items-center justify-between gap-3 text-xs">
-        {/* Room Category Tabs */}
-        <div className="flex items-center gap-1.5 flex-wrap">
+      <div
+        className={`px-4 py-2.5 border-b border-gray-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 flex-wrap items-center justify-between gap-3 text-xs ${
+          searchActive ? 'hidden' : 'flex'
+        }`}
+      >
+        {/* Room Category Tabs: one sideways-scrolling row on phones */}
+        <div className="flex items-center gap-1.5 overflow-x-auto sm:flex-wrap sm:overflow-visible max-w-full [&>*]:shrink-0 [&>*]:whitespace-nowrap">
           <span className="font-bold text-gray-500 dark:text-gray-400 mr-1 flex items-center gap-1">
             <Filter className="w-3 h-3" />
             Category:
@@ -325,7 +417,7 @@ export const TimetableGrid: React.FC = () => {
               value={selectedRoomId}
               onChange={(e) => setSelectedRoomId(e.target.value)}
               aria-label="Select room"
-              className="px-2.5 py-1 font-bold bg-gray-50 dark:bg-zinc-800 border border-gray-300 dark:border-zinc-700 rounded-lg text-blue-700 dark:text-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="max-w-[60vw] sm:max-w-xs px-2.5 py-1 font-bold bg-gray-50 dark:bg-zinc-800 border border-gray-300 dark:border-zinc-700 rounded-lg text-blue-700 dark:text-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               {filteredRooms.map((r) => (
                 <option key={r.id} value={r.id}>
@@ -394,7 +486,11 @@ export const TimetableGrid: React.FC = () => {
         </div>
 
         <div className="text-[11px] text-gray-500 dark:text-gray-400 font-medium shrink-0 hidden md:block">
-          {viewMode === 'room' ? (
+          {searchActive ? (
+            <span>
+              <strong>Week view</strong> • {searchMatches.length} sessions
+            </span>
+          ) : viewMode === 'room' ? (
             <span>
               <strong>{selectedRoom.name}</strong> • {selectedRoom.type} ({selectedRoom.capacity} seats)
             </span>
@@ -412,10 +508,34 @@ export const TimetableGrid: React.FC = () => {
         onScroll={handleMainScroll}
         className="flex-1 overflow-x-auto overflow-y-auto max-h-[72vh] px-3 pb-3 sm:px-4 sm:pb-4 bg-slate-50/50 dark:bg-zinc-950/40 relative"
       >
-        <div style={{ minWidth: `${112 + visibleColumns.length * (viewMode === 'room' ? 140 : 150)}px` }}>
+        <div
+          style={{
+            minWidth: `${
+              64 + visibleColumns.length * (searchActive ? searchColumnWidth + 8 : viewMode === 'room' ? 140 : 150)
+            }px`,
+          }}
+        >
           <TimelineColumns
             columns={visibleColumns.map((col): TimelineColumn => {
-              const room = rooms.find((r) => r.id === col.roomId) || selectedRoom;
+              if (searchActive) {
+                return {
+                  key: `search|${col.day}`,
+                  day: col.day,
+                  roomId: '',
+                  allocations: col.allocations,
+                  roomFor: (alloc) => roomById.get(alloc.roomId) || selectedRoom,
+                  freeLabel: col.day,
+                  header: (
+                    <div className="p-2.5 text-center text-xs font-extrabold text-gray-800 dark:text-gray-100 uppercase tracking-wider bg-blue-50/95 dark:bg-blue-950/80 backdrop-blur-md rounded-xl border border-blue-200 dark:border-blue-900 shadow-xs">
+                      {col.day}
+                      <span className="ml-1 font-semibold text-[10px] text-blue-700 dark:text-blue-300 normal-case">
+                        ({col.allocations.length})
+                      </span>
+                    </div>
+                  ),
+                };
+              }
+              const room = roomById.get(col.roomId) || selectedRoom;
               return {
                 key: `${col.day}|${col.roomId}`,
                 day: col.day,
@@ -447,14 +567,16 @@ export const TimetableGrid: React.FC = () => {
                   ),
               };
             })}
-            columnWidth={viewMode === 'room' ? 130 : 140}
+            columnWidth={searchActive ? searchColumnWidth : viewMode === 'room' ? 130 : 140}
             bands={bands}
             dayStart={dayStart}
             dayEnd={dayEnd}
             courseMap={courseMap}
             enrolledCount={(id) => sectionRoster.get(id)?.length || 0}
-            isVisible={isAllocationVisible}
+            isVisible={searchActive ? () => true : isAllocationVisible}
             onFreeClick={(gap) => openFlexibleModal(undefined, gap)}
+            showFree={!searchActive}
+            showRoomOnCards={searchActive}
           />
         </div>
       </div>

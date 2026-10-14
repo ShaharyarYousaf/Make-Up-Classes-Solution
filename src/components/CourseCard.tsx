@@ -11,6 +11,8 @@ interface CourseCardProps {
   enrolledCount: number;
   /** Short or side-by-side blocks on the timeline: only the essentials */
   compact?: boolean;
+  /** Name the room on compact tiles (week view mixes rooms) */
+  showRoom?: boolean;
 }
 
 export const CourseCard: React.FC<CourseCardProps> = React.memo(function CourseCard({
@@ -19,6 +21,7 @@ export const CourseCard: React.FC<CourseCardProps> = React.memo(function CourseC
   room,
   enrolledCount,
   compact = false,
+  showRoom = false,
 }) {
   const initiateReschedule = useTimetableStore((s) => s.initiateReschedule);
   const isSelected = useTimetableStore((s) => s.selectedAllocation?.id === allocation.id);
@@ -46,6 +49,12 @@ export const CourseCard: React.FC<CourseCardProps> = React.memo(function CourseC
         <span className={`text-[10px] font-mono ${isCustomTime ? 'text-purple-700 dark:text-purple-300 font-bold' : 'text-gray-600 dark:text-gray-400'}`}>
           {timeDisplay}
         </span>
+        {showRoom && (
+          <span className="text-[10px] font-semibold text-gray-700 dark:text-gray-300 truncate flex items-center gap-0.5">
+            <MapPin className="w-2.5 h-2.5 shrink-0 text-gray-400" />
+            {room.name}
+          </span>
+        )}
       </div>
     );
   }
@@ -70,6 +79,12 @@ export const CourseCard: React.FC<CourseCardProps> = React.memo(function CourseC
           {isLabSlot && (
             <span className="text-[9px] font-bold px-1.5 py-0.5 rounded bg-amber-100 dark:bg-amber-950/80 text-amber-900 dark:text-amber-200 border border-amber-300 dark:border-amber-700">
               Lab
+            </span>
+          )}
+          {showRoom && (
+            <span className="flex items-center gap-0.5 text-[10px] font-bold px-1.5 py-0.5 rounded bg-white/80 dark:bg-black/30 text-gray-800 dark:text-gray-200">
+              <MapPin className="w-2.5 h-2.5 text-gray-500" />
+              {room.name}
             </span>
           )}
         </div>

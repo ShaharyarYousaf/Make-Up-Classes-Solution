@@ -312,7 +312,7 @@ export const VacantRoomsModal: React.FC = () => {
             {activeAllocation ? (
               <div className="text-[11px] text-gray-600 dark:text-gray-400 bg-white dark:bg-zinc-800 px-2 py-1 rounded border border-gray-200 dark:border-zinc-700 flex items-center justify-between">
                 <span>
-                  Now: <strong>{activeAllocation.day}</strong> in <strong>{activeAllocation.roomId}</strong>
+                  Now: <strong>{activeAllocation.day}</strong> in <strong>{rooms.find((r) => r.id === activeAllocation.roomId)?.name || activeAllocation.roomId}</strong>
                 </span>
                 <span className="text-gray-400 font-mono text-[10px]">
                   {getAllocationInterval(activeAllocation.slotId, activeAllocation.customInterval).startTime} -{' '}

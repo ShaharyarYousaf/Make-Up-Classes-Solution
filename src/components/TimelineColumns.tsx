@@ -39,6 +39,10 @@ interface TimelineColumnsProps {
   enrolledCount: (sectionId: string) => number;
   isVisible: (alloc: Allocation) => boolean;
   onFreeClick: (gap: { day: DayOfWeek; roomId: string; startMinutes: number; endMinutes: number }) => void;
+  /** Free windows only make sense when a column is one room */
+  showFree?: boolean;
+  /** Week view mixes rooms, so even compact tiles name their room */
+  showRoomOnCards?: boolean;
 }
 
 const fmt = minutesToTimeString;
@@ -53,6 +57,8 @@ export const TimelineColumns: React.FC<TimelineColumnsProps> = ({
   enrolledCount,
   isVisible,
   onFreeClick,
+  showFree = true,
+  showRoomOnCards = false,
 }) => {
   const height = (dayEnd - dayStart) * PX_PER_MINUTE;
   const y = (minutes: number) => (minutes - dayStart) * PX_PER_MINUTE;
@@ -61,8 +67,9 @@ export const TimelineColumns: React.FC<TimelineColumnsProps> = ({
 
   return (
     <div
-      className="grid gap-x-2"
-      style={{ gridTemplateColumns: `112px repeat(${columns.length}, minmax(${columnWidth}px, 1fr))` }}
+      // Narrower time column on phones
+      className="grid gap-x-1.5 sm:gap-x-2 [--axis:58px] sm:[--axis:112px]"
+      style={{ gridTemplateColumns: `var(--axis) repeat(${columns.length}, minmax(${columnWidth}px, 1fr))` }}
     >
       {/* Header row */}
       <div className="sticky left-0 top-0 z-30 outline outline-4 outline-slate-50 dark:outline-zinc-950 p-2.5 text-center text-xs font-black text-gray-700 dark:text-gray-200 uppercase tracking-wider bg-gray-100/95 dark:bg-zinc-800/95 backdrop-blur-md rounded-xl border border-gray-300 dark:border-zinc-700 flex items-center justify-center shadow-xs">
@@ -82,11 +89,14 @@ export const TimelineColumns: React.FC<TimelineColumnsProps> = ({
             className="absolute inset-x-1 rounded-lg bg-slate-100 dark:bg-zinc-800/80 flex flex-col justify-center items-center text-center"
             style={{ top: y(slot.startMinutes), height: (slot.endMinutes - slot.startMinutes) * PX_PER_MINUTE }}
           >
-            <span className="text-[11px] font-black text-gray-800 dark:text-gray-200">
+            <span className="text-[10px] sm:text-[11px] font-black text-gray-800 dark:text-gray-200">
               {slot.id.startsWith('lab') ? `Lab ${slot.slotNumber - 8}` : `Slot ${slot.slotNumber}`}
             </span>
-            <span className="text-[10px] font-mono text-gray-500 dark:text-gray-400">
-              {slot.startTime}–{slot.endTime}
+            <span className="text-[9px] sm:text-[10px] font-mono leading-tight text-gray-500 dark:text-gray-400">
+              {slot.startTime}
+              <span className="hidden sm:inline">–</span>
+              <br className="sm:hidden" />
+              {slot.endTime}
             </span>
           </div>
         ))}
@@ -95,7 +105,7 @@ export const TimelineColumns: React.FC<TimelineColumnsProps> = ({
       {/* One timeline per column */}
       {columns.map((col) => {
         const laidOut = layoutLanes(col.allocations, allocationInterval);
-        const free = getFreeIntervals(
+        const free = !showFree ? [] : getFreeIntervals(
           laidOut.map((e) => ({ startMinutes: e.startMinutes, endMinutes: e.endMinutes })),
           MIN_FREE_MINUTES,
           dayStart,
@@ -192,6 +202,7 @@ export const TimelineColumns: React.FC<TimelineColumnsProps> = ({
                     room={col.roomFor(alloc)}
                     enrolledCount={enrolledCount(course.id)}
                     compact={endMinutes - startMinutes < 75 || lanes > 1}
+                    showRoom={showRoomOnCards}
                   />
                 </div>
               );
