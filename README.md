@@ -62,3 +62,15 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 npm run build
 npm start
 ```
+
+---
+
+## 📅 Updating the Built-in Timetable
+
+Every visitor starts with the dataset bundled in `data/`, so nobody has to import CSVs themselves.
+
+1. Replace the CSVs in `Fall 2026/` (courses, rooms, `time Complete a.csv`, student enrollments).
+2. Run `npm run build:data` and check the import report it prints.
+3. Commit the changed files in `data/` and push to `main`. Vercel redeploys automatically.
+
+Browsers that cached an older timetable switch to the new one on their next visit. Reschedules made in a browser stay on that device only.

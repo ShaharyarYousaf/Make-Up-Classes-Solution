@@ -1,0 +1,77 @@
+Room Name,Type,Capacity,Building
+C-301,Lecture,60,Academic Block C
+C-302,Lecture,60,Academic Block C
+C-303,Lecture,60,Academic Block C
+C-304,Lecture,60,Academic Block C
+C-305,Lecture,60,Academic Block C
+C-307,Lecture,60,Academic Block C
+C-308,Lecture,60,Academic Block C
+C-309,Lecture,60,Academic Block C
+C-310,Lecture,60,Academic Block C
+C-311,Lecture,60,Academic Block C
+C-401,Lecture,60,Academic Block C
+C-402,Lecture,60,Academic Block C
+C-403,Lecture,60,Academic Block C
+C-404,Lecture,60,Academic Block C
+C-405,Lecture,60,Academic Block C
+C-406,Lecture,60,Academic Block C
+C-407,Lecture,60,Academic Block C
+C-408,Lecture,60,Academic Block C
+C-409,Lecture,60,Academic Block C
+C-601,Lecture,60,Academic Block C
+C-602,Lecture,60,Academic Block C
+C-603,Lecture,60,Academic Block C
+C-604,Lecture,60,Academic Block C
+C-605,Lecture,60,Academic Block C
+C-607,Lecture,60,Academic Block C
+C-609,Lecture,60,Academic Block C
+D-301,Lecture,60,Academic Block D
+D-302,Lecture,60,Academic Block D
+D-303,Lecture,60,Academic Block D
+D-304,Lecture,60,Academic Block D
+D-305,Lecture,60,Academic Block D
+D-306,Lecture,60,Academic Block D
+D-311,Lecture,60,Academic Block D
+D-312,Lecture,60,Academic Block D
+D-313,Lecture,60,Academic Block D
+D-314,Lecture,60,Academic Block D
+D-315,Lecture,60,Academic Block D
+D-316,Lecture,60,Academic Block D
+D-401,Lecture,60,Academic Block D
+D-402,Lecture,60,Academic Block D
+D-403,Lecture,60,Academic Block D
+D-404,Lecture,60,Academic Block D
+D-405,Lecture,60,Academic Block D
+D-406,Lecture,60,Academic Block D
+D-411,Lecture,60,Academic Block D
+D-412,Lecture,60,Academic Block D
+D-413,Lecture,60,Academic Block D
+D-414,Lecture,60,Academic Block D
+D-415,Lecture,60,Academic Block D
+D-416,Lecture,60,Academic Block D
+D-501,Lecture,60,Academic Block D
+D-502,Lecture,60,Academic Block D
+D-503,Lecture,60,Academic Block D
+D-504,Lecture,60,Academic Block D
+D-505,Lecture,60,Academic Block D
+D-506,Lecture,60,Academic Block D
+C-110,Smart Classroom,45,Academic Block C
+IT Lab 1 (D-210),Lab,60,Academic Block D
+IT Lab 2 (D-211),Lab,60,Academic Block D
+IT Lab 3 (D-213),Lab,60,Academic Block D
+IT Lab 4-GPU (D-203),Lab,50,Academic Block D
+Margala 1 (C-209),Lab,48,Academic Block C
+Margala 3 (C-211),Lab,45,Academic Block C
+Margala 4 (C-212,Lab,50,Academic Block C
+Rawal 1 (C-509),Lab,50,Academic Block C
+C-Rawal 4 (C-512),Lab,48,Academic Block C
+Cyber (D-514),Lab,50,Academic Block D
+Karakoram-3,Lab,45,Academic Block A
+Kybher-3,Lab,40,Academic Block A
+CALL-1 (A-213),Lab,25,Academic Block A
+CALL-2 (A-214),Lab,25,Academic Block A
+CALL-3 (A-308),Lab,25,Academic Block A
+Mehran-2 (A-306),Lab,50,Academic Block A
+B-Digital,Lab,50,Academic Block B
+Kybher-3,Lab,25,Academic Block A
+B-Computing-3,Lab,35,Academic Block B

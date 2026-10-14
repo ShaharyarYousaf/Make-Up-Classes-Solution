@@ -27,6 +27,7 @@ AI4015,Agentic Artificial Intelligence,BCS-7B,Computer Science,Muhammad Owais Id
 AI4015,Agentic Artificial Intelligence,BCS-7C,Computer Science,Muhammad Owais Idrees,3
 AI4015,Agentic Artificial Intelligence,BDS-7A,Data Science,Muhammad Sohail Abbas,3
 CS5031,Applied Computer Vision,MAI-3A,Artificial Intelligence,Muhammad Nouman Noor,3
+CS5031,Applied Computer Vision,PCS-1A,Computer Science,Muhammad Nouman Noor,3
 CS3014,Applied Human Computer Interaction,BCS-5A,Computer Science,Afia Zafar,3
 CS3014,Applied Human Computer Interaction,BCS-5B,Computer Science,Labiba Fahad,3
 CS3014,Applied Human Computer Interaction,BCS-5C,Computer Science,Afia Zafar,3
@@ -52,12 +53,8 @@ NS1001,Applied Physics,BSE-1B,Software Engineering,Aisha Ijaz,3
 NS1001,Applied Physics,BSE-1C,Software Engineering,Aisha Ijaz,3
 NS1001,Applied Physics,BSE-1D,Software Engineering,Aisha Ijaz,3
 NS1001,Applied Physics,BSE-1E,Software Engineering,Tashfeen Zehra,3
-CS4002,Applied Programming,MAI-1A,Artificial Intelligence,Muhammad Sohail Abbas,3
-CS4002,Applied Programming,MAI-1B,Artificial Intelligence,Bilal Shabeer,3
 CS4002,Applied Programming,MCS-1A,Computer Science,Tajwar Mehmood,3
-CS4002,Applied Programming,MCY-1A,Cyber Security,Jawad Hassan Nisar,3
 CS4002,Applied Programming,MDS-1A,Data Science,Shoaib Saleem Khattak,3
-CS4002,Applied Programming,MSE-1A,Software Engineering,No Teacher Assigned,3
 AI2002,Artificial Intelligence,BCY-5A,Cyber Security,Sadia Saad,3
 AI2002,Artificial Intelligence,BCY-5B,Cyber Security,Sadia Saad,3
 AI2002,Artificial Intelligence,BCY-5C,Cyber Security,Momina Behzad,3
@@ -70,12 +67,21 @@ AL2002,Artificial Intelligence - Lab,BCY-5C,Cyber Security,Ahsan Shakeel Malik,1
 AL2002,Artificial Intelligence - Lab,BSE-5A,Software Engineering,Noor Ul Ain,1
 AL2002,Artificial Intelligence - Lab,BSE-5B,Software Engineering,Noor Ul Ain,1
 AL2002,Artificial Intelligence - Lab,BSE-5C,Software Engineering,Noor Ul Ain,1
+SS1026,Arts Humanities and Technology,BCY-1A,Cyber Security,Zirva Shabbir,2
+SS1026,Arts Humanities and Technology,BCY-1B,Cyber Security,Momal Saleem,2
+SS1026,Arts Humanities and Technology,BCY-1C,Cyber Security,Momal Saleem,2
+SS1026,Arts Humanities and Technology,BCY-1D,Cyber Security,Zirva Shabbir,2
+SS1026,Arts Humanities and Technology,BSE-1A,Software Engineering,Sanaa Ilyas,2
+SS1026,Arts Humanities and Technology,BSE-1B,Software Engineering,Sanaa Ilyas,2
+SS1026,Arts Humanities and Technology,BSE-1C,Software Engineering,Sanaa Ilyas,2
+SS1026,Arts Humanities and Technology,BSE-1D,Software Engineering,Sanaa Ilyas,2
+SS1026,Arts Humanities and Technology,BSE-1E,Software Engineering,Sanaa Ilyas,2
 CY4054,Blockchain Technologies and Applications,BAI-7A,Artificial Intelligence,Noshina Tariq,3
 CS4049,Blockchain and Cryptocurrency,BCY-7A,Cyber Security,Muhammad Asim,3
 CS4049,Blockchain and Cryptocurrency,BCY-7B,Cyber Security,Muhammad Asim,3
 MT1003,Calculus and Analytical Geometry,BAI-1A,Artificial Intelligence,Arif,3
 MT1003,Calculus and Analytical Geometry,BAI-1B,Artificial Intelligence,Izza Shafique,3
-MT1003,Calculus and Analytical Geometry,BAI-1C,Artificial Intelligence,Iqra Arshad,3
+MT1003,Calculus and Analytical Geometry,BAI-1C,Artificial Intelligence,Amir Hayat,3
 MT1003,Calculus and Analytical Geometry,BCS-1A,Computer Science,Muhammad Ali,3
 MT1003,Calculus and Analytical Geometry,BCS-1B,Computer Science,Muhammad Ali,3
 MT1003,Calculus and Analytical Geometry,BCS-1C,Computer Science,Sara Aziz,3
@@ -84,7 +90,7 @@ MT1003,Calculus and Analytical Geometry,BCS-1E,Computer Science,Sara Aziz,3
 MT1003,Calculus and Analytical Geometry,BCS-1F,Computer Science,Muhammad Ali,3
 MT1003,Calculus and Analytical Geometry,BCS-1G,Computer Science,Muhammad Ali,3
 MT1003,Calculus and Analytical Geometry,BCS-1H,Computer Science,Sara Aziz,3
-MT1003,Calculus and Analytical Geometry,BCS-3Z,Computer Science,No Teacher Assigned,3
+MT1003,Calculus and Analytical Geometry,BCS-3Z,Computer Science,Amir Hayat,3
 MT1003,Calculus and Analytical Geometry,BCY-1A,Cyber Security,Muhammad Usman Ashraf,3
 MT1003,Calculus and Analytical Geometry,BCY-1B,Cyber Security,Muhammad Usman Ashraf,3
 MT1003,Calculus and Analytical Geometry,BCY-1C,Cyber Security,Muhammad Usman Ashraf,3
@@ -122,8 +128,8 @@ CS3001,Computer Networks,BCS-5G,Computer Science,Kashif Munir,3
 CS3001,Computer Networks,BDS-7A,Data Science,Muhammad Atif Saeed,3
 CS3001,Computer Networks,BDS-7B,Data Science,Muhammad Atif Saeed,3
 CS3001,Computer Networks,BDS-7C,Data Science,Laraib Afzaal,3
-CL3001,Computer Networks - Lab,BAI-5A,Artificial Intelligence,Nabeelah Maryam,1
-CL3001,Computer Networks - Lab,BAI-5B,Artificial Intelligence,Nabeelah Maryam,1
+CL3001,Computer Networks - Lab,BAI-5A,Artificial Intelligence,Shahid Khan,1
+CL3001,Computer Networks - Lab,BAI-5B,Artificial Intelligence,Zille Huma,1
 CL3001,Computer Networks - Lab,BAI-5C,Artificial Intelligence,Shahid Khan,1
 CL3001,Computer Networks - Lab,BCS-5A,Computer Science,Maryam Khalid,1
 CL3001,Computer Networks - Lab,BCS-5B,Computer Science,Maryam Khalid,1
@@ -134,33 +140,32 @@ CL3001,Computer Networks - Lab,BCS-5F,Computer Science,Hajira Uzair,1
 CL3001,Computer Networks - Lab,BCS-5G,Computer Science,Maryam Khalid,1
 CL3001,Computer Networks - Lab,BDS-7A,Data Science,Shahid Khan,1
 CL3001,Computer Networks - Lab,BDS-7B,Data Science,Shahid Khan,1
-CL3001,Computer Networks - Lab,BDS-7C,Data Science,Nabeelah Maryam,1
+CL3001,Computer Networks - Lab,BDS-7C,Data Science,Ahsan Shakeel Malik,1
 EE2003,Computer Organization and Assembly Language,BAI-3A,Artificial Intelligence,Mohsin Khan,3
 EE2003,Computer Organization and Assembly Language,BAI-3B,Artificial Intelligence,Mohsin Khan,3
 EE2003,Computer Organization and Assembly Language,BAI-3C,Artificial Intelligence,Shahbaz Hassan,3
 EE2003,Computer Organization and Assembly Language,BAI-5A,Artificial Intelligence,Zonera Anjum,3
 EE2003,Computer Organization and Assembly Language,BCS-5A,Computer Science,Aqib Rehman,3
 EE2003,Computer Organization and Assembly Language,BCS-5B,Computer Science,Aqib Rehman,3
-EE2003,Computer Organization and Assembly Language,BCY-3A,Cyber Security,No Teacher Assigned,3
-EE2003,Computer Organization and Assembly Language,BCY-3B,Cyber Security,No Teacher Assigned,3
+EE2003,Computer Organization and Assembly Language,BCY-3A,Cyber Security,Maheen Arshad Malik,3
+EE2003,Computer Organization and Assembly Language,BCY-3B,Cyber Security,Maheen Arshad Malik,3
 EE2003,Computer Organization and Assembly Language,BCY-3C,Cyber Security,Daniya Jadoon,3
-EE2003,Computer Organization and Assembly Language,BDS-3A,Data Science,No Teacher Assigned,3
+EE2003,Computer Organization and Assembly Language,BDS-3A,Data Science,Maheen Arshad Malik,3
 EE2003,Computer Organization and Assembly Language,BDS-3B,Data Science,Mohsin Khan,3
 EE2003,Computer Organization and Assembly Language,BSE-3A,Software Engineering,Daniya Jadoon,3
 EE2003,Computer Organization and Assembly Language,BSE-3B,Software Engineering,Daniya Jadoon,3
 EE2003,Computer Organization and Assembly Language,BSE-3C,Software Engineering,Samia Aziz,3
 EE2003,Computer Organization and Assembly Language,BSE-3D,Software Engineering,Samia Aziz,3
-EL2003,Computer Organization and Assembly Language - Lab,BAI-3A,Artificial Intelligence,Abdul Hammad Rasheed,1
-EL2003,Computer Organization and Assembly Language - Lab,BAI-3B,Artificial Intelligence,No Teacher Assigned,1
-EL2003,Computer Organization and Assembly Language - Lab,BAI-3C,Artificial Intelligence,Abdul Hammad Rasheed,1
+EL2003,Computer Organization and Assembly Language - Lab,BAI-3A,Artificial Intelligence,Soban Athar,1
+EL2003,Computer Organization and Assembly Language - Lab,BAI-3B,Artificial Intelligence,Soban Athar,1
+EL2003,Computer Organization and Assembly Language - Lab,BAI-3C,Artificial Intelligence,Soban Athar,1
 EL2003,Computer Organization and Assembly Language - Lab,BAI-5A,Artificial Intelligence,Usama Bin Imran,1
 EL2003,Computer Organization and Assembly Language - Lab,BCS-5A,Computer Science,Usama Bin Imran,1
-EL2003,Computer Organization and Assembly Language - Lab,BCS-5B,Computer Science,Usama Bin Imran,1
 EL2003,Computer Organization and Assembly Language - Lab,BCY-3A,Cyber Security,Muhammad Faheem Muhammadi,1
 EL2003,Computer Organization and Assembly Language - Lab,BCY-3B,Cyber Security,Muhammad Faheem Muhammadi,1
 EL2003,Computer Organization and Assembly Language - Lab,BCY-3C,Cyber Security,Muhammad Faheem Muhammadi,1
-EL2003,Computer Organization and Assembly Language - Lab,BDS-3A,Data Science,Abdul Hammad Rasheed,1
-EL2003,Computer Organization and Assembly Language - Lab,BDS-3B,Data Science,Abdul Hammad Rasheed,1
+EL2003,Computer Organization and Assembly Language - Lab,BDS-3A,Data Science,Hira Binte Zahid,1
+EL2003,Computer Organization and Assembly Language - Lab,BDS-3B,Data Science,Hira Binte Zahid,1
 EL2003,Computer Organization and Assembly Language - Lab,BSE-3A,Software Engineering,Hifza Umer,1
 EL2003,Computer Organization and Assembly Language - Lab,BSE-3B,Software Engineering,Hifza Umer,1
 EL2003,Computer Organization and Assembly Language - Lab,BSE-3C,Software Engineering,Hifza Umer,1
@@ -175,6 +180,7 @@ DS3001,Data Analysis and Visualization,BDS-5B,Data Science,Azka Atiq,3
 DL3001,Data Analysis and Visualization - Lab,BDS-5A,Data Science,Sidra Fayyaz,1
 DL3001,Data Analysis and Visualization - Lab,BDS-5B,Data Science,Sidra Fayyaz,1
 DS5002,Data Science Tools and Techniques,MDS-1A,Data Science,Muhammad Mateen Yaqoob,3
+DS5002,Data Science Tools and Techniques,PCS-1A,Computer Science,Muhammad Mateen Yaqoob,3
 CS2001,Data Structures,BAI-3A,Artificial Intelligence,Kainat Iqbal,3
 CS2001,Data Structures,BAI-3B,Artificial Intelligence,Mahnoor Tariq,3
 CS2001,Data Structures,BAI-3C,Artificial Intelligence,Shoaib Saleem Khattak,3
@@ -197,7 +203,7 @@ CS2001,Data Structures,BSE-3B,Software Engineering,Usman Habib,3
 CS2001,Data Structures,BSE-3C,Software Engineering,Zoya Sumbul Zaheer,3
 CS2001,Data Structures,BSE-3D,Software Engineering,Zoya Sumbul Zaheer,3
 CL2001,Data Structures - Lab,BAI-3A,Artificial Intelligence,Palwasha Zahid,1
-CL2001,Data Structures - Lab,BAI-3B,Artificial Intelligence,No Teacher Assigned,1
+CL2001,Data Structures - Lab,BAI-3B,Artificial Intelligence,Aqsa khalid,1
 CL2001,Data Structures - Lab,BAI-3C,Artificial Intelligence,Abdul Wahab Khan,1
 CL2001,Data Structures - Lab,BCS-3A,Computer Science,Muhammad Talha Sharif,1
 CL2001,Data Structures - Lab,BCS-3B,Computer Science,Zille Huma,1
@@ -272,39 +278,39 @@ MG4069,Digital Sustainability,BCS-9B,Computer Science,Bushra Mehmood,3
 CS1005,Discrete Structures,BCS-3A,Computer Science,Amina Ali,3
 CS1005,Discrete Structures,BCS-3B,Computer Science,Rabail Zahid,3
 AI4019,Edge Computing and Intelligent Systems,BAI-7A,Artificial Intelligence,Muhammad Mateen Yaqoob,3
-AI4019,Edge Computing and Intelligent Systems,BAI-9A,Artificial Intelligence,Muhammad Mateen Yaqoob,3
 AI4019,Edge Computing and Intelligent Systems,BDS-9A,Data Science,Muhammad Mateen Yaqoob,3
 CS4095,Embedded Control of Robotics,BCS-7A,Computer Science,Suleman Khan,3
 SE5032,Empirical Software Engineering,MSE-2A,Software Engineering,Isma Ul Hassan,3
 SE5008,Engineering AI based Software,MSE-2A,Software Engineering,Shahela Saif,3
-SS1004,English Composition and Comprehension,BCS-9A,Computer Science,No Teacher Assigned,2
-SS1004,English Composition and Comprehension,BCS-9B,Computer Science,No Teacher Assigned,2
+SE5008,Engineering AI based Software,PCS-1A,Computer Science,Shahela Saif,3
+SS1004,English Composition and Comprehension,BCS-9A,Computer Science,Ghalia Gohar,2
+SS1004,English Composition and Comprehension,BCS-9B,Computer Science,Muhammad Ibrahim,2
 SS1004,English Composition and Comprehension,BCY-9A,Cyber Security,Zirva Shabbir,2
-SL1004,English Composition and Comprehension - Lab,BCS-9A,Computer Science,No Teacher Assigned,1
-SL1004,English Composition and Comprehension - Lab,BCS-9B,Computer Science,No Teacher Assigned,1
+SL1004,English Composition and Comprehension - Lab,BCS-9A,Computer Science,Sara Ijaz,1
+SL1004,English Composition and Comprehension - Lab,BCS-9B,Computer Science,Muhammad Umer,1
 SL1004,English Composition and Comprehension - Lab,BCY-9A,Cyber Security,Sayeda Hassan,1
-SL1001,English-I - Lab,BBA-9A,-,Hajra Khalid,1
+SL1001,English-I - Lab,BBA-9A,Business ,Sidra Shaikh,1
 CY4092,Final Year Project -II,BCY-9B,Cyber Security,Kashif Munir,3
-AI4091,Final Year Project – I,BAI-7A,Artificial Intelligence,Saira Qamar,3
-CS4091,Final Year Project – I,BCS-7A,Computer Science,Kashif Munir,3
-CY4091,Final Year Project – I,BCY-7A,Cyber Security,Kashif Munir,3
-DS4091,Final Year Project – I,BDS-7A,Data Science,Saira Qamar,3
-SE4091,Final Year Project – I,BSE-7A,Software Engineering,Nigar Azhar Butt,3
-AI4092,Final Year Project – II,BAI-9A,Artificial Intelligence,Saira Qamar,3
-CS4092,Final Year Project – II,BCS-9A,Computer Science,Kashif Munir,3
-DS4092,Final Year Project – II,BDS-9A,Data Science,Saira Qamar,3
-SE4092,Final Year Project – II,BSE-9A,Software Engineering,Nigar Azhar Butt,3
+AI4091,Final Year Project â€“ I,BAI-7A,Artificial Intelligence,Saira Qamar,3
+CS4091,Final Year Project â€“ I,BCS-7A,Computer Science,Kashif Munir,3
+CY4091,Final Year Project â€“ I,BCY-7A,Cyber Security,Kashif Munir,3
+DS4091,Final Year Project â€“ I,BDS-7A,Data Science,Saira Qamar,3
+SE4091,Final Year Project â€“ I,BSE-7A,Software Engineering,Nigar Azhar Butt,3
+AI4092,Final Year Project â€“ II,BAI-9A,Artificial Intelligence,Saira Qamar,3
+CS4092,Final Year Project â€“ II,BCS-9A,Computer Science,Kashif Munir,3
+DS4092,Final Year Project â€“ II,BDS-9A,Data Science,Saira Qamar,3
+SE4092,Final Year Project â€“ II,BSE-9A,Software Engineering,Nigar Azhar Butt,3
 SE4033,Formal Methods in Software Engineering,BSE-7A,Software Engineering,Laiba Imran,3
-AI5012,Foundation of AI in Health Sciences,MHS-1A,Health Sciences,Ahmad Raza Shahid,3
-CS5147,Foundation of Health Information Systems,MHS-1A,Health Sciences,Ahmad Raza Shahid,3
+AI5012,Foundation of AI in Health Sciences,MAAIHS-1A,Health Sciences,Ahmad Raza Shahid,3
+CS5147,Foundation of Health Information Systems,MAAIHS-1A,Health Sciences,Ahmad Raza Shahid,3
 SS1012,Functional English,BAI-1A,Artificial Intelligence,Nimrah Nazim,2
 SS1012,Functional English,BAI-1B,Artificial Intelligence,Nimrah Nazim,2
 SS1012,Functional English,BAI-1C,Artificial Intelligence,Momal Saleem,2
 SS1012,Functional English,BCS-1A,Computer Science,Ghalia Gohar,2
-SS1012,Functional English,BCS-1B,Computer Science,Muhammad Ibrahim,2
+SS1012,Functional English,BCS-1B,Computer Science,Fizza Taha,2
 SS1012,Functional English,BCS-1C,Computer Science,Ghalia Gohar,2
-SS1012,Functional English,BCS-1D,Computer Science,Muhammad Ibrahim,2
-SS1012,Functional English,BCS-1E,Computer Science,Muhammad Ibrahim,2
+SS1012,Functional English,BCS-1D,Computer Science,Fizza Taha,2
+SS1012,Functional English,BCS-1E,Computer Science,Ghalia Gohar,2
 SS1012,Functional English,BCS-1F,Computer Science,Momal Saleem,2
 SS1012,Functional English,BCS-1G,Computer Science,Ghalia Gohar,2
 SS1012,Functional English,BCS-1H,Computer Science,Ghalia Gohar,2
@@ -313,7 +319,7 @@ SS1012,Functional English,BCY-1B,Cyber Security,Momal Saleem,2
 SS1012,Functional English,BCY-1C,Cyber Security,Zirva Shabbir,2
 SS1012,Functional English,BCY-1D,Cyber Security,Zirva Shabbir,2
 SS1012,Functional English,BDS-1A,Data Science,Nimrah Nazim,2
-SS1012,Functional English,BDS-1B,Data Science,Muhammad Ibrahim,2
+SS1012,Functional English,BDS-1B,Data Science,Saba Khaliq,2
 SS1012,Functional English,BDS-1C,Data Science,Nimrah Nazim,2
 SS1012,Functional English,BSE-1A,Software Engineering,Shahzad Mahmood,2
 SS1012,Functional English,BSE-1B,Software Engineering,Shahzad Mahmood,2
@@ -344,7 +350,7 @@ SL1012,Functional English - Lab,BCS-1H1,Computer Science,Sara Ijaz,1
 SL1012,Functional English - Lab,BCS-1H2,Computer Science,Hina Binte Munir,1
 SL1012,Functional English - Lab,BCY-1A1,Cyber Security,Sayeda Hassan,1
 SL1012,Functional English - Lab,BCY-1A2,Cyber Security,Shafaq Shakeel,1
-SL1012,Functional English - Lab,BCY-1B1,Cyber Security,Afaf Ahmad,1
+SL1012,Functional English - Lab,BCY-1B1,Cyber Security,Iqra Fatima,1
 SL1012,Functional English - Lab,BCY-1B2,Cyber Security,Abdul Moiz Khan,1
 SL1012,Functional English - Lab,BCY-1C1,Cyber Security,Muhammad Umer,1
 SL1012,Functional English - Lab,BCY-1C2,Cyber Security,Sayeda Hassan,1
@@ -352,12 +358,12 @@ SL1012,Functional English - Lab,BCY-1D1,Cyber Security,Afaf Ahmad,1
 SL1012,Functional English - Lab,BCY-1D2,Cyber Security,Areej,1
 SL1012,Functional English - Lab,BDS-1A1,Data Science,Areej,1
 SL1012,Functional English - Lab,BDS-1A2,Data Science,Areen Ishtiaq,1
-SL1012,Functional English - Lab,BDS-1B1,Data Science,Shafaq Shakeel,1
-SL1012,Functional English - Lab,BDS-1B2,Data Science,Syeda Mahnoor Ali,1
+SL1012,Functional English - Lab,BDS-1B1,Data Science,Syeda Mahnoor Ali,1
+SL1012,Functional English - Lab,BDS-1B2,Data Science,Shafaq Shakeel,1
 SL1012,Functional English - Lab,BDS-1C1,Data Science,Abdul Moiz Khan,1
 SL1012,Functional English - Lab,BDS-1C2,Data Science,Laiba Haider,1
 SL1012,Functional English - Lab,BSE-1A1,Software Engineering,Syeda Mahnoor Ali,1
-SL1012,Functional English - Lab,BSE-1A2,Software Engineering,Iqra Fatima,1
+SL1012,Functional English - Lab,BSE-1A2,Software Engineering,Afaf Ahmad,1
 SL1012,Functional English - Lab,BSE-1B1,Software Engineering,Sara Ijaz,1
 SL1012,Functional English - Lab,BSE-1B2,Software Engineering,Iqra Fatima,1
 SL1012,Functional English - Lab,BSE-1C1,Software Engineering,Syeda Mahnoor Ali,1
@@ -393,11 +399,11 @@ SS1013,Ideology and Constitution of Pakistan,BCY-1C,Cyber Security,Waqar Illahi,
 SS1013,Ideology and Constitution of Pakistan,BCY-1D,Cyber Security,Tehmina Ejaz,2
 SS1013,Ideology and Constitution of Pakistan,BDS-1A,Data Science,Muhammad Shahzad Qaisar,2
 SS1013,Ideology and Constitution of Pakistan,BDS-1B,Data Science,Safyan Shams,2
-SS1013,Ideology and Constitution of Pakistan,BDS-1C,Data Science,Tehmina Ejaz,2
+SS1013,Ideology and Constitution of Pakistan,BDS-1C,Data Science,Aneela Alam Gill,2
 SS1013,Ideology and Constitution of Pakistan,BSE-1A,Software Engineering,Tehmina Ejaz,2
 SS1013,Ideology and Constitution of Pakistan,BSE-1B,Software Engineering,Ashia Yousaf,2
 SS1013,Ideology and Constitution of Pakistan,BSE-1C,Software Engineering,Tehmina Ejaz,2
-SS1013,Ideology and Constitution of Pakistan,BSE-1D,Software Engineering,Aneela Alam Gill,2
+SS1013,Ideology and Constitution of Pakistan,BSE-1D,Software Engineering,Tehmina Ejaz,2
 SS1013,Ideology and Constitution of Pakistan,BSE-1E,Software Engineering,Tehmina Ejaz,2
 CY3003,Information Assurance,BCY-7A,Cyber Security,Muhammad Qaisar Shafi,3
 CY3003,Information Assurance,BCY-7B,Cyber Security,Muhammad Qaisar Shafi,3
@@ -416,11 +422,11 @@ CS3002,Information Security,BSE-7A,Software Engineering,Zaheer ul Hussain Sani,3
 CS3002,Information Security,BSE-7B,Software Engineering,Zaheer ul Hussain Sani,3
 DS2001,Introduction to Data Science,BDS-3A,Data Science,Umarah Qaseem,3
 DS2001,Introduction to Data Science,BDS-3B,Data Science,Umarah Qaseem,3
-DL2001,Introduction to Data Science - Lab,BDS-3A,Data Science,No Teacher Assigned,1
-DL2001,Introduction to Data Science - Lab,BDS-3B,Data Science,No Teacher Assigned,1
+DL2001,Introduction to Data Science - Lab,BDS-3A,Data Science,Farwa Irfan,1
+DL2001,Introduction to Data Science - Lab,BDS-3B,Data Science,Farwa Irfan,1
 CL1000,Introduction to Information and Communication Technology,BAI-1A,Artificial Intelligence,Abdul Wahab Khan,1
 CL1000,Introduction to Information and Communication Technology,BAI-1B,Artificial Intelligence,Sidra Fayyaz,1
-CL1000,Introduction to Information and Communication Technology,BAI-1C,Artificial Intelligence,No Teacher Assigned,1
+CL1000,Introduction to Information and Communication Technology,BAI-1C,Artificial Intelligence,Rabab Alvi,1
 CL1000,Introduction to Information and Communication Technology,BCS-1A,Computer Science,Asma Tufail,1
 CL1000,Introduction to Information and Communication Technology,BCS-1B,Computer Science,Asma Tufail,1
 CL1000,Introduction to Information and Communication Technology,BCS-1C,Computer Science,Haqeeq Ruman,1
@@ -429,13 +435,13 @@ CL1000,Introduction to Information and Communication Technology,BCS-1E,Computer 
 CL1000,Introduction to Information and Communication Technology,BCS-1F,Computer Science,Seerat Afreen Saif,1
 CL1000,Introduction to Information and Communication Technology,BCS-1G,Computer Science,Laiba Noor,1
 CL1000,Introduction to Information and Communication Technology,BCS-1H,Computer Science,Haqeeq Ruman,1
-CL1000,Introduction to Information and Communication Technology,BCY-1A,Cyber Security,No Teacher Assigned,1
+CL1000,Introduction to Information and Communication Technology,BCY-1A,Cyber Security,Maryam Khan,1
 CL1000,Introduction to Information and Communication Technology,BCY-1B,Cyber Security,Areej Fatima,1
 CL1000,Introduction to Information and Communication Technology,BCY-1C,Cyber Security,Areej Fatima,1
 CL1000,Introduction to Information and Communication Technology,BCY-1D,Cyber Security,Areej Fatima,1
 CL1000,Introduction to Information and Communication Technology,BDS-1A,Data Science,Nayyera Wasim,1
-CL1000,Introduction to Information and Communication Technology,BDS-1B,Data Science,No Teacher Assigned,1
-CL1000,Introduction to Information and Communication Technology,BDS-1C,Data Science,No Teacher Assigned,1
+CL1000,Introduction to Information and Communication Technology,BDS-1B,Data Science,Rabab Alvi,1
+CL1000,Introduction to Information and Communication Technology,BDS-1C,Data Science,Rabab Alvi,1
 CL1000,Introduction to Information and Communication Technology,BSE-1A,Software Engineering,Zoya Mahboob,1
 CL1000,Introduction to Information and Communication Technology,BSE-1B,Software Engineering,Jawad Wakeel,1
 CL1000,Introduction to Information and Communication Technology,BSE-1C,Software Engineering,Zoya Mahboob,1
@@ -463,9 +469,9 @@ SS1007,Islamic Studies/Ethics,BDS-1C,Data Science,Mahboobullah,2
 AI3001,Knowledge Representation and Reasoning,BAI-5A,Artificial Intelligence,Mehreen Javaid,3
 AI3001,Knowledge Representation and Reasoning,BAI-5B,Artificial Intelligence,Mehreen Javaid,3
 AI3001,Knowledge Representation and Reasoning,BAI-5C,Artificial Intelligence,Mehreen Javaid,3
-MT1004,Linear Algebra,BAI-3A,Artificial Intelligence,Iqra Arshad,3
+MT1004,Linear Algebra,BAI-3A,Artificial Intelligence,Javaria Fatima,3
 MT1004,Linear Algebra,BAI-3B,Artificial Intelligence,Nadia Batool,3
-MT1004,Linear Algebra,BAI-3C,Artificial Intelligence,Iqra Arshad,3
+MT1004,Linear Algebra,BAI-3C,Artificial Intelligence,Javaria Fatima,3
 MT1004,Linear Algebra,BCS-3A,Computer Science,Nabila Ahmad,3
 MT1004,Linear Algebra,BCS-3B,Computer Science,Nabila Ahmad,3
 MT1004,Linear Algebra,BCS-3C,Computer Science,Sehrish Hassan Shigri,3
@@ -492,6 +498,7 @@ DS5091,MS Thesis - I,MDS-3A,Data Science,Muhammad Mateen Yaqoob,3
 CY5092,MS Thesis - II,MCN-9A,Cyber security & Network,Zafar Iqbal Abbasi,3
 CS5092,MS Thesis - II,MCS-3A,Computer Science,Labiba Fahad,3
 CY5092,MS Thesis - II,MCY-9A,Cyber Security,Zafar Iqbal Abbasi,3
+DS5092,MS Thesis - II,MDS-4A,Data Science,Akhtar Jamil,3
 DS5092,MS Thesis - II,MDS-9A,Data Science,Muhammad Mateen Yaqoob,3
 AI5091,MS Thesis -I,MAI-3A,Artificial Intelligence,Muhammad Ishtiaq,3
 SE5091,MS Thesis -I,MSE-3A,Software Engineering,Behjat Zuhaira,3
@@ -500,11 +507,12 @@ SE5092,MS Thesis -II,MSE-3A,Software Engineering,Behjat Zuhaira,3
 AI3002,Machine Learning,BAI-5A,Artificial Intelligence,Kanza Hamid,3
 AI3002,Machine Learning,BAI-5B,Artificial Intelligence,Ahmad Raza,3
 AI3002,Machine Learning,BAI-5C,Artificial Intelligence,Ahmad Raza,3
-AL3002,Machine Learning - Lab,BAI-5A,Artificial Intelligence,No Teacher Assigned,1
-AL3002,Machine Learning - Lab,BAI-5B,Artificial Intelligence,No Teacher Assigned,1
-AL3002,Machine Learning - Lab,BAI-5C,Artificial Intelligence,No Teacher Assigned,1
+AL3002,Machine Learning - Lab,BAI-5A,Artificial Intelligence,Hafsa,1
+AL3002,Machine Learning - Lab,BAI-5B,Artificial Intelligence,Hafsa,1
+AL3002,Machine Learning - Lab,BAI-5C,Artificial Intelligence,Hafsa,1
 CY5002,Machine Learning for Cyber Security,MCY-2A,Cyber Security,Jawad Hassan Nisar,3
 CY5002,Machine Learning for Cyber Security,PCS-2A,Computer Science,Jawad Hassan Nisar,3
+CS4090,Machine Learning for Robotics,BCS-9A,Computer Science,Basharat Hussain,3
 AI5002,Mathematical Foundations of AI,MAI-1A,Artificial Intelligence,Javaria Fatima,3
 AI5002,Mathematical Foundations of AI,MAI-1B,Artificial Intelligence,Muhammad Sohail Abbas,3
 CS5144,Mathematics for Computational Intelligence,MCI-1A,Computational Intelligence,Mohsin Raza,3
@@ -540,7 +548,7 @@ CS2006,Operating Systems,BDS-5A,Data Science,Hasan Mujtaba,3
 CL2006,Operating Systems - Lab,BCY-5A,Cyber Security,Syeda Rubab Zainab,1
 CL2006,Operating Systems - Lab,BCY-5B,Cyber Security,Syeda Rubab Zainab,1
 CL2006,Operating Systems - Lab,BCY-5C,Cyber Security,Syeda Rubab Zainab,1
-CL2006,Operating Systems - Lab,BDS-5A,Data Science,No Teacher Assigned,1
+CL2006,Operating Systems - Lab,BDS-5A,Data Science,Hira Binte Zahid,1
 SS1015,Pakistan Studies,BAI-3A,Artificial Intelligence,Zahida Amin,2
 SS1015,Pakistan Studies,BAI-3B,Artificial Intelligence,Memoona Rasool,2
 SS1015,Pakistan Studies,BAI-3C,Artificial Intelligence,Sidra Shabbir,2
@@ -611,7 +619,7 @@ CL1002,Programming Fundamentals - Lab,BCS-1H,Computer Science,Muhammad Umair Kha
 CL1002,Programming Fundamentals - Lab,BCY-1A,Cyber Security,Khubab Ahmed,1
 CL1002,Programming Fundamentals - Lab,BCY-1B,Cyber Security,Khubab Ahmed,1
 CL1002,Programming Fundamentals - Lab,BCY-1C,Cyber Security,Khubab Ahmed,1
-CL1002,Programming Fundamentals - Lab,BCY-1D,Cyber Security,No Teacher Assigned,1
+CL1002,Programming Fundamentals - Lab,BCY-1D,Cyber Security,Maryam Khan,1
 CL1002,Programming Fundamentals - Lab,BDS-1A,Data Science,Mubrra Asma,1
 CL1002,Programming Fundamentals - Lab,BDS-1B,Data Science,Umaima Aman,1
 CL1002,Programming Fundamentals - Lab,BDS-1C,Data Science,Mubrra Asma,1
@@ -619,8 +627,8 @@ CL1002,Programming Fundamentals - Lab,BSE-1A,Software Engineering,Muhammad Munee
 CL1002,Programming Fundamentals - Lab,BSE-1B,Software Engineering,Arige Anjum,1
 CL1002,Programming Fundamentals - Lab,BSE-1C,Software Engineering,Muhammad Muneeb Baig,1
 CL1002,Programming Fundamentals - Lab,BSE-1D,Software Engineering,Arige Anjum,1
-CL1002,Programming Fundamentals - Lab,BSE-1E,Software Engineering,No Teacher Assigned,1
-CL1002,Programming Fundamentals - Lab,BSE-1F,Software Engineering,No Teacher Assigned,1
+CL1002,Programming Fundamentals - Lab,BSE-1E,Software Engineering,Maryam Khan,1
+CL1002,Programming Fundamentals - Lab,BSE-1F,Software Engineering,Maryam Khan,1
 AI2001,Programming for AI,BAI-3A,Artificial Intelligence,Mariam bint Imran,3
 AI2001,Programming for AI,BAI-3B,Artificial Intelligence,Mariam bint Imran,3
 AI2001,Programming for AI,BAI-3C,Artificial Intelligence,Mariam bint Imran,3
@@ -628,7 +636,7 @@ AI2003,Programming for AI,MCI-1A,Computational Intelligence,Umarah Qaseem,3
 AL2001,Programming for AI - Lab,BAI-3A,Artificial Intelligence,Ali Hamza,1
 AL2001,Programming for AI - Lab,BAI-3B,Artificial Intelligence,Ali Hamza,1
 AL2001,Programming for AI - Lab,BAI-3C,Artificial Intelligence,Ali Hamza,1
-CS5146,Programming for Digital Health Application,MHS-1A,Health Sciences,Bushra Mehmood,3
+CS5146,Programming for Digital Health Application,MAAIHS-1A,Health Sciences,Bushra Mehmood,3
 CS6018,Recent Advances in Deep Learning,PCS-1A,Computer Science,Shahela Saif,3
 CS5001,Research Methodology,MAI-1A,Artificial Intelligence,Noshina Tariq,3
 CS5001,Research Methodology,MAI-1B,Artificial Intelligence,Qurat ul Ain,3
@@ -636,7 +644,7 @@ CS5001,Research Methodology,MCS-1A,Computer Science,Akhtar Jamil,3
 CS5001,Research Methodology,MCY-1A,Cyber Security,Nigar Azhar Butt,3
 CS5001,Research Methodology,MDS-1A,Data Science,Noshina Tariq,3
 CS5001,Research Methodology,MSE-1A,Software Engineering,Nigar Azhar Butt,3
-CS6053,Research Methodology,PCS-1A,Computer Science,Ijaz Hussain,3
+CS6053,Research Methodology,PCS-1A,Computer Science,Akhtar Jamil,3
 CS6016,Research Topics in Cloud Computing,PCS-1A,Computer Science,Subhan Ullah,3
 CS6055,Research Topics in Generative AI,PCS-1A,Computer Science,Akhtar Jamil,3
 CY5004,Secure System Design,MCY-1A,Cyber Security,Muhammad Asim,3
@@ -648,7 +656,8 @@ SE3005,Software Construction and Development,BSE-5A,Software Engineering,Irfan U
 SE3005,Software Construction and Development,BSE-5B,Software Engineering,Pir Sami Ullah Shah,3
 SE3005,Software Construction and Development,BSE-5C,Software Engineering,Pir Sami Ullah Shah,3
 SE3001,Software Construction and Development,BSE-9A,Software Engineering,Irfan Ullah,3
-SE3001,Software Construction and Development,BSE-9B,Software Engineering,No Teacher Assigned,3
+SE3001,Software Construction and Development,BSE-9B,Software Engineering,Pir Sami Ullah Shah,3
+SE3001,Software Construction and Development,BSE-9C,Software Engineering,Pir Sami Ullah Shah,3
 SL3001,Software Construction and Development - Lab,BSE-9A,Software Engineering,Arige Anjum,1
 CS3004,Software Design and Analysis,BCS-3A,Computer Science,Ejaz Ahmed,3
 CS3004,Software Design and Analysis,BCS-3B,Computer Science,Majid Hussain,3
@@ -659,7 +668,6 @@ CS3004,Software Design and Analysis,BCS-3F,Computer Science,Ejaz Ahmed,3
 CS3004,Software Design and Analysis,BCS-3G,Computer Science,Furqan Nasir,3
 CS3004,Software Design and Analysis,BCS-3H,Computer Science,Furqan Nasir,3
 CS3004,Software Design and Analysis,BCS-3J,Computer Science,Majid Hussain,3
-CS3004,Software Design and Analysis,BCS-9G,Computer Science,Furqan Nasir,3
 CS6060,Software Process Mining and Intelligence,PCS-1A,Computer Science,Behjat Zuhaira,3
 SE3002,Software Quality Engineering,BSE-5A,Software Engineering,Atif Aftab Ahmed Jilani,3
 SE3002,Software Quality Engineering,BSE-5B,Software Engineering,Nigar Azhar Butt,3
@@ -669,10 +677,10 @@ CS4039,Software for Mobile Devices,BCS-7A,Computer Science,Syed Muhammad Saad Sa
 CS4039,Software for Mobile Devices,BSE-7A,Software Engineering,Junaid Ali Khan,3
 CS4039,Software for Mobile Devices,BSE-7B,Software Engineering,Junaid Ali Khan,3
 MT2002,Statistical Modelling,BCS-9A,Computer Science,Muhammad Rizwan,3
-DS5003,Statistical and Mathematical Methods for DS,MDS-1A,Data Science,Muhammad Rizwan,3
-SS2012,Technical and Business Writing,BAI-5A,Artificial Intelligence,Lubna,3
-SS2012,Technical and Business Writing,BAI-5B,Artificial Intelligence,Lubna,3
-SS2012,Technical and Business Writing,BAI-5C,Artificial Intelligence,Lubna,3
+DS5003,Statistical and Mathematical Methods for DS,MDS-1A,Data Science,Mohsin Raza,3
+SS2012,Technical and Business Writing,BAI-5A,Artificial Intelligence,Hadia Baloch,3
+SS2012,Technical and Business Writing,BAI-5B,Artificial Intelligence,Saba Khaliq,3
+SS2012,Technical and Business Writing,BAI-5C,Artificial Intelligence,Saba Khaliq,3
 SS2012,Technical and Business Writing,BCS-5A,Computer Science,Zareen Samar,3
 SS2012,Technical and Business Writing,BCS-5B,Computer Science,Zareen Samar,3
 SS2012,Technical and Business Writing,BCS-5C,Computer Science,Amna Hafeez,3
@@ -680,86 +688,85 @@ SS2012,Technical and Business Writing,BCS-5D,Computer Science,Amna Hafeez,3
 SS2012,Technical and Business Writing,BCS-5E,Computer Science,Amna Hafeez,3
 SS2012,Technical and Business Writing,BCS-5F,Computer Science,Zareen Samar,3
 SS2012,Technical and Business Writing,BCS-5G,Computer Science,Amna Hafeez,3
-SS2007,Technical and Business Writing,BCS-9A,Computer Science,No Teacher Assigned,3
-SS2007,Technical and Business Writing,BCS-9D,Computer Science,No Teacher Assigned,3
+SS2007,Technical and Business Writing,BCS-9A,Computer Science,Zareen Samar,3
+SS2007,Technical and Business Writing,BCS-9D,Computer Science,Amna Hafeez,3
 SS2012,Technical and Business Writing,BDS-5A,Data Science,Sadia,3
 SS2012,Technical and Business Writing,BDS-5B,Data Science,Nimrah Nazim,3
 SS2007,Technical and Business Writing,BDS-9A,Data Science,Sadia,3
 SS2012,Technical and Business Writing,BSE-5A,Software Engineering,Sadia,3
 SS2012,Technical and Business Writing,BSE-5B,Software Engineering,Sadia,3
 SS2012,Technical and Business Writing,BSE-5C,Software Engineering,Sadia,3
+SS2007,Technical and Business Writing,BSE-9C,Software Engineering,Sadia,3
 SS1018,Understanding Holy Quran,BCY-5A,Cyber Security,Mahboobullah,1
 SS1019,Understanding Sirat-Un-Nabi (PBUH),BAI-1A,Artificial Intelligence,Muhammad Asim Shiekh,1
 SS1019,Understanding Sirat-Un-Nabi (PBUH),BAI-1B,Artificial Intelligence,Muhammad Saqib,1
 SS1019,Understanding Sirat-Un-Nabi (PBUH),BAI-1C,Artificial Intelligence,Muhammad Saqib,1
 SS1019,Understanding Sirat-Un-Nabi (PBUH),BCS-1A,Computer Science,Ahmed Abdul Rehman,1
-SS1019,Understanding Sirat-Un-Nabi (PBUH),BCS-1B,Computer Science,Muhammad Saqib,1
+SS1019,Understanding Sirat-Un-Nabi (PBUH),BCS-1B,Computer Science,Shah Faisal,1
 SS1019,Understanding Sirat-Un-Nabi (PBUH),BCS-1C,Computer Science,Dilnawaz Ahmed,1
 SS1019,Understanding Sirat-Un-Nabi (PBUH),BCS-1D,Computer Science,Muhammad Asim Shiekh,1
 SS1019,Understanding Sirat-Un-Nabi (PBUH),BCS-1E,Computer Science,Muhammad Saqib,1
 SS1019,Understanding Sirat-Un-Nabi (PBUH),BCS-1F,Computer Science,Farhad Ali,1
 SS1019,Understanding Sirat-Un-Nabi (PBUH),BCS-1G,Computer Science,Ahmad Ali Khan,1
 SS1019,Understanding Sirat-Un-Nabi (PBUH),BCS-1H,Computer Science,Ahmed Abdul Rehman,1
-SS1019,Understanding Sirat-Un-Nabi (PBUH),BCS-3A,Computer Science,No Teacher Assigned,1
-SS1019,Understanding Sirat-Un-Nabi (PBUH),BCS-3B,Computer Science,No Teacher Assigned,1
+SS1019,Understanding Sirat-Un-Nabi (PBUH),BCS-3A,Computer Science,Muhammad Ibrahim,1
+SS1019,Understanding Sirat-Un-Nabi (PBUH),BCS-3B,Computer Science,Shah Faisal,1
 SS1019,Understanding Sirat-Un-Nabi (PBUH),BCS-3C,Computer Science,Ahmad Ali Khan,1
-SS1019,Understanding Sirat-Un-Nabi (PBUH),BCS-3D,Computer Science,No Teacher Assigned,1
+SS1019,Understanding Sirat-Un-Nabi (PBUH),BCS-3D,Computer Science,Shah Faisal,1
 SS1019,Understanding Sirat-Un-Nabi (PBUH),BCS-3E,Computer Science,Ahmad Ali Khan,1
 SS1019,Understanding Sirat-Un-Nabi (PBUH),BCS-3F,Computer Science,Ahmad Ali Khan,1
 SS1019,Understanding Sirat-Un-Nabi (PBUH),BCS-3G,Computer Science,Muhammad Asim Shiekh,1
-SS1019,Understanding Sirat-Un-Nabi (PBUH),BCS-3H,Computer Science,No Teacher Assigned,1
+SS1019,Understanding Sirat-Un-Nabi (PBUH),BCS-3H,Computer Science,Shah Faisal,1
 SS1019,Understanding Sirat-Un-Nabi (PBUH),BCS-3J,Computer Science,Muhammad Saqib,1
 SS1019,Understanding Sirat-Un-Nabi (PBUH),BDS-1A,Data Science,Dilnawaz Ahmed,1
 SS1019,Understanding Sirat-Un-Nabi (PBUH),BDS-1B,Data Science,Ahmad Ali Khan,1
 SS1019,Understanding Sirat-Un-Nabi (PBUH),BDS-1C,Data Science,Dilnawaz Ahmed,1
-SS1019,Understanding Sirat-Un-Nabi (PBUH),BDS-3A,Data Science,No Teacher Assigned,1
+SS1019,Understanding Sirat-Un-Nabi (PBUH),BDS-3A,Data Science,Muhammad Saqib,1
 SS1019,Understanding Sirat-Un-Nabi (PBUH),BDS-3B,Data Science,Ahmad Ali Khan,1
-SS1021,Understanding of Holy Quran I/Ethics I,BCS-3A,Computer Science,Yahya Maqsood,1
-SS1021,Understanding of Holy Quran I/Ethics I,BCS-3B,Computer Science,Faisal Ur Rehman,1
-SS1021,Understanding of Holy Quran I/Ethics I,BCS-3C,Computer Science,Mahboobullah,1
-SS1021,Understanding of Holy Quran I/Ethics I,BCS-3D,Computer Science,Muhammad Ibrahim,1
-SS1021,Understanding of Holy Quran I/Ethics I,BCS-3E,Computer Science,Muhammad Ibrahim,1
-SS1021,Understanding of Holy Quran I/Ethics I,BCS-3F,Computer Science,Muhammad Ibrahim,1
-SS1021,Understanding of Holy Quran I/Ethics I,BCS-3G,Computer Science,Mahboobullah,1
-SS1021,Understanding of Holy Quran I/Ethics I,BCS-3H,Computer Science,Dilnawaz Ahmed,1
-SS1021,Understanding of Holy Quran I/Ethics I,BCS-3J,Computer Science,Muhammad Ibrahim,1
-SS1021,Understanding of Holy Quran I/Ethics I,BDS-3A,Data Science,Dilnawaz Ahmed,1
-SS1021,Understanding of Holy Quran I/Ethics I,BDS-3B,Data Science,Muhammad Ajmal Farooq,1
-SS1021,Understanding of Holy Quran I/Ethics I,MAI-3A,Artificial Intelligence,No Teacher Assigned,1
-SS5014,Understanding of Holy Quran I/Ethics I,MCS-2A,Computer Science,Muhammad Munir,1
-SS5014,Understanding of Holy Quran I/Ethics I,MCS-3A,Computer Science,No Teacher Assigned (EE),1
-SS5014,Understanding of Holy Quran I/Ethics I,MCY-3A,Cyber Security,Muhammad Munir,1
-SS6007,Understanding of Holy Quran I/Ethics I,PCS-1A,Computer Science,Muhammad Tayyeb Nadeem,1
-SS1021,Understanding of Holy Quran I/Ethics I,PCS-1A,Computer Science,Muhammad Tayyeb Nadeem,1
-SS6007,Understanding of Holy Quran I/Ethics I,PSE-1A,Software Engineering,Muhammad Tayyeb Nadeem,1
-SS1022,Understanding of Holy Quran II/Ethics II,BAI-3A,Artificial Intelligence,Muhammad Ibrahim,1
-SS1022,Understanding of Holy Quran II/Ethics II,BAI-3B,Artificial Intelligence,Ahmed Abdul Rehman,1
-SS1022,Understanding of Holy Quran II/Ethics II,BAI-3C,Artificial Intelligence,Muhammad Ibrahim,1
-SS1022,Understanding of Holy Quran II/Ethics II,BCS-3A,Computer Science,Yahya Maqsood,1
-SS1022,Understanding of Holy Quran II/Ethics II,BCS-3B,Computer Science,Faisal Ur Rehman,1
-SS1022,Understanding of Holy Quran II/Ethics II,BCS-3C,Computer Science,Mahboobullah,1
-SS1022,Understanding of Holy Quran II/Ethics II,BCS-3D,Computer Science,Muhammad Ibrahim,1
-SS1022,Understanding of Holy Quran II/Ethics II,BCS-3E,Computer Science,Muhammad Ibrahim,1
-SS1022,Understanding of Holy Quran II/Ethics II,BCS-3F,Computer Science,Muhammad Ibrahim,1
-SS1022,Understanding of Holy Quran II/Ethics II,BCS-3G,Computer Science,Mahboobullah,1
-SS1022,Understanding of Holy Quran II/Ethics II,BCS-3H,Computer Science,Dilnawaz Ahmed,1
-SS1022,Understanding of Holy Quran II/Ethics II,BCS-3J,Computer Science,Muhammad Ibrahim,1
-SS1022,Understanding of Holy Quran II/Ethics II,BCY-3A,Cyber Security,Ahmed Abdul Rehman,1
-SS1022,Understanding of Holy Quran II/Ethics II,BCY-3B,Cyber Security,Ahmed Abdul Rehman,1
-SS1022,Understanding of Holy Quran II/Ethics II,BCY-3C,Cyber Security,Ahmed Abdul Rehman,1
-SS1022,Understanding of Holy Quran II/Ethics II,BDS-3A,Data Science,Dilnawaz Ahmed,1
-SS1022,Understanding of Holy Quran II/Ethics II,BDS-3B,Data Science,Muhammad Ajmal Farooq,1
-SS1022,Understanding of Holy Quran II/Ethics II,BSE-3A,Software Engineering,Ahmed Abdul Rehman,1
-SS1022,Understanding of Holy Quran II/Ethics II,BSE-3B,Software Engineering,Muhammad Asim Shiekh,1
-SS1022,Understanding of Holy Quran II/Ethics II,BSE-3C,Software Engineering,Ahmed Abdul Rehman,1
-SS1022,Understanding of Holy Quran II/Ethics II,BSE-3D,Software Engineering,Ahmed Abdul Rehman,1
-SS5016,Understanding of Holy Quran II/Ethics II,MAI-3A,Artificial Intelligence,No Teacher Assigned (EE),1
-SS5016,Understanding of Holy Quran II/Ethics II,MCS-2A,Computer Science,Muhammad Munir,1
-SS5016,Understanding of Holy Quran II/Ethics II,MCS-3A,Computer Science,No Teacher Assigned (EE),1
-SS5016,Understanding of Holy Quran II/Ethics II,MCY-3A,Cyber Security,Muhammad Munir,1
-SS6008,Understanding of Holy Quran II/Ethics II,PCS-1A,Computer Science,Muhammad Tayyeb Nadeem,1
-SS1022,Understanding of Holy Quran II/Ethics II,PCS-1B,Computer Science,Muhammad Tayyeb Nadeem,1
-SS6008,Understanding of Holy Quran II/Ethics II,PSE-1A,Software Engineering,Muhammad Tayyeb Nadeem,1
+SS5014,Understanding of Holy Quran I/Comparative Study of Religions I,MCS-2A,Computer Science,Muhammad Munir,1
+SS5014,Understanding of Holy Quran I/Comparative Study of Religions I,MCY-3A,Cyber Security,Muhammad Munir,1
+SS1021,Understanding of Holy Quran I/Introduction to Major World Religions I,BCS-3A,Computer Science,Yahya Maqsood,1
+SS1021,Understanding of Holy Quran I/Introduction to Major World Religions I,BCS-3B,Computer Science,Faisal Ur Rehman,1
+SS1021,Understanding of Holy Quran I/Introduction to Major World Religions I,BCS-3C,Computer Science,Mahboobullah,1
+SS1021,Understanding of Holy Quran I/Introduction to Major World Religions I,BCS-3D,Computer Science,Muhammad Ibrahim,1
+SS1021,Understanding of Holy Quran I/Introduction to Major World Religions I,BCS-3E,Computer Science,Muhammad Ibrahim,1
+SS1021,Understanding of Holy Quran I/Introduction to Major World Religions I,BCS-3F,Computer Science,Muhammad Ibrahim,1
+SS1021,Understanding of Holy Quran I/Introduction to Major World Religions I,BCS-3G,Computer Science,Mahboobullah,1
+SS1021,Understanding of Holy Quran I/Introduction to Major World Religions I,BCS-3H,Computer Science,Dilnawaz Ahmed,1
+SS1021,Understanding of Holy Quran I/Introduction to Major World Religions I,BCS-3J,Computer Science,Muhammad Ibrahim,1
+SS1021,Understanding of Holy Quran I/Introduction to Major World Religions I,BCS-3Z,Computer Science,Muhammad Tayyeb Nadeem,1
+SS1021,Understanding of Holy Quran I/Introduction to Major World Religions I,BDS-3A,Data Science,Dilnawaz Ahmed,1
+SS1021,Understanding of Holy Quran I/Introduction to Major World Religions I,BDS-3B,Data Science,Muhammad Ajmal Farooq,1
+SS1021,Understanding of Holy Quran I/Introduction to Major World Religions I,MAI-3A,Artificial Intelligence,Muhammad Munir,1
+SS6007,Understanding of Holy Quran I/Philosophy of Religions I,PCS-1A,Computer Science,Muhammad Tayyeb Nadeem,1
+SS6007,Understanding of Holy Quran I/Philosophy of Religions I,PSE-1A,Software Engineering,Muhammad Tayyeb Nadeem,1
+SS5016,Understanding of Holy Quran II/Comparative Study of Religions II,MCS-2A,Computer Science,Muhammad Munir,1
+SS5016,Understanding of Holy Quran II/Comparative Study of Religions II,MCY-3A,Cyber Security,Muhammad Munir,1
+SS1022,Understanding of Holy Quran II/Introduction to Major World Religions II,BAI-3A,Artificial Intelligence,Muhammad Ibrahim,1
+SS1022,Understanding of Holy Quran II/Introduction to Major World Religions II,BAI-3B,Artificial Intelligence,Ahmed Abdul Rehman,1
+SS1022,Understanding of Holy Quran II/Introduction to Major World Religions II,BAI-3C,Artificial Intelligence,Muhammad Ibrahim,1
+SS1022,Understanding of Holy Quran II/Introduction to Major World Religions II,BCS-3A,Computer Science,Yahya Maqsood,1
+SS1022,Understanding of Holy Quran II/Introduction to Major World Religions II,BCS-3B,Computer Science,Faisal Ur Rehman,1
+SS1022,Understanding of Holy Quran II/Introduction to Major World Religions II,BCS-3C,Computer Science,Mahboobullah,1
+SS1022,Understanding of Holy Quran II/Introduction to Major World Religions II,BCS-3D,Computer Science,Muhammad Ibrahim,1
+SS1022,Understanding of Holy Quran II/Introduction to Major World Religions II,BCS-3E,Computer Science,Muhammad Ibrahim,1
+SS1022,Understanding of Holy Quran II/Introduction to Major World Religions II,BCS-3F,Computer Science,Muhammad Ibrahim,1
+SS1022,Understanding of Holy Quran II/Introduction to Major World Religions II,BCS-3G,Computer Science,Mahboobullah,1
+SS1022,Understanding of Holy Quran II/Introduction to Major World Religions II,BCS-3H,Computer Science,Dilnawaz Ahmed,1
+SS1022,Understanding of Holy Quran II/Introduction to Major World Religions II,BCS-3J,Computer Science,Muhammad Ibrahim,1
+SS1022,Understanding of Holy Quran II/Introduction to Major World Religions II,BCS-3Z,Computer Science,Muhammad Tayyeb Nadeem,1
+SS1022,Understanding of Holy Quran II/Introduction to Major World Religions II,BCY-3A,Cyber Security,Ahmed Abdul Rehman,1
+SS1022,Understanding of Holy Quran II/Introduction to Major World Religions II,BCY-3B,Cyber Security,Ahmed Abdul Rehman,1
+SS1022,Understanding of Holy Quran II/Introduction to Major World Religions II,BCY-3C,Cyber Security,Ahmed Abdul Rehman,1
+SS1022,Understanding of Holy Quran II/Introduction to Major World Religions II,BDS-3A,Data Science,Dilnawaz Ahmed,1
+SS1022,Understanding of Holy Quran II/Introduction to Major World Religions II,BDS-3B,Data Science,Muhammad Ajmal Farooq,1
+SS1022,Understanding of Holy Quran II/Introduction to Major World Religions II,BSE-3A,Software Engineering,Ahmed Abdul Rehman,1
+SS1022,Understanding of Holy Quran II/Introduction to Major World Religions II,BSE-3B,Software Engineering,Muhammad Asim Shiekh,1
+SS1022,Understanding of Holy Quran II/Introduction to Major World Religions II,BSE-3C,Software Engineering,Ahmed Abdul Rehman,1
+SS1022,Understanding of Holy Quran II/Introduction to Major World Religions II,BSE-3D,Software Engineering,Ahmed Abdul Rehman,1
+SS1022,Understanding of Holy Quran II/Introduction to Major World Religions II,MAI-3A,Artificial Intelligence,Ahmed Abdul Rehman,1
+SS6008,Understanding of Holy Quran II/Philosophy of Religions II,PCS-1A,Computer Science,Muhammad Tayyeb Nadeem,1
+SS6008,Understanding of Holy Quran II/Philosophy of Religions II,PSE-1A,Software Engineering,Muhammad Tayyeb Nadeem,1
 CS6062,Vision-Based AI Agent,PCS-1A,Computer Science,Tajwar Mehmood,3
 CY3002,Vulnerability Assessment and Reverse Engg,BCY-9A,Cyber Security,Zafar Iqbal Abbasi,3
 YL3002,Vulnerability Assessment and Reverse Engg - Lab,BCY-9A,Cyber Security,Khubab Ahmed,1

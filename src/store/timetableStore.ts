@@ -12,6 +12,7 @@ import {
 import {
   INITIAL_ALLOCATIONS,
   INITIAL_COURSES,
+  INITIAL_DATA_VERSION,
   INITIAL_ROOMS,
   INITIAL_STUDENTS,
 } from '../lib/mockData';
@@ -607,6 +608,9 @@ export const useTimetableStore = create<TimetableStore>()(
   {
     name: 'unischedule_master_storage',
     storage: timetableStorage,
+    // A newly deployed dataset replaces whatever older timetable a browser has cached
+    version: INITIAL_DATA_VERSION,
+    migrate: () => ({}) as PersistedState,
     partialize: (state): PersistedState => ({
       rooms: state.rooms,
       courses: state.courses,
