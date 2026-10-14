@@ -83,9 +83,15 @@ Browsers that cached an older timetable switch to the new one on their next visi
 With Supabase configured, everyone sees the same timetable and coordinators' changes appear live in every open browser. Without it, the app runs on the bundled data and changes stay in each browser.
 
 1. In Supabase → **SQL Editor**, run [`supabase/schema.sql`](supabase/schema.sql).
-2. Put the project URL and publishable/anon key in `.env.local` (see `.env.example`) and in Vercel's environment variables.
-3. Open the app, click **Database**, and choose **Publish this browser's timetable to everyone** once to fill the database.
+2. In the same editor, set the edit PIN (replace `0000`; the PIN is stored only as a hash):
+   ```sql
+   insert into private.edit_pin (id, pin_hash) values (1, extensions.crypt('0000', extensions.gen_salt('bf')))
+   on conflict (id) do update set pin_hash = excluded.pin_hash;
+   ```
+   Run it again with a new PIN to change it.
+3. Put the project URL and publishable/anon key in `.env.local` (see `.env.example`) and in Vercel's environment variables.
+4. Open the app, click **Enter PIN**, then **Publish this browser's timetable to everyone** once to fill the database.
 
-**Open editing (current):** anyone using the app can reschedule, add make-ups or import data. Every change is recorded in the `change_log` table.
+**Edit PIN (current):** anyone can view; rescheduling, make-ups, deletes and imports need the PIN. The database checks it on every write, so it can't be bypassed with the public key. A browser remembers the PIN until **Lock** is clicked. Wrong guesses are limited to 20 per 15 minutes. Every change is recorded in the `change_log` table.
 
-**To require sign-in later:** run [`supabase/require-sign-in.sql`](supabase/require-sign-in.sql), add coordinator users in **Authentication → Users**, turn off public sign-ups, and set `NEXT_PUBLIC_REQUIRE_SIGN_IN=true` locally and in Vercel.
+**Coordinator accounts later:** run [`supabase/require-sign-in.sql`](supabase/require-sign-in.sql), add users in **Authentication → Users**, turn off public sign-ups, and set `NEXT_PUBLIC_REQUIRE_SIGN_IN=true` locally and in Vercel.

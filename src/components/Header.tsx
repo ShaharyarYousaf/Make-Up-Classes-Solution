@@ -32,6 +32,7 @@ export const Header: React.FC = () => {
     openCoordinatorModal,
     authEmail,
     syncStatus,
+    canEdit,
   } = useTimetableStore(
     useShallow((s) => ({
       allocations: s.allocations,
@@ -47,6 +48,7 @@ export const Header: React.FC = () => {
       openCoordinatorModal: s.openCoordinatorModal,
       authEmail: s.authEmail,
       syncStatus: s.syncStatus,
+      canEdit: s.canEdit,
     }))
   );
 
@@ -167,21 +169,21 @@ export const Header: React.FC = () => {
             {syncStatus !== 'local' && (
               <button
                 onClick={openCoordinatorModal}
-                title={authEmail ? `Signed in as ${authEmail}` : REQUIRE_SIGN_IN ? 'Sign in to change the timetable' : 'Shared database status'}
+                title={canEdit ? 'Editing unlocked – database options' : REQUIRE_SIGN_IN ? 'Sign in to change the timetable' : 'Enter the edit PIN to change the timetable'}
                 className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold border transition-colors ${
-                  authEmail
+                  canEdit
                     ? 'bg-emerald-50 dark:bg-emerald-950/50 text-emerald-800 dark:text-emerald-200 border-emerald-200 dark:border-emerald-900'
                     : 'bg-gray-100 dark:bg-zinc-800 text-gray-700 dark:text-gray-300 border-gray-200 dark:border-zinc-700 hover:bg-gray-200 dark:hover:bg-zinc-700'
                 }`}
               >
                 {syncStatus === 'offline' ? (
                   <CloudOff className="w-3.5 h-3.5 text-red-500" />
-                ) : authEmail || !REQUIRE_SIGN_IN ? (
+                ) : canEdit ? (
                   <Cloud className="w-3.5 h-3.5 text-emerald-600" />
                 ) : (
                   <ShieldCheck className="w-3.5 h-3.5 text-gray-500" />
                 )}
-                <span className="hidden md:inline">{authEmail ? 'Coordinator' : REQUIRE_SIGN_IN ? 'Sign in' : 'Database'}</span>
+                <span className="hidden md:inline">{canEdit ? 'Editing on' : REQUIRE_SIGN_IN ? 'Sign in' : 'Enter PIN'}</span>
               </button>
             )}
           </div>

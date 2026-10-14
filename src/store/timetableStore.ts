@@ -127,7 +127,7 @@ function requireEditAccess(
   if (get().canEdit) return true;
   set({
     isCoordinatorModalOpen: true,
-    toastMessage: { text: 'Sign in as a coordinator to change the timetable.', type: 'warning' },
+    toastMessage: { text: 'Enter the edit PIN to change the timetable.', type: 'warning' },
   });
   return false;
 }

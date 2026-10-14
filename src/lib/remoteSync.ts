@@ -1,4 +1,4 @@
-import { REQUIRE_SIGN_IN, supabase } from './supabase';
+import { REQUIRE_SIGN_IN, setEditPin, supabase } from './supabase';
 import { useTimetableStore } from '../store/timetableStore';
 import { Allocation, CourseSection, Room, Student } from '../types/timetable';
 
@@ -189,9 +189,15 @@ export function startRemoteSync() {
     return;
   }
 
-  const applySession = (email: string | null) =>
-    store.setState({ authEmail: email, canEdit: REQUIRE_SIGN_IN ? !!email : true });
-  applySession(null);
+  const applySession = (email: string | null) => {
+    store.setState({ authEmail: email });
+    if (REQUIRE_SIGN_IN) store.setState({ canEdit: !!email });
+  };
+  if (!REQUIRE_SIGN_IN) {
+    // Re-check a PIN this browser remembered; it may have been changed since
+    const saved = readSavedPin();
+    if (saved) unlockWithPin(saved).catch(() => forgetPin());
+  }
   supabase.auth.getSession().then(({ data }) => applySession(data.session?.user.email ?? null));
   supabase.auth.onAuthStateChange((_event, session) => applySession(session?.user.email ?? null));
 
@@ -215,6 +221,45 @@ export function startRemoteSync() {
         store.getState().showToast(`Not saved to the database: ${err.message || err}`, 'warning');
       });
   });
+}
+
+const PIN_STORAGE_KEY = 'unischedule_edit_pin';
+
+function readSavedPin(): string | null {
+  try {
+    return localStorage.getItem(PIN_STORAGE_KEY);
+  } catch {
+    return null;
+  }
+}
+
+function forgetPin() {
+  setEditPin(null);
+  try {
+    localStorage.removeItem(PIN_STORAGE_KEY);
+  } catch {
+    // ignore
+  }
+}
+
+/** Checks the PIN with the database; on success this browser can edit until locked again. */
+export async function unlockWithPin(pin: string) {
+  if (!supabase) throw new Error('Supabase is not configured');
+  const { data, error } = await supabase.rpc('check_edit_pin', { pin });
+  if (error) throw error;
+  if (!data) throw new Error('Wrong PIN');
+  setEditPin(pin);
+  try {
+    localStorage.setItem(PIN_STORAGE_KEY, pin);
+  } catch {
+    // ignore: unlocked for this visit only
+  }
+  store.setState({ canEdit: true });
+}
+
+export function lockEditing() {
+  forgetPin();
+  store.setState({ canEdit: false });
 }
 
 export async function signIn(email: string, password: string) {
