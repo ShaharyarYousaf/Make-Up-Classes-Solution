@@ -1,4 +1,4 @@
-import { supabase } from './supabase';
+import { REQUIRE_SIGN_IN, supabase } from './supabase';
 import { useTimetableStore } from '../store/timetableStore';
 import { Allocation, CourseSection, Room, Student } from '../types/timetable';
 
@@ -189,7 +189,9 @@ export function startRemoteSync() {
     return;
   }
 
-  const applySession = (email: string | null) => store.setState({ authEmail: email, canEdit: !!email });
+  const applySession = (email: string | null) =>
+    store.setState({ authEmail: email, canEdit: REQUIRE_SIGN_IN ? !!email : true });
+  applySession(null);
   supabase.auth.getSession().then(({ data }) => applySession(data.session?.user.email ?? null));
   supabase.auth.onAuthStateChange((_event, session) => applySession(session?.user.email ?? null));
 

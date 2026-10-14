@@ -83,8 +83,9 @@ Browsers that cached an older timetable switch to the new one on their next visi
 With Supabase configured, everyone sees the same timetable and coordinators' changes appear live in every open browser. Without it, the app runs on the bundled data and changes stay in each browser.
 
 1. In Supabase → **SQL Editor**, run [`supabase/schema.sql`](supabase/schema.sql).
-2. In **Authentication → Users**, add a user for each coordinator, then turn off public sign-ups.
-3. Put the project URL and publishable/anon key in `.env.local` (see `.env.example`) and in Vercel's environment variables.
-4. Open the app, click **Sign in**, and choose **Publish this browser's timetable to everyone** once to fill the database.
+2. Put the project URL and publishable/anon key in `.env.local` (see `.env.example`) and in Vercel's environment variables.
+3. Open the app, click **Database**, and choose **Publish this browser's timetable to everyone** once to fill the database.
 
-Anyone can view. Only signed-in coordinators can reschedule, add make-ups or import data. Every change is recorded in the `change_log` table.
+**Open editing (current):** anyone using the app can reschedule, add make-ups or import data. Every change is recorded in the `change_log` table.
+
+**To require sign-in later:** run [`supabase/require-sign-in.sql`](supabase/require-sign-in.sql), add coordinator users in **Authentication → Users**, turn off public sign-ups, and set `NEXT_PUBLIC_REQUIRE_SIGN_IN=true` locally and in Vercel.

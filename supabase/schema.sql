@@ -1,9 +1,9 @@
 -- Make-Up Class Scheduler – shared timetable database
 -- Run once in Supabase → SQL Editor. Safe to re-run.
 --
--- Everyone can read. Only signed-in coordinators (Supabase Auth users) can change data.
--- Create coordinator accounts in Authentication → Users → "Add user",
--- and turn off public sign-ups in Authentication → Sign In / Providers.
+-- OPEN MODE (current): anyone with the app can read and change the timetable.
+-- To restrict changes to signed-in coordinators later, run supabase/require-sign-in.sql
+-- and set NEXT_PUBLIC_REQUIRE_SIGN_IN=true in the app's environment.
 
 -- Each record is stored as the app's own JSON shape, keyed by its id.
 create table if not exists public.rooms (
@@ -58,8 +58,9 @@ begin
     execute format('drop policy if exists "public read" on public.%I', t);
     execute format('create policy "public read" on public.%I for select to anon, authenticated using (true)', t);
     execute format('drop policy if exists "coordinators write" on public.%I', t);
+    execute format('drop policy if exists "anyone write" on public.%I', t);
     execute format(
-      'create policy "coordinators write" on public.%I for all to authenticated using (true) with check (true)', t
+      'create policy "anyone write" on public.%I for all to anon, authenticated using (true) with check (true)', t
     );
   end loop;
 end $$;

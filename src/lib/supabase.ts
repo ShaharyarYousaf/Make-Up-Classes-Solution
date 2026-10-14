@@ -5,3 +5,6 @@ const key = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY || process.env.NEXT
 
 /** Without Supabase settings the app runs in local mode: bundled data, changes kept in this browser only. */
 export const supabase: SupabaseClient | null = url && key ? createClient(url, key) : null;
+
+/** Off for now: any visitor may change the shared timetable. Turn on once coordinator accounts exist. */
+export const REQUIRE_SIGN_IN = process.env.NEXT_PUBLIC_REQUIRE_SIGN_IN === 'true';

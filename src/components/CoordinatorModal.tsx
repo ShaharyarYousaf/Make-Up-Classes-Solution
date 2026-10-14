@@ -3,6 +3,7 @@ import { useShallow } from 'zustand/react/shallow';
 import { CloudUpload, LogIn, LogOut, ShieldCheck, X } from 'lucide-react';
 import { useTimetableStore } from '../store/timetableStore';
 import { publishDataset, reloadFromDatabase, signIn, signOut } from '../lib/remoteSync';
+import { REQUIRE_SIGN_IN } from '../lib/supabase';
 
 const STATUS_TEXT: Record<string, string> = {
   local: 'No database configured – changes stay in this browser.',
@@ -10,7 +11,7 @@ const STATUS_TEXT: Record<string, string> = {
   synced: 'Connected – changes are shared with everyone.',
   saving: 'Saving…',
   offline: 'Could not reach the database. Showing the last data this browser had.',
-  empty: 'The database has no timetable yet. Sign in and publish the current one.',
+  empty: 'The database has no timetable yet. Publish the current one to fill it.',
 };
 
 export const CoordinatorModal: React.FC = () => {
@@ -71,10 +72,15 @@ export const CoordinatorModal: React.FC = () => {
         <div className="p-5 flex flex-col gap-4 text-sm">
           <p className="text-xs text-gray-600 dark:text-gray-400">{STATUS_TEXT[syncStatus]}</p>
 
-          {syncStatus === 'local' ? null : authEmail ? (
+          {syncStatus === 'local' ? null : authEmail || !REQUIRE_SIGN_IN ? (
             <>
               <div className="rounded-lg bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-900 px-3 py-2 text-emerald-900 dark:text-emerald-200 text-xs">
-                Signed in as <strong>{authEmail}</strong>. You can reschedule classes, add make-ups and import data.
+                {authEmail ? (
+                  <>Signed in as <strong>{authEmail}</strong>. </>
+                ) : (
+                  <>Open editing is on: anyone using the app can change the shared timetable. </>
+                )}
+                Reschedules, make-ups and imports are saved for everyone.
               </div>
               <button
                 onClick={handlePublish}
@@ -92,6 +98,7 @@ export const CoordinatorModal: React.FC = () => {
                 >
                   Reload from database
                 </button>
+                {authEmail && (
                 <button
                   onClick={() => run(signOut)}
                   disabled={busy}
@@ -100,6 +107,7 @@ export const CoordinatorModal: React.FC = () => {
                   <LogOut className="w-4 h-4" />
                   Sign out
                 </button>
+                )}
               </div>
             </>
           ) : (

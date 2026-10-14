@@ -1,6 +1,7 @@
 import React from 'react';
 import { useShallow } from 'zustand/react/shallow';
 import { useTimetableStore } from '../store/timetableStore';
+import { REQUIRE_SIGN_IN } from '../lib/supabase';
 import {
   Sparkles,
   Undo2,
@@ -166,7 +167,7 @@ export const Header: React.FC = () => {
             {syncStatus !== 'local' && (
               <button
                 onClick={openCoordinatorModal}
-                title={authEmail ? `Signed in as ${authEmail}` : 'Sign in to change the timetable'}
+                title={authEmail ? `Signed in as ${authEmail}` : REQUIRE_SIGN_IN ? 'Sign in to change the timetable' : 'Shared database status'}
                 className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold border transition-colors ${
                   authEmail
                     ? 'bg-emerald-50 dark:bg-emerald-950/50 text-emerald-800 dark:text-emerald-200 border-emerald-200 dark:border-emerald-900'
@@ -175,12 +176,12 @@ export const Header: React.FC = () => {
               >
                 {syncStatus === 'offline' ? (
                   <CloudOff className="w-3.5 h-3.5 text-red-500" />
-                ) : authEmail ? (
+                ) : authEmail || !REQUIRE_SIGN_IN ? (
                   <Cloud className="w-3.5 h-3.5 text-emerald-600" />
                 ) : (
                   <ShieldCheck className="w-3.5 h-3.5 text-gray-500" />
                 )}
-                <span className="hidden md:inline">{authEmail ? 'Coordinator' : 'Sign in'}</span>
+                <span className="hidden md:inline">{authEmail ? 'Coordinator' : REQUIRE_SIGN_IN ? 'Sign in' : 'Database'}</span>
               </button>
             )}
           </div>
