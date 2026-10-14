@@ -10,6 +10,7 @@ import {
 } from '../lib/engine';
 import {
   X,
+  Trash2,
   Sparkles,
   ShieldCheck,
   AlertTriangle,
@@ -37,6 +38,7 @@ export const RescheduleDrawer: React.FC = () => {
     targetRoomId,
     setTargetRoomId,
     selectTargetSlot,
+    deleteAllocation,
   } = useTimetableStore(
     useShallow((s) => ({
       isRescheduleDrawerOpen: s.isRescheduleDrawerOpen,
@@ -50,6 +52,7 @@ export const RescheduleDrawer: React.FC = () => {
       targetRoomId: s.targetRoomId,
       setTargetRoomId: s.setTargetRoomId,
       selectTargetSlot: s.selectTargetSlot,
+      deleteAllocation: s.deleteAllocation,
     }))
   );
 
@@ -152,12 +155,28 @@ export const RescheduleDrawer: React.FC = () => {
             </div>
           </div>
 
-          <button
-            onClick={closeRescheduleDrawer}
-            className="p-2 rounded-lg text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-zinc-800 transition-colors"
-          >
-            <X className="w-5 h-5" />
-          </button>
+          <div className="flex items-center gap-1 shrink-0">
+            <button
+              onClick={() => {
+                const ok = window.confirm(
+                  `Delete this class from the timetable for everyone?\n\n${selectedCourse.courseCode} ${selectedCourse.section} – ${selectedCourse.courseTitle}\n${selectedAllocation.day} ${currentInterval.startTime}–${currentInterval.endTime} in ${currentRoom?.name || selectedAllocation.roomId}\n\nYou can bring it back with Undo.`
+                );
+                if (ok) deleteAllocation(selectedAllocation.id);
+              }}
+              title="Delete this class from the timetable"
+              className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-bold text-red-600 dark:text-red-400 border border-red-200 dark:border-red-900 hover:bg-red-50 dark:hover:bg-red-950/40 transition-colors"
+            >
+              <Trash2 className="w-4 h-4" />
+              <span className="hidden sm:inline">Delete class</span>
+            </button>
+            <button
+              onClick={closeRescheduleDrawer}
+              aria-label="Close"
+              className="p-2 rounded-lg text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-zinc-800 transition-colors"
+            >
+              <X className="w-5 h-5" />
+            </button>
+          </div>
         </div>
 
         {/* Control Sub-bar */}

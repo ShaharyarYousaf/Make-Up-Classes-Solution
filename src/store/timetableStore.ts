@@ -112,6 +112,8 @@ interface TimetableStore {
   openVacantRoomsModal: (preselectedCourseId?: string) => void;
   closeVacantRoomsModal: () => void;
   reassignRoom: (allocationId: string, newRoomId: string, note?: string) => void;
+  /** Removes a class from the timetable (undoable, needs edit access) */
+  deleteAllocation: (allocationId: string) => void;
 
   // Weekly Rescheduled Classes Review & Actions
   openRescheduleReview: () => void;
@@ -515,6 +517,29 @@ export const useTimetableStore = create<TimetableStore>()(
     set({
       isVacantRoomsModalOpen: false,
       vacantRoomsTargetCourseId: null,
+    });
+  },
+
+  deleteAllocation: (allocationId) => {
+    if (!requireEditAccess(get, set)) return;
+    const { allocations, allocationHistory, courses, selectedAllocation } = get();
+    const target = allocations.find((a) => a.id === allocationId);
+    if (!target) return;
+    const course = courses.find((c) => c.id === target.courseSectionId);
+    const interval = getAllocationInterval(target.slotId, target.customInterval);
+    const updatedAllocations = allocations.filter((a) => a.id !== allocationId);
+    const closingSelected = selectedAllocation?.id === allocationId;
+
+    set({
+      allocations: updatedAllocations,
+      allocationHistory: pushHistory(allocationHistory, allocations, updatedAllocations),
+      ...(closingSelected
+        ? { selectedAllocation: null, selectedCourse: null, isRescheduleDrawerOpen: false, isImpactModalOpen: false }
+        : {}),
+      toastMessage: {
+        text: `Deleted ${course?.courseCode || target.courseSectionId} ${course?.section || ''} on ${target.day} ${interval.startTime}–${interval.endTime}. Use Undo to bring it back.`,
+        type: 'info',
+      },
     });
   },
 

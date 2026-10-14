@@ -275,6 +275,20 @@ check('Booked as a regular class (not marked rescheduled)', !!booked && !booked.
 check('Returns to the unscheduled list afterwards', st.getState().isUnscheduledOpen && st.getState().flexibleMode === 'makeup');
 check('Section now has 80 of its weekly minutes', scheduledMinutesBySection(st.getState().allocations).get(unscheduledCourse.id) === 80);
 
+// 11. Deleting a class
+console.log('\n--- Test 11: Deleting a Class ---');
+const keepMe: Allocation = { id: 'keep', courseSectionId: INITIAL_COURSES[0].id, day: 'Monday', roomId: 'c-301', slotId: 'slot-1' };
+const deleteMe: Allocation = { id: 'gone', courseSectionId: INITIAL_COURSES[1].id, day: 'Monday', roomId: 'c-302', slotId: 'slot-2' };
+st.setState({ canEdit: true, allocations: [keepMe, deleteMe], allocationHistory: [], selectedAllocation: deleteMe, isRescheduleDrawerOpen: true });
+st.getState().deleteAllocation('gone');
+check('Deleted class is removed, others stay', st.getState().allocations.length === 1 && st.getState().allocations[0].id === 'keep');
+check('Its reschedule panel closes', !st.getState().isRescheduleDrawerOpen && !st.getState().selectedAllocation);
+st.getState().undoLastReschedule();
+check('Undo brings the deleted class back', st.getState().allocations.some(a => a.id === 'gone'));
+st.setState({ canEdit: false });
+st.getState().deleteAllocation('gone');
+check('Without edit access nothing is deleted', st.getState().allocations.some(a => a.id === 'gone'));
+
 if (failures > 0) {
   console.log(`\n${failures} TEST(S) FAILED ❌`);
   process.exit(1);
