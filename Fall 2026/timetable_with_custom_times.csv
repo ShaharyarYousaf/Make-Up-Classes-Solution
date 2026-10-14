@@ -3,7 +3,7 @@ Monday,Slot 1,C-301,CS1002 BCS-1A,,
 Monday,Slot 1,C-302,MT1003 BCS-1B,,
 Monday,Slot 1,C-303,MT1003 BCS-1C,,
 Monday,Slot 1,C-304,CS1002 BCS-1D,,
-Monday,Slot 1,C-305,SS1012 BCS-1G,8:30,10:15
+Wednesday,Slot 6,C-404,"	SS6007 PCS-1A",,
 Monday,Slot 1,C-307,CS2001 BCS-3A,,
 Monday,Slot 1,C-308,,,
 Monday,Slot 1,C-309,CS3004 BCS-3C,,
@@ -31,7 +31,7 @@ Monday,Slot 1,D-303,EE2003 BAI-3A,,
 Monday,Slot 1,D-304,CS2001 BAI-3B,,
 Monday,Slot 1,D-305,AI3001 BAI-5A,,
 Monday,Slot 1,D-306,CS2009 BAI-5B,,
-Monday,Slot 1,D-311,SS1012 BDS-1A,8:30,10:15
+Wednesday,Slot 4,D-301,SS1007 BAI-1A,13:00,14:45
 Monday,Slot 1,D-312,MT1004 BDS-3B,,
 Monday,Slot 1,D-313,,,
 Monday,Slot 1,D-314,,,
@@ -48,7 +48,7 @@ Monday,Slot 1,D-412,CS4001 BCS-7G,,
 Monday,Slot 1,D-413,,,
 Monday,Slot 1,D-414,CS2001 BCY-3A,,
 Monday,Slot 1,D-415,,,
-Monday,Slot 1,D-416,SS1022 BCY-3C,9:00,9:55
+Friday,Slot 5,C-309,SS1007 BAI-1B,14:30,16:15
 Monday,Slot 1,D-501,AI2002 BCY-5C,,
 Monday,Slot 1,D-502,,,
 Monday,Slot 1,D-503,,,
@@ -60,12 +60,12 @@ Monday,Slot 2,C-301,MT1003 BCS-1A,,
 Monday,Slot 2,C-302,CS1002 BCS-1B,,
 Monday,Slot 2,C-303,CS1002 BCS-1C,,
 Monday,Slot 2,C-304,MT1003 BCS-1D,,
-Monday,Slot 2,C-305,SS1019 BCS-3J,10:30,11:25
+Thursday,Slot 4,D-301,SS1007 BAI-1C,13:00,14:45
 Monday,Slot 2,C-307,CS3004 BCS-3A,,
 Monday,Slot 2,C-308,CS2001 BCS-3B,,
 Monday,Slot 2,C-309,CS2001 BCS-3E,,
 Monday,Slot 2,C-310,,,
-Monday,Slot 2,C-311,SS1021 BCS-3F,,
+Wednesday,Slot 4,C-301,SS1007 BCS-1A,13:00,14:45
 Monday,Slot 2,C-401,,,
 Monday,Slot 2,C-402,,,
 Monday,Slot 2,C-403,EE3009 BCS-5B,,
@@ -80,7 +80,7 @@ Monday,Slot 2,C-602,CS1002 BSE-1B,,
 Monday,Slot 2,C-603,CS2001 BSE-3B,,
 Monday,Slot 2,C-604,MT1004 BSE-3C,,
 Monday,Slot 2,C-605,,,
-Monday,Slot 2,C-607,SS1022 BSE-3D,10:00,10:55
+Monday,Slot 4,C-302,SS1007 BCS-1B,13:00,14:45
 Monday,Slot 2,C-609,CS3002 BSE-7B,,
 Monday,Slot 2,D-301,MT1003 BAI-1A,,
 Monday,Slot 2,D-302,,,
@@ -116,7 +116,7 @@ Monday,Slot 2,C-110,,,
 Monday,Slot 3,C-301,,,
 Monday,Slot 3,C-302,,,
 Monday,Slot 3,C-303,,,
-Monday,Slot 3,C-304,SS1019 BCS-1F,11:30,12:25
+Wednesday,Slot 4,C-303,SS1007 BCS-1C,13:00,14:45
 Monday,Slot 3,C-305,EE1005 BCS-3J,,
 Monday,Slot 3,C-307,CS2001 BCS-3C,,
 Monday,Slot 3,C-308,MT1004 BCS-3D,,
@@ -132,7 +132,7 @@ Monday,Slot 3,C-406,CS2009 BCS-5E,,
 Monday,Slot 3,C-407,CS3014 BCS-5D,,
 Monday,Slot 3,C-408,AI2002 BSE-5B,,
 Monday,Slot 3,C-409,CS2009 BSE-5A,,
-Monday,Slot 3,C-601,SS1015 BSE-3C,11:30,13:15
+Monday,Slot 4,C-304,SS1007 BCS-1D,13:00,14:45
 Monday,Slot 3,C-602,MT1003 BSE-1C,,
 Monday,Slot 3,C-603,SE1001 BSE-3A,,
 Monday,Slot 3,C-604,SE4001 BSE-9A,,
@@ -146,7 +146,7 @@ Monday,Slot 3,D-304,EE2003 BAI-3B,,
 Monday,Slot 3,D-305,CS2009 BAI-5A,,
 Monday,Slot 3,D-306,CS2009 BAI-5C,,
 Monday,Slot 3,D-311,AI2001 BAI-3A,,
-Monday,Slot 3,D-312,SS1019 BAI-1C,11:30,12:25
+Tuesday,Slot 1,C-304,SS1007 BCS-1E,8:30,10:15
 Monday,Slot 3,D-313,,,
 Monday,Slot 3,D-314,CS2009 BDS-5A,,
 Monday,Slot 3,D-315,SS2012 BDS-5B,,
@@ -170,11 +170,11 @@ Monday,Slot 3,D-504,CS4075 BCY-7A,,
 Monday,Slot 3,D-505,,,
 Monday,Slot 3,D-506,,,
 Monday,Slot 3,C-110,CS4039 BCS-7A,,
-Monday,Slot 4,C-301,SS1013 BCS-1A,13:00,14:45
-Monday,Slot 4,C-302,SS1007 BCS-1B,13:00,14:45
-Monday,Slot 4,C-303,SS1013 BCS-1C,13:00,14:45
-Monday,Slot 4,C-304,SS1007 BCS-1D,13:00,14:45
-Monday,Slot 4,C-305,SS1012 BCS-1F,13:00,14:45
+Thursday,Slot 4,C-301,SS1007 BCS-1F,13:00,14:45
+Tuesday,Slot 4,C-302,SS1007 BCS-1G,13:00,14:45
+Thursday,Slot 1,C-303,SS1007 BCS-1H,8:30,10:15
+Thursday,Slot 4,D-312,SS1007 BDS-1A,13:00,14:45
+Monday,Slot 4,D-316,SS1007 BDS-1B,12:30,14:15
 Monday,Slot 4,C-307,EE1005 BCS-3A,,
 Monday,Slot 4,C-308,CS3004 BCS-3B,,
 Monday,Slot 4,C-309,MT1004 BCS-3C,,
@@ -188,15 +188,15 @@ Monday,Slot 4,C-405,EE3009 BCS-5D,,
 Monday,Slot 4,C-406,SS2012 BCS-5E,,
 Monday,Slot 4,C-407,CS2009 BCS-5G,,
 Monday,Slot 4,C-408,CS2009 BSE-5B,,
-Monday,Slot 4,C-409,SS1012 BSE-1A,13:00,14:45
+Friday,Slot 2,C-304,SS1007 BDS-1C,10:00,11:45
 Monday,Slot 4,C-601,,,
 Monday,Slot 4,C-602,MT1003 BSE-1D,,
 Monday,Slot 4,C-603,EE2003 BSE-3A,,
-Monday,Slot 4,C-604,SS1026 BSE-1B,,
+Thursday,Slot 4,D-302,SS1012 BAI-1A,13:00,14:45
 Monday,Slot 4,C-605,,,
 Monday,Slot 4,C-607,SE3005 BSE-5A,,
 Monday,Slot 4,C-609,SE1001 BSE-3B,,
-Monday,Slot 4,D-301,SS1013 BAI-1A,13:00,14:45
+Thursday,Slot 1,D-302,SS1012 BAI-1B,8:30,10:15
 Monday,Slot 4,D-302,CS4001 BSE-9A,,
 Monday,Slot 4,D-303,,,
 Monday,Slot 4,D-304,AI2001 BAI-3B,,
@@ -207,7 +207,7 @@ Monday,Slot 4,D-312,,,
 Monday,Slot 4,D-313,,,
 Monday,Slot 4,D-314,,,
 Monday,Slot 4,D-315,,,
-Monday,Slot 4,D-316,SS1007 BDS-1B,12:30,14:15
+Wednesday,Slot 1,D-303,SS1012 BAI-1C,8:30,10:15
 Monday,Slot 4,D-401,AI4019 BAI-7A,,
 Monday,Slot 4,D-402,CS3001 BDS-7C,,
 Monday,Slot 4,D-403,MG3040 BDS-7A,,
@@ -236,8 +236,8 @@ Monday,Slot 5,C-307,,,
 Monday,Slot 5,C-308,CS1004 BCS-3A,,
 Monday,Slot 5,C-309,MT1003 BCS-3Z,,
 Monday,Slot 5,C-310,EE1005 BCS-3E,,
-Monday,Slot 5,C-311,SS1021 BCS-3G,,
-Monday,Slot 5,C-401,SS1019 BCS-3H,14:30,15:25
+Thursday,Slot 4,C-305,SS1012 BCS-1A,13:00,14:45
+Tuesday,Slot 1,C-305,SS1012 BCS-1B,8:30,10:15
 Monday,Slot 5,C-402,EE2003 BCS-5A,,
 Monday,Slot 5,C-403,CS3001 BCS-5B,,
 Monday,Slot 5,C-404,,,
@@ -319,7 +319,7 @@ Monday,Slot 6,D-306,,,
 Monday,Slot 6,D-311,,,
 Monday,Slot 6,D-312,,,
 Monday,Slot 6,D-313,,,
-Monday,Slot 6,D-314,SS1021 BDS-3A,,
+Thursday,Slot 2,C-308,SS1012 BCS-1C,10:00,11:45
 Monday,Slot 6,D-315,,,
 Monday,Slot 6,D-316,AI4013 BAI-7A,,
 Monday,Slot 6,D-401,,,
@@ -397,9 +397,9 @@ Monday,Slot 11,B-Computing-3,,,
 Monday,Slot 11,B-Digital,EL1005 BCS-3F,,
 Tuesday,Slot 1,C-301,CS1002 BCS-1F,,
 Tuesday,Slot 1,C-302,MT1003 BCS-1G,,
-Tuesday,Slot 1,C-303,SS1013 BCS-1H,8:30,10:15
-Tuesday,Slot 1,C-304,SS1007 BCS-1E,8:30,10:15
-Tuesday,Slot 1,C-305,SS1012 BCS-1B,8:30,10:15
+Thursday,Slot 1,C-305,SS1012 BCS-1D,8:30,10:15
+Wednesday,Slot 1,C-305,SS1012 BCS-1E,8:30,10:15
+Monday,Slot 4,C-305,SS1012 BCS-1F,13:00,14:45
 Tuesday,Slot 1,C-307,CS3004 BCS-3F,,
 Tuesday,Slot 1,C-308,EE1005 BCS-3G,,
 Tuesday,Slot 1,C-309,CS3004 BCS-3H,,
@@ -445,7 +445,7 @@ Tuesday,Slot 1,D-413,,,
 Tuesday,Slot 1,D-414,CS1002 BCY-1A,,
 Tuesday,Slot 1,D-415,,,
 Tuesday,Slot 1,D-416,,,
-Tuesday,Slot 1,D-501,SS1015 BCY-3B,8:30,10:15
+Monday,Slot 1,C-305,SS1012 BCS-1G,9:00,10:45
 Tuesday,Slot 1,D-502,CS2001 BCY-3C,,
 Tuesday,Slot 1,D-503,CS3002 BCY-5A,,
 Tuesday,Slot 1,D-504,,,
@@ -459,10 +459,10 @@ Tuesday,Slot 2,C-304,,,
 Tuesday,Slot 2,C-305,,,
 Tuesday,Slot 2,C-307,CS2006 BCY-5A,,
 Tuesday,Slot 2,C-308,CS2001 BCS-3G,,
-Tuesday,Slot 2,C-309,SS1022 BCS-3E,,
+Wednesday,Slot 4,C-305,SS1012 BCS-1H,13:00,14:45
 Tuesday,Slot 2,C-310,EE1005 BCS-3C,,
-Tuesday,Slot 2,C-311,SS1019 BCS-3B,10:30,11:25
-Tuesday,Slot 2,C-401,SS1021 BCS-3E,,
+Wednesday,Slot 5,D-415,SS1012 BCY-1A,14:30,16:15
+Thursday,Slot 5,D-415,SS1012 BCY-1B,14:00,15:45
 Tuesday,Slot 2,C-402,EE3009 BCS-5F,,
 Tuesday,Slot 2,C-403,SS2012 BCS-5A,,
 Tuesday,Slot 2,C-404,CS3001 BCS-5G,,
@@ -472,7 +472,7 @@ Tuesday,Slot 2,C-407,CS2007 BSE-9A,,
 Tuesday,Slot 2,C-408,NS1001 BSE-1C,,
 Tuesday,Slot 2,C-409,SE4033 BSE-7A,,
 Tuesday,Slot 2,C-601,,,
-Tuesday,Slot 2,C-602,SS1022 BSE-3B,10:20,11:15
+Tuesday,Slot 5,D-501,SS1012 BCY-1C,14:00,15:45
 Tuesday,Slot 2,C-603,SE1001 BSE-3C,,
 Tuesday,Slot 2,C-604,EE2003 BSE-3D,,
 Tuesday,Slot 2,C-605,MT1004 BSE-3A,,
@@ -502,7 +502,7 @@ Tuesday,Slot 2,D-413,CS4085 BCS-7B,,
 Tuesday,Slot 2,D-414,MT1003 BCY-1A,,
 Tuesday,Slot 2,D-415,CS1002 BCY-1B,,
 Tuesday,Slot 2,D-416,,,
-Tuesday,Slot 2,D-501,SS1015 BCY-3A,10:30,12:15
+Wednesday,Slot 1,D-416,SS1012 BCY-1D,8:30,10:15
 Tuesday,Slot 2,D-502,CY2004 BCY-3C,,
 Tuesday,Slot 2,D-503,CS2006 BCY-5A,,
 Tuesday,Slot 2,D-504,CS3002 BCY-5B,,
@@ -519,7 +519,7 @@ Tuesday,Slot 3,C-308,MT1004 BCS-3E,,
 Tuesday,Slot 3,C-309,CS2001 BCS-3H,,
 Tuesday,Slot 3,C-310,MT1004 BCS-3J,,
 Tuesday,Slot 3,C-311,EE1005 BCS-3B,,
-Tuesday,Slot 3,C-401,SS1019 BCS-3D,11:30,12:25
+Monday,Slot 1,D-311,SS1012 BDS-1A,8:30,10:15
 Tuesday,Slot 3,C-402,,,
 Tuesday,Slot 3,C-403,CS3014 BCS-5G,,
 Tuesday,Slot 3,C-404,CS3001 BCS-5E,,
@@ -529,13 +529,13 @@ Tuesday,Slot 3,C-407,CS4039 BSE-7A,,
 Tuesday,Slot 3,C-408,MT1003 BSE-1A,,
 Tuesday,Slot 3,C-409,CS1002 BSE-1D,,
 Tuesday,Slot 3,C-601,,,
-Tuesday,Slot 3,C-602,SS1015 BSE-3A,11:30,13:15
+Wednesday,Slot 2,D-303,SS1012 BDS-1B,10:30,12:15
 Tuesday,Slot 3,C-603,SE3002 BSE-5A,,
 Tuesday,Slot 3,C-604,SE1001 BSE-3D,,
 Tuesday,Slot 3,C-605,,,
 Tuesday,Slot 3,C-607,AI4009 BSE-7A,,
 Tuesday,Slot 3,C-609,CS4063 BSE-7A,,
-Tuesday,Slot 3,D-301,SS1019 BAI-1A,11:30,12:25
+Wednesday,Slot 4,D-313,SS1012 BDS-1C,13:00,14:45
 Tuesday,Slot 3,D-302,CS2005 BCY-5B,,
 Tuesday,Slot 3,D-303,DS2003 BDS-5B,,
 Tuesday,Slot 3,D-304,CS3001 BAI-5B,,
@@ -566,8 +566,8 @@ Tuesday,Slot 3,D-504,CS2005 BCY-5B,,
 Tuesday,Slot 3,D-505,CS4001 BCY-7A,,
 Tuesday,Slot 3,D-506,CY3003 BCY-7B,,
 Tuesday,Slot 3,C-110,CS3012 BCS-7A,,
-Tuesday,Slot 4,C-301,SS1013 BCS-1F,13:00,14:45
-Tuesday,Slot 4,C-302,SS1007 BCS-1G,13:00,14:45
+Monday,Slot 4,C-409,SS1012 BSE-1A,13:00,14:45
+Wednesday,Slot 4,C-601,SS1012 BSE-1B,13:00,14:45
 Tuesday,Slot 4,C-303,MT1003 BCS-1H,,
 Tuesday,Slot 4,C-304,CS1002 BCS-1E,,
 Tuesday,Slot 4,C-305,EE1005 BCS-3F,,
@@ -588,17 +588,17 @@ Tuesday,Slot 4,C-409,SS1012 BSE-1C,13:00,14:45
 Tuesday,Slot 4,C-601,,,
 Tuesday,Slot 4,C-602,,,
 Tuesday,Slot 4,C-603,SE3005 BSE-5C,,
-Tuesday,Slot 4,C-604,SS1013 BSE-1D,13:00,14:45
+Thursday,Slot 4,C-602,SS1012 BSE-1D,13:20,15:05
 Tuesday,Slot 4,C-605,CS2001 BSE-3C,,
 Tuesday,Slot 4,C-607,AI4009 BSE-7B,,
 Tuesday,Slot 4,C-609,CS4063 BSE-7B,,
-Tuesday,Slot 4,D-301,SS1013 BAI-1C,12:30,14:15
+Thursday,Slot 2,C-603,SS1012 BSE-1E,10:30,12:15
 Tuesday,Slot 4,D-302,MT1004 BAI-3A,,
 Tuesday,Slot 4,D-303,,,
 Tuesday,Slot 4,D-304,AI2001 BAI-3C,,
 Tuesday,Slot 4,D-305,,,
 Tuesday,Slot 4,D-306,,,
-Tuesday,Slot 4,D-311,SS1013 BDS-1A,13:00,14:45
+Monday,Slot 4,D-301,SS1013 BAI-1A,13:00,14:45
 Tuesday,Slot 4,D-312,,,
 Tuesday,Slot 4,D-313,EE2003 BDS-3B,,
 Tuesday,Slot 4,D-314,CS2001 BDS-3A,,
@@ -613,7 +613,7 @@ Tuesday,Slot 4,D-406,AI4015 BCS-7B,,
 Tuesday,Slot 4,D-411,CS3006 BCS-7D,,
 Tuesday,Slot 4,D-412,CS3014 BCS-7F,,
 Tuesday,Slot 4,D-413,MT2002 BCS-9A,,
-Tuesday,Slot 4,D-414,SS1013 BCY-1A,13:00,14:45
+Wednesday,Slot 1,D-311,SS1013 BAI-1B,8:30,10:15
 Tuesday,Slot 4,D-415,,,
 Tuesday,Slot 4,D-416,MT1004 BCY-3A,,
 Tuesday,Slot 4,D-501,,,
@@ -626,15 +626,15 @@ Tuesday,Slot 4,C-110,,,
 Tuesday,Slot 5,C-301,,,
 Tuesday,Slot 5,C-302,,,
 Tuesday,Slot 5,C-303,,,
-Tuesday,Slot 5,C-304,SS1019 BCS-1B,14:30,15:25
+Tuesday,Slot 4,D-301,SS1013 BAI-1C,12:30,14:15
 Tuesday,Slot 5,C-305,,,
 Tuesday,Slot 5,C-307,CS1004 BCS-3C,,
 Tuesday,Slot 5,C-308,,,
 Tuesday,Slot 5,C-309,,,
-Tuesday,Slot 5,C-310,SS1022 BCS-3A,,
-Tuesday,Slot 5,C-311,SS1021 BCS-3A,14:30,16:20
-Tuesday,Slot 5,C-401,SS1021 BCS-3C,,
-Tuesday,Slot 5,C-402,SS1022 BCS-3C,,
+Tuesday,Slot 5,C-310,,,
+Monday,Slot 4,C-301,SS1013 BCS-1A,13:00,14:45
+Wednesday,Slot 4,C-302,SS1013 BCS-1B,13:00,14:45
+Tuesday,Slot 5,C-402,,,
 Tuesday,Slot 5,C-403,,,
 Tuesday,Slot 5,C-404,,,
 Tuesday,Slot 5,C-405,,,
@@ -657,7 +657,7 @@ Tuesday,Slot 5,D-305,,,
 Tuesday,Slot 5,D-306,CS3001 BAI-5C,,
 Tuesday,Slot 5,D-311,,,
 Tuesday,Slot 5,D-312,,,
-Tuesday,Slot 5,D-313,SS1019 BDS-3B,15:00,15:55
+Monday,Slot 4,C-303,SS1013 BCS-1C,13:00,14:45
 Tuesday,Slot 5,D-314,,,
 Tuesday,Slot 5,D-315,DS3001 BDS-5B,,
 Tuesday,Slot 5,D-316,MG3040 BDS-7C,,
@@ -671,9 +671,9 @@ Tuesday,Slot 5,D-411,CS3006 BCS-7A,,
 Tuesday,Slot 5,D-412,,,
 Tuesday,Slot 5,D-413,,,
 Tuesday,Slot 5,D-414,,,
-Tuesday,Slot 5,D-415,SS1026 BCY-1B,,
+Wednesday,Slot 4,C-304,SS1013 BCS-1D,12:30,14:15
 Tuesday,Slot 5,D-416,MT1004 BCY-3B,,
-Tuesday,Slot 5,D-501,SS1012 BCY-1C,14:00,15:45
+Thursday,Slot 1,C-304,SS1013 BCS-1E,8:30,10:15
 Tuesday,Slot 5,D-502,,,
 Tuesday,Slot 5,D-503,AI2002 BCY-5A,,
 Tuesday,Slot 5,D-504,,,
@@ -689,8 +689,8 @@ Tuesday,Slot 6,C-307,CS1004 BCS-3D,,
 Tuesday,Slot 6,C-308,CS1005 BCS-3B,,
 Tuesday,Slot 6,C-309,,,
 Tuesday,Slot 6,C-310,,,
-Tuesday,Slot 6,C-311,SS1022 BCS-3C,,
-Tuesday,Slot 6,C-401,SS1021 BCS-3C,,
+Tuesday,Slot 6,C-311,,,
+Tuesday,Slot 4,C-301,SS1013 BCS-1F,13:00,14:45
 Tuesday,Slot 6,C-402,CS6006 PCS-1B,16:30,19:30
 Tuesday,Slot 6,C-403,,,
 Tuesday,Slot 6,C-404,,,
@@ -795,7 +795,7 @@ Wednesday,Slot 1,C-301,CS1002 BCS-1A,,
 Wednesday,Slot 1,C-302,MT1003 BCS-1B,,
 Wednesday,Slot 1,C-303,MT1003 BCS-1C,,
 Wednesday,Slot 1,C-304,CS1002 BCS-1D,,
-Wednesday,Slot 1,C-305,SS1012 BCS-1E,8:30,10:15
+Thursday,Slot 4,C-302,SS1013 BCS-1G,13:00,14:45
 Wednesday,Slot 1,C-307,CS2001 BCS-3A,,
 Wednesday,Slot 1,C-308,,,
 Wednesday,Slot 1,C-309,CS3004 BCS-3C,,
@@ -815,15 +815,15 @@ Wednesday,Slot 1,C-602,,,
 Wednesday,Slot 1,C-603,CS2001 BSE-3A,,
 Wednesday,Slot 1,C-604,NS1001 BSE-1E,,
 Wednesday,Slot 1,C-605,MT1004 BSE-3D,,
-Wednesday,Slot 1,C-607,SS1022 BSE-3C,9:00,9:55
+Tuesday,Slot 1,C-303,SS1013 BCS-1H,8:30,10:15
 Wednesday,Slot 1,C-609,SE3005 BSE-5B,,
 Wednesday,Slot 1,D-301,CS1002 BSE-1F,,
 Wednesday,Slot 1,D-302,CS4049 BCY-7A,,
-Wednesday,Slot 1,D-303,SS1012 BAI-1C,8:30,10:15
+Tuesday,Slot 4,D-414,SS1013 BCY-1A,13:00,14:45
 Wednesday,Slot 1,D-304,EE2003 BAI-3A,,
 Wednesday,Slot 1,D-305,CS2001 BAI-3B,,
 Wednesday,Slot 1,D-306,MT1004 BAI-3C,,
-Wednesday,Slot 1,D-311,SS1013 BAI-1B,8:30,10:15
+Wednesday,Slot 5,D-414,SS1013 BCY-1B,15:10,17:00
 Wednesday,Slot 1,D-312,CS2009 BAI-5B,,
 Wednesday,Slot 1,D-313,MT1003 BDS-1C,,
 Wednesday,Slot 1,D-314,MT1004 BDS-3A,,
@@ -840,7 +840,7 @@ Wednesday,Slot 1,D-412,CS3002 BCS-7F,,
 Wednesday,Slot 1,D-413,CS4001 BCS-7G,,
 Wednesday,Slot 1,D-414,,,
 Wednesday,Slot 1,D-415,CS1002 BCY-1C,,
-Wednesday,Slot 1,D-416,SS1012 BCY-1D,8:30,10:15
+Friday,Slot 5,C-301,SS1013 BCY-1C,14:00,15:45
 Wednesday,Slot 1,D-501,CS2001 BCY-3A,,
 Wednesday,Slot 1,D-502,,,
 Wednesday,Slot 1,D-503,AI2002 BCY-5C,,
@@ -852,13 +852,13 @@ Wednesday,Slot 2,C-301,MT1003 BCS-1A,,
 Wednesday,Slot 2,C-302,CS1002 BCS-1B,,
 Wednesday,Slot 2,C-303,,,
 Wednesday,Slot 2,C-304,MT1003 BCS-1D,,
-Wednesday,Slot 2,C-305,SS1019 BCS-3F,10:30,11:25
+Thursday,Slot 5,D-501,SS1013 BCY-1D,14:00,15:45
 Wednesday,Slot 2,C-307,CS3004 BCS-3A,,
 Wednesday,Slot 2,C-308,CS2001 BCS-3B,,
 Wednesday,Slot 2,C-309,,,
 Wednesday,Slot 2,C-310,CS2001 BCS-3E,,
 Wednesday,Slot 2,C-311,,,
-Wednesday,Slot 2,C-401,SS1021 BCS-3J,,
+Tuesday,Slot 4,D-311,SS1013 BDS-1A,13:00,14:45
 Wednesday,Slot 2,C-402,,,
 Wednesday,Slot 2,C-403,,,
 Wednesday,Slot 2,C-404,EE3009 BCS-5B,,
@@ -868,17 +868,17 @@ Wednesday,Slot 2,C-407,CS2009 BCS-5F,,
 Wednesday,Slot 2,C-408,SE3002 BSE-5C,,
 Wednesday,Slot 2,C-409,NS1001 BSE-1A,,
 Wednesday,Slot 2,C-601,CS1002 BSE-1B,,
-Wednesday,Slot 2,C-602,SS1013 BSE-1C,9:30,11:15
-Wednesday,Slot 2,C-603,SS1015 BSE-3D,10:00,11:45
+Thursday,Slot 5,D-313,SS1013 BDS-1B,14:00,15:45
+Thursday,Slot 1,D-403,SS1013 BDS-1C,8:30,10:15
 Wednesday,Slot 2,C-604,MT1004 BSE-3C,,
 Wednesday,Slot 2,C-605,CS2001 BSE-3B,,
 Wednesday,Slot 2,C-607,AI2002 BSE-5A,,
 Wednesday,Slot 2,C-609,CS3002 BSE-7B,,
 Wednesday,Slot 2,D-301,MT1003 BAI-1A,,
 Wednesday,Slot 2,D-302,,,
-Wednesday,Slot 2,D-303,SS1012 BDS-1B,10:30,12:15
+Thursday,Slot 1,C-409,SS1013 BSE-1A,8:30,10:15
 Wednesday,Slot 2,D-304,CS2001 BAI-3A,,
-Wednesday,Slot 2,D-305,SS1022 BAI-3B,10:00,10:55
+Thursday,Slot 5,C-409,SS1013 BSE-1B,14:30,16:15
 Wednesday,Slot 2,D-306,,,
 Wednesday,Slot 2,D-311,,,
 Wednesday,Slot 2,D-312,SS2012 BAI-5B,,
@@ -908,7 +908,7 @@ Wednesday,Slot 2,C-110,,,
 Wednesday,Slot 3,C-301,,,
 Wednesday,Slot 3,C-302,,,
 Wednesday,Slot 3,C-303,CS1002 BCS-1C,,
-Wednesday,Slot 3,C-304,SS1019 BCS-1H,11:30,12:25
+Wednesday,Slot 2,C-602,SS1013 BSE-1C,9:30,11:15
 Wednesday,Slot 3,C-305,MT1004 BCS-3F,,
 Wednesday,Slot 3,C-307,MT1004 BCS-3B,,
 Wednesday,Slot 3,C-308,CS3004 BCS-3E,,
@@ -931,11 +931,11 @@ Wednesday,Slot 3,C-604,SE1001 BSE-3A,,
 Wednesday,Slot 3,C-605,AI2002 BSE-5B,,
 Wednesday,Slot 3,C-607,CS3002 BSE-7A,,
 Wednesday,Slot 3,C-609,CS3006 BSE-7B,,
-Wednesday,Slot 3,D-301,SS1019 BDS-1A,11:30,12:25
+Tuesday,Slot 4,C-604,SS1013 BSE-1D,13:00,14:45
 Wednesday,Slot 3,D-302,,,
-Wednesday,Slot 3,D-303,SS1019 BDS-1B,12:30,13:25
+Wednesday,Slot 4,C-603,SS1013 BSE-1E,13:00,14:45
 Wednesday,Slot 3,D-304,AI2001 BAI-3A,,
-Wednesday,Slot 3,D-305,SS1015 BAI-3C,11:15,13:00
+Thursday,Slot 5,D-303,SS1015 BAI-3A,14:30,16:15
 Wednesday,Slot 3,D-306,EE2003 BAI-3B,,
 Wednesday,Slot 3,D-311,CS1002 BAI-1B,,
 Wednesday,Slot 3,D-312,CS2009 BAI-5C,,
@@ -956,17 +956,17 @@ Wednesday,Slot 3,D-414,,,
 Wednesday,Slot 3,D-415,NS1001 BCY-1A,,
 Wednesday,Slot 3,D-416,MT1003 BCY-1D,,
 Wednesday,Slot 3,D-501,EE2003 BCY-3A,,
-Wednesday,Slot 3,D-502,SS1015 BCY-3C,11:30,13:15
+Thursday,Slot 1,D-402,SS1015 BAI-3B,8:30,10:15
 Wednesday,Slot 3,D-503,CS4032 BCY-5B,,
 Wednesday,Slot 3,D-504,CS4001 BCS-7A,,
 Wednesday,Slot 3,D-505,,,
 Wednesday,Slot 3,D-506,,,
 Wednesday,Slot 3,C-110,,,
-Wednesday,Slot 4,C-301,SS1007 BCS-1A,13:00,14:45
-Wednesday,Slot 4,C-302,SS1013 BCS-1B,13:00,14:45
-Wednesday,Slot 4,C-303,SS1007 BCS-1C,13:00,14:45
-Wednesday,Slot 4,C-304,SS1013 BCS-1D,12:30,14:15
-Wednesday,Slot 4,C-305,SS1012 BCS-1H,13:00,14:45
+Wednesday,Slot 3,D-305,SS1015 BAI-3C,11:15,13:00
+Tuesday,Slot 2,D-501,SS1015 BCY-3A,10:30,12:15
+Tuesday,Slot 1,D-501,SS1015 BCY-3B,8:30,10:15
+Wednesday,Slot 3,D-502,SS1015 BCY-3C,11:30,13:15
+Tuesday,Slot 3,C-602,SS1015 BSE-3A,11:30,13:15
 Wednesday,Slot 4,C-307,EE1005 BCS-3A,,
 Wednesday,Slot 4,C-308,CS3004 BCS-3B,,
 Wednesday,Slot 4,C-309,MT1004 BCS-3C,,
@@ -980,23 +980,23 @@ Wednesday,Slot 4,C-405,EE3009 BCS-5D,,
 Wednesday,Slot 4,C-406,SS2012 BCS-5E,,
 Wednesday,Slot 4,C-407,CS2009 BCS-5G,,
 Wednesday,Slot 4,C-408,SE3005 BSE-5A,,
-Wednesday,Slot 4,C-409,SS1026 BSE-1A,,
-Wednesday,Slot 4,C-601,SS1012 BSE-1B,13:00,14:45
+Thursday,Slot 3,C-602,SS1015 BSE-3B,11:30,13:15
+Monday,Slot 3,C-601,SS1015 BSE-3C,11:30,13:15
 Wednesday,Slot 4,C-602,MT1003 BSE-1D,,
-Wednesday,Slot 4,C-603,SS1013 BSE-1E,13:00,14:45
+Wednesday,Slot 2,C-603,SS1015 BSE-3D,10:00,11:45
 Wednesday,Slot 4,C-604,EE2003 BSE-3A,,
 Wednesday,Slot 4,C-605,CS2009 BSE-5B,,
 Wednesday,Slot 4,C-607,SE1001 BSE-3B,,
 Wednesday,Slot 4,C-609,CS4001 BSE-9A,,
-Wednesday,Slot 4,D-301,SS1007 BAI-1A,13:00,14:45
+Friday,Slot 3,C-310,SS1018 BCY-5A,12:00,12:55
 Wednesday,Slot 4,D-302,,,
 Wednesday,Slot 4,D-303,,,
-Wednesday,Slot 4,D-304,SS1022 BAI-3A,13:30,14:25
+Tuesday,Slot 3,D-301,SS1019 BAI-1A,11:30,12:25
 Wednesday,Slot 4,D-305,,,
 Wednesday,Slot 4,D-306,AI2001 BAI-3B,,
 Wednesday,Slot 4,D-311,MT1003 BAI-1B,,
 Wednesday,Slot 4,D-312,SS2012 BAI-5C,,
-Wednesday,Slot 4,D-313,SS1012 BDS-1C,13:00,14:45
+Thursday,Slot 5,C-609,SS1019 BAI-1B,15:00,15:55
 Wednesday,Slot 4,D-314,CS3001 BAI-5A,,
 Wednesday,Slot 4,D-315,CS3001 BDS-7C,,
 Wednesday,Slot 4,D-316,,,
@@ -1009,7 +1009,7 @@ Wednesday,Slot 4,D-406,AI4015 BCS-7C,,
 Wednesday,Slot 4,D-411,CS4075 BCS-7A,,
 Wednesday,Slot 4,D-412,CS4045 BCS-7A,,
 Wednesday,Slot 4,D-413,CS4095 BCS-7A,,
-Wednesday,Slot 4,D-414,SS1026 BCY-1C,,
+Monday,Slot 3,D-312,SS1019 BAI-1C,11:30,12:25
 Wednesday,Slot 4,D-415,EE2003 BCY-3B,,
 Wednesday,Slot 4,D-416,NS1001 BCY-1D,,
 Wednesday,Slot 4,D-501,CY2004 BCY-3A,,
@@ -1022,15 +1022,15 @@ Wednesday,Slot 4,C-110,CS4039 BCS-7A,,
 Wednesday,Slot 5,C-301,,,
 Wednesday,Slot 5,C-302,,,
 Wednesday,Slot 5,C-303,,,
-Wednesday,Slot 5,C-304,SS1019 BCS-1E,14:50,15:45
-Wednesday,Slot 5,C-305,SS1019 BCS-1G,14:50,15:45
+Thursday,Slot 3,C-301,SS1019 BCS-1A,11:30,12:25
+Tuesday,Slot 5,C-304,SS1019 BCS-1B,14:30,15:25
 Wednesday,Slot 5,C-307,CS1004 BCS-3A,,
 Wednesday,Slot 5,C-308,MT1003 BCS-3Z,,
 Wednesday,Slot 5,C-309,EE1005 BCS-3E,,
-Wednesday,Slot 5,C-310,SS1019 BCS-3G,,
-Wednesday,Slot 5,C-311,SS1019 BCS-3G,14:50,15:45
-Wednesday,Slot 5,C-401,SS1022 BCS-3H,,
-Wednesday,Slot 5,C-402,SS1021 BCS-3H,,
+Thursday,Slot 3,C-308,SS1019 BCS-1C,11:55,12:50
+Thursday,Slot 5,C-301,SS1019 BCS-1D,14:50,15:45
+Wednesday,Slot 5,C-401,,,
+Wednesday,Slot 5,C-304,SS1019 BCS-1E,14:50,15:45
 Wednesday,Slot 5,C-403,,,
 Wednesday,Slot 5,C-404,,,
 Wednesday,Slot 5,C-405,CS3001 BCS-5B,,
@@ -1039,7 +1039,7 @@ Wednesday,Slot 5,C-407,,,
 Wednesday,Slot 5,C-408,,,
 Wednesday,Slot 5,C-409,,,
 Wednesday,Slot 5,C-601,,,
-Wednesday,Slot 5,C-602,SS1026 BSE-1D,,
+Monday,Slot 3,C-304,SS1019 BCS-1F,11:30,12:25
 Wednesday,Slot 5,C-603,,,
 Wednesday,Slot 5,C-604,,,
 Wednesday,Slot 5,C-605,,,
@@ -1054,7 +1054,7 @@ Wednesday,Slot 5,D-306,,,
 Wednesday,Slot 5,D-311,,,
 Wednesday,Slot 5,D-312,,,
 Wednesday,Slot 5,D-313,,,
-Wednesday,Slot 5,D-314,SS1021 BDS-3B,,
+Wednesday,Slot 5,C-305,SS1019 BCS-1G,14:50,15:45
 Wednesday,Slot 5,D-315,,,
 Wednesday,Slot 5,D-316,,,
 Wednesday,Slot 5,D-401,,,
@@ -1066,8 +1066,8 @@ Wednesday,Slot 5,D-406,CS3006 BCS-7B,,
 Wednesday,Slot 5,D-411,CS4075 BCS-7B,,
 Wednesday,Slot 5,D-412,,,
 Wednesday,Slot 5,D-413,,,
-Wednesday,Slot 5,D-414,SS1013 BCY-1B,15:10,17:00
-Wednesday,Slot 5,D-415,SS1012 BCY-1A,14:30,16:15
+Wednesday,Slot 3,C-304,SS1019 BCS-1H,11:30,12:25
+Thursday,Slot 5,C-401,SS1019 BCS-3A,14:30,15:25
 Wednesday,Slot 5,D-416,,,
 Wednesday,Slot 5,D-501,,,
 Wednesday,Slot 5,D-502,CY2004 BCY-3B,,
@@ -1089,7 +1089,7 @@ Wednesday,Slot 6,C-311,,,
 Wednesday,Slot 6,C-401,,,
 Wednesday,Slot 6,C-402,,,
 Wednesday,Slot 6,C-403,EE2003 BCS-5B,,
-Wednesday,Slot 6,C-404,"	SS6007 PCS-1A",,
+Tuesday,Slot 2,C-311,SS1019 BCS-3B,10:30,11:25
 Wednesday,Slot 6,C-405,CS6018 PCS-1A,,
 Wednesday,Slot 6,C-406,,,
 Wednesday,Slot 6,C-407,,,
@@ -1189,32 +1189,32 @@ Wednesday,Slot 11,B-Computing-3,EL1005 BCS-3J,,
 Wednesday,Slot 11,B-Digital,,,
 Thursday,Slot 1,C-301,CS1002 BCS-1F,,
 Thursday,Slot 1,C-302,MT1003 BCS-1G,,
-Thursday,Slot 1,C-303,SS1007 BCS-1H,8:30,10:15
-Thursday,Slot 1,C-304,SS1013 BCS-1E,8:30,10:15
-Thursday,Slot 1,C-305,SS1012 BCS-1D,8:30,10:15
+Thursday,Slot 1,C-311,SS1019 BCS-3C,8:30,9:25
+Tuesday,Slot 3,C-401,SS1019 BCS-3D,11:30,12:25
+Thursday,Slot 2,C-305,SS1019 BCS-3E,10:30,11:25
 Thursday,Slot 1,C-307,CS3004 BCS-3F,,
 Thursday,Slot 1,C-308,CS2001 BCS-3J,,
 Thursday,Slot 1,C-309,EE1005 BCS-3G,,
 Thursday,Slot 1,C-310,CS3004 BCS-3H,,
-Thursday,Slot 1,C-311,SS1019 BCS-3C,8:30,9:25
+Wednesday,Slot 2,C-305,SS1019 BCS-3F,10:30,11:25
 Thursday,Slot 1,C-401,SE4009 BSE-7A,,
 Thursday,Slot 1,C-402,SS2012 BCS-5B,,
 Thursday,Slot 1,C-403,CS3001 BCS-5F,,
 Thursday,Slot 1,C-404,EE3009 BCS-5E,,
 Thursday,Slot 1,C-405,CS2009 BCS-5A,,
 Thursday,Slot 1,C-406,SS2012 BCS-5D,,
-Thursday,Slot 1,C-407,SS1022 BSE-3A,8:30,9:25
+Wednesday,Slot 5,C-310,SS1019 BCS-3G,,
 Thursday,Slot 1,C-408,CS2009 BSE-5C,,
-Thursday,Slot 1,C-409,SS1013 BSE-1A,8:30,10:15
+Wednesday,Slot 5,C-311,SS1019 BCS-3G,14:50,15:45
 Thursday,Slot 1,C-601,CS1002 BSE-1C,,
 Thursday,Slot 1,C-602,NS1001 BSE-1D,,
-Thursday,Slot 1,C-603,SS1026 BSE-1E,,
+Monday,Slot 5,C-401,SS1019 BCS-3H,14:30,15:25
 Thursday,Slot 1,C-604,MT1004 BSE-3B,,
 Thursday,Slot 1,C-605,EE2003 BSE-3C,,
 Thursday,Slot 1,C-607,SS2012 BSE-5A,,
 Thursday,Slot 1,C-609,SE3002 BSE-5B,,
 Thursday,Slot 1,D-301,MT1003 BAI-1C,,
-Thursday,Slot 1,D-302,SS1012 BAI-1B,8:30,10:15
+Monday,Slot 2,C-305,SS1019 BCS-3J,10:30,11:25
 Thursday,Slot 1,D-303,,,
 Thursday,Slot 1,D-304,CS2001 BAI-3C,,
 Thursday,Slot 1,D-305,AI3001 BAI-5B,,
@@ -1226,8 +1226,8 @@ Thursday,Slot 1,D-314,EE2003 BDS-3A,,
 Thursday,Slot 1,D-315,DS3004 BDS-5A,,
 Thursday,Slot 1,D-316,AI4012 BDS-7C,,
 Thursday,Slot 1,D-401,,,
-Thursday,Slot 1,D-402,SS1015 BAI-3B,8:30,10:15
-Thursday,Slot 1,D-403,SS1013 BDS-1C,8:30,10:15
+Wednesday,Slot 3,D-301,SS1019 BDS-1A,11:30,12:25
+Wednesday,Slot 3,D-303,SS1019 BDS-1B,12:30,13:25
 Thursday,Slot 1,D-404,CS4001 BCS-7A,,
 Thursday,Slot 1,D-405,CS3002 BCS-7B,,
 Thursday,Slot 1,D-406,CS4001 BCS-7C,,
@@ -1236,8 +1236,8 @@ Thursday,Slot 1,D-412,CS3014 BCS-7E,,
 Thursday,Slot 1,D-413,,,
 Thursday,Slot 1,D-414,CS1002 BCY-1A,,
 Thursday,Slot 1,D-415,,,
-Thursday,Slot 1,D-416,SS1026 BCY-1D,,
-Thursday,Slot 1,D-501,SS1022 BCY-3A,9:30,10:25
+Thursday,Slot 2,D-403,SS1019 BDS-1C,10:30,11:25
+Thursday,Slot 5,D-314,SS1019 BDS-3A,15:00,15:55
 Thursday,Slot 1,D-502,CS2001 BCY-3C,,
 Thursday,Slot 1,D-503,CS3002 BCY-5A,,
 Thursday,Slot 1,D-504,,,
@@ -1248,12 +1248,12 @@ Thursday,Slot 2,C-301,MT1003 BCS-1F,,
 Thursday,Slot 2,C-302,CS1002 BCS-1G,,
 Thursday,Slot 2,C-303,,,
 Thursday,Slot 2,C-304,,,
-Thursday,Slot 2,C-305,SS1019 BCS-3E,10:30,11:25
+Tuesday,Slot 5,D-313,SS1019 BDS-3B,15:00,15:55
 Thursday,Slot 2,C-307,CS2006 BCY-5A,,
-Thursday,Slot 2,C-308,SS1012 BCS-1C,10:00,11:45
+Tuesday,Slot 5,C-311,SS1021 BCS-3A,14:30,16:20
 Thursday,Slot 2,C-309,CS2001 BCS-3G,,
 Thursday,Slot 2,C-310,EE1005 BCS-3C,,
-Thursday,Slot 2,C-311,SS1021 BCS-3D,,
+Thursday,Slot 5,C-310,SS1021 BCS-3B,,
 Thursday,Slot 2,C-401,SE4033 BSE-7A,,
 Thursday,Slot 2,C-402,CS2009 BCS-5B,,
 Thursday,Slot 2,C-403,EE3009 BCS-5F,,
@@ -1265,7 +1265,7 @@ Thursday,Slot 2,C-408,AI2002 BSE-5C,,
 Thursday,Slot 2,C-409,,,
 Thursday,Slot 2,C-601,NS1001 BSE-1C,,
 Thursday,Slot 2,C-602,MT1004 BSE-3A,,
-Thursday,Slot 2,C-603,SS1012 BSE-1E,10:30,12:15
+Tuesday,Slot 5,C-401,SS1021 BCS-3C,,
 Thursday,Slot 2,C-604,EE2003 BSE-3D,,
 Thursday,Slot 2,C-605,SE1001 BSE-3C,,
 Thursday,Slot 2,C-607,SE3002 BSE-5A,,
@@ -1284,7 +1284,7 @@ Thursday,Slot 2,D-315,DS3004 BDS-5B,,
 Thursday,Slot 2,D-316,AI4012 BDS-7A,,
 Thursday,Slot 2,D-401,CS3001 BDS-7B,,
 Thursday,Slot 2,D-402,,,
-Thursday,Slot 2,D-403,SS1019 BDS-1C,10:30,11:25
+Tuesday,Slot 6,C-401,SS1021 BCS-3C,,
 Thursday,Slot 2,D-404,CS3002 BCS-7A,,
 Thursday,Slot 2,D-405,CS4001 BCS-7B,,
 Thursday,Slot 2,D-406,CS3002 BCS-7C,,
@@ -1294,20 +1294,20 @@ Thursday,Slot 2,D-413,CS3014 BCS-7G,,
 Thursday,Slot 2,D-414,MT1003 BCY-1A,,
 Thursday,Slot 2,D-415,CS1002 BCY-1B,,
 Thursday,Slot 2,D-416,,,
-Thursday,Slot 2,D-501,SS1022 BCY-3B,10:30,11:25
+Thursday,Slot 2,C-311,SS1021 BCS-3D,,
 Thursday,Slot 2,D-502,CY2004 BCY-3C,,
 Thursday,Slot 2,D-503,CS2001 BDS-3B,,
 Thursday,Slot 2,D-504,CS3002 BCY-5B,,
 Thursday,Slot 2,D-505,CY3003 BCY-7A,,
 Thursday,Slot 2,D-506,CS4001 BCY-7B,,
 Thursday,Slot 2,C-110,,,
-Thursday,Slot 3,C-301,SS1019 BCS-1A,11:30,12:25
+Tuesday,Slot 2,C-401,SS1021 BCS-3E,,
 Thursday,Slot 3,C-302,,,
 Thursday,Slot 3,C-303,CS1002 BCS-1H,,
 Thursday,Slot 3,C-304,MT1003 BCS-1E,,
 Thursday,Slot 3,C-305,MT1004 BCS-3E,,
 Thursday,Slot 3,C-307,CS2001 BCS-3F,,
-Thursday,Slot 3,C-308,SS1019 BCS-1C,11:55,12:50
+Monday,Slot 2,C-311,SS1021 BCS-3F,,
 Thursday,Slot 3,C-309,,,
 Thursday,Slot 3,C-310,CS2001 BCS-3H,,
 Thursday,Slot 3,C-311,MT1004 BCS-3J,,
@@ -1321,7 +1321,7 @@ Thursday,Slot 3,C-407,,,
 Thursday,Slot 3,C-408,CS4039 BSE-7A,,
 Thursday,Slot 3,C-409,,,
 Thursday,Slot 3,C-601,CS1002 BSE-1D,,
-Thursday,Slot 3,C-602,SS1015 BSE-3B,11:30,13:15
+Monday,Slot 5,C-311,SS1021 BCS-3G,,
 Thursday,Slot 3,C-603,,,
 Thursday,Slot 3,C-604,SE1001 BSE-3D,,
 Thursday,Slot 3,C-605,MT1003 BSE-1A,,
@@ -1330,7 +1330,7 @@ Thursday,Slot 3,C-609,CS4063 BSE-7A,,
 Thursday,Slot 3,D-301,CS1002 BAI-1A,,
 Thursday,Slot 3,D-302,CS2005 BCY-5B,,
 Thursday,Slot 3,D-303,DS2003 BDS-5B,,
-Thursday,Slot 3,D-304,SS1022 BAI-3C,12:00,12:55
+Wednesday,Slot 5,C-402,SS1021 BCS-3H,,
 Thursday,Slot 3,D-305,CS3001 BAI-5B,,
 Thursday,Slot 3,D-306,AI3002 BAI-5C,,
 Thursday,Slot 3,D-311,MT1004 BAI-3B,,
@@ -1358,11 +1358,11 @@ Thursday,Slot 3,D-504,,,
 Thursday,Slot 3,D-505,CS4001 BCY-7A,,
 Thursday,Slot 3,D-506,CY3003 BCY-7B,,
 Thursday,Slot 3,C-110,CS3012 BCS-7A,,
-Thursday,Slot 4,C-301,SS1007 BCS-1F,13:00,14:45
-Thursday,Slot 4,C-302,SS1013 BCS-1G,13:00,14:45
+Wednesday,Slot 2,C-401,SS1021 BCS-3J,,
+Monday,Slot 6,D-314,SS1021 BDS-3A,,
 Thursday,Slot 4,C-303,MT1003 BCS-1H,,
 Thursday,Slot 4,C-304,CS1002 BCS-1E,,
-Thursday,Slot 4,C-305,SS1012 BCS-1A,13:00,14:45
+Wednesday,Slot 5,D-314,SS1021 BDS-3B,,
 Thursday,Slot 4,C-307,CS2006 BDS-5A,,
 Thursday,Slot 4,C-308,EE1005 BCS-3F,,
 Thursday,Slot 4,C-309,CS3004 BCS-3G,,
@@ -1377,21 +1377,21 @@ Thursday,Slot 4,C-406,,,
 Thursday,Slot 4,C-407,CS3014 BCS-5F,,
 Thursday,Slot 4,C-408,CS4039 BSE-7B,,
 Thursday,Slot 4,C-409,MT1003 BSE-1B,,
-Thursday,Slot 4,C-601,SS1026 BSE-1C,,
-Thursday,Slot 4,C-602,SS1012 BSE-1D,13:20,15:05
+Wednesday,Slot 4,D-304,SS1022 BAI-3A,13:30,14:25
+Wednesday,Slot 2,D-305,SS1022 BAI-3B,10:00,10:55
 Thursday,Slot 4,C-603,CS1002 BSE-1E,,
 Thursday,Slot 4,C-604,CS2001 BSE-3C,,
 Thursday,Slot 4,C-605,SE3005 BSE-5C,,
 Thursday,Slot 4,C-607,AI4009 BSE-7B,,
 Thursday,Slot 4,C-609,CS4063 BSE-7B,,
-Thursday,Slot 4,D-301,SS1007 BAI-1C,13:00,14:45
-Thursday,Slot 4,D-302,SS1012 BAI-1A,13:00,14:45
+Thursday,Slot 3,D-304,SS1022 BAI-3C,12:00,12:55
+Thursday,Slot 1,D-501,SS1022 BCY-3A,9:30,10:25
 Thursday,Slot 4,D-303,,,
 Thursday,Slot 4,D-304,AI2001 BAI-3C,,
 Thursday,Slot 4,D-305,,,
 Thursday,Slot 4,D-306,CS1002 BDS-1C,,
 Thursday,Slot 4,D-311,MT1004 BAI-3A,,
-Thursday,Slot 4,D-312,SS1007 BDS-1A,13:00,14:45
+Thursday,Slot 2,D-501,SS1022 BCY-3B,10:30,11:25
 Thursday,Slot 4,D-313,,,
 Thursday,Slot 4,D-314,CS2001 BDS-3A,,
 Thursday,Slot 4,D-315,EE2003 BDS-3B,,
@@ -1405,7 +1405,7 @@ Thursday,Slot 4,D-406,AI4015 BCS-7B,,
 Thursday,Slot 4,D-411,CS3006 BCS-7D,,
 Thursday,Slot 4,D-412,CS3014 BCS-7F,,
 Thursday,Slot 4,D-413,,,
-Thursday,Slot 4,D-414,SS1026 BCY-1A,,
+Monday,Slot 1,D-416,SS1022 BCY-3C,9:00,9:55
 Thursday,Slot 4,D-415,,,
 Thursday,Slot 4,D-416,MT1004 BCY-3B,,
 Thursday,Slot 4,D-501,,,
@@ -1415,7 +1415,7 @@ Thursday,Slot 4,D-504,CS2006 BCY-5B,,
 Thursday,Slot 4,D-505,,,
 Thursday,Slot 4,D-506,,,
 Thursday,Slot 4,C-110,,,
-Thursday,Slot 5,C-301,SS1019 BCS-1D,14:50,15:45
+Thursday,Slot 1,C-407,SS1022 BSE-3A,8:30,9:25
 Thursday,Slot 5,C-302,,,
 Thursday,Slot 5,C-303,,,
 Thursday,Slot 5,C-304,,,
@@ -1423,9 +1423,9 @@ Thursday,Slot 5,C-305,,,
 Thursday,Slot 5,C-307,,,
 Thursday,Slot 5,C-308,CS1004 BCS-3C,,
 Thursday,Slot 5,C-309,,,
-Thursday,Slot 5,C-310,SS1021 BCS-3B,,
-Thursday,Slot 5,C-311,SS1022 BCS-3B,,
-Thursday,Slot 5,C-401,SS1019 BCS-3A,14:30,15:25
+Tuesday,Slot 2,C-602,SS1022 BSE-3B,10:20,11:15
+Thursday,Slot 5,C-311,,,
+Wednesday,Slot 1,C-607,SS1022 BSE-3C,9:00,9:55
 Thursday,Slot 5,C-402,CS6031 PCS-1A,,
 Thursday,Slot 5,C-403,,,
 Thursday,Slot 5,C-404,,,
@@ -1433,24 +1433,24 @@ Thursday,Slot 5,C-405,,,
 Thursday,Slot 5,C-406,,,
 Thursday,Slot 5,C-407,,,
 Thursday,Slot 5,C-408,,,
-Thursday,Slot 5,C-409,SS1013 BSE-1B,14:30,16:15
+Monday,Slot 2,C-607,SS1022 BSE-3D,10:00,10:55
 Thursday,Slot 5,C-601,,,
 Thursday,Slot 5,C-602,,,
 Thursday,Slot 5,C-603,CS2001 BSE-3D,,
 Thursday,Slot 5,C-604,CS3006 BSE-7A,,
 Thursday,Slot 5,C-605,,,
 Thursday,Slot 5,C-607,,,
-Thursday,Slot 5,C-609,SS1019 BAI-1B,15:00,15:55
+Thursday,Slot 4,D-414,SS1026 BCY-1A,,
 Thursday,Slot 5,D-301,,,
 Thursday,Slot 5,D-302,,,
-Thursday,Slot 5,D-303,SS1015 BAI-3A,14:30,16:15
+Tuesday,Slot 5,D-415,SS1026 BCY-1B,,
 Thursday,Slot 5,D-304,,,
 Thursday,Slot 5,D-305,,,
 Thursday,Slot 5,D-306,CS3001 BAI-5C,,
 Thursday,Slot 5,D-311,,,
 Thursday,Slot 5,D-312,,,
-Thursday,Slot 5,D-313,SS1013 BDS-1B,14:00,15:45
-Thursday,Slot 5,D-314,SS1019 BDS-3A,15:00,15:55
+Wednesday,Slot 4,D-414,SS1026 BCY-1C,,
+Thursday,Slot 1,D-416,SS1026 BCY-1D,,
 Thursday,Slot 5,D-315,,,
 Thursday,Slot 5,D-316,DS3001 BDS-5B,,
 Thursday,Slot 5,D-401,MG3040 BDS-7C,,
@@ -1463,9 +1463,9 @@ Thursday,Slot 5,D-411,CS3006 BCS-7A,,
 Thursday,Slot 5,D-412,,,
 Thursday,Slot 5,D-413,,,
 Thursday,Slot 5,D-414,,,
-Thursday,Slot 5,D-415,SS1012 BCY-1B,14:00,15:45
+Wednesday,Slot 4,C-409,SS1026 BSE-1A,,
 Thursday,Slot 5,D-416,MT1004 BCY-3A,,
-Thursday,Slot 5,D-501,SS1013 BCY-1D,14:00,15:45
+Monday,Slot 4,C-604,SS1026 BSE-1B,,
 Thursday,Slot 5,D-502,,,
 Thursday,Slot 5,D-503,AI2002 BCY-5A,,
 Thursday,Slot 5,D-504,,,
@@ -1643,7 +1643,7 @@ Friday,Slot 1,C-110,,,
 Friday,Slot 2,C-301,NS1001 BCY-1D,,
 Friday,Slot 2,C-302,,,
 Friday,Slot 2,C-303,MT1003 BCY-1C,,
-Friday,Slot 2,C-304,SS1007 BDS-1C,10:00,11:45
+Thursday,Slot 4,C-601,SS1026 BSE-1C,,
 Friday,Slot 2,C-305,,,
 Friday,Slot 2,C-307,,,
 Friday,Slot 2,C-308,,,
@@ -1705,7 +1705,7 @@ Friday,Slot 3,C-305,,,
 Friday,Slot 3,C-307,,,
 Friday,Slot 3,C-308,,,
 Friday,Slot 3,C-309,MT1003 BAI-1B,,
-Friday,Slot 3,C-310,SS1018 BCY-5A,12:00,12:55
+Wednesday,Slot 5,C-602,SS1026 BSE-1D,,
 Friday,Slot 3,C-311,,,
 Friday,Slot 3,C-401,,,
 Friday,Slot 3,C-402,,,
@@ -1811,14 +1811,14 @@ Friday,Slot 4,D-504,Prayer break,,
 Friday,Slot 4,D-505,Prayer break,,
 Friday,Slot 4,D-506,Prayer break,,
 Friday,Slot 4,C-110,Prayer break,,
-Friday,Slot 5,C-301,SS1013 BCY-1C,14:00,15:45
+Thursday,Slot 1,C-603,SS1026 BSE-1E,,
 Friday,Slot 5,C-302,NS1001 BSE-1E,,
 Friday,Slot 5,C-303,,,
 Friday,Slot 5,C-304,,,
 Friday,Slot 5,C-305,,,
 Friday,Slot 5,C-307,,,
 Friday,Slot 5,C-308,,,
-Friday,Slot 5,C-309,SS1007 BAI-1B,14:30,16:15
+Tuesday,Slot 2,C-309,,,
 Friday,Slot 5,C-310,,,
 Friday,Slot 5,C-311,,,
 Friday,Slot 5,C-401,,,
