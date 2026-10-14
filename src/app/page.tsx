@@ -13,6 +13,7 @@ import { QuickRescheduleBar } from '../components/QuickRescheduleBar';
 import { Toast } from '../components/Toast';
 import { CoordinatorModal } from '../components/CoordinatorModal';
 import { PrintRoomsModal } from '../components/PrintRoomsModal';
+import { UnscheduledCoursesModal } from '../components/UnscheduledCoursesModal';
 import { startRemoteSync } from '../lib/remoteSync';
 import { useShallow } from 'zustand/react/shallow';
 import { useTimetableStore } from '../store/timetableStore';
@@ -128,6 +129,7 @@ export default function Home() {
       <DataManagerModal />
       <CoordinatorModal />
       <PrintRoomsModal />
+      <UnscheduledCoursesModal />
       <Toast />
 
       {/* Footer */}

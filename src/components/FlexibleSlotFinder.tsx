@@ -6,6 +6,7 @@ import { DAYS_OF_WEEK } from '../lib/constants';
 import { minutesToTimeString } from '../lib/utils';
 import { Combobox } from './Combobox';
 import { courseCodeOptions, sectionOptions } from '../lib/courseOptions';
+import { defaultSessionMinutes } from '../lib/courseLoad';
 import {
   X,
   Sparkles,
@@ -32,6 +33,7 @@ export const FlexibleSlotFinder: React.FC = () => {
     gap,
     clearGap,
     preselectedCourse,
+    mode,
   } = useTimetableStore(
     useShallow((s) => ({
       isFlexibleModalOpen: s.isFlexibleModalOpen,
@@ -44,6 +46,7 @@ export const FlexibleSlotFinder: React.FC = () => {
       gap: s.flexibleGap,
       clearGap: s.clearFlexibleGap,
       preselectedCourse: s.selectedCourse,
+      mode: s.flexibleMode,
     }))
   );
 
@@ -73,7 +76,10 @@ export const FlexibleSlotFinder: React.FC = () => {
   // Opened for a specific course (e.g. from a class card): start with it selected
   useEffect(() => {
     if (isFlexibleModalOpen && preselectedCourse) setSelectedCourseId(preselectedCourse.id);
-  }, [isFlexibleModalOpen, preselectedCourse]);
+    // Scheduling a regular class: start with the usual length for this kind of section
+    if (isFlexibleModalOpen && preselectedCourse && mode === 'schedule') setDuration(defaultSessionMinutes(preselectedCourse));
+  }, [isFlexibleModalOpen, preselectedCourse, mode]);
+  const scheduling = mode === 'schedule';
   const gapRoom = gap ? rooms.find((r) => r.id === gap.roomId) : undefined;
   const gapLength = gap ? gap.endMinutes - gap.startMinutes : 0;
 
@@ -145,13 +151,15 @@ export const FlexibleSlotFinder: React.FC = () => {
           <div>
             <div className="flex items-center gap-1.5 text-xs font-bold text-blue-600 dark:text-blue-400 uppercase tracking-wider mb-0.5">
               <Sparkles className="w-3.5 h-3.5" />
-              Flexible / Extra Slot Allocator
+              {scheduling ? 'Schedule a weekly class' : 'Flexible / Extra Slot Allocator'}
             </div>
             <h3 className="text-xl font-extrabold text-gray-900 dark:text-white">
-              Scan All Rooms for Free Makeup & Seminar Windows
+              {scheduling ? `Find a slot for ${selectedCourse?.courseCode || ''} ${selectedCourse?.section || ''}` : 'Scan All Rooms for Free Makeup & Seminar Windows'}
             </h3>
             <p className="text-xs text-gray-500 mt-1">
-              Automatically discovers continuous room gaps with zero student clashes across the 6-day week.
+              {scheduling
+                ? 'Booking adds a regular weekly class (not a make-up). Book again for a second session.'
+                : 'Automatically discovers continuous room gaps with zero student clashes across the 6-day week.'}
             </p>
           </div>
           <button
@@ -163,9 +171,9 @@ export const FlexibleSlotFinder: React.FC = () => {
         </div>
 
         {/* Configuration Bar */}
-        <div className="p-4 border-b border-gray-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+        <div className="p-4 border-b border-gray-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 grid grid-cols-1 sm:grid-cols-3 gap-3">
           {/* Course and section pickers */}
-          <div className="sm:col-span-2 lg:col-span-1 grid grid-cols-[1fr_7rem] gap-2">
+          <div className="sm:col-span-3 grid grid-cols-[1fr_8rem] gap-2">
             <div className="min-w-0">
               <label className="block text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-1">Course</label>
               <Combobox
@@ -197,9 +205,18 @@ export const FlexibleSlotFinder: React.FC = () => {
             </label>
             <div className="flex rounded-lg border border-gray-300 dark:border-zinc-700 p-0.5 bg-gray-50 dark:bg-zinc-800">
               {[
-                { label: '60m (1h)', val: 60 },
-                { label: '80m', val: 80 },
-                { label: '120m (2h)', val: 120 },
+                ...(scheduling
+                  ? [
+                      { label: '55m', val: 55 },
+                      { label: '80m', val: 80 },
+                      { label: '105m', val: 105 },
+                      { label: '165m (lab)', val: 165 },
+                    ]
+                  : [
+                      { label: '60m (1h)', val: 60 },
+                      { label: '80m', val: 80 },
+                      { label: '120m (2h)', val: 120 },
+                    ]),
                 // A free window shorter than an hour can still be used in full
                 ...(gap && gapLength < 60 ? [{ label: `${gapLength}m (whole gap)`, val: gapLength }] : []),
               ].map((item) => (
@@ -379,7 +396,7 @@ export const FlexibleSlotFinder: React.FC = () => {
                     className="flex items-center gap-1.5 px-4 py-2 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-300 dark:disabled:bg-zinc-800 disabled:text-gray-500 disabled:cursor-not-allowed text-white text-xs font-bold rounded-lg transition-all shadow-sm hover:shadow-md"
                   >
                     <CheckCircle className="w-3.5 h-3.5" />
-                    Book Slot
+                    {scheduling ? 'Schedule here' : 'Book Slot'}
                   </button>
                 </div>
               </div>

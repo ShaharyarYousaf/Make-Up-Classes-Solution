@@ -15,7 +15,8 @@ import {
 } from '../src/lib/engine';
 import { isReservedAllocation, parseTimetableCSV } from '../src/lib/csvParser';
 import { STANDARD_TIME_SLOTS } from '../src/lib/constants';
-import { extractTimeRange, getFreeIntervals, layoutLanes, timeFieldsForInterval } from '../src/lib/timeline';
+import { extractTimeRange, getFreeIntervals, layoutLanes, timeFieldsForInterval, toTimeInterval } from '../src/lib/timeline';
+import { defaultSessionMinutes, expectedWeeklyMinutes, scheduledMinutesBySection } from '../src/lib/courseLoad';
 import { useTimetableStore, undoStep } from '../src/store/timetableStore';
 import { getAllocationInterval } from '../src/lib/utils';
 import { Allocation, CourseSection, Room } from '../src/types/timetable';
@@ -258,6 +259,21 @@ const clashing = checkStudentClashes(
   [{ ...INITIAL_COURSES[0], id: 'X2 B' }], INITIAL_ROOMS
 );
 check('Clash details show the exact time (13:00 - 14:45), not "Slot 4"', clashing.clashStudents[0]?.timeSlotLabel === '13:00 - 14:45');
+
+// 10. Unscheduled courses (Req E): scheduling adds a regular weekly class, not a make-up
+console.log('\n--- Test 10: Scheduling an Unscheduled Course ---');
+const unscheduledCourse = { ...INITIAL_COURSES[0], id: 'UNS101 X-1A', courseCode: 'UNS101', section: 'X-1A', courseTitle: 'Unscheduled Theory', creditHours: 3 };
+st.setState({ canEdit: true, courses: [...INITIAL_COURSES, unscheduledCourse], allocations: [], allocationHistory: [] });
+check('Theory section gets 80-minute sessions by default', defaultSessionMinutes(unscheduledCourse) === 80);
+check('Lab section gets a 165-minute block', defaultSessionMinutes({ ...unscheduledCourse, courseTitle: 'Programming - Lab' }) === 165);
+check('3 Cr needs about 150 minutes a week', expectedWeeklyMinutes(unscheduledCourse) === 150);
+st.getState().openFlexibleModal(unscheduledCourse.id, undefined, 'schedule');
+check('Opening from the list switches the finder to scheduling', st.getState().flexibleMode === 'schedule' && !st.getState().isUnscheduledOpen);
+st.getState().createFlexibleAllocation(unscheduledCourse.id, 'Tuesday', 'c-301', toTimeInterval(600, 680));
+const booked = st.getState().allocations[0];
+check('Booked as a regular class (not marked rescheduled)', !!booked && !booked.isRescheduled && booked.slotId === 'slot-2' && !booked.customInterval);
+check('Returns to the unscheduled list afterwards', st.getState().isUnscheduledOpen && st.getState().flexibleMode === 'makeup');
+check('Section now has 80 of its weekly minutes', scheduledMinutesBySection(st.getState().allocations).get(unscheduledCourse.id) === 80);
 
 if (failures > 0) {
   console.log(`\n${failures} TEST(S) FAILED ❌`);

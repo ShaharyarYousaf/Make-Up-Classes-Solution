@@ -90,7 +90,14 @@ interface TimetableStore {
   // Flexible makeup slot
   /** Free window clicked on the grid: the finder then looks only there */
   flexibleGap: FreeGap | null;
-  openFlexibleModal: (preselectedCourseId?: string, gap?: FreeGap) => void;
+  /** makeup: one-off extra session · schedule: a regular weekly session for an unscheduled course */
+  flexibleMode: 'makeup' | 'schedule';
+  openFlexibleModal: (preselectedCourseId?: string, gap?: FreeGap, mode?: 'makeup' | 'schedule') => void;
+
+  // Unscheduled courses manager (Req E)
+  isUnscheduledOpen: boolean;
+  openUnscheduled: () => void;
+  closeUnscheduled: () => void;
   clearFlexibleGap: () => void;
   closeFlexibleModal: () => void;
   createFlexibleAllocation: (
@@ -266,6 +273,8 @@ export const useTimetableStore = create<TimetableStore>()(
   isImpactModalOpen: false,
   isFlexibleModalOpen: false,
   flexibleGap: null,
+  flexibleMode: 'makeup',
+  isUnscheduledOpen: false,
   isDataManagerOpen: false,
   isPrintModalOpen: false,
   isVacantRoomsModalOpen: false,
@@ -423,7 +432,7 @@ export const useTimetableStore = create<TimetableStore>()(
     });
   },
 
-  openFlexibleModal: (preselectedCourseId, gap) => {
+  openFlexibleModal: (preselectedCourseId, gap, mode = 'makeup') => {
     const { courses } = get();
     const course = preselectedCourseId
       ? courses.find((c) => c.id === preselectedCourseId) || null
@@ -432,40 +441,64 @@ export const useTimetableStore = create<TimetableStore>()(
       isFlexibleModalOpen: true,
       selectedCourse: course,
       flexibleGap: gap || null,
+      flexibleMode: mode,
+      // Scheduling from the unscheduled list: the finder takes over, the list comes back afterwards
+      isUnscheduledOpen: false,
     });
   },
+  openUnscheduled: () => set({ isUnscheduledOpen: true }),
+  closeUnscheduled: () => set({ isUnscheduledOpen: false }),
   clearFlexibleGap: () => set({ flexibleGap: null }),
 
   closeFlexibleModal: () => {
     set({
       isFlexibleModalOpen: false,
       flexibleGap: null,
+      flexibleMode: 'makeup',
+      // Cancelled while scheduling: back to the unscheduled list
+      isUnscheduledOpen: get().flexibleMode === 'schedule',
     });
   },
 
   createFlexibleAllocation: (courseSectionId, day, roomId, customInterval, note) => {
     if (!requireEditAccess(get, set)) return;
-    const { allocations, allocationHistory, courses } = get();
+    const { allocations, allocationHistory, courses, flexibleMode } = get();
     const course = courses.find((c) => c.id === courseSectionId);
+    const regular = flexibleMode === 'schedule';
 
-    const newAlloc: Allocation = {
-      id: `alloc-custom-${Date.now()}`,
-      courseSectionId,
-      day,
-      slotId: 'custom',
-      customInterval,
-      roomId,
-      isRescheduled: true,
-      note: note || 'Flexible / Makeup Session',
-      allocatedAt: new Date().toISOString(),
-    };
+    const newAlloc: Allocation = regular
+      ? {
+          // A normal weekly class, labelled with its nearest slot
+          id: `alloc-sched-${Date.now()}`,
+          courseSectionId,
+          day,
+          ...timeFieldsForInterval(customInterval),
+          roomId,
+          note: 'Scheduled from Unscheduled Courses',
+          allocatedAt: new Date().toISOString(),
+        }
+      : {
+          id: `alloc-custom-${Date.now()}`,
+          courseSectionId,
+          day,
+          slotId: 'custom',
+          customInterval,
+          roomId,
+          isRescheduled: true,
+          note: note || 'Flexible / Makeup Session',
+          allocatedAt: new Date().toISOString(),
+        };
 
     set({
       allocations: [...allocations, newAlloc],
       allocationHistory: pushHistory(allocationHistory, allocations, [...allocations, newAlloc]),
       isFlexibleModalOpen: false,
+      flexibleMode: 'makeup',
+      isUnscheduledOpen: regular,
       toastMessage: {
-        text: `Allocated extra slot for ${course?.courseCode || courseSectionId} on ${day} (${customInterval.startTime} - ${customInterval.endTime})`,
+        text: regular
+          ? `Scheduled ${course?.courseCode || courseSectionId} ${course?.section || ''} on ${day} ${customInterval.startTime}–${customInterval.endTime} as a weekly class`
+          : `Allocated extra slot for ${course?.courseCode || courseSectionId} on ${day} (${customInterval.startTime} - ${customInterval.endTime})`,
         type: 'success',
       },
     });

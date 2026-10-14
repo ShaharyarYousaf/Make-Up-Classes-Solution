@@ -16,7 +16,9 @@ import {
   Cloud,
   CloudOff,
   Printer,
+  CalendarX,
 } from 'lucide-react';
+import { scheduledMinutesBySection } from '../lib/courseLoad';
 
 export const Header: React.FC = () => {
   const {
@@ -31,6 +33,7 @@ export const Header: React.FC = () => {
     openRescheduleReview,
     openDataManager,
     openPrintModal,
+    openUnscheduled,
     openCoordinatorModal,
     authEmail,
     syncStatus,
@@ -49,6 +52,7 @@ export const Header: React.FC = () => {
       openRescheduleReview: s.openRescheduleReview,
       openDataManager: s.openDataManager,
       openPrintModal: s.openPrintModal,
+      openUnscheduled: s.openUnscheduled,
       openCoordinatorModal: s.openCoordinatorModal,
       authEmail: s.authEmail,
       syncStatus: s.syncStatus,
@@ -59,6 +63,10 @@ export const Header: React.FC = () => {
 
   const rescheduledCount = allocations.filter((a) => a.isRescheduled).length;
   const canUndo = allocationHistory.length > 0;
+  const unscheduledCount = React.useMemo(() => {
+    const minutes = scheduledMinutesBySection(allocations);
+    return courses.filter((c) => !minutes.has(c.id)).length;
+  }, [allocations, courses]);
 
   return (
     <header className="bg-white dark:bg-zinc-900 border-b border-gray-200 dark:border-zinc-800 sticky top-0 z-30 shadow-xs">
@@ -163,6 +171,16 @@ export const Header: React.FC = () => {
             >
               <Plus className="w-3.5 h-3.5" />
               <span className="hidden sm:inline">Makeup</span>
+            </button>
+
+            {/* Unscheduled courses (Req E) */}
+            <button
+              onClick={openUnscheduled}
+              title={`${unscheduledCount} course sections have no class on the timetable`}
+              className="flex items-center gap-1 px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-semibold bg-gray-100 dark:bg-zinc-800 hover:bg-gray-200 dark:hover:bg-zinc-700 text-gray-700 dark:text-gray-300 transition-colors border border-gray-200 dark:border-zinc-700"
+            >
+              <CalendarX className="w-3.5 h-3.5 text-gray-500" />
+              <span className="font-bold">{unscheduledCount}</span>
             </button>
 
             {/* Print room schedules */}

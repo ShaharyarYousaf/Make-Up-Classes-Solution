@@ -638,7 +638,12 @@ export function findFlexibleSlots(
   const suitabilityRank = (s: FlexibleSlotOption) =>
     (s.suitability.overCapacity ? 2 : 0) + (s.suitability.roomTypeMismatch ? 1 : 0);
 
-  // Sort: SAFE first, then lowest clash count, then suitable rooms, then day order
+  // Times that start on the regular slot grid and end within the normal day read best on a timetable
+  const SLOT_STARTS = new Set(STANDARD_TIME_SLOTS.map((s) => s.startMinutes));
+  const DAY_END = 17 * 60 + 15;
+  const timeRank = (s: FlexibleSlotOption) => (SLOT_STARTS.has(s.startMinutes) ? 0 : 1) + (s.endMinutes <= DAY_END ? 0 : 2);
+
+  // Sort: SAFE first, then lowest clash count, then suitable rooms, then on-grid daytime starts, then day and time
   return results.sort((a, b) => {
     if (a.status === 'SAFE' && b.status !== 'SAFE') return -1;
     if (a.status !== 'SAFE' && b.status === 'SAFE') return 1;
@@ -648,7 +653,9 @@ export function findFlexibleSlots(
     if (suitabilityRank(a) !== suitabilityRank(b)) {
       return suitabilityRank(a) - suitabilityRank(b);
     }
-    return DAYS_OF_WEEK.indexOf(a.day) - DAYS_OF_WEEK.indexOf(b.day);
+    if (timeRank(a) !== timeRank(b)) return timeRank(a) - timeRank(b);
+    const byDay = DAYS_OF_WEEK.indexOf(a.day) - DAYS_OF_WEEK.indexOf(b.day);
+    return byDay !== 0 ? byDay : a.startMinutes - b.startMinutes;
   });
 }
 
