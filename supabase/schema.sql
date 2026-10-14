@@ -116,8 +116,19 @@ begin
     execute format('drop policy if exists "coordinators write" on public.%I', t);
     execute format('drop policy if exists "anyone write" on public.%I', t);
     execute format('drop policy if exists "pin write" on public.%I', t);
+    -- "(select …)" makes Postgres check the PIN once per request instead of once per row,
+    -- and separate insert/update/delete policies keep reads free of the check
+    execute format('drop policy if exists "pin insert" on public.%I', t);
+    execute format('drop policy if exists "pin update" on public.%I', t);
+    execute format('drop policy if exists "pin delete" on public.%I', t);
     execute format(
-      'create policy "pin write" on public.%I for all to anon, authenticated using (public.edit_pin_ok()) with check (public.edit_pin_ok())', t
+      'create policy "pin insert" on public.%I for insert to anon, authenticated with check ((select public.edit_pin_ok()))', t
+    );
+    execute format(
+      'create policy "pin update" on public.%I for update to anon, authenticated using ((select public.edit_pin_ok())) with check ((select public.edit_pin_ok()))', t
+    );
+    execute format(
+      'create policy "pin delete" on public.%I for delete to anon, authenticated using ((select public.edit_pin_ok()))', t
     );
   end loop;
 end $$;
