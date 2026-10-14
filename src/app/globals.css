@@ -45,17 +45,15 @@ body {
 }
 
 /* ------------------------------------------------------------------
-   Printable room schedules (PrintRoomsModal): one A4 landscape page per room
+   Printable room schedules (PrintRoomsModal): one A4 page per room,
+   landscape or portrait (.print-portrait), colour or black & white (.print-bw)
    ------------------------------------------------------------------ */
 #print-root {
   display: none;
 }
 
 @media print {
-  @page {
-    size: A4 landscape;
-    margin: 8mm;
-  }
+  /* Page size and orientation are injected by PrintRoomsModal for each print */
 
   body > *:not(#print-root) {
     display: none !important;
@@ -270,4 +268,111 @@ body {
   font-size: 7pt;
   color: #64748b;
   text-align: center;
+}
+
+/* Portrait: A4 210×297 minus 8mm margins */
+.print-portrait .print-page {
+  width: 194mm;
+  height: 279mm;
+}
+
+.print-portrait .print-grid {
+  grid-template-columns: 15mm repeat(6, 1fr);
+  column-gap: 0.8mm;
+}
+
+.print-portrait .print-title h1 {
+  font-size: 22pt;
+}
+
+.print-portrait .print-day-head {
+  font-size: 7.5pt;
+  letter-spacing: 0;
+}
+
+.print-portrait .print-axis-slot {
+  font-size: 6.5pt;
+}
+
+.print-portrait .print-block {
+  padding: 0.6mm 0.8mm;
+}
+
+.print-portrait .print-block-code {
+  font-size: 7pt;
+}
+
+.print-portrait .print-block-title {
+  font-size: 6pt;
+  -webkit-line-clamp: 3;
+}
+
+.print-portrait .print-block-teacher,
+.print-portrait .print-block-time {
+  font-size: 5.5pt;
+}
+
+/* Black & white: no fills, black text and lines, toner-friendly */
+.print-bw .print-logo {
+  filter: grayscale(1) contrast(1.2);
+}
+
+.print-bw .print-header {
+  border-bottom-color: #000;
+}
+
+.print-bw .print-title h1,
+.print-bw .print-title p,
+.print-bw .print-meta,
+.print-bw .print-meta strong,
+.print-bw .print-footer {
+  color: #000;
+}
+
+.print-bw .print-day-head {
+  background: #fff;
+  color: #000;
+  border: 0.3mm solid #000;
+}
+
+.print-bw .print-day {
+  border-color: #000;
+}
+
+.print-bw .print-axis-slot {
+  background: #fff;
+  border: 0.2mm solid #000;
+  color: #000;
+}
+
+.print-bw .print-axis-time {
+  color: #000;
+}
+
+.print-bw .print-band {
+  background: #fff;
+  border-top: 0.2mm dashed #888;
+}
+
+.print-bw .print-block {
+  background: #fff;
+  border-color: #000;
+}
+
+.print-bw .print-block-reserved {
+  background: repeating-linear-gradient(45deg, #fff, #fff 1.2mm, #bbb 1.2mm, #bbb 1.6mm);
+}
+
+.print-bw .print-block-code,
+.print-bw .print-block-section,
+.print-bw .print-block-title,
+.print-bw .print-block-teacher,
+.print-bw .print-block-time {
+  color: #000;
+}
+
+.print-bw .print-block-tag {
+  background: #fff;
+  color: #000;
+  border: 0.2mm solid #000;
 }

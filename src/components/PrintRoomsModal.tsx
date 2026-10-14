@@ -7,7 +7,7 @@ import { getCourseMap } from '../lib/engine';
 import { allocationInterval } from '../lib/timeline';
 import { Allocation, Room } from '../types/timetable';
 import { Combobox } from './Combobox';
-import { PrintableRoomSchedule } from './PrintableRoomSchedule';
+import { PrintableRoomSchedule, PrintOrientation } from './PrintableRoomSchedule';
 
 type Mode = 'single' | 'multiple' | 'all';
 
@@ -38,6 +38,8 @@ export const PrintRoomsModal: React.FC = () => {
   const [typeFilter, setTypeFilter] = useState('ALL');
   const [skipEmpty, setSkipEmpty] = useState(true);
   const [showTeacher, setShowTeacher] = useState(true);
+  const [orientation, setOrientation] = useState<PrintOrientation>('landscape');
+  const [blackAndWhite, setBlackAndWhite] = useState(false);
   const [printing, setPrinting] = useState<Room[] | null>(null);
 
   // Start with the room currently on screen
@@ -81,17 +83,21 @@ export const PrintRoomsModal: React.FC = () => {
     return mode === 'single' || !skipEmpty ? chosen : chosen.filter((r) => (byRoom.get(r.id)?.length || 0) > 0);
   }, [mode, rooms, singleRoomId, picked, skipEmpty, byRoom]);
 
-  // Print only the schedule pages: render them, open the print dialog, then remove them again
+  // Print only the schedule pages: render them, set the paper orientation, open the print dialog, then clean up
   useEffect(() => {
     if (!printing) return;
+    const pageStyle = document.createElement('style');
+    pageStyle.textContent = `@page { size: A4 ${orientation}; margin: 8mm; }`;
+    document.head.appendChild(pageStyle);
     const done = () => setPrinting(null);
     window.addEventListener('afterprint', done, { once: true });
     const frame = requestAnimationFrame(() => window.print());
     return () => {
       cancelAnimationFrame(frame);
       window.removeEventListener('afterprint', done);
+      pageStyle.remove();
     };
-  }, [printing]);
+  }, [printing, orientation]);
 
   // Same time range on every page, so a stack of printed rooms lines up
   const range = useMemo(() => {
@@ -121,7 +127,7 @@ export const PrintRoomsModal: React.FC = () => {
   const printPages =
     printing &&
     createPortal(
-      <div id="print-root">
+      <div id="print-root" className={`${orientation === 'portrait' ? 'print-portrait' : ''} ${blackAndWhite ? 'print-bw' : ''}`}>
         {printing.map((room) => (
           <PrintableRoomSchedule
             key={room.id}
@@ -133,6 +139,7 @@ export const PrintRoomsModal: React.FC = () => {
             showTeacher={showTeacher}
             printedOn={printedOn}
             termLabel={TERM_LABEL}
+            orientation={orientation}
           />
         ))}
       </div>,
@@ -154,7 +161,7 @@ export const PrintRoomsModal: React.FC = () => {
               <Printer className="w-5 h-5 text-blue-600" />
               <div>
                 <h3 className="text-lg font-bold text-gray-900 dark:text-white">Print room schedules</h3>
-                <p className="text-xs text-gray-500">One A4 landscape page per room, ready to post outside the door.</p>
+                <p className="text-xs text-gray-500">One A4 page per room, ready to post outside the door.</p>
               </div>
             </div>
             <button onClick={close} aria-label="Close" className="p-1 rounded-lg hover:bg-gray-100 dark:hover:bg-zinc-800">
@@ -243,6 +250,31 @@ export const PrintRoomsModal: React.FC = () => {
               </p>
             )}
 
+            <div className="grid grid-cols-2 gap-3">
+              <div>
+                <span className="block text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-1">Paper</span>
+                <div className="flex gap-1 bg-gray-100 dark:bg-zinc-800 p-1 rounded-xl">
+                  <button className={tabClass(orientation === 'landscape')} onClick={() => setOrientation('landscape')}>
+                    Landscape
+                  </button>
+                  <button className={tabClass(orientation === 'portrait')} onClick={() => setOrientation('portrait')}>
+                    Portrait
+                  </button>
+                </div>
+              </div>
+              <div>
+                <span className="block text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-1">Ink</span>
+                <div className="flex gap-1 bg-gray-100 dark:bg-zinc-800 p-1 rounded-xl">
+                  <button className={tabClass(!blackAndWhite)} onClick={() => setBlackAndWhite(false)}>
+                    Color
+                  </button>
+                  <button className={tabClass(blackAndWhite)} onClick={() => setBlackAndWhite(true)}>
+                    Black &amp; white
+                  </button>
+                </div>
+              </div>
+            </div>
+
             <div className="flex flex-col gap-1.5 text-xs text-gray-700 dark:text-gray-300">
               {mode !== 'single' && (
                 <label className="flex items-center gap-2">
@@ -258,7 +290,8 @@ export const PrintRoomsModal: React.FC = () => {
 
             <p className="text-[11px] text-gray-500">
               Includes current reschedules and make-up classes (marked “Rescheduled”). In the print dialog choose your
-              printer, or <strong>Save as PDF</strong>. Turn on “Background graphics” for shaded blocks.
+              printer, or <strong>Save as PDF</strong>. Turn on “Background graphics” for shaded blocks. If the dialog
+              shows the wrong orientation, set it to {orientation} there too.
             </p>
 
             <button

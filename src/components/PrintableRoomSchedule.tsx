@@ -5,8 +5,10 @@ import { getReservedLabel, isReservedAllocation } from '../lib/csvParser';
 import { allocationInterval, layoutLanes } from '../lib/timeline';
 import { minutesToTimeString } from '../lib/utils';
 
-/** Height of the day grid on an A4 landscape page, in millimetres */
-const GRID_HEIGHT_MM = 150;
+/** Height of the day grid on an A4 page, in millimetres */
+const GRID_HEIGHT_MM = { landscape: 150, portrait: 232 };
+
+export type PrintOrientation = keyof typeof GRID_HEIGHT_MM;
 
 interface PrintableRoomScheduleProps {
   room: Room;
@@ -17,11 +19,12 @@ interface PrintableRoomScheduleProps {
   showTeacher: boolean;
   printedOn: string;
   termLabel: string;
+  orientation: PrintOrientation;
 }
 
 const fmt = minutesToTimeString;
 
-/** One A4 landscape page: a room's weekly timetable at exact times, for posting outside the door. */
+/** One A4 page (landscape or portrait): a room's weekly timetable at exact times, for posting outside the door. */
 export const PrintableRoomSchedule: React.FC<PrintableRoomScheduleProps> = ({
   room,
   allocations,
@@ -31,8 +34,10 @@ export const PrintableRoomSchedule: React.FC<PrintableRoomScheduleProps> = ({
   showTeacher,
   printedOn,
   termLabel,
+  orientation,
 }) => {
-  const mmPerMinute = GRID_HEIGHT_MM / (dayEnd - dayStart);
+  const gridHeight = GRID_HEIGHT_MM[orientation];
+  const mmPerMinute = gridHeight / (dayEnd - dayStart);
   const y = (minutes: number) => `${(minutes - dayStart) * mmPerMinute}mm`;
   const h = (minutes: number) => `${minutes * mmPerMinute}mm`;
   const isLabRoom = room.type === 'Lab';
@@ -69,7 +74,7 @@ export const PrintableRoomSchedule: React.FC<PrintableRoomScheduleProps> = ({
           </div>
         ))}
 
-        <div className="print-axis" style={{ height: `${GRID_HEIGHT_MM}mm` }}>
+        <div className="print-axis" style={{ height: `${gridHeight}mm` }}>
           {bands.map((slot) => (
             <div key={slot.id} className="print-axis-slot" style={{ top: y(slot.startMinutes), height: h(slot.endMinutes - slot.startMinutes) }}>
               <span>{slot.id.startsWith('lab') ? `Lab ${slot.slotNumber - 8}` : `Slot ${slot.slotNumber}`}</span>
@@ -83,7 +88,7 @@ export const PrintableRoomSchedule: React.FC<PrintableRoomScheduleProps> = ({
         {DAYS_OF_WEEK.map((day) => {
           const dayAllocations = allocations.filter((a) => a.day === day);
           return (
-            <div key={day} className="print-day" style={{ height: `${GRID_HEIGHT_MM}mm` }}>
+            <div key={day} className="print-day" style={{ height: `${gridHeight}mm` }}>
               {bands.map((slot) => (
                 <div key={slot.id} className="print-band" style={{ top: y(slot.startMinutes), height: h(slot.endMinutes - slot.startMinutes) }} />
               ))}
@@ -96,7 +101,8 @@ export const PrintableRoomSchedule: React.FC<PrintableRoomScheduleProps> = ({
                   left: `${(lane / lanes) * 100}%`,
                   width: `${100 / lanes}%`,
                 };
-                const short = endMinutes - startMinutes < 70;
+                // Portrait blocks are taller per minute, so shorter classes still fit their details
+                const short = endMinutes - startMinutes < (orientation === 'portrait' ? 50 : 70);
                 return (
                   <div key={alloc.id} className={`print-block ${reserved ? 'print-block-reserved' : ''}`} style={style}>
                     {reserved ? (
