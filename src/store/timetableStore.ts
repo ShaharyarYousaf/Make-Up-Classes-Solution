@@ -94,6 +94,11 @@ interface TimetableStore {
   flexibleMode: 'makeup' | 'schedule';
   openFlexibleModal: (preselectedCourseId?: string, gap?: FreeGap, mode?: 'makeup' | 'schedule') => void;
 
+  // Common free time across sections (Req H)
+  isBatchAvailabilityOpen: boolean;
+  openBatchAvailability: () => void;
+  closeBatchAvailability: () => void;
+
   // Unscheduled courses manager (Req E)
   isUnscheduledOpen: boolean;
   openUnscheduled: () => void;
@@ -229,6 +234,8 @@ const timetableStorage: PersistStorage<PersistedState> = {
     }
   },
   setItem: (name, value) => {
+    // No browser storage (server render, tests): nothing to save
+    if (typeof localStorage === 'undefined') return;
     const next = value.state;
     const prev = lastPersisted;
     if (prev && (Object.keys(next) as (keyof PersistedState)[]).every((key) => prev[key] === next[key])) {
@@ -277,6 +284,7 @@ export const useTimetableStore = create<TimetableStore>()(
   flexibleGap: null,
   flexibleMode: 'makeup',
   isUnscheduledOpen: false,
+  isBatchAvailabilityOpen: false,
   isDataManagerOpen: false,
   isPrintModalOpen: false,
   isVacantRoomsModalOpen: false,
@@ -449,6 +457,8 @@ export const useTimetableStore = create<TimetableStore>()(
     });
   },
   openUnscheduled: () => set({ isUnscheduledOpen: true }),
+  openBatchAvailability: () => set({ isBatchAvailabilityOpen: true }),
+  closeBatchAvailability: () => set({ isBatchAvailabilityOpen: false }),
   closeUnscheduled: () => set({ isUnscheduledOpen: false }),
   clearFlexibleGap: () => set({ flexibleGap: null }),
 

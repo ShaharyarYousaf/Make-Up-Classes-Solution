@@ -14,6 +14,7 @@ import { Toast } from '../components/Toast';
 import { CoordinatorModal } from '../components/CoordinatorModal';
 import { PrintRoomsModal } from '../components/PrintRoomsModal';
 import { UnscheduledCoursesModal } from '../components/UnscheduledCoursesModal';
+import { BatchAvailabilityModal } from '../components/BatchAvailabilityModal';
 import { startRemoteSync } from '../lib/remoteSync';
 import { useShallow } from 'zustand/react/shallow';
 import { useTimetableStore } from '../store/timetableStore';
@@ -130,6 +131,7 @@ export default function Home() {
       <CoordinatorModal />
       <PrintRoomsModal />
       <UnscheduledCoursesModal />
+      <BatchAvailabilityModal />
       <Toast />
 
       {/* Footer */}

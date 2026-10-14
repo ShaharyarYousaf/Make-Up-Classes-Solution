@@ -12,6 +12,7 @@ import {
   Filter,
   X,
   CalendarRange,
+  Users,
   ChevronLeft,
   ChevronRight,
   Layers,
@@ -35,6 +36,7 @@ export const TimetableGrid: React.FC = () => {
     departmentFilter,
     setDepartmentFilter,
     openFlexibleModal,
+    openBatchAvailability,
   } = useTimetableStore(
     useShallow((s) => ({
       viewMode: s.viewMode,
@@ -52,6 +54,7 @@ export const TimetableGrid: React.FC = () => {
       departmentFilter: s.departmentFilter,
       setDepartmentFilter: s.setDepartmentFilter,
       openFlexibleModal: s.openFlexibleModal,
+      openBatchAvailability: s.openBatchAvailability,
     }))
   );
 
@@ -254,7 +257,7 @@ export const TimetableGrid: React.FC = () => {
       {/* Top Control Bar: View Modes, Navigation & Filters */}
       <div className="p-3.5 sm:p-4 border-b border-gray-200 dark:border-zinc-800 bg-gray-50/80 dark:bg-zinc-900/60 flex flex-wrap items-center justify-between gap-3">
         {/* Left: View Mode Toggle */}
-        <div className="flex items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2">
           <div className="flex items-center gap-1 bg-gray-200/80 dark:bg-zinc-800 p-1 rounded-xl">
             <button
               onClick={() => {
@@ -285,6 +288,14 @@ export const TimetableGrid: React.FC = () => {
               Day Overview ({filteredRooms.length} Rooms)
             </button>
           </div>
+          <button
+            onClick={openBatchAvailability}
+            title="Find when several sections are all free together"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold border border-emerald-300 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-200 hover:bg-emerald-100 dark:hover:bg-emerald-900/50 transition-colors whitespace-nowrap"
+          >
+            <Users className="w-3.5 h-3.5" />
+            Common free time
+          </button>
         </div>
 
         {/* Center: Search Input & Department Filter */}

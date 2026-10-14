@@ -17,6 +17,7 @@ import { isReservedAllocation, parseTimetableCSV } from '../src/lib/csvParser';
 import { STANDARD_TIME_SLOTS } from '../src/lib/constants';
 import { extractTimeRange, getFreeIntervals, layoutLanes, timeFieldsForInterval, toTimeInterval } from '../src/lib/timeline';
 import { defaultSessionMinutes, expectedWeeklyMinutes, scheduledMinutesBySection } from '../src/lib/courseLoad';
+import { batchAvailability } from '../src/lib/batchAvailability';
 import { useTimetableStore, undoStep } from '../src/store/timetableStore';
 import { getAllocationInterval } from '../src/lib/utils';
 import { Allocation, CourseSection, Room } from '../src/types/timetable';
@@ -288,6 +289,40 @@ check('Undo brings the deleted class back', st.getState().allocations.some(a => 
 st.setState({ canEdit: false });
 st.getState().deleteAllocation('gone');
 check('Without edit access nothing is deleted', st.getState().allocations.some(a => a.id === 'gone'));
+
+// 12. Common free time across sections (Req H)
+console.log('\n--- Test 12: Batch Availability ---');
+const baseCourse = INITIAL_COURSES[0];
+const hCourses = [
+  { ...baseCourse, id: 'X1 A', courseCode: 'X1', section: 'A' },
+  { ...baseCourse, id: 'X2 B', courseCode: 'X2', section: 'B' },
+  { ...baseCourse, id: 'Y1 C', courseCode: 'Y1', section: 'C' }, // a repeat course taken with another section
+];
+const hAllocs: Allocation[] = [
+  { id: 'h1', courseSectionId: 'X1 A', day: 'Monday', roomId: 'c-301', slotId: 'slot-1' },                                       // 08:30–09:50
+  { id: 'h2', courseSectionId: 'X2 B', day: 'Monday', roomId: 'c-302', slotId: 'slot-2' },                                       // 10:00–11:20
+  { id: 'h3', courseSectionId: 'Y1 C', day: 'Monday', roomId: 'c-303', ...timeFieldsForInterval({ startMinutes: 690, endMinutes: 745 }) }, // 11:30–12:25
+];
+const hStudents = [
+  { id: 's1', name: 'S1', degreeProgram: '', batch: '', enrolledSectionIds: ['X1 A', 'Y1 C'] },
+  { id: 's2', name: 'S2', degreeProgram: '', batch: '', enrolledSectionIds: ['X2 B'] },
+];
+const hBase = { sections: ['A', 'B'], allocations: hAllocs, courses: hCourses, students: hStudents, rooms: INITIAL_ROOMS, dayStart: 510, dayEnd: 1035, minDuration: 30 };
+const byStudents = batchAvailability({ ...hBase, basis: 'students', maxBusy: 0 });
+const monStudents = byStudents.days.find(d => d.day === 'Monday')!.windows;
+check('Students basis counts the repeat course: Monday free 12:25–17:15 only', byStudents.population === 2 && monStudents.length === 1 && monStudents[0].startMinutes === 745 && monStudents[0].endMinutes === 1035);
+check('10-minute gaps are below the minimum and not offered', !monStudents.some(w => w.endMinutes - w.startMinutes < 30));
+const bySections = batchAvailability({ ...hBase, basis: 'sections', maxBusy: 0 });
+const monSections = bySections.days.find(d => d.day === 'Monday')!.windows;
+check('Section-timetable basis ignores the repeat course: free from 11:20', monSections.length === 1 && monSections[0].startMinutes === 680);
+const allowOne = batchAvailability({ ...hBase, basis: 'students', maxBusy: 1 });
+const monAllow = allowOne.days.find(d => d.day === 'Monday')!.windows;
+check('Allowing 1 busy student gives the whole day, marked "up to 1 busy"', monAllow.length === 1 && monAllow[0].startMinutes === 510 && monAllow[0].busy === 1);
+check('A free day is one window for the full day', byStudents.days.find(d => d.day === 'Tuesday')!.windows[0]?.endMinutes === 1035);
+const midday = batchAvailability({ ...hBase, basis: 'students', maxBusy: 0, minDuration: 5 }).days.find(d => d.day === 'Monday')!.windows;
+check('Partial windows are exact to 5 minutes (09:50–10:00 found)', midday.some(w => w.startMinutes === 590 && w.endMinutes === 600));
+const busyRooms = batchAvailability({ ...hBase, basis: 'students', maxBusy: 1 }).days.find(d => d.day === 'Monday')!.windows[0].freeRooms;
+check('Rooms booked during the window are excluded', !busyRooms.some(r => r.id === 'c-301' || r.id === 'c-302' || r.id === 'c-303'));
 
 if (failures > 0) {
   console.log(`\n${failures} TEST(S) FAILED ❌`);
