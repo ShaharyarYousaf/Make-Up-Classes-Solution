@@ -62,15 +62,16 @@ export const CourseCard: React.FC<CourseCardProps> = React.memo(function CourseC
   return (
     <div
       onClick={() => initiateReschedule(allocation)}
-      className={`group relative h-full overflow-hidden flex flex-col justify-between p-3 rounded-xl border transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md ${course.color.bg} ${course.color.border} ${
+      title={`${course.courseCode} ${course.courseTitle} (${course.section}) • ${course.instructor} • ${timeDisplay}`}
+      className={`group relative h-full overflow-hidden flex flex-col gap-1 px-2.5 py-2 rounded-xl border transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md ${course.color.bg} ${course.color.border} ${
         isSelected
           ? 'ring-2 ring-blue-500 shadow-lg scale-[1.02] border-blue-500'
           : 'hover:border-blue-400 hover:scale-[1.01]'
       }`}
     >
       {/* Top row: Badges */}
-      <div className="flex items-center justify-between gap-1 mb-1.5 flex-wrap">
-        <div className="flex items-center gap-1">
+      <div className="flex items-center justify-between gap-1 min-w-0">
+        <div className="flex items-center gap-1 min-w-0">
           <span
             className={`text-[11px] font-bold px-2 py-0.5 rounded-md uppercase tracking-wider ${course.color.badge}`}
           >
@@ -100,8 +101,8 @@ export const CourseCard: React.FC<CourseCardProps> = React.memo(function CourseC
         )}
       </div>
 
-      {/* Course Code & Title */}
-      <div className="mb-2">
+      {/* Course Code & Title: one title line so the footer always fits an 80-minute block */}
+      <div className="min-w-0">
         <div className="flex items-baseline gap-1.5">
           <span className="text-sm font-extrabold text-gray-900 dark:text-white tracking-tight">
             {course.courseCode}
@@ -110,13 +111,13 @@ export const CourseCard: React.FC<CourseCardProps> = React.memo(function CourseC
             {course.creditHours} Cr
           </span>
         </div>
-        <p className="text-xs font-semibold text-gray-700 dark:text-gray-300 line-clamp-2 leading-tight">
+        <p className="text-xs font-semibold text-gray-700 dark:text-gray-300 truncate leading-tight">
           {course.courseTitle}
         </p>
       </div>
 
       {/* Meta Footer */}
-      <div className="pt-2 border-t border-black/5 dark:border-white/10 flex flex-col gap-1 text-[11px] text-gray-600 dark:text-gray-400">
+      <div className="mt-auto pt-1 border-t border-black/5 dark:border-white/10 flex flex-col gap-0.5 text-[11px] text-gray-600 dark:text-gray-400">
         <div className="flex items-center justify-between">
           <span className="truncate font-medium text-gray-800 dark:text-gray-200 max-w-[130px]">
             {course.instructor}
@@ -127,17 +128,18 @@ export const CourseCard: React.FC<CourseCardProps> = React.memo(function CourseC
           </span>
         </div>
 
-        <div className="flex items-center justify-between text-[10px] text-gray-500">
-          <span className="flex items-center gap-1 truncate">
-            <MapPin className="w-2.5 h-2.5 text-gray-400" />
-            {room.name}
+        {/* One line: the room gives way (truncates) so the time never wraps */}
+        <div className="flex items-center justify-between gap-1 text-[10px] text-gray-500 min-w-0">
+          <span className="flex items-center gap-0.5 min-w-0">
+            <MapPin className="w-2.5 h-2.5 shrink-0 text-gray-400" />
+            <span className="truncate">{room.name}</span>
           </span>
           <span
-            className={`flex items-center gap-1 font-mono ${isCustomTime ? 'font-bold text-purple-700 dark:text-purple-300' : ''}`}
+            className={`flex items-center gap-0.5 shrink-0 whitespace-nowrap font-mono ${isCustomTime ? 'font-bold text-purple-700 dark:text-purple-300' : ''}`}
             title={isCustomTime ? 'Exact time – differs from the standard slot' : undefined}
           >
             <Clock className="w-2.5 h-2.5" />
-            {timeDisplay}
+            {interval.startTime}–{interval.endTime}
           </span>
         </div>
       </div>
