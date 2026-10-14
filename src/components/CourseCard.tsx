@@ -37,7 +37,7 @@ export const CourseCard: React.FC<CourseCardProps> = React.memo(function CourseC
       <div
         onClick={() => initiateReschedule(allocation)}
         title={`${course.courseCode} ${course.courseTitle} (${course.section}) • ${timeDisplay} • ${course.instructor} • click to reschedule`}
-        className={`h-full overflow-hidden flex flex-col px-2 py-1 rounded-lg border cursor-pointer shadow-sm hover:shadow-md hover:border-blue-400 transition-all ${course.color.bg} ${course.color.border} ${
+        className={`h-full overflow-hidden flex flex-col gap-0.5 px-2 py-1 rounded-lg border cursor-pointer shadow-sm hover:shadow-md hover:border-blue-400 transition-all ${course.color.bg} ${course.color.border} ${
           isSelected ? 'ring-2 ring-blue-500 border-blue-500' : ''
         }`}
       >
@@ -46,15 +46,30 @@ export const CourseCard: React.FC<CourseCardProps> = React.memo(function CourseC
           <span className={`text-[9px] font-bold px-1 rounded ${course.color.badge} truncate`}>{course.section}</span>
           {allocation.isRescheduled && <Sparkles className="w-2.5 h-2.5 text-amber-600 shrink-0" />}
         </div>
-        <span className={`text-[10px] font-mono ${isCustomTime ? 'text-purple-700 dark:text-purple-300 font-bold' : 'text-gray-600 dark:text-gray-400'}`}>
-          {timeDisplay}
+        {/* As much as fits: title, teacher, room + time, each on one line; extra lines are cut by the block */}
+        <span className="text-[10px] font-semibold text-gray-700 dark:text-gray-300 truncate leading-tight">
+          {course.courseTitle}
         </span>
-        {showRoom && (
-          <span className="text-[10px] font-semibold text-gray-700 dark:text-gray-300 truncate flex items-center gap-0.5">
-            <MapPin className="w-2.5 h-2.5 shrink-0 text-gray-400" />
-            {room.name}
+        <span className="text-[10px] text-gray-600 dark:text-gray-400 truncate leading-tight flex items-center gap-1">
+          <span className="truncate">{course.instructor}</span>
+          <span className="flex items-center gap-0.5 shrink-0">
+            <Users className="w-2.5 h-2.5" />
+            {enrolledCount}
           </span>
-        )}
+        </span>
+        <span className="text-[10px] leading-tight flex items-center justify-between gap-1 min-w-0">
+          <span className="flex items-center gap-0.5 min-w-0 text-gray-600 dark:text-gray-400">
+            <MapPin className="w-2.5 h-2.5 shrink-0 text-gray-400" />
+            <span className="truncate">{room.name}</span>
+          </span>
+          <span
+            className={`shrink-0 whitespace-nowrap font-mono ${
+              isCustomTime ? 'text-purple-700 dark:text-purple-300 font-bold' : 'text-gray-600 dark:text-gray-400'
+            }`}
+          >
+            {interval.startTime}–{interval.endTime}
+          </span>
+        </span>
       </div>
     );
   }
